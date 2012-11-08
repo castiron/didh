@@ -1,0 +1,29 @@
+<%= form_for(@text) do |f| %>
+	<% if @text.errors.any? %>
+		<div id="error_explanation">
+
+		 	<h2><%= pluralize(@text.errors.count, "error") %> prohibited this text from being saved:</h2>
+
+		 	<ul>
+	 		<% @text.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+
+		</div>
+	<% end %>
+
+  <fieldset>
+
+		<%= f.label :body, :class => "control-label" %>
+		<%= f.text_area :body, :class => "span8" %>
+
+		<%= f.label :pub_date, :class => "control-label" %>
+		<%= f.date_select :pub_date, :class => "span4" %>
+
+		<div>
+			<%= f.submit 'Save', :class => 'btn' %>
+		</div>
+	</fieldset>
+
+<% end %>

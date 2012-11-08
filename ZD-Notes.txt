@@ -1,3 +1,9 @@
 Creating a migration that adds a field to an existing model:
 	
 	rails g migration AddPartIdToChapters part_id:integer
+
+	rails g migration AddTitleToText title:string
+	rails g migration AddAbstractToText abstract:text
+	rails g migration AddNotesToText notes:text
+	rails g migration AddBibliographyToText bibliography:text
+

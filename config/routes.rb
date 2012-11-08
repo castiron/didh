@@ -1,4 +1,6 @@
 Didh::Application.routes.draw do
+  resources :texts
+
   resources :parts
 
   # The priority is based upon order of creation:

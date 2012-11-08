@@ -1,4 +1,7 @@
 class PartsController < ApplicationController
+
+  layout "admin"
+
   # GET /parts
   # GET /parts.json
   def index
