@@ -2,7 +2,6 @@
 
 <table class="table">
   <tr>
-    <th>Body</th>
     <th>Pub date</th>
     <th></th>
     <th></th>
@@ -11,7 +10,6 @@
 
 <% @texts.each do |text| %>
   <tr>
-    <td><%= text.body %></td>
     <td><%= text.pub_date %></td>
     <td><%= link_to 'Show', text %></td>
     <td><%= link_to 'Edit', edit_text_path(text) %></td>
