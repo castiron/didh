@@ -1,4 +1,4 @@
-class TextsController < ApplicationController
+  class TextsController < ApplicationController
 
   layout "admin"
 
@@ -37,6 +37,7 @@ class TextsController < ApplicationController
 
   # GET /texts/1/edit
   def edit
+    @authors = Author.all
     @text = Text.find(params[:id])
   end
 

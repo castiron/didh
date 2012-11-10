@@ -1,7 +1,10 @@
 Didh::Application.routes.draw do
-  resources :texts
+  
 
-  resources :parts
+  match 'debates/' => 'debates#index'
+  match 'book/' => 'pages#book'
+  match 'about/' => 'pages#about'
+  match 'blog/' => 'pages#blog'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -43,16 +46,15 @@ Didh::Application.routes.draw do
   #     end
   #   end
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  namespace :admin do
+    resources :texts
+    resources :editions
+    resources :parts
+  end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'pages#index'
 
   # See how all your routes lay out with "rake routes"
 

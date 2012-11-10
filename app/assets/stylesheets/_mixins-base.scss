@@ -1,0 +1,171 @@
+// Base mixins
+// -----------
+
+// Media queries
+// --------------------------
+@mixin respond-min($width) {
+	@media all and (min-width: $width) {
+		@content;
+	}
+}
+
+@mixin respond-max($width) {
+	@media all and (max-width: $width) {
+		@content;
+	}
+}
+
+// Selection background
+// --------------------------
+@mixin selection($color) {
+	::-moz-selection {
+	    background: $color;
+	    text-shadow: none;
+	}
+	::selection {
+	    background: $color;
+	    text-shadow: none;
+	}
+}
+
+// Background clip
+// $portion can take 'border', 
+// 'padding', or 'content'
+// --------------------------
+@mixin background-clip($portion) {
+	-webkit-background-clip: $portion;
+	-moz-background-clip: $portion;
+	background-clip: #{$portion}-box;
+}
+
+// Box sizing
+// $value can take 'border-box' 
+// or 'content-box'
+// --------------------------
+@mixin box-sizing($value) {
+	-webkit-box-sizing: $value;
+	-moz-box-sizing: $value;
+	box-sizing: $value;
+}
+
+// Respond to pixel density
+// --------------------------
+@mixin respond-min-density($density: 1.5) {
+	@media only screen and (-Webkit-min-device-pixel-ratio: $density),
+	only screen and (-moz-min-device-pixel-ratio: $density),
+	only screen and (min-device-pixel-ratio: $density) {
+		@content;
+	}
+}
+
+// Font-sizing with rems, with 
+// px fallback for ie7 & 8
+// --------------------------
+@mixin rem($size) {
+	font-size: $size*10px;
+	font-size: #{$size}rem;
+}
+
+// Full bleed
+// http://css-tricks.com/full-browser-width-bars/
+// Specify background & borders when you call it
+// Vertical positioning requires ajdustment when adding borders
+// Requires generatedcontent polyfill to work in IE7
+// --------------------------
+@mixin full-bleed {
+	&:before,&:after,
+	.wing-left,.wing-right {
+		content: "";
+		width: 9999px;
+		// Maybe someday
+		// width: 100vw;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		@content;
+	}
+	&:before,.wing-left {
+		right: 100%;
+	}
+	&:after,.wing-right {
+		left: 100%;
+	}
+}
+
+// Clearfix
+// --------------------------
+@mixin clearfix() {
+	*zoom: 1;
+	&:before,
+	&:after {
+	    content: " ";
+	    display: table;
+	}
+	&:after {
+	    clear: both;
+	}
+}
+
+%clearfix, .clearfix {
+	@include clearfix();
+}
+
+// Kill ye FOUT - depends on javascript adding the .wf-active class...
+// --------------------------------------------------------
+@mixin kill-fout {
+	visibility: hidden;
+	.wf-active &, // Show when fonts become active
+	.no-js &, // Show if no javascript
+	.mceContentBody & { // Show if this is the RTE ;)
+		visibility: visible;
+	}
+}
+
+// CSS3 properties (straight from Bootstrap)
+// --------------------------------------------------------
+// Transitions
+// --------------------------
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+
+// Border radius
+// --------------------------
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+
+// Box shadow
+// --------------------------
+@mixin box-shadow($shadows...) {
+	-webkit-box-shadow: $shadows;
+	-moz-box-shadow: $shadows;
+	box-shadow: $shadows;
+}
+
+// Gradients
+// --------------------------
+@mixin gradient-vertical($startColor: #555, $endColor: #333) {
+	background-color: mix($startColor, $endColor, 60%);
+	background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+	background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+	background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+	background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+	background-image: linear-gradient(top, $startColor, $endColor); // The standard
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0),$startColor,$endColor; // IE9 and down
+}
+
+// Opacity
+// --------------------------------------------------------
+@mixin opacity($opacity: 100) {
+	opacity: $opacity / 100;
+	filter: alpha(opacity=$opacity);
+}

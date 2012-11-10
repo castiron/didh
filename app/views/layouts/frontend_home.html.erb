@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+
+		<meta charset="utf-8">
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+		<title>Debates in the Digital Humanities</title>
+		<!-- <meta name="description" content=""> -->
+		<meta name="viewport" content="width=device-width">
+
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+
+		<script type="text/javascript" src="//use.typekit.net/jlo5jay.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	</head>
+	<body class="home">
+		<header class="home-header">
+			<h1 class="home-title"><a href="/">Debates in the Digital Humanities</a></h1>
+			<h2 class="byline">Matthew K. Gold, Editor</h2>
+		</header>
+		<section class="home-content">
+			<%= yield %>
+			<ul class="nav-primary">
+				<%= render "shared/menu" %>
+			</ul>
+			<footer class="home-footer">
+				<ul class="nav-footer">
+					<li><a class="logo-cuny" href="http://www.gc.cuny.edu/">The Graduate Center, CUNY</a></li>
+					<li><a class="logo-umn" href="http://www.upress.umn.edu/">University of Minnesota Press</a></li>
+					<li><a class="logo-gcdi" href="http://gcdi.commons.gc.cuny.edu/">GC Digital Initiatives</a></li>
+				</ul>
+			</footer>
+		</section>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="Resources/Javascript/Libs/jQuery/jquery-1.8.2.min.js"><\/script>')</script>
+		<script src="Resources/Javascript/Source/scripts.js"></script>
+		<!--[if lt IE 9]>
+			<script src="Resources/Javascript/Libs/Selectivizr/selectivizr-min.js"></script>
+		<![endif]-->
+
+	</body>
+</html>

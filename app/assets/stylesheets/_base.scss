@@ -1,0 +1,83 @@
+// Base
+// ----
+
+// Applies a natural box layout model to all the things 
+* { 
+	@include box-sizing(border-box);
+}
+
+// Sets text selection background color
+// @include selection(lighten($blue, 40%));
+
+// Global
+// --------------------------------------------------------
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	@include font-museo;
+	font-size: 1.125em;
+	font-weight: 300;
+	line-height: $baseLineHeight;
+	color: $black;
+}
+
+// Body classes
+// --------------------------
+.home {
+	background-color: $black;
+	color: $white;
+	line-height: $looseLineHeight;
+}
+
+// Typography
+// --------------------------------------------------------
+// Block-level elements
+// --------------------------
+h1 {
+	@extend %heading;
+	@extend %alpha;
+}
+
+h2 {
+	@extend %heading;
+	@extend %beta;
+}
+
+h3 {
+	@extend %heading;
+	@extend %gamma;	
+}
+
+h4 {
+	@extend %heading;
+	@extend %delta;	
+}
+
+h5 {
+	@extend %heading;
+	@extend %epsilon;	
+}
+
+p {
+	margin: 0;
+	& + & {
+		text-indent: 1.35em;
+	}
+}
+
+ul, ol {
+	margin: 0;
+}
+
+// Inline elements
+// --------------------------
+a {
+	@include transition(0.05s color ease-out);
+	text-decoration: none;
+}

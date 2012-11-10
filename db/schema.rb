@@ -27,15 +27,35 @@ ActiveRecord::Schema.define(:version => 20121108050124) do
     t.integer  "sorting"
   end
 
+  create_table "editions", :force => true do |t|
+    t.string   "label"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "sorting"
+  end
+
   create_table "texts", :force => true do |t|
     t.text     "body"
-    t.date     "pub_date"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "title"
     t.text     "abstract"
     t.text     "notes"
     t.text     "bibliography"
+    t.string   "source_file"
+    t.integer  "part_id"
+    t.integer  "edition_id"
   end
+
+  create_table "authors", :force => true do |t|
+    t.string   "name"
+    t.string   "institution"
+  end
+
+  create_table "authors_texts", :id => false do |t|
+    t.references :text, :null => false
+    t.references :author, :null => false
+  end
+
 
 end

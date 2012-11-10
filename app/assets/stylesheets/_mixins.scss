@@ -1,0 +1,62 @@
+// Mixins
+// ------
+
+// Fonts
+// -------------------------- 
+@mixin font-museo {
+	font-family: "museo", serif;
+}
+
+// Background-size
+// Only necessary for 'cover' &
+// 'contain'
+// --------------------------
+@mixin background-size($value) {
+	-webkit-background-size: $value;
+	-moz-background-size: $value;
+	-o-background-size: $value;
+	background-size: $value;
+}
+
+// @2x background images
+// --------------------------
+@mixin background-2x($image, $w, $h) {
+	width: ($w / 2);
+	height: ($h / 2);
+	background: transparent url('#{$image}.png') no-repeat left top;
+	background-size: ($w / 2) ($h / 2);
+}
+
+// Hyphenation & justification
+// TODO get this working in chrome
+// --------------------------
+@mixin justify {
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	text-align: justify;
+}
+
+// Spaced items
+// Can be used nested or top-level
+// --------------------------
+@mixin spaced-items($el, $space) {
+	#{$el} + #{$el} {
+		margin-top: $space;
+	}
+}
+
+// Rotate
+// --------------------------
+@mixin rotate($degrees, $origin: 0 0) {
+	-webkit-transform: rotate($degrees);
+	-moz-transform: rotate($degrees);
+	-ms-transform: rotate($degrees);
+	-o-transform: rotate($degrees);
+	transform: rotate($degrees);
+	-webkit-transform-origin: $origin;
+	-moz-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	-o-transform-origin: $origin;
+	transform-origin: $origin;
+}

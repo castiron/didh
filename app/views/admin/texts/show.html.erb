@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @text.title %></h3>
+<div style="margin-bottom: 25px">
+	<h4>Body:</h4>
+	<%= raw @text.body %>
+</div>
+<div style="margin-bottom: 25px">
+	<h4>Notes:</h4>
+	<%= raw @text.notes %>
+</div>
+<div style="margin-bottom: 25px">
+	<h4>Bibliography:</h4>
+	<%= raw @text.bibliography %>
+</div>
+
+<div style="margin-bottom: 25px">
+	<%= link_to 'Edit', edit_admin_text_path(@text), :class => 'btn' %>
+	<%= link_to 'Back', admin_texts_path, :class => 'btn' %>
+</div>

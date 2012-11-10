@@ -1,0 +1,25 @@
+<h3>Manage Parts</h3>
+
+<table class="table">
+  <tr>
+    <th>Sorting</th>
+    <th>Label</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @parts.each do |part| %>
+  <tr>
+    <td><%= part.sorting %></td>
+    <td><%= part.label %></td>
+    <td><%= link_to 'Show', admin_part_path(part) %></td>
+    <td><%= link_to 'Edit', edit_admin_part_path(part) %></td>
+    <td><%= link_to 'Destroy', admin_part_path(part), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Part', new_admin_part_path %>

@@ -1,0 +1,306 @@
+// Components
+// ----------
+
+// Homepage components
+// --------------------------------------------------------
+.home-header {
+	@extend %vertical-bar-fixed;
+	width: 469px;
+	background: transparent url('bg-home.jpg') no-repeat left bottom;
+	background-size: 468px 726px;
+	left: 0;
+}
+
+.home-title {
+	position: absolute;
+	bottom: 151px;
+	right: 17px;
+	a {
+		@extend %hidden-text;
+		display: block;
+		@include background-2x(logo-ddh, 197px, 922px);
+	}
+}
+
+.byline {
+	@extend %hidden-text;
+	@include background-2x(byline, 254px, 151px);
+	position: absolute;
+	bottom: 52px;
+	right: 0;
+}
+
+// TODO modify positioning on small screens & fix left margin
+.home-content {
+	width: 480px;
+	padding-bottom: 197px;
+	// margin: 0 0 $space 598px;
+	margin: 0 0 $space 50%;
+	// position: relative;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.nav-start {
+	@extend %beta;
+	@extend %loose-top-space;
+	a {
+		@extend %home-link;
+	}
+}
+
+// Homepage navigation
+// --------------------------
+// <ul>
+.nav-primary {
+	@extend %nav;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+// <ul>
+.nav-footer {
+	@extend %floated-list;
+	margin-bottom: 10px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	a {
+		@extend %hidden-text;
+	}
+	.logo-cuny {
+		@include background-2x(logo-cuny, 101px, 181px);
+	}
+	.logo-umn {
+		@include background-2x(logo-umn, 69px, 183px);
+	}
+	.logo-gcdi {
+		@include background-2x(logo-gcdi, 123px, 185px);
+	}
+
+}
+
+// Interior page components
+// --------------------------------------------------------
+.page-header {
+	@extend %vertical-bar-fixed;
+	width: 160px;
+	background-color: $black;
+	padding: ($space * 2) $shim 0;
+	left: 0;
+	.nav-open & {
+		@include respond-max(1092px) {
+			width: 14.9%;
+		}
+	}
+}
+
+.interior-title {
+	position: absolute;
+	bottom: $shim * 2;
+	right: 0;
+	left: 0;
+	a {
+		@extend %hidden-text;
+		display: block;
+		@include background-2x(logo-ddh, 186px, 870px);
+		margin: 0 auto;
+	}
+}
+
+// TODO adjust margin-left on small screens
+.interior-content {
+	@extend %smooth-resize;
+	width: 508px;
+	padding: ($space * 2) 0;
+	margin-left: 29%;
+	.nav-open & {
+		@include respond-max(1550px) {
+			margin-left: 20%;
+		}
+		@include respond-max(1160px) {
+			margin-left: 196px;
+		}
+		@include respond-max(1092px) {
+			width: 47%;
+		}
+	}
+}
+
+// Chapter
+// TODO rename this if necessary
+// --------------------------
+.chapter {
+	p {
+		@include justify;
+	}
+}
+
+.chapter-heading {
+	@extend %beta;
+	margin-bottom: 1em;
+}
+
+.chapter-section {
+	margin-bottom: 25px;
+	p.rf, p.en {
+		margin-bottom: 1em;
+		text-indent: 0;
+		/* Force linebreaks on long URLs */
+		a {
+			white-space: pre;           /* CSS 2.0 */
+			white-space: pre-wrap;      /* CSS 2.1 */
+			white-space: pre-line;      /* CSS 3.0 */
+			white-space: -pre-wrap;     /* Opera 4-6 */
+			white-space: -o-pre-wrap;   /* Opera 7 */
+			white-space: -moz-pre-wrap; /* Mozilla */
+			white-space: -hp-pre-wrap;  /* HP Printers */
+			word-wrap: break-word;      /* IE 5+ */
+		}
+	}
+}
+
+.chapter-notes {
+	.enp {
+		margin-bottom: 25px;
+	}
+}
+
+.chapter-bibliography {
+}
+
+span.sentence {
+	&:hover {
+		background-color: #FBF330;
+	}
+}
+
+
+// Interior navigation
+// --------------------------
+// <ul>
+.nav-interior {
+	@extend %nav;
+}
+
+.nav-content {
+	@extend %vertical-bar-fixed;
+	@extend %smooth-resize;
+	width: $navClosedWidth;
+	background-color: $grayLight;
+	right: 0;
+	overflow: hidden;
+	.nav-open & {
+		width: $navOpenWidth;
+		@include respond-max(1092px) {
+			width: 31%;
+		}
+	}
+}
+
+.nav-content--control {
+	color: inherit;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	z-index: 10;
+	&:focus {
+		outline: 0;
+	}
+}
+
+// <ul>
+// Lives inside nav-content
+.nav-panes {
+	@extend %unstyled-list;
+	@extend %vertical-bar;
+	width: $navOpenWidth;
+	@include box-shadow(
+		inset $navClosedWidth 0 0 0 $grayLight,
+		inset ($navClosedWidth + 4) 0 0 0 $white
+	);
+}
+
+// <li>
+// Lives inside nav-panes
+.pane {
+	@extend %delta;
+	width: 100%;
+	line-height: $tightLineHeight;
+	padding: 60px 20px 30px 50px;
+	position: absolute;
+	& + & {
+		border-top: 4px solid $white;
+	}
+}
+
+.pane-top {
+	bottom: 50%;
+}
+
+.pane-bottom {
+	top: 50%;
+}
+
+.pane--header {
+	@extend %vertical-bar;
+	width: $navClosedWidth;
+	left: 0;
+	white-space: nowrap;
+}
+
+// Width set to height of parent (pane--header)
+// with javascript
+// Bottom positioning = line-height + padding,
+// which makes up for offset due to rotation axis
+.pane--title {
+	@extend %with-gray-dark;
+	@extend %epsilon;
+	@include rotate(-90deg, top left);
+	line-height: 1;
+	text-align: center;
+	padding-top: 13px;
+	position: absolute;
+	bottom: -24px;
+	left: 0;
+	overflow: hidden;
+}
+
+// Highlight navigation
+// --------------------------
+// <ul>
+.nav-highlight {
+	@extend %unstyled-list;
+	@include spaced-items(li, 12px);
+	margin-top: 16px;
+	a {
+		display: inline-block;
+	}
+}
+
+// <a>
+.highlight-emphasis {
+	@extend %circle-item-blue;
+}
+
+// <a>
+.highlight-mark {
+	@extend %circle-item;
+}
+
+// Table of contents
+// --------------------------
+// <ul>
+.nav-index {
+	@extend %unstyled-list;
+	@include spaced-items(li, 17px);
+	a {
+		color: $grayDark;
+		&:hover, 
+		&.active {
+			color: $black;
+		}
+	}
+}

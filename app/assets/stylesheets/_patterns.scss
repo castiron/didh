@@ -1,0 +1,169 @@
+// Patterns
+// --------
+
+// Effects
+// --------------------------------------------------------
+%smooth-resize {
+	@include transition(0.4s all ease-in-out);
+}
+
+// Vertical rhythm
+// --------------------------------------------------------
+// Intended to work with $looseLineHeight
+%loose-top-space {
+	margin-top: 1.68em;
+}
+
+// Typography
+// --------------------------------------------------------
+// Hierarchy
+// --------------------------
+%alpha {
+	font-size: 1.5em;
+	font-weight: 300;
+}
+
+%beta {
+	font-size: 1.35em;
+	font-weight: 300;
+}
+
+%gamma {
+	font-size: 1em;
+	font-weight: 300;
+}
+
+%delta {
+	font-size: 0.88em;
+	font-weight: 300;
+}
+
+%epsilon {
+	font-size: 0.7em;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+}
+
+// Block-level
+// --------------------------
+%heading {
+	margin: 0;
+	p + & {
+		@extend %loose-top-space;
+	}
+}
+
+// Inline
+// --------------------------
+
+// Links
+// --------------------------
+%home-link {
+	color: $yellow;
+	&:hover {
+		color: $white;
+	}
+}
+
+%nav-link {
+	color: $white;
+	&:hover {
+		color: $yellow;
+	}
+}
+
+// https://github.com/h5bp/html5-boilerplate/blob/master/css/main.css#L120
+%hidden-text {
+	background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+    &:before {
+	    content: "";
+	    display: block;
+	    width: 0;
+	    height: 100%;
+    }
+}
+
+// Lists
+// --------------------------
+%unstyled-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+%floated-list {
+	@extend %clearfix;
+	@extend %unstyled-list;
+	li {
+		float: left;
+		a {
+			display: block;
+		}
+	}
+	li + li {
+		margin-left: $space;
+	}
+}
+
+// Text colors
+// --------------------------
+%with-gray-dark {
+	color: $grayDark;
+}
+
+// Component patterns
+// --------------------------------------------------------
+// <ul>
+%nav {
+	@extend %beta;
+	@extend %unstyled-list;
+	line-height: $looseLineHeight;
+	a {
+		@extend %nav-link;
+	}
+}
+
+// Stretches block-level element to fill container vertically
+// Left or right positioning optional
+%vertical-bar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+
+// Fixes block-level element to top & bottom of viewport
+// Be sure to specify left or right positioning
+%vertical-bar-fixed {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+}
+
+%circle-item {
+	$h: 28px;
+	display: block;
+	line-height: $h;
+	color: inherit;
+	padding-left: 44px;
+	position: relative;
+	&:before {
+		content: "";
+		width: $h;
+		height: $h;
+		background-color: $gray;
+		@include border-radius(100%);
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+%circle-item-blue {
+	@extend %circle-item;
+	&:before {
+		background-color: $blue;
+	}
+}
