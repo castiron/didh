@@ -160,6 +160,9 @@
 			word-wrap: break-word;      /* IE 5+ */
 		}
 	}
+	h3 {
+		margin-bottom: 1em;
+	}
 }
 
 .chapter-notes {
@@ -188,63 +191,114 @@ span.sentence {
 .nav-content {
 	@extend %vertical-bar-fixed;
 	@extend %smooth-resize;
-	width: $navClosedWidth;
-	background-color: $grayLight;
-	right: 0;
-	overflow: hidden;
-	.nav-open & {
-		width: $navOpenWidth;
-		@include respond-max(1092px) {
-			width: 31%;
-		}
-	}
+	width: $navOpenWidth;
+//	background-color: $grayLight;
+	right: 0px;
+//	overflow: hidden;
+//	.nav-open & {
+//		width: $navOpenWidth;
+//		@include respond-max(1092px) {
+//			width: 31%;
+//		}
+//	}
+//	.nav-panes--toggle {
+//		position: relative;
+//		height: 100%;
+//		width: 34px;
+//		z-index: 10;
+//	}
+//
 }
 
 .nav-content--control {
-	color: inherit;
-	position: absolute;
-	bottom: 20px;
-	right: 20px;
-	z-index: 10;
-	&:focus {
-		outline: 0;
-	}
+//	color: inherit;
+//	position: absolute;
+//	bottom: 20px;
+//	right: 20px;
+//	z-index: 10;
+//	&:focus {
+//		outline: 0;
+//	}
 }
 
+.nav-panes {
+	height: 100%;
+	position: relative;
+}
 // <ul>
 // Lives inside nav-content
-.nav-panes {
+
+.nav-pane {
+	position: relative;
 	@extend %unstyled-list;
-	@extend %vertical-bar;
-	width: $navOpenWidth;
-	@include box-shadow(
-		inset $navClosedWidth 0 0 0 $grayLight,
-		inset ($navClosedWidth + 4) 0 0 0 $white
-	);
+	li.level-0, li.level-1 {
+		@extend %vertical-bar;
+		width: $navOpenWidth;
+		background-color: $grayLight;
+		margin-bottom: 4px;
+		@include box-shadow(
+			inset $navClosedWidth 0 0 0 $grayLight,
+			inset ($navClosedWidth + 4) 0 0 0 $white
+		);
+	}
+	li.level-1 {
+		position: relative;
+		height: 100%;
+		width: $navOpenWidth * 2;
+		left: $navOpenWidth + 4px;
+	}
 }
 
 // <li>
 // Lives inside nav-panes
-.pane {
+.pane--content {
 	@extend %delta;
 	width: 100%;
 	line-height: $tightLineHeight;
-	padding: 60px 20px 30px 50px;
-	position: absolute;
-	& + & {
-		border-top: 4px solid $white;
+	padding: 40px 20px 30px 50px;
+	.pane-top & {
+		padding-top: 230px;
+	}
+	height: 100%;
+	& .part {
+		margin-bottom: 50px;
+		@extend %clearfix;
+
+	}
+	& .parts {
+		position: relative;
 	}
 }
 
+.pane--vertical-stage {
+	overflow: hidden;
+}
+
 .pane-top {
-	bottom: 50%;
+	height: 50%;
+	right: 0;
 }
 
 .pane-bottom {
-	top: 50%;
+	&.reveal-level-0 {
+		right: 0;
+	}
+	&.reveal-level-1 {
+		right: ($navOpenWidth * 2) + 4px;
+	}
+	&.reveal-level-2 {
+		right: ($navOpenWidth * 2) + 4px;
+	}
+
+	height: 50%;
+	top: 0;
 }
 
 .pane--header {
+	.pane-top & {
+		padding-top: 180px;
+	}
+	cursor: pointer;
 	@extend %vertical-bar;
 	width: $navClosedWidth;
 	left: 0;
@@ -258,6 +312,9 @@ span.sentence {
 .pane--title {
 	@extend %with-gray-dark;
 	@extend %epsilon;
+	// TODO: Scott to figure out why I need to hard-code the size here instead
+	// of having it be picked up from %epsilon as it probably should be. -ZD
+	font-size: 11px !important;
 	@include rotate(-90deg, top left);
 	line-height: 1;
 	text-align: center;
@@ -303,4 +360,18 @@ span.sentence {
 			color: $black;
 		}
 	}
+	ul {
+		&.closed {
+			display: none;
+		}
+		margin-top: 15px;
+		padding-left: 15px;
+	}
+}
+.nav-index-col {
+	&:last-child {
+		margin-left: 50px;		
+	}
+	width: $navOpenWidth - 60;
+	float: left;
 }

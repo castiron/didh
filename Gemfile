@@ -24,6 +24,7 @@ gem 'bootstrap-sass'
 gem 'modernizr-rails'
 gem 'jquery-rails'
 gem 'nokogiri'
+gem "rails-backbone"
 
 gem "stanford-core-nlp"
 
@@ -40,4 +41,4 @@ gem "stanford-core-nlp"
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+ gem 'debugger'

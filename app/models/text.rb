@@ -9,4 +9,12 @@ class Text < ActiveRecord::Base
   	self.authors.collect { |author| author.name }.join(', ')
   end
 
+  def as_json(options={})
+    {
+      :id => id,
+      :title => title,
+      :part => part_id,
+    }
+  end
+
 end

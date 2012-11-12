@@ -1,0 +1,22 @@
+<div class="chapter-section ">
+	<h1 class="chapter-heading"><%= @text.title %></h1>
+	<h3><%= @text.author_names %></h3>
+</div>
+
+<div class="chapter-section chapter-body">
+	<%= raw @text.body %>
+</div>
+
+<% if @text.notes.length > 0 %>
+<div class="chapter-section chapter-notes">
+	<h2 class="chapter-heading">Notes</h2>
+	<%= raw @text.notes %>
+</div>
+<% end %>
+
+<% if @text.bibliography.length > 0 %>
+<div class="chapter-section chapter-bibliography">
+	<h2 class="chapter-heading">Bibliography</h2>
+	<%= raw @text.bibliography %>
+</div>
+<% end %>

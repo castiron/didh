@@ -17,8 +17,16 @@
 
 		<script type="text/javascript" src="//use.typekit.net/jlo5jay.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		
+		<script type="text/javascript">
+		  $(function() {
+		    window.router = new Didh.Routers.AppRouter({parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json.html_safe -%>});
+		    Backbone.history.start();
+		  });
+		</script>
+
 	</head>
-	<body class="interior">
+	<body class="interior nav-open">
 		<header class="page-header">
 			<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
 			<ul class="nav-interior">
@@ -31,33 +39,24 @@
 			</article>
 		</section>
 		<nav class="nav-content">
-			<a href="#" class="nav-content--control js-nav-toggle">&lt;</a>
-			<ul class="nav-panes">
-				<li class="pane pane-top">
+			<div class="nav-panes--toggle js-nav-toggle"></div>
+			<ul class="nav-pane pane-top">
+				<li class="level-0">
 					<header class="pane--header">
-						<h2 class="pane--title js-pane-title">Feedback</h2>
+						<h2 class="pane--title">Feedback</h2>
 					</header>
-					<p>Click color and highlight sentences to add your public feedback</p>
-					<ul class="nav-highlight">
-						<li><a href="#" class="highlight-emphasis js-emphasis">Interesting</a></li>
-						<li><a href="#" class="highlight-mark js-mark">Mark in index</a></li>
-					</ul>
+					<section class="pane--content">
+						<p>Click color and highlight sentences to add your public feedback</p>
+						<ul class="nav-highlight">
+							<li><a href="#" class="highlight-emphasis js-emphasis">Interesting</a></li>
+							<li><a href="#" class="highlight-mark js-mark">Mark in index</a></li>
+						</ul>
+					</section>
 				</li>
-				<li class="pane pane-bottom">
-					<header class="pane--header">
-						<h2 class="pane--title js-pane-title">Table of Contents</h2>
-					</header>
-					<ul class="nav-index">
-						<li><a href="" class="active">Introduction: The Digital Humanities Moment</a></li>
-						<li><a href="">I. Defining the Digital Humanities</a></li>
-						<li><a href="">II. Theorizing the Digital Humanities</a></li>
-						<li><a href="">III. Critiquing the Digital Humanities</a></li>
-						<li><a href="">IV. Practicing the Digital Humanities</a></li>
-						<li><a href="">V. Teaching the Digital Humanities</a></li>
-						<li><a href="">VI. Envisioning the Future of the Digital Humanities</a></li>
-						<li><a href="">Blog Posts</a></li>
-					</ul>
-				</li>
+			</ul>
+
+			<ul id="backbone-tocView" class="nav-pane pane-bottom reveal-level-0">
+				
 			</ul>
 		</nav>
 
