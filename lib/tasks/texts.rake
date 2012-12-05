@@ -58,8 +58,8 @@ namespace :texts do
 		end
 
 		# Begin natural language parsing
-		StanfordCoreNLP.jar_path = 		'/Users/zdavis/Development/didh/lib/vendor/snlp/'
-		StanfordCoreNLP.model_path =	'/Users/zdavis/Development/didh/lib/vendor/snlp/'
+		StanfordCoreNLP.jar_path = 		"#{Rails.root}/lib/vendor/snlp/"
+		StanfordCoreNLP.model_path =	"#{Rails.root}/lib/vendor/snlp/"
 		pipeline =  StanfordCoreNLP.load(:tokenize, :ssplit)
 		
 		# TODO: None of these regexs are really working
