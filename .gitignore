@@ -16,4 +16,4 @@
 
 .DS_Store
 .vagrant
-
+.chef-node
