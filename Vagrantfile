@@ -6,7 +6,7 @@ require 'socket'
 Vagrant::Config.run do |config|
 
   config.vm.box = "lucid32"
-  config.vm.host_name = "vagrant-#{rand(1..999999999)}.#{Socket.gethostname}"
+  config.vm.host_name = "vagrant-didh.#{Socket.gethostname}"
   config.vm.forward_port 80, 8001
 
   config.vm.provision :chef_client do |chef|
@@ -14,7 +14,7 @@ Vagrant::Config.run do |config|
     chef.validation_key_path = "/etc/chef/validation.pem"
     chef.validation_client_name = "chef-validator"
 
-    chef.add_recipe("vagrant_rails")
+    chef.add_recipe("cic_projects::didh")
 
   end
 
