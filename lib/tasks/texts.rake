@@ -1,13 +1,33 @@
 namespace :texts do
 
+	# desc "Tasks relating to text imports"
+
+	# task :import => :environment do
+	# 	files = "./texts"
+	#     Dir["#{files}/*.html"].each do |file|
+	#     	importOneText(file)
+	#     end
+	# end
+
+
 	desc "Tasks relating to text imports"
 
-	task :import => :environment do
-		files = "./texts"
-	    Dir["#{files}/*.html"].each do |file|
-	    	importOneText(file)
-	    end
+	task :import, [:files] => [:environment] do | t, args |
+		args.with_defaults(:files => './texts')
+		if File.directory?(args[:files])
+			puts "Found directory: #{args[:files]}"
+			Dir["#{args[:files]}/*.html"].each do |file|
+				importOneText(file)
+			end
+		elsif File.file?(args[:files])
+			puts "Found file: #{args[:files]}"
+			file = File.open(args[:files])
+			importOneText(file)
+		else
+			puts "File not found: #{args[:files]}"
+		end
 	end
+
 
 	def importOneText(file)
 		puts "importing #{file}"
@@ -48,9 +68,12 @@ namespace :texts do
 
     	# Get the body text
     	body = String.new
-    	body = body + htmlDoc.at_xpath("//p[@class='pf' or @class='paft' or @class='ah']").to_html
+
+    	startNodePath = "//div[@class='epigraph'] | //p[@class='pf' or @class='paft' or @class='ah']"
+
+    	body = body + htmlDoc.at_xpath(startNodePath).to_html
     	puts "   found body: #{body[0,60]}..."
-    	node = htmlDoc.at_xpath("//p[@class='pf' or @class='paft' or @class='ah']").next_sibling
+    	node = htmlDoc.at_xpath(startNodePath).next_sibling
 		bodyStopNode = htmlDoc.at_xpath("//div[@class='hanging']")
 		while node && node != bodyStopNode
 			body = body + node.to_html unless node.type == 3 # skip text nodes
@@ -79,12 +102,14 @@ namespace :texts do
 			chunkNLP.get(:sentences).each do |sentence|
 				i = i + 1
 				sentenceString = sentence.to_s
-
+				puts "found sentence: #{sentenceString}"
 				sentenceString.sub! /^\d{1,3}<\/sup><\/a>/, ''
-				if sentenceString.length > 5
+				if sentenceString.length > 5 && !sentenceString.start_with?('http')
 					checksum = sentenceString.to_s.sum
+					replacementSentence = "<span class=\"sentence\" id=\"sentence-#{checksum}\">#{sentenceString}</span>"
+					res = body.sub! sentenceString, replacementSentence
+					puts "replaced with: #{replacementSentence}"
 
-					res = body.sub! sentenceString, "<span class=\"sentence\" id=\"sentence-#{checksum}\">#{sentenceString}</span>"
 					if res == nil 
 					end
 				end
@@ -111,6 +136,8 @@ namespace :texts do
     		notes = notesPreface.to_html
     		puts "   found endnote preface: #{notes[0,60]}..."
     	end
+
+    	# TODO: This is missing div.list in the notes section.
     	noteNodes = htmlDoc.xpath("//p[@class='en']")
     	if noteNodes != nil
 	    	notes = notes + noteNodes.to_html
