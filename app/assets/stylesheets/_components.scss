@@ -354,11 +354,18 @@ span.sentence {
 	@extend %unstyled-list;
 	@include spaced-items(li, 17px);
 	a {
+		line-height: 1.3em;
 		color: $grayDark;
 		&:hover, 
 		&.active {
 			color: $black;
 		}
+		span {
+			display: block
+		}
+	}
+	span.author {
+		font-weight: 600;
 	}
 	ul {
 		&.closed {

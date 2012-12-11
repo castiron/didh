@@ -28,7 +28,6 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 
 	showPart: (part) ->
 		@.$el.animate(right: (@.$el.width() * 2) - 4)
-		console.log "called"
 		@partsContainer = @.$el.find('.parts:first')
 		target = @.$el.find('#toc-part-' + part.get('id'))
 		@partsContainer.animate({top: -1 * target.position().top})

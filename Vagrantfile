@@ -10,7 +10,7 @@ Vagrant::Config.run do |config|
 
   config.vm.box = "lucid32"
   config.vm.host_name = "vagrant-#{project}.#{Socket.gethostname}"
-  config.vm.forward_port 80, 8001
+  config.vm.forward_port 80, 8002
 
   config.vm.provision :chef_client do |chef|
 

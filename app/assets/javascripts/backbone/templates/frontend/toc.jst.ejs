@@ -23,7 +23,12 @@
 				<% _.each(texts.ByPartGrouped(part.get('id'), 5), function(textGroup) { %> 
 					<ul class="nav-index nav-index-col">
 						<% _.each(textGroup, function(text) { %>
-							<li><a href="/debates/<%= text.get('id') %>"><%= text.get('title') %></a></li>	
+							<li>
+								<a href="/debates/#text/<%= text.get('id') %>">
+								<span class="title"><%= text.get('title') %></span>
+								<span class="author"><%= text.getAuthorsList() %></span>
+								</a>
+							</li>	
 						<% }) %>
 					</ul>
 				<% }) %>

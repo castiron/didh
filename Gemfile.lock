@@ -135,7 +135,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass (= 2.1.0.0)
   coffee-rails (~> 3.2.1)
   debugger
   jquery-rails

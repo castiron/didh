@@ -48,9 +48,9 @@ namespace :texts do
 
     	# Get the body text
     	body = String.new
-    	body = body + htmlDoc.at_xpath("//p[@class='pf' or @class='paft']").to_html
+    	body = body + htmlDoc.at_xpath("//p[@class='pf' or @class='paft' or @class='ah']").to_html
     	puts "   found body: #{body[0,60]}..."
-    	node = htmlDoc.at_xpath("//p[@class='pf' or @class='paft']").next_sibling
+    	node = htmlDoc.at_xpath("//p[@class='pf' or @class='paft' or @class='ah']").next_sibling
 		bodyStopNode = htmlDoc.at_xpath("//div[@class='hanging']")
 		while node && node != bodyStopNode
 			body = body + node.to_html unless node.type == 3 # skip text nodes
@@ -92,6 +92,14 @@ namespace :texts do
 			end
 		end
 		puts "   found #{i} sentences"
+
+
+		# Fix all image paths
+		imageSources = htmlDoc.css('img').map{ |i| i['src'] } 
+		imageSources.each do |source|
+			puts "transformed image #{source} into /#{source}"
+			body.sub! source, "/#{source}"
+		end
 
 		bibliographyNodes = htmlDoc.css("p.rf")
 		bibliography = bibliographyNodes.to_html

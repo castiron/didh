@@ -4,6 +4,11 @@ class Didh.Models.Text extends Backbone.Model
 	defaults:
 		label: null
 
+	getAuthorsList: ->
+		names = (author.name for author in @.get('authors'))
+		names.join(', ')
+
+
 class Didh.Collections.TextsCollection extends Backbone.Collection
 	model: Didh.Models.Text
 	url: '/texts'
