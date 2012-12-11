@@ -6,7 +6,13 @@
 		<ul class="nav-index">
 			<% parts.each( function(part) { %> 
 				<li>
-					<a href="#part/<%= part.get('id') %>"><%= part.get('label') %></a>
+					<% if(part.get('active') == true) { %>
+						<strong>
+							<a href="#part/<%= part.get('id') %>"><%= part.get('label') %></a>
+						</strong>
+					<% } else { %>
+						<a href="#part/<%= part.get('id') %>"><%= part.get('label') %></a>
+					<% } %>
 				</li>
 			<% }) %>
 		</ul>
@@ -20,11 +26,13 @@
 		<div class="parts">
 			<% parts.each( function(part) { %> 
 			<div id="toc-part-<%= part.get('id') %>" class="part">
+				<% cols = 0 %>
 				<% _.each(texts.ByPartGrouped(part.get('id'), 5), function(textGroup) { %> 
+					<% cols++ %>
 					<ul class="nav-index nav-index-col">
 						<% _.each(textGroup, function(text) { %>
 							<li>
-								<a href="/debates/#text/<%= text.get('id') %>">
+								<a href="/debates#text/<%= text.get('id') %>">
 								<span class="title"><%= text.get('title') %></span>
 								<span class="author"><%= text.getAuthorsList() %></span>
 								</a>
@@ -32,6 +40,9 @@
 						<% }) %>
 					</ul>
 				<% }) %>
+				<% if(cols == 1) { %>
+					<ul class="nav-index nav-index-col"><!-- a column shim --></ul>
+				<% } %>
 			</div>
 			<% }) %>
 		<div class="parts">

@@ -12,10 +12,16 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 
 	showText: (text) ->
 		$('html, body').animate({scrollTop: 0}, 500)
-		text.fetch({
-			success: =>
-				@model = text
-				@render()
+		@$el.fadeOut({
+			complete: =>
+				text.fetch({
+					success: =>
+						@model = text
+						@parts.get(text.get('part')).set({active: true})
+						console.log @parts
+						@render()
+						@$el.fadeIn()
+				})
 		})
 
 	render: =>

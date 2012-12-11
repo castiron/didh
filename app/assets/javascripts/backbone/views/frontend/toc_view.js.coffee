@@ -10,6 +10,7 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 		@parts = @options.parts
 		@texts = @options.texts
 		@paneHeight = @.$el.height()
+		@parts.bind('change:active', @render)
 
 	normalizePaneHeight: () ->
 		@.$el.find('.part').each( (i, part) =>
@@ -33,6 +34,7 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 		@partsContainer.animate({top: -1 * target.position().top})
 
 	render: =>
+		console.log 'rendering toc'
 		$(@el).append(@template(parts: @parts, texts: @texts))
 		@normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
 		@normalizePaneHeight()

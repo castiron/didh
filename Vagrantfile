@@ -11,11 +11,12 @@ Vagrant::Config.run do |config|
   config.vm.box = "lucid32"
   config.vm.host_name = "vagrant-#{project}.#{Socket.gethostname}"
   config.vm.forward_port 80, 8002
+  config.vm.customize ["modifyvm", :id, "--memory", 512]
 
   config.vm.provision :chef_client do |chef|
 
-  	# Store the chef node name in a .chef-node file
-  	if File.exist?(".chef-node")
+  # Store the chef node name in a .chef-node file
+  if File.exist?(".chef-node")
 	  	file = File.new(".chef-node", "r")
   		node_name = file.gets
 	else

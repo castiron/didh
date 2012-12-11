@@ -257,7 +257,7 @@ span.sentence {
 	line-height: $tightLineHeight;
 	padding: 40px 20px 30px 50px;
 	.pane-top & {
-		padding-top: 230px;
+		padding-top: 160px;
 	}
 	height: 100%;
 	& .part {
@@ -275,7 +275,7 @@ span.sentence {
 }
 
 .pane-top {
-	height: 50%;
+	height: 40%;
 	right: 0;
 }
 
@@ -290,7 +290,7 @@ span.sentence {
 		right: ($navOpenWidth * 2) + 4px;
 	}
 
-	height: 50%;
+	height: 60%;
 	top: 0;
 }
 
@@ -352,9 +352,12 @@ span.sentence {
 // <ul>
 .nav-index {
 	@extend %unstyled-list;
-	@include spaced-items(li, 17px);
+	@include spaced-items(li, 17px);	
+	li:first-child {
+		margin-top: 0;
+	}
 	a {
-		line-height: 1.3em;
+		line-height: $tightLineHeight;
 		color: $grayDark;
 		&:hover, 
 		&.active {
