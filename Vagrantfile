@@ -20,7 +20,7 @@ Vagrant::Config.run do |config|
   		node_name = file.gets
 	else
 		node_name = "didh-#{Time.now.to_i}.vagrant.#{Socket.gethostname}"
-		File.open(".chef-node", 'w') {|f| f.write(nodeName) }
+		File.open(".chef-node", 'w') {|f| f.write(node_name) }
 	end
 
   	chef.node_name = node_name
