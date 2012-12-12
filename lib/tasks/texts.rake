@@ -102,13 +102,11 @@ namespace :texts do
 			chunkNLP.get(:sentences).each do |sentence|
 				i = i + 1
 				sentenceString = sentence.to_s
-				puts "found sentence: #{sentenceString}"
 				sentenceString.sub! /^\d{1,3}<\/sup><\/a>/, ''
 				if sentenceString.length > 5 && !sentenceString.start_with?('http')
 					checksum = sentenceString.to_s.sum
-					replacementSentence = "<span class=\"sentence\" id=\"sentence-#{checksum}\">#{sentenceString}</span>"
+					replacementSentence = "<span class=\"sentence\" data-id=\"#{checksum}\" id=\"sentence-#{checksum}\">#{sentenceString}</span>"
 					res = body.sub! sentenceString, replacementSentence
-					puts "replaced with: #{replacementSentence}"
 
 					if res == nil 
 					end

@@ -133,6 +133,7 @@
 // TODO rename this if necessary
 // --------------------------
 .chapter {
+	position: relative;
 	p {
 	}
 }
@@ -228,6 +229,7 @@
 }
 
 span.sentence {
+	cursor: pointer;
 	&:hover {
 		background-color: #FBF330;
 	}
@@ -438,3 +440,52 @@ span.sentence {
 	width: $navOpenWidth - 60;
 	float: left;
 }
+
+// The floating annotator
+// --------------------------
+// <div>
+.annotator {
+	z-index: 100;
+	@extend %delta;
+	.top {
+		border-bottom: 2px solid #FFF;
+		color: $grayDark;
+		font-style: italic;
+		padding: .5em 1em .5em 1em;
+	}
+	.annotate-actions {
+		margin: 1em;
+		height: 3.5em;
+		span.circle {
+			margin-right: .5em;
+			border-radius: 50%;
+			width: 1.5em;
+			height: 1.5em;
+			position: relative;
+			top: 0px;
+		}
+		span.circle-blue {
+			background-color: #02ADEF;		
+		}
+		span.circle-orange {
+			margin-left: 1em;
+			background-color: #F8971B;		
+		}
+		span {
+			float: left;
+			cursor: pointer;
+			display: block;
+		}
+		span.annotate-close {
+			margin-top: .5em;
+			margin-left: 2em;
+		}
+	}
+	border: 2px solid white;
+	width: 300px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #E6E7E9;
+}
+

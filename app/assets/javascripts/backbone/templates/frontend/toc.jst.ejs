@@ -8,10 +8,10 @@
 				<li>
 					<% if(part.get('active') == true) { %>
 						<strong>
-							<a href="#part/<%= part.get('id') %>"><%= part.get('label') %></a>
+							<a href="<%= part.getUrl(activeText) %>"><%= part.get('label') %></a>
 						</strong>
 					<% } else { %>
-						<a href="#part/<%= part.get('id') %>"><%= part.get('label') %></a>
+							<a href="<%= part.getUrl(activeText) %>"><%= part.get('label') %></a>
 					<% } %>
 				</li>
 			<% }) %>
@@ -27,7 +27,7 @@
 			<% parts.each( function(part) { %> 
 			<div id="toc-part-<%= part.get('id') %>" class="part">
 				<% cols = 0 %>
-				<% _.each(texts.ByPartGrouped(part.get('id'), 5), function(textGroup) { %> 
+				<% _.each(texts.byPartGrouped(part.get('id'), 5), function(textGroup) { %> 
 					<% cols++ %>
 					<ul class="nav-index nav-index-col">
 						<% _.each(textGroup, function(text) { %>

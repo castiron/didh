@@ -9,8 +9,10 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 	initialize: () ->
 		@parts = @options.parts
 		@texts = @options.texts
+		@router = @options.router
 		@paneHeight = @.$el.height()
-		@parts.bind('change:active', @render)
+		@parts.bind('change:active', @render, @)
+		@texts.bind('change:active', @closePane, @)
 
 	normalizePaneHeight: () ->
 		@.$el.find('.part').each( (i, part) =>
@@ -28,14 +30,14 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 		)
 
 	showPart: (part) ->
+		@parts.setActivePart(part.id)
 		@.$el.animate(right: (@.$el.width() * 2) - 4)
 		@partsContainer = @.$el.find('.parts:first')
 		target = @.$el.find('#toc-part-' + part.get('id'))
 		@partsContainer.animate({top: -1 * target.position().top})
 
 	render: =>
-		console.log 'rendering toc'
-		$(@el).append(@template(parts: @parts, texts: @texts))
+		$(@el).append(@template(parts: @parts, texts: @texts, activeText: @router.getRequestedText()))
 		@normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
 		@normalizePaneHeight()
 

@@ -6,24 +6,29 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 	initialize: () ->
 		@parts = @options.parts
 		@texts = @options.texts
+		@router = @options.router
+		@annotator = @options.annotator
 		@model = @texts.get(1)
-		@model.bind('change', @render);
+		@texts.bind('change:active', @render, @)
 		@model.fetch()
 
+	events: 
+		"click .sentence" : "showAnnotator"
+
+	showAnnotator: (event) ->
+		@annotator.showAnnotatorOn(event.target, event)
+
 	showText: (text) ->
+		text = @texts.where({active: true})	
+
+	render: =>
+		text = _.first @texts.where({active: true})
+
 		$('html, body').animate({scrollTop: 0}, 500)
 		@$el.fadeOut({
 			complete: =>
-				text.fetch({
-					success: =>
-						@model = text
-						@parts.get(text.get('part')).set({active: true})
-						console.log @parts
-						@render()
-						@$el.fadeIn()
-				})
+				$(@el).html(@template(text: text, parts: @options.parts.toJSON() ))
+				@$el.fadeIn()
 		})
 
-	render: =>
-		$(@el).html(@template(text: @model, parts: @options.parts.toJSON() ))
 		return @

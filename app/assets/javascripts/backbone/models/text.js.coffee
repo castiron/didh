@@ -13,7 +13,22 @@ class Didh.Collections.TextsCollection extends Backbone.Collection
 	model: Didh.Models.Text
 	url: '/texts'
 
-	ByPartGrouped: (partId, count) ->
+	setActiveText: (textId) ->
+		activeText = _.first(@.where({active: true}))
+		if activeText?
+			activeTextId = activeText.get('id')
+		else
+			activeTextId = 0
+		if activeTextId != textId
+			_.each(@.where({active: true}), (text) ->
+				text.set({active: false}, {silent: true} )
+			)
+			@.get(textId).set({active: true})
+
+
+
+
+	byPartGrouped: (partId, count) ->
 		texts = @where({'part': partId})
 		out = new Array
 		out.push new Array
