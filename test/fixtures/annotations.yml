@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  text: 
+  sentence: 1
+  datetime: 2012-12-12 21:29:10
+  ip: MyString
+  type: 1
+
+two:
+  text: 
+  sentence: 1
+  datetime: 2012-12-12 21:29:10
+  ip: MyString
+  type: 1

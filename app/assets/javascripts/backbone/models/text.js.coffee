@@ -1,8 +1,15 @@
 class Didh.Models.Text extends Backbone.Model
 	paramRoot: 'text'
 
-	defaults:
-		label: null
+	initialize: ->
+		collection = new Didh.Collections.AnnotationsCollection([], @)
+		@set({annotations: collection})
+
+	parse: (data) ->
+		annotationsData = data['annotations']
+		@get('annotations').reset(annotationsData)
+		delete data['annotations']
+		data
 
 	getAuthorsList: ->
 		names = (author.name for author in @.get('authors'))
@@ -13,8 +20,18 @@ class Didh.Collections.TextsCollection extends Backbone.Collection
 	model: Didh.Models.Text
 	url: '/texts'
 
-	setActiveText: (textId) ->
+	getActiveTextId: () ->
+		activeText = @getActiveText()
+		if activeText?
+			activeText.id
+		else
+			null
+
+	getActiveText: () ->
 		activeText = _.first(@.where({active: true}))
+
+	setActiveText: (textId) ->
+		@getActiveText()
 		if activeText?
 			activeTextId = activeText.get('id')
 		else
@@ -24,9 +41,6 @@ class Didh.Collections.TextsCollection extends Backbone.Collection
 				text.set({active: false}, {silent: true} )
 			)
 			@.get(textId).set({active: true})
-
-
-
 
 	byPartGrouped: (partId, count) ->
 		texts = @where({'part': partId})

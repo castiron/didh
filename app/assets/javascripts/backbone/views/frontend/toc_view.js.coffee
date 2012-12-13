@@ -22,7 +22,6 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 	closePane: () ->
 		@.$el.animate(right: 0 )
 
-
 	normalizePaneHeaderPosition: () ->
 		$('.pane--title').each( ->
 			paneHeight = $(@).parents('.pane--header').height()

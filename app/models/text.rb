@@ -3,7 +3,7 @@ class Text < ActiveRecord::Base
 	has_and_belongs_to_many :authors
 	belongs_to :part
 	belongs_to :edition
-	has_many :sentences
+	has_many :annotations
 
 	def author_names
 		self.authors.collect { |author| author.name }.join(', ')
@@ -26,8 +26,8 @@ class Text < ActiveRecord::Base
 				:body => body,
 				:notes => notes,
 				:bibliography => bibliography,
-				:authors => authors
-
+				:authors => authors,
+				:annotations => annotations.all_grouped
 			}
 		end
 	end

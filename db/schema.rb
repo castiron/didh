@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108050124) do
+ActiveRecord::Schema.define(:version => 20121212202910) do
+
+  create_table "annotations", :force => true do |t|
+    t.integer  "text_id"
+    t.integer  "sentence"
+    t.datetime "datetime"
+    t.string   "ip"
+    t.integer  "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "annotations", ["text_id"], :name => "index_annotations_on_text_id"
+
+  create_table "authors", :force => true do |t|
+    t.string "name"
+    t.string "institution"
+  end
+
+  create_table "authors_texts", :id => false, :force => true do |t|
+    t.integer "text_id",   :null => false
+    t.integer "author_id", :null => false
+  end
 
   create_table "chapters", :force => true do |t|
     t.string   "label"
@@ -20,14 +42,14 @@ ActiveRecord::Schema.define(:version => 20121108050124) do
     t.integer  "part_id"
   end
 
-  create_table "parts", :force => true do |t|
+  create_table "editions", :force => true do |t|
     t.string   "label"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "sorting"
   end
 
-  create_table "editions", :force => true do |t|
+  create_table "parts", :force => true do |t|
     t.string   "label"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -46,16 +68,5 @@ ActiveRecord::Schema.define(:version => 20121108050124) do
     t.integer  "part_id"
     t.integer  "edition_id"
   end
-
-  create_table "authors", :force => true do |t|
-    t.string   "name"
-    t.string   "institution"
-  end
-
-  create_table "authors_texts", :id => false do |t|
-    t.references :text, :null => false
-    t.references :author, :null => false
-  end
-
 
 end

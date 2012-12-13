@@ -6,7 +6,6 @@ class Didh.Routers.AppRouter extends Backbone.Router
 		@texts.reset options.texts
 
 		@annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), parts: @parts, texts: @texts, router: @ )
-		@textView = new Didh.Views.Frontend.TextView(el: $("#backbone-textView"), parts: @parts, texts: @texts, annotator: @annotator, router: @ )
 		@tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
 		@tocView.render()
 		#@textView.render()
@@ -25,18 +24,27 @@ class Didh.Routers.AppRouter extends Backbone.Router
 	setDefaultText: () ->
 		@setActiveText(1)
 
+	renderTextView: () ->
+		@textView.render()
+
 	setActiveText: (id) ->
+		id = parseInt(id)
 		@requestedTextId = id
 		text = @texts.get(id)
-		if text.get('isLoaded')
-			@texts.setActiveText(text.get('id'))
-		else
-			text.fetch({
-				success: =>
-					@texts.setActiveText(text.get('id'))
-					text.set({isLoaded: true})
-			})
-		@parts.setActivePart(text.get('part'))
+		# Don't set the active text if the requested text is the same as the active text
+		if id != @texts.getActiveTextId()
+			if text.get('isLoaded')
+				@texts.setActiveText(text.get('id'))
+				@textView = new Didh.Views.Frontend.TextView(el: $("#backbone-textView"), model: text, parts: @parts, texts: @texts, annotator: @annotator, router: @ )
+				@textView.render()
+			else
+				text.fetch({
+					success: =>
+						@textView = new Didh.Views.Frontend.TextView(el: $("#backbone-textView"), model: text, parts: @parts, texts: @texts, annotator: @annotator, router: @ )
+						@texts.setActiveText(text.get('id'))
+						text.set({isLoaded: true}, {silent: true})
+				})
+			@parts.setActivePart(text.get('part'))
 
 	showPart: (id) ->
 		@requestedPartId = id

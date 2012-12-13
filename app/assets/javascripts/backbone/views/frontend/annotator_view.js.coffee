@@ -35,11 +35,18 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		@currentSentenceId = null
 
 	annotateInteresting: (e) ->
-		console.log @currentSentenceId
+		annotations = @texts.getActiveText().get('annotations')
+		annotation = _.first(annotations.where({sentence: parseInt(@currentSentenceId)}))
+		if annotation?
+			annotation.incrementCount()
+		else
+			annotation = new Didh.Models.Annotation({sentence: parseInt(@currentSentenceId), count: 0})
+			annotations.add(annotation)
+			annotation.incrementCount()
+		@stopAnnotating()
 
 	annotateIndex: (e) ->
 		console.log @currentSentenceId
-
 
 	render: =>
 		$(@el).html(@template())
