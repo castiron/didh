@@ -228,6 +228,9 @@
 	}
 }
 
+span.hover {
+	background-color: #FBF330;
+}
 span.sentence {
 	cursor: pointer;
 	&:hover {
@@ -445,9 +448,35 @@ span.sentence {
 // --------------------------
 // <div>
 .annotator {
-	z-index: 100;
+	position: absolute;
+	z-index: 10;
+	height: 125px;
 	@extend %delta;
+	border: 2px solid white;
+	width: 320px;
+	top: 0;
+	left: 0;
+	.right {
+		z-index: 10;
+		position: absolute;
+		// expands to 316 px.
+		left: 191px; 
+		top: -2px;
+		background: #9E9FA3;
+		color: #FFF;
+		border: 2px solid #FFF;
+		width: 125px;
+		height: 125px;
+		padding: .5em .5em .5em .5em;
+	}
+	.left {
+		z-index: 20;
+		height: 121px;
+		background: #E6E7E9;
+		position: relative;
+	}
 	.top {
+		background: #E6E7E9;
 		border-bottom: 2px solid #FFF;
 		color: $grayDark;
 		font-style: italic;
@@ -456,36 +485,50 @@ span.sentence {
 	.annotate-actions {
 		margin: 1em;
 		height: 3.5em;
-		span.circle {
-			margin-right: .5em;
+		.circle {
+			margin-right: 10px;
 			border-radius: 50%;
-			width: 1.5em;
-			height: 1.5em;
+			width: 20px;
+			height: 20px;
 			position: relative;
 			top: 0px;
 		}
-		span.circle-blue {
+		.circle-blue {
 			background-color: #02ADEF;		
 		}
-		span.circle-orange {
+		.circle-orange {
 			margin-left: 1em;
 			background-color: #F8971B;		
 		}
-		span {
+		div {
 			float: left;
 			cursor: pointer;
 			display: block;
 		}
-		span.annotate-close {
-			margin-top: .5em;
-			margin-left: 2em;
+		.annotate-interesting {
+			width: 125px;
+		}
+		.annotate-index {
+			width: 150px;
+		}
+		.annotate-close {
+			margin-top: 10px;
+			position: relative;
+			padding-left: 30px;
+			.annotate-close-x {
+				position: absolute;
+				left: 5px;
+			}
 		}
 	}
-	border: 2px solid white;
-	width: 300px;
+}
+
+.annotation {
 	position: absolute;
-	top: 0;
-	left: 0;
-	background: #E6E7E9;
+	width: 5px;
+	height: 10px;
+	display: block;
+	left: -100px;
+	background: #02ADEF;
 }
 

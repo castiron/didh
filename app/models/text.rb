@@ -27,7 +27,7 @@ class Text < ActiveRecord::Base
 				:notes => notes,
 				:bibliography => bibliography,
 				:authors => authors,
-				:annotations => annotations.all_grouped
+				:sentences => annotations.all_grouped
 			}
 		end
 	end

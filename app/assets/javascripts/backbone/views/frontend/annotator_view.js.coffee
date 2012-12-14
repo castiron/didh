@@ -9,45 +9,54 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		'click .annotate-index'			: 'annotateIndex'
 
 	initialize: () ->
-		@isVisible = false
 		@currentSentenceId = null
 		@parts = @options.parts
+		@annotations = @options.annotations
 		@texts = @options.texts
 		@router = @options.router
-		@render()
 
 	calculateAnnotatorLocationFor: (sentenceEl, event) ->
 		clickX = event.pageX
-		$sentenceEl = $(sentenceEl)
-		sentenceElPosition = $sentenceEl.position()
-		sentenceElOffset = $sentenceEl.offset()
-		moveTo = {top: sentenceElPosition.top - @$el.height() - 10, left: clickX - sentenceElOffset.left - 10}
-		position = {top: moveTo.top + 'px', left: moveTo.left + 'px'}
+		clickY = event.pageY
+		position = {top: (clickY - @$el.height() - 25)+ 'px', left: (clickX - (@$el.width() / 2)) + 'px'}
 
 	showAnnotatorOn: (sentenceEl, event) ->
-		if @isVisible = true then @stopAnnotating()
+		@stopAnnotating()
+		@currentSentenceEl = $(sentenceEl)
+		@currentSentenceId = @currentSentenceEl.attr('data-id')
+		@currentSentenceEl.addClass('hover')
 		@$el.css(@calculateAnnotatorLocationFor(sentenceEl, event))
-		@currentSentenceId = $(sentenceEl).attr('data-id')
-		@$el.fadeIn()
+
+		# Render the sucker
+		@render()
+
+		# Then apply any effects
+		@$el.fadeIn(75, =>
+			@$el.find('.right').animate({ left: 316}, 250)
+		)
 
 	stopAnnotating: (e) ->
 		@$el.hide()
+		if @currentSentenceEl? then @currentSentenceEl.removeClass('hover')
+		@currentSentenceEl = null
 		@currentSentenceId = null
 
 	annotateInteresting: (e) ->
-		annotations = @texts.getActiveText().get('annotations')
-		annotation = _.first(annotations.where({sentence: parseInt(@currentSentenceId)}))
-		if annotation?
-			annotation.incrementCount()
-		else
-			annotation = new Didh.Models.Annotation({sentence: parseInt(@currentSentenceId), count: 0})
-			annotations.add(annotation)
-			annotation.incrementCount()
-		@stopAnnotating()
+		activeText = @texts.getActiveText()
+		annotation = new Didh.Models.Annotation({
+			sentence: @currentSentenceId
+			text_id: activeText.id
+		})
+		annotation.save({}, {
+			success: =>
+				activeText.incrementAnnotationCount(@currentSentenceId)
+				@stopAnnotating()
+			error: ->
+				@stopAnnotating()
+		})
 
 	annotateIndex: (e) ->
-		console.log @currentSentenceId
 
 	render: =>
-		$(@el).html(@template())
+		$(@el).html(@template({text: @texts.getActiveText(), sentenceId: @currentSentenceId}))
 		return @

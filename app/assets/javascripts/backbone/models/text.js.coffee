@@ -2,19 +2,38 @@ class Didh.Models.Text extends Backbone.Model
 	paramRoot: 'text'
 
 	initialize: ->
-		collection = new Didh.Collections.AnnotationsCollection([], @)
-		@set({annotations: collection})
 
 	parse: (data) ->
-		annotationsData = data['annotations']
-		@get('annotations').reset(annotationsData)
-		delete data['annotations']
+		_.each(data.sentences, (sentence) ->
+			sentence.count = parseInt(sentence.count)
+		)
 		data
 
 	getAuthorsList: ->
 		names = (author.name for author in @.get('authors'))
 		names.join(', ')
 
+	getSentence: (sentenceId) ->
+		sentences = @get('sentences')
+		sentence = _.find(sentences, (sentence) -> 
+			parseInt(sentence.sentence) == parseInt(sentenceId)
+		)
+
+	getAnnotationCountFor: (sentenceId) ->
+		sentence = @getSentence(sentenceId)
+		if sentence?
+			sentence.count
+
+	incrementAnnotationCount: (sentenceId) ->
+		sentences = @get('sentences')
+		sentence = @getSentence(sentenceId)
+		console.log sentence
+		if sentence?
+			sentence.count++
+		else
+			sentences.push({sentence: sentenceId, count: 1})
+		@set({'sentences', sentences})
+		@trigger('change:sentences')
 
 class Didh.Collections.TextsCollection extends Backbone.Collection
 	model: Didh.Models.Text

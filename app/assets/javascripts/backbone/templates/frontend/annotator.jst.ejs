@@ -1,14 +1,30 @@
-<div class="top">
-	Mark selected text as
+<div class="left">
+	<div class="top">
+		Mark selected text as
+	</div>
+	<div class="bottom annotate-actions">
+		<div class="annotate-interesting">
+			<div class="circle circle-blue">&nbsp</div>
+			Interesting
+		</div>
+		<div class="annotate-index">
+			<div class="circle circle-orange">&nbsp</div>
+			Add to index
+		</div>
+		<div class="annotate-close">
+			<span class="annotate-close-x">X</span>
+			Nevermind, don't mark text
+		</div>
+	</div>
 </div>
-<div class="bottom annotate-actions">
-	<span class="annotate-interesting">
-		<span class="circle circle-blue">&nbsp</span>
-		Interesting
-	</span>
-	<span class="annotate-index">
-		<span class="circle circle-orange">&nbsp</span>
-		Add to index
-	</span>
-	<span class="annotate-close">Nevermind, don't mark text</span>
+<% console.log(text) %>
+<% count = text.getAnnotationCountFor(sentenceId) %>
+<% if (count > 0) { %>
+<div class="right">
+	<% if (count == 1) { %>
+		This text was marked as interesting one time.
+	<% } else { %>
+		This text was marked as interesting <%= text.getAnnotationCountFor(sentenceId) %> times.
+	<% } %>
 </div>
+<% } %>

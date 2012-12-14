@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212202910) do
+ActiveRecord::Schema.define(:version => 20121213204620) do
 
   create_table "annotations", :force => true do |t|
     t.integer  "text_id"
     t.integer  "sentence"
-    t.datetime "datetime"
     t.string   "ip"
     t.integer  "type"
     t.datetime "created_at", :null => false

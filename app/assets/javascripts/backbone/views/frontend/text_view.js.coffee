@@ -9,9 +9,8 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 		@annotations = @options.annotations
 		@router = @options.router
 		@annotator = @options.annotator
-		@model.bind('change', @render, @)
-		@model.get('annotations').bind('change', @updateAnnotations, @)
-#		@model.fetch()
+		@model.bind('change:isLoaded', @render, @)
+		@model.bind('change:sentences', @updateAnnotations, @)
 
 	events: 
 		"click .sentence" : "showAnnotator"
@@ -22,13 +21,20 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 	showText: (text) ->
 		text = @texts.where({active: true})	
 
-	updateAnnotations: () ->
-		console.log 'change in text model annotations property detected'
-		@model.get('annotations').each( (annotation) =>
-			sel = '#sentence-' + annotation.get('sentence')
+	updateAnnotations: (animate) ->
+		@$el.find('.annotation').remove()
+		_.each(@model.get('sentences'), (sentence) =>
+			sel = '#sentence-' + sentence.sentence
 			$el = $(sel)
-			$el.find('.annotation').remove()
-			$el.prepend('<span class="annotation" style="color: red;">[' + annotation.get('count') + ']</span>')
+			$el.addClass('annotated')
+			height = $el.height()
+			width = sentence.count * 1
+			annotation = $('<span style="width: 1px; height: ' + height + 'px;" class="annotation"></span>')
+			$el.prepend(annotation)
+			if animate == true
+				annotation.animate({width: width})
+			else
+				annotation.width(width)
 		)
 
 	render: () =>
@@ -38,8 +44,10 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 		@$el.fadeOut({
 			complete: =>
 				$(@el).html(@template(text: @model, parts: @options.parts.toJSON() ))
-				@$el.fadeIn()
-				@updateAnnotations()
+				@$el.fadeIn({
+					complete: =>
+						@updateAnnotations(true)
+				})
 		})
 
 		return @
