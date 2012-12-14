@@ -130,7 +130,6 @@
 }
 
 // Chapter
-// TODO rename this if necessary
 // --------------------------
 .chapter {
 	position: relative;
@@ -445,90 +444,114 @@ span.sentence {
 }
 
 // The floating annotator
-// --------------------------
+// --------------------------------------------------------
 // <div>
 .annotator {
-	position: absolute;
-	z-index: 10;
-	height: 125px;
 	@extend %delta;
-	border: 2px solid white;
 	width: 320px;
+	background-color: $grayLight;
+	border: 2px solid white;
+	position: absolute;
 	top: 0;
 	left: 0;
-	.right {
-		z-index: 10;
+	z-index: 10;
+	&:before {
+		content: "";
+		border: 15px solid transparent;
+		border-top: 28px solid $grayLight;
 		position: absolute;
-		// expands to 316 px.
-		left: 191px; 
-		top: -2px;
-		background: #9E9FA3;
-		color: #FFF;
-		border: 2px solid #FFF;
-		width: 125px;
-		height: 125px;
-		padding: .5em .5em .5em .5em;
+		bottom: -43px;
+		left: 26px;
+		z-index: 14;
 	}
-	.left {
-		z-index: 20;
-		height: 121px;
-		background: #E6E7E9;
-		position: relative;
-	}
-	.top {
-		background: #E6E7E9;
-		border-bottom: 2px solid #FFF;
-		color: $grayDark;
-		font-style: italic;
-		padding: .5em 1em .5em 1em;
-	}
-	.annotate-actions {
-		margin: 1em;
-		height: 3.5em;
-		.circle {
-			margin-right: 10px;
-			border-radius: 50%;
-			width: 20px;
-			height: 20px;
-			position: relative;
-			top: 0px;
-		}
-		.circle-blue {
-			background-color: #02ADEF;		
-		}
-		.circle-orange {
-			margin-left: 1em;
-			background-color: #F8971B;		
-		}
-		div {
-			float: left;
-			cursor: pointer;
-			display: block;
-		}
-		.annotate-interesting {
-			width: 125px;
-		}
-		.annotate-index {
-			width: 150px;
-		}
-		.annotate-close {
-			margin-top: 10px;
-			position: relative;
-			padding-left: 30px;
-			.annotate-close-x {
-				position: absolute;
-				left: 5px;
-			}
-		}
+	&:after {
+		content: "";
+		border: 17px solid transparent;
+		border-top: 32px solid $white;
+		position: absolute;
+		bottom: -49px;
+		left: 24px;
+		z-index: 12;
 	}
 }
 
-.annotation {
+// Annotator sections
+// --------------------------
+.annotator--top {
+	font-style: italic;
+	color: $grayDark;
+	background-color: $grayLight;
+	padding: 0.5em 1em;
+	border-bottom: 2px solid $white;
+}
+
+// Expands to 316px wide
+.annotator--right {
+	color: $white;
+	width: 125px;
+	background-color: darken($gray, 5%);
+	padding: 0.5em;
+	border: 2px solid $white;
 	position: absolute;
+	left: 191px; 
+	top: -2px;
+	bottom: -2px;
+	z-index: 10;
+}
+
+.annotator--left {
+	background-color: $grayLight;
+	position: relative;
+	z-index: 20;
+}
+
+// Bottom
+// --------------------------
+// <ul>
+.annotator--bottom {
+	@extend %clearfix;
+	@extend %unstyled-list;
+	padding: 1em;
+	li {
+		@extend %pull-left;
+		cursor: pointer;
+	}
+}
+
+// <li>
+.annotate-interesting {
+	@extend %circle-item-small-blue;
+}
+
+// <li>
+.annotate-index {
+	@extend %circle-item-small-orange;
+	margin-left: 1em;
+}
+
+// <li>
+.annotate-close {
+	padding-left: 30px;
+	margin-top: 10px;
+	position: relative;
+}
+
+.annotate-close--x {
+	font-weight: 300;
+	position: absolute;
+	top: 0;
+	left: 5px;
+}
+
+// Annotation flag
+// Seen to the left of text
+// --------------------------
+.annotation {
+	display: block;
 	width: 5px;
 	height: 10px;
-	display: block;
+	background: $blueDark;
+	position: absolute;
 	left: -100px;
-	background: #02ADEF;
 }
 

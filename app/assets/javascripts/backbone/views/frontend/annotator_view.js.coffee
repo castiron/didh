@@ -32,7 +32,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 
 		# Then apply any effects
 		@$el.fadeIn(75, =>
-			@$el.find('.right').animate({ left: 316}, 250)
+			@$el.find('.js-right').animate({ left: 316}, 250)
 		)
 
 	stopAnnotating: (e) ->

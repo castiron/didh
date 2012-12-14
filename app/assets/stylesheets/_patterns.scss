@@ -1,6 +1,16 @@
 // Patterns
 // --------
 
+// Really basic utility patterns
+// --------------------------------------------------------
+%pull-left {
+	float: left;
+}
+
+%pull-right {
+	float: right;
+}
+
 // Effects
 // --------------------------------------------------------
 %smooth-resize {
@@ -142,17 +152,14 @@
 	bottom: 0;
 }
 
-%circle-item {
-	$h: 28px;
+// Circles with text
+// --------------------------
+%circle-base {
 	display: block;
-	line-height: $h;
 	color: inherit;
-	padding-left: 44px;
 	position: relative;
 	&:before {
 		content: "";
-		width: $h;
-		height: $h;
 		background-color: $gray;
 		@include border-radius(100%);
 		position: absolute;
@@ -161,9 +168,45 @@
 	}
 }
 
+%circle-item {
+	$h: 28px;
+	@extend %circle-base;
+	line-height: $h;
+	padding-left: 44px;
+	&:before {
+		width: $h;
+		height: $h;
+	}
+}
+
 %circle-item-blue {
 	@extend %circle-item;
 	&:before {
 		background-color: $blue;
+	}
+}
+
+%circle-item-small {
+	$h: 20px;
+	@extend %circle-base;
+	line-height: $h;
+	padding-left: 30px;
+	&:before {
+		width: $h;
+		height: $h;
+	}
+}
+
+%circle-item-small-blue {
+	@extend %circle-item-small;
+	&:before {
+		background-color: $blueDark;
+	}
+}
+
+%circle-item-small-orange {
+	@extend %circle-item-small;
+	&:before {
+		background-color: $orange;
 	}
 }
