@@ -18,7 +18,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 	calculateAnnotatorLocationFor: (sentenceEl, event) ->
 		clickX = event.pageX
 		clickY = event.pageY
-		position = {top: (clickY - @$el.height() - 25)+ 'px', left: (clickX - (@$el.width() / 2)) + 'px'}
+		position = {top: (clickY - @$el.height() - 40)+ 'px', left: (clickX - 43) + 'px'}
 
 	showAnnotatorOn: (sentenceEl, event) ->
 		@stopAnnotating()

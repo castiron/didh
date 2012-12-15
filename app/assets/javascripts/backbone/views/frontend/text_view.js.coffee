@@ -9,6 +9,8 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 		@annotations = @options.annotations
 		@router = @options.router
 		@annotator = @options.annotator
+		@visualization = 'width'
+
 		@model.bind('change:isLoaded', @render, @)
 		@model.bind('change:sentences', @updateAnnotations, @)
 
@@ -28,13 +30,27 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 			$el = $(sel)
 			$el.addClass('annotated')
 			height = $el.height()
-			width = sentence.count * 1
-			annotation = $('<span style="width: 1px; height: ' + height + 'px;" class="annotation"></span>')
+			
+			if @visualization == 'opacity'
+				opacity = sentence.count / 20
+				minWidth = 10
+				width = 10
+			else
+				minWidth = 1
+				width = sentence.count * 1
+			
+			annotation = $('<span style="width: ' + minWidth + 'px; height: ' + height + 'px;" class="annotation"></span>')
 			$el.prepend(annotation)
 			if animate == true
-				annotation.animate({width: width})
+				if @visualization == 'opacity'
+					annotation.fadeTo('slow', opacity)
+				else
+					annotation.animate({width: width})
 			else
-				annotation.width(width)
+				if @visualization == 'opacity'
+					annotation.fadeTo(0, opacity)
+				else
+					annotation.width(width)
 		)
 
 	render: () =>
