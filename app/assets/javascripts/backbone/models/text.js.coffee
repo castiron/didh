@@ -19,6 +19,15 @@ class Didh.Models.Text extends Backbone.Model
 			parseInt(sentence.sentence) == parseInt(sentenceId)
 		)
 
+	getAnnotatedSentenceCount: () ->
+		count = @get('sentences').length
+
+	getAnnotationCount: () ->
+		count = _.reduce(@get('sentences'), (memo, num) -> 
+			memo + parseInt num.count
+		, 0)
+		
+
 	getAnnotationCountFor: (sentenceId) ->
 		sentence = @getSentence(sentenceId)
 		if sentence?

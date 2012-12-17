@@ -9,7 +9,10 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 		@annotations = @options.annotations
 		@router = @options.router
 		@annotator = @options.annotator
-		@visualization = 'width'
+		if @options.visualization?
+			@visualization = @options.visualization
+		else
+			@visualization = 'none'
 
 		@model.bind('change:isLoaded', @render, @)
 		@model.bind('change:sentences', @updateAnnotations, @)
@@ -23,8 +26,15 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 	showText: (text) ->
 		text = @texts.where({active: true})	
 
+	setVisualizationType: (type) ->
+		@visualization = type
+		@updateAnnotations(true)
+
 	updateAnnotations: (animate) ->
 		@$el.find('.annotation').remove()
+
+		if @visualization == 'none' then return
+
 		_.each(@model.get('sentences'), (sentence) =>
 			sel = '#sentence-' + sentence.sentence
 			$el = $(sel)

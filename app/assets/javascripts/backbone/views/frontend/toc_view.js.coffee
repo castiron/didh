@@ -4,9 +4,10 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 	template: JST["backbone/templates/frontend/toc"]
 	
 	events: 
-		"click .pane-close" : "closePane"
+		"click .pane-toggle" : "togglePane"
 
 	initialize: () ->
+		@isOpen = false
 		@parts = @options.parts
 		@texts = @options.texts
 		@router = @options.router
@@ -20,7 +21,19 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 		)
 
 	closePane: () ->
-		@.$el.animate(right: 0 )
+		if @isOpen == true then @.$el.animate(right: 0 )
+		@isOpen = false
+
+	openPane: () ->
+		if @isOpen == false then @.$el.animate(right: (@.$el.width() * 2) + 8 )
+		@isOpen = true
+
+	togglePane: () ->
+		togglePane: () ->
+		if @isOpen == true
+			@closePane()
+		else
+			@openPane()		
 
 	normalizePaneHeaderPosition: () ->
 		$('.pane--title').each( ->
@@ -29,9 +42,8 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 		)
 
 	showPart: (part) ->
-		console.log 'called'
 		@parts.setActivePart(part.id)
-		@.$el.animate(right: (@.$el.width() * 2) - 4)
+		@openPane()
 		@partsContainer = @.$el.find('.parts:first')
 		target = @.$el.find('#toc-part-' + part.get('id'))
 		@partsContainer.animate({top: -1 * target.position().top})

@@ -286,6 +286,7 @@ span.sentence {
 // Lives inside nav-content
 
 .nav-pane {
+	@extend %delta;
 	position: relative;
 	@extend %unstyled-list;
 	li.level-0, li.level-1 {
@@ -301,8 +302,10 @@ span.sentence {
 	li.level-1 {
 		position: relative;
 		height: 100%;
+		border-left: 4px solid $white;
 		width: $navOpenWidth * 2;
-		left: $navOpenWidth + 4px;
+		border-bottom: 4px solid $white;
+		left: $navOpenWidth + 0px;
 	}
 }
 
@@ -404,6 +407,29 @@ span.sentence {
 	@extend %circle-item;
 }
 
+// Count Box
+// --------------------------
+// <div>
+.count-box {
+	margin-top: 18px;
+	width: 78px;
+	background-color: $gray;
+	float: left;
+	padding: 10px;
+	margin-right: 10px;
+	.num {
+		@extend %alpha;
+	}
+	h6 {
+		height: 50px;
+		text-transform: uppercase;
+		margin: 0;
+		font-weight: normal;
+	}
+}
+
+
+
 // Table of contents
 // --------------------------
 // <ul>
@@ -439,7 +465,7 @@ span.sentence {
 	&:last-child {
 		margin-left: 50px;		
 	}
-	width: $navOpenWidth - 60;
+	width: $navOpenWidth - 62;
 	float: left;
 }
 
@@ -449,7 +475,7 @@ span.sentence {
 .annotator {
 	@extend %delta;
 	width: 320px;
-	background-color: $grayLight;
+	background-color: $gray;
 	border: 2px solid white;
 	position: absolute;
 	top: 0;
@@ -458,7 +484,7 @@ span.sentence {
 	&:before {
 		content: "";
 		border: 15px solid transparent;
-		border-top: 28px solid $grayLight;
+		border-top: 28px solid $gray;
 		position: absolute;
 		bottom: -43px;
 		left: 26px;
@@ -480,7 +506,7 @@ span.sentence {
 .annotator--top {
 	font-style: italic;
 	color: $grayDark;
-	background-color: $grayLight;
+	background-color: $gray;
 	padding: 0.5em 1em;
 	border-bottom: 2px solid $white;
 }
@@ -489,7 +515,7 @@ span.sentence {
 .annotator--right {
 	color: $white;
 	width: 125px;
-	background-color: darken($gray, 5%);
+	background-color: darken($gray, 30%);
 	padding: 0.5em;
 	border: 2px solid $white;
 	position: absolute;
@@ -500,7 +526,7 @@ span.sentence {
 }
 
 .annotator--left {
-	background-color: $grayLight;
+	background-color: $gray;
 	position: relative;
 	z-index: 20;
 }

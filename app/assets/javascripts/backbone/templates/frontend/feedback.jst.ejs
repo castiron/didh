@@ -1,0 +1,42 @@
+
+<li class="level-0">
+	<header class="pane-toggle pane--header">
+		<h2 class="pane--title">Feedback</h2>
+	</header>
+	<% if(text != null) { %>
+ 	<section class="pane--content">
+		<div class="count-box">
+			<h6>Sentences marked as interesting</h6>
+			<span class="num"><%= text.getAnnotatedSentenceCount() %></span>
+		</div>
+		<div class="count-box">
+			<h6>Sentences Indexed</h6>
+			<span class="num">0</span>
+		</div>
+		<div class="count-box">
+			<h6>Readers who have offered feedback</h6>
+			<span class="num"><%= text.getAnnotationCount() %></span>
+		</div>
+	</section>
+	<% } %>
+</li>
+<li class="level-1">
+	<header class="pane--header">
+		<h2 class="pane--title">Options</h2>
+	</header>
+	<section class="pane--content pane--vertical-stage">
+		Feeback Options
+		<ul class="unstyled">
+			<li>
+				<input type="checkbox" checked="checked" id="feedback-view-interesting" /> View text marked as interesting
+			</li>
+			<li>
+				<input type="radio" name="feedback-type" id="feedback-view-interesting-stacked" />Stacked<br />
+			</li>
+			<li>
+				<input type="radio" name="feedback-type" id="feedback-view-interesting-opacity" />Opacity
+			</li>
+			<a href="#" class="pane-close">click to minimize feedback options</a>
+	</section>
+</li>
+
