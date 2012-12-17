@@ -10,6 +10,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		'submit #annotate-index-form'	: 'createIndexKeyword'
 
 	initialize: () ->
+		@annotatorHeight = 0
 		@currentSentenceId = null
 		@parts = @options.parts
 		@keywords = @options.keywords
@@ -18,9 +19,13 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		@router = @options.router
 
 	calculateAnnotatorLocationFor: (sentenceEl, event) ->
+		# We only set the height once, on the first appearance, and then treat it as constant.
+		# We do this so that the changing height of the annotator doesn't mess up the position.
+		if @annotatorHeight == 0 then @annotatorHeight = @$el.height()
 		clickX = event.pageX
 		clickY = event.pageY
-		position = {top: (clickY - @$el.height() - 40)+ 'px', left: (clickX - 43) + 'px'}
+		console.log @$el.height()
+		position = {top: (clickY - @annotatorHeight - 40)+ 'px', left: (clickX - 43) + 'px'}
 
 	showAnnotatorOn: (sentenceEl, event) ->
 		@stopAnnotating()

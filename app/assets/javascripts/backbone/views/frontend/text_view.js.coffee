@@ -26,7 +26,7 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 	showText: (text) ->
 		text = @texts.where({active: true})	
 
-	setVisualizationType: (type) ->
+	updateVisualizationType: (type) ->
 		@visualization = type
 		@updateAnnotations(true)
 
@@ -49,12 +49,13 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 				minWidth = 1
 				width = sentence.count * 1
 			
-			annotation = $('<span style="width: ' + minWidth + 'px; height: ' + height + 'px;" class="annotation"></span>')
-			$el.prepend(annotation)
+			annotation = $('<span style="display: none; width: ' + minWidth + 'px; height: ' + height + 'px;" class="annotation"></span>')
+			$el.before(annotation)
 			if animate == true
 				if @visualization == 'opacity'
 					annotation.fadeTo('slow', opacity)
 				else
+					annotation.css({display: 'block'})
 					annotation.animate({width: width})
 			else
 				if @visualization == 'opacity'

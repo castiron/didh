@@ -6,18 +6,27 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 	events: 
 		"click .pane-toggle"						 : "togglePane"
 		"click .pane-close" 						:  "closePane"
-		"click #feedback-view-interesting" 			:  "setVisualizationType"
-		"click #feedback-view-interesting-stacked" 	:  "setVisualizationType"
-		"click #feedback-view-interesting-opacity" 	:  "setVisualizationType"
+		"click #feedback-view-interesting" 			:  "updateVisualizationType"
+		"click #feedback-view-interesting-stacked" 	:  "updateVisualizationType"
+		"click #feedback-view-interesting-opacity" 	:  "updateVisualizationType"
 
 	initialize: () ->
 		@isOpen = false
 		@parts = @options.parts
 		@texts = @options.texts
 		@router = @options.router
-		@model.bind('change:isLoaded', @render, @)
+	
+	setModel: (model) ->
+		if @model?
+			@model.off('change')
+			@model.off('change:sentences')
 
-	setVisualizationType: () ->
+		@model = model
+		@model.bind('change', @render, @)
+		@model.bind('change:sentences', @render, @)
+		@render()
+
+	getVisualizationType: () ->
 		if @$el.find('#feedback-view-interesting').attr('checked') == 'checked'
 			type = 'stacked'
 			if @$el.find("#feedback-view-interesting-stacked").attr('checked') == 'checked'
@@ -26,21 +35,23 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 				type = 'opacity'
 		else
 			type = 'none'
-		console.log type
-		@router.setAnnotationType(type)
+		type
+
+	updateVisualizationType: () ->
+		@router.updateVisualizationType(@getVisualizationType())
 
 	closePane: (e) ->
-		e.stopPropagation()
+		if e? then e.stopPropagation()
 		if @isOpen == true then @.$el.animate(right: 0 )
 		@isOpen = false
 
 	openPane: (e) ->
-		e.stopPropagation()
+		if e? then e.stopPropagation()
 		if @isOpen == false then @.$el.animate(right: (@.$el.width()) + 4)
 		@isOpen = true
 
 	togglePane: (e) ->
-		e.stopPropagation()
+		if e? then e.stopPropagation()
 		togglePane: () ->
 		if @isOpen == true
 			@closePane(e)

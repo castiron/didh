@@ -17,13 +17,15 @@
 		</li>
 	</ul>
 </div>
-<% count = text.getAnnotationCountFor(sentenceId) %>
-<% if (count > 0) { %>
-<div class="annotator--right js-right">
-	<% if (count == 1) { %>
-		This text was marked as interesting one time.
-	<% } else { %>
-		This text was marked as interesting <%= text.getAnnotationCountFor(sentenceId) %> times.
+<% if(typeof text !== 'undefined') { %>
+	<% count = text.getAnnotationCountFor(sentenceId) %>
+	<% if (count > 0) { %>
+	<div class="annotator--right js-right">
+		<% if (count == 1) { %>
+			This text was marked as interesting one time.
+		<% } else { %>
+			This text was marked as interesting <%= text.getAnnotationCountFor(sentenceId) %> times.
+		<% } %>
+	</div>
 	<% } %>
-</div>
 <% } %>
