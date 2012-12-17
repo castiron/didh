@@ -27,7 +27,6 @@ class Didh.Models.Text extends Backbone.Model
 	incrementAnnotationCount: (sentenceId) ->
 		sentences = @get('sentences')
 		sentence = @getSentence(sentenceId)
-		console.log sentence
 		if sentence?
 			sentence.count++
 		else

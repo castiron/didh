@@ -29,6 +29,7 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 		)
 
 	showPart: (part) ->
+		console.log 'called'
 		@parts.setActivePart(part.id)
 		@.$el.animate(right: (@.$el.width() * 2) - 4)
 		@partsContainer = @.$el.find('.parts:first')

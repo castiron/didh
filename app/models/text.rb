@@ -3,6 +3,7 @@ class Text < ActiveRecord::Base
 	has_and_belongs_to_many :authors
 	belongs_to :part
 	belongs_to :edition
+	has_many :keywords
 	has_many :annotations
 
 	def author_names

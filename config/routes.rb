@@ -25,6 +25,8 @@ Didh::Application.routes.draw do
     resources :annotations
   end
 
+  resources :keywords
+
   # Sample resource route with options:
   #   resources :products do
   #     member do

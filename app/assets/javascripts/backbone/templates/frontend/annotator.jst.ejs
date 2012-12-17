@@ -5,13 +5,18 @@
 	<ul class="annotator--bottom annotate-actions">
 		<li class="annotate-interesting">Interesting</li>
 		<li class="annotate-index">Add to index</li>
+		<li class="annotate-index-input" style="display: none; margin-top: 15px; margin-bottom: 10px;">
+			Under what term should we index this sentence?
+			<form id="annotate-index-form" action="#">
+			<input class="keyword" name="keyword" style="width: 100%; margin-top: 5px;" />
+			</form>
+		</li>
 		<li class="annotate-close">
 			<b class="annotate-close--x">X</b>
 			Nevermind, don't mark text
 		</li>
 	</ul>
 </div>
-<% console.log(text) %>
 <% count = text.getAnnotationCountFor(sentenceId) %>
 <% if (count > 0) { %>
 <div class="annotator--right js-right">

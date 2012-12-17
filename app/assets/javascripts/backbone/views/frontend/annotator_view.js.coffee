@@ -7,10 +7,12 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		'click .annotate-close'			: 'stopAnnotating'
 		'click .annotate-interesting'	: 'annotateInteresting'
 		'click .annotate-index'			: 'annotateIndex'
+		'submit #annotate-index-form'	: 'createIndexKeyword'
 
 	initialize: () ->
 		@currentSentenceId = null
 		@parts = @options.parts
+		@keywords = @options.keywords
 		@annotations = @options.annotations
 		@texts = @options.texts
 		@router = @options.router
@@ -56,6 +58,23 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		})
 
 	annotateIndex: (e) ->
+		# TODO: Set focus on the input
+		@$el.find('.annotate-index-input').first().slideDown()
+		@$el.find('.annotate-index-input input').focus()
+	
+	createIndexKeyword: (e) ->
+		word = @$el.find('.annotate-index-input input').first().val()
+		if !word
+			@$el.find('.annotate-index-input input').first().effect("shake", { times:2, distance: 5}, 50);
+		else
+			keyword = new Didh.Models.Keyword({
+				sentence: @currentSentenceId
+				word: word
+				text_id: @texts.getActiveText().id
+			})
+			keyword.save({})
+			@stopAnnotating()
+		false
 
 	render: =>
 		$(@el).html(@template({text: @texts.getActiveText(), sentenceId: @currentSentenceId}))

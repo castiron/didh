@@ -6,8 +6,9 @@ class Didh.Routers.AppRouter extends Backbone.Router
 		@texts.reset options.texts
 		@annotations = new Didh.Collections.AnnotationsCollection()
 		@annotations.reset options.annotations
+		@keywords = new Didh.Collections.KeywordsCollection()
 
-		@annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), annotations: @annotations, parts: @parts, texts: @texts, router: @ )
+		@annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), keywords: @keywords, annotations: @annotations, parts: @parts, texts: @texts, router: @ )
 		@tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
 		@tocView.render()
 		#@textView.render()
@@ -15,7 +16,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
 	routes:
 		"text/:textId/part/:partId"	: "showPartAndText"
 		"part/:id"					: "showPart"
-		"text/:id"					: "setActiveText"
+		"text/:id"					: "showText"
 		"*catchall"					: "setDefaultText" # Backbone, wtf does this work?
 
 	showPartAndText: (textId, partId) ->
@@ -29,6 +30,10 @@ class Didh.Routers.AppRouter extends Backbone.Router
 
 	renderTextView: () ->
 		@textView.render()
+
+	showText: (textId) ->
+		@tocView.closePane()
+		@setActiveText(textId)
 
 	setActiveText: (id) ->
 		id = parseInt(id)
@@ -49,8 +54,6 @@ class Didh.Routers.AppRouter extends Backbone.Router
 						text.set({isLoaded: true})
 				})
 			@parts.setActivePart(text.get('part'))
-		else
-			@tocView.closePane()
 
 	showPart: (id) ->
 		@annotator.stopAnnotating()
