@@ -405,29 +405,13 @@ span.sentence {
 	@extend %eta;
 	@extend %with-gray-dark;
 	position: absolute;
-	bottom: 0;	
+	bottom: $space;
 }
 
-// Highlight navigation
-// --------------------------
-// <ul>
-.nav-highlight {
-	@extend %unstyled-list;
-	@include spaced-items(li, 12px);
-	margin-top: 16px;
-	a {
-		display: inline-block;
-	}
-}
-
-// <a>
-.highlight-emphasis {
-	@extend %circle-item-blue;
-}
-
-// <a>
-.highlight-mark {
-	@extend %circle-item;
+.content--toggle--arrow {
+	@extend %circle-arrow-small-left;
+	float: left;
+	margin-right: 5px;
 }
 
 // Count boxes
@@ -436,7 +420,7 @@ span.sentence {
 .count-box-list {
 	@extend %tight-floated-list;
 	position: absolute;
-	bottom: $space * 2;
+	bottom: 4em;
 }
 
 // <li>
@@ -461,6 +445,28 @@ span.sentence {
 	@extend %with-gray-darker;
 	position: absolute;
 	bottom: 5px;
+}
+
+// Highlight navigation
+// --------------------------
+// <ul>
+.nav-highlight {
+	@extend %unstyled-list;
+	@include spaced-items(li, 12px);
+	margin-top: 16px;
+	a {
+		display: inline-block;
+	}
+}
+
+// <a>
+.highlight-emphasis {
+	@extend %circle-item-blue;
+}
+
+// <a>
+.highlight-mark {
+	@extend %circle-item;
 }
 
 // Table of contents

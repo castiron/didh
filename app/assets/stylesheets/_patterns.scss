@@ -257,7 +257,7 @@
 
 %circle-arrow-left {
 	@extend %circle-arrow;
-	@include rotate(180deg, 50% 50%);
+	background-image: url('icon-arrow-left.png');
 }
 
 %circle-arrow-small {
