@@ -35,6 +35,13 @@ body {
 	line-height: $looseLineHeight;
 }
 
+.page {
+	.interior-content {
+		width: 1000px;
+		margin-left: 15%;
+	}
+}
+
 // Typography
 // --------------------------------------------------------
 // Block-level elements

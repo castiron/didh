@@ -147,6 +147,63 @@
 	}
 }
 
+// Inputs
+// --------------------------
+%custom-input {
+	@include opacity(0);
+	& + b {
+		display: block;
+		position: absolute;
+		left: 0;
+	}
+	&:checked {
+		& + b {
+			background-position: left bottom;
+		}
+	}
+}
+
+// <label>
+%input-label {
+	position: relative;
+}
+
+// Checkbox
+// --------------------------
+// <input type="checkbox">
+// Must be immediately followed by an empty <b>
+%checkbox {
+	@extend %custom-input;
+	margin-right: 8px;
+	& + b {
+		width: 20px;
+		height: 23px;
+		background: transparent url('checkbox.png') no-repeat left top;
+		bottom: 0;
+	}
+	&:checked {
+		& + b {
+			background-position: left bottom;
+		}
+	}
+}
+
+// Radio
+// --------------------------
+// <input type="radio">
+// Must be immediately followed by an empty <b>
+// Stop asking questions, just do it
+%radio {
+	@extend %custom-input;
+	margin-right: 8px;
+	& + b {
+		width: 18px;
+		height: 18px;
+		background: transparent url('radio.png') no-repeat left top;
+		bottom: -2px;
+	}
+}
+
 // Text colors
 // --------------------------
 %with-gray-dark {

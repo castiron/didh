@@ -20,7 +20,7 @@
 				<span class="count-box--number"><%= text.getAnnotationCount() %></span>
  			</li>
  		</ul>
- 		<a class="content--toggle" href="#"><b class="content--toggle--arrow"></b>Click to expand for options to hide or show feedback</a>
+ 		<a class="content--toggle pane-open" href="#"><b class="content--toggle--arrow"></b>Click to expand for options to hide or show feedback</a>
 	</section>
 	<% } %>
 </li>
@@ -29,18 +29,35 @@
 		<h2 class="pane--title">Options</h2>
 	</header>
 	<section class="pane--content pane--vertical-stage">
-		Feeback Options
-		<ul class="unstyled">
-			<li>
-				<input type="checkbox" checked="checked" id="feedback-view-interesting" /> View text marked as interesting
-			</li>
-			<li>
-				<input type="radio" name="feedback-type" id="feedback-view-interesting-stacked" />Stacked<br />
-			</li>
-			<li>
-				<input type="radio" name="feedback-type" id="feedback-view-interesting-opacity" />Opacity
-			</li>
-			<a href="#" class="pane-close">click to minimize feedback options</a>
+		<div class="feedback-options">
+			<h2 class="feedback-options--title">Feedback Options</h2>
+			<ul class="feedback-options--list">
+				<li>
+					<label class="feedback-options--label">
+						<input class="feedback-options--checkbox" type="checkbox" checked="checked" id="feedback-view-interesting" />
+						<b></b>
+						View text marked as interesting
+					</label>
+					<ul class="feedback-options--sublist">
+						<li>
+							<label class="feedback-options--label">
+								<input class="feedback-options--radio" type="radio" name="feedback-type" id="feedback-view-interesting-stacked" />
+								<b></b>
+								<span class="stacked-label">Stacked</span>
+							</label>
+						</li>
+						<li>
+							<label class="feedback-options--label">
+								<input class="feedback-options--radio" type="radio" name="feedback-type" id="feedback-view-interesting-opacity" />
+								<b></b>
+								<span class="opacity-label">Opacity</span>
+							</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<!-- <a href="#" class="pane-close">click to minimize feedback options</a> -->
+		</div>
 	</section>
 </li>
 

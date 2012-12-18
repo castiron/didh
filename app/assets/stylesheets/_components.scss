@@ -449,6 +449,60 @@ span.sentence {
 	bottom: 5px;
 }
 
+// Feedback options
+// --------------------------
+.feedback-options {
+	position: absolute;
+	bottom: 4em;
+}
+
+.feedback-options--title {
+	@extend %with-gray-dark;
+	font-style: italic;
+	margin-bottom: 1em;
+}
+
+.feedback-options--list {
+	@extend %unstyled-list;
+	& > li + li {
+		margin-top: $shim; 
+	}
+}
+
+.feedback-options--sublist {
+	@extend %floated-list;
+	padding-left: $space;
+	margin-top: 8px;
+	li + li {
+		margin-left: 15px;
+	}
+}
+
+.feedback-options--label {
+	@extend %input-label;
+	@extend %delta;
+	text-transform: uppercase;
+	position: relative;
+	.stacked-label {
+		background: transparent url('icon-stacked.png') no-repeat left top;
+		padding-left: 13px;
+		margin-left: 4px;
+	}
+	.opacity-label {
+		background: transparent url('icon-opacity.png') no-repeat left top;
+		padding-left: 11px;
+		margin-left: 4px;
+	}
+}
+
+.feedback-options--checkbox {
+	@extend %checkbox;
+}
+
+.feedback-options--radio {
+	@extend %radio;
+}
+
 // Highlight navigation
 // --------------------------
 // <ul>
@@ -644,13 +698,6 @@ span.sentence {
 
 // Body.page [SM TO REVIEW]
 // --------------------------
-// <body>
-.page {
-	.interior-content {
-		width: 1000px;
-		margin-left: 15%;
-	}
-}
 
 // Two equal columns [SM TO REVIEW]
 // --------------------------
@@ -668,5 +715,3 @@ span.sentence {
 	padding: 15px;
 	background: $grayLight;
 }
-
-
