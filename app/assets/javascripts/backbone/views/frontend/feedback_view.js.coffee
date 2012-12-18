@@ -71,7 +71,7 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 
 	render: =>
 		$(@el).append(@template(text: @model))
-		@normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
+		# @normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
 		@normalizePaneHeight()
 
 

@@ -50,6 +50,6 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 
 	render: =>
 		$(@el).append(@template(parts: @parts, texts: @texts, activeText: @router.getRequestedText()))
-		@normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
+		# @normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
 		@normalizePaneHeight()
 
