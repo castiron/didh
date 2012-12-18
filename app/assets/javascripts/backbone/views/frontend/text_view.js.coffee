@@ -18,10 +18,14 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 		@model.bind('change:sentences', @updateAnnotations, @)
 
 	events: 
-		"click .sentence" : "showAnnotator"
+		"click .sentence" 	: "showAnnotator"
 
-	showAnnotator: (event) ->
-		@annotator.showAnnotatorOn(event.target, event)
+	showAnnotator: (e) ->
+		@annotator.showAnnotatorOn(e.target, e)
+
+	showAnnotationDetail: (e) ->
+		$el = $(e.target)
+		$el.find('.annotation-counter').show()
 
 	showText: (text) ->
 		text = @texts.where({active: true})	
@@ -32,6 +36,8 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 
 	updateAnnotations: (animate) ->
 		@$el.find('.annotation').remove()
+
+		console.log @visualization
 
 		if @visualization == 'none' then return
 
@@ -48,8 +54,11 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 			else
 				minWidth = 1
 				width = sentence.count * 1
-			
-			annotation = $('<span style="display: none; width: ' + minWidth + 'px; height: ' + height + 'px;" class="annotation"></span>')
+
+			count = @model.getAnnotationCountFor( sentence.sentence)
+			annotation = $('<span data-sentence="' + sentence.sentence + '" style="display: none; width: ' + minWidth + 'px; height: ' + height + 'px;" class="annotation"></span>')
+#			annotation.append('<div class="annotation-counter">This section was marked as interesting ' + count + ' times.</div>')
+
 			$el.before(annotation)
 			if animate == true
 				if @visualization == 'opacity'
@@ -61,7 +70,10 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 				if @visualization == 'opacity'
 					annotation.fadeTo(0, opacity)
 				else
+					annotation.css({display: 'block'})
 					annotation.width(width)
+
+
 		)
 
 	render: () =>

@@ -1,6 +1,15 @@
 class PagesController < ActionController::Base
 
-	layout "frontend_home"
+	layout :resolve_layout
+
+	def resolve_layout
+		case action_name
+			when "index"
+				"frontend_home"
+			else
+				"frontend_page"
+		end
+	end
 
 	def index
 	end

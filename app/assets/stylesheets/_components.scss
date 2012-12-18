@@ -110,6 +110,7 @@
 	}
 }
 
+
 // TODO adjust margin-left on small screens
 .interior-content {
 	@extend %smooth-resize;
@@ -407,7 +408,7 @@ span.sentence {
 	@extend %circle-item;
 }
 
-// Count Box
+// Count Box [SM TO REVIEW]
 // --------------------------
 // <div>
 .count-box {
@@ -427,8 +428,6 @@ span.sentence {
 		font-weight: normal;
 	}
 }
-
-
 
 // Table of contents
 // --------------------------
@@ -585,5 +584,46 @@ span.sentence {
 	background: $blueDark;
 	position: absolute;
 	left: -100px;
+	overflow: visible;
 }
+
+
+// Annotation Counter [SM TO REVIEW]
+// --------------------------
+// <div>
+.annotation-counter {
+	position: absolute;
+	z-index: 8000;
+	left: 20px;
+	width: 300px;
+	background: $grayDark;
+	height: 150px;
+}
+
+// Body.page [SM TO REVIEW]
+// --------------------------
+body.page {
+	.interior-content {
+		width: 1000px;
+		margin-left: 15%;
+	}
+}
+
+// Two equal columns [SM TO REVIEW]
+// --------------------------
+// <section>
+.two-col-equal {
+	.left, .right {
+		width: 350px;
+		margin-right: 50px;
+		float: left;
+	}
+}
+
+.link-box {
+	@extend %delta;
+	padding: 15px;
+	background: $gray;
+}
+
 

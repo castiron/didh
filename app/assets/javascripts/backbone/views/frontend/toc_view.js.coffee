@@ -20,6 +20,12 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 			$(part).height(@.paneHeight)
 		)
 
+	normalizePaneHeaderPosition: () ->
+		$('.pane--title').each( ->
+			paneHeight = $(@).parents('.pane--header').height()
+			$(@).width(paneHeight)
+		)		
+
 	closePane: () ->
 		if @isOpen == true then @.$el.animate(right: 0 )
 		@isOpen = false
@@ -34,12 +40,6 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 			@closePane()
 		else
 			@openPane()		
-
-	normalizePaneHeaderPosition: () ->
-		$('.pane--title').each( ->
-			paneHeight = $(@).parents('.pane--header').height()
-			$(@).width(paneHeight)
-		)
 
 	showPart: (part) ->
 		@parts.setActivePart(part.id)
