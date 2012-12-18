@@ -4,8 +4,9 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 	template: JST["backbone/templates/frontend/feedback"]
 	
 	events: 
-		"click .pane-toggle"						 : "togglePane"
+		"click .pane-toggle"						: "togglePane"
 		"click .pane-close" 						:  "closePane"
+		"click .pane-open" 							:  "openPane"
 		"click #feedback-view-interesting" 			:  "updateVisualizationType"
 		"click #feedback-view-interesting-stacked" 	:  "updateVisualizationType"
 		"click #feedback-view-interesting-opacity" 	:  "updateVisualizationType"
