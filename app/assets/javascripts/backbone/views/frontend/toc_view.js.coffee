@@ -49,7 +49,7 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 		@partsContainer.animate({top: -1 * target.position().top})
 
 	render: =>
-		$(@el).append(@template(parts: @parts, texts: @texts, activeText: @router.getRequestedText()))
+		$(@el).html(@template(parts: @parts, texts: @texts, activeText: @router.getRequestedText()))
 		# @normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
 		@normalizePaneHeight()
 

@@ -51,6 +51,7 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 		@isOpen = true
 
 	togglePane: (e) ->
+		console.log 'test'
 		if e? then e.stopPropagation()
 		togglePane: () ->
 		if @isOpen == true
@@ -70,7 +71,7 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 		)
 
 	render: =>
-		$(@el).append(@template(text: @model))
+		$(@el).html(@template(text: @model))
 		# @normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
 		@normalizePaneHeight()
 
