@@ -55,6 +55,28 @@
 	letter-spacing: 0.2em;
 }
 
+%zeta {
+	@extend %epsilon;
+	font-weight: 300;
+}
+
+%eta {
+	@extend %zeta;
+	text-transform: none;
+	letter-spacing: 0;
+	font-style: italic;
+}
+
+// Extra-hierarchy
+// Very large & very small type,
+// outside the above hierarchy
+// Employs SI prefixes
+// --------------------------
+%deca {
+	font-size: 2em;
+	font-weight: 300;	
+}
+
 // Block-level
 // --------------------------
 %heading {
@@ -118,10 +140,21 @@
 	}
 }
 
+%tight-floated-list {
+	@extend %floated-list;
+	li + li {
+		margin-left: 0.4em;
+	}
+}
+
 // Text colors
 // --------------------------
 %with-gray-dark {
 	color: $grayDark;
+}
+
+%with-gray-darker {
+	color: $grayDarker;
 }
 
 // Component patterns
@@ -210,3 +243,32 @@
 		background-color: $orange;
 	}
 }
+
+// Circle arrows
+// --------------------------
+%circle-arrow {
+	@include border-radius(100%);
+	display: block;
+	width: 22px;
+	height: 22px;
+	background: $white url('icon-arrow-right.png') no-repeat left top;
+	background-size: 22px;
+}
+
+%circle-arrow-left {
+	@extend %circle-arrow;
+	@include rotate(180deg, 50% 50%);
+}
+
+%circle-arrow-small {
+	@extend %circle-arrow;
+	width: 11px;
+	height: 11px;
+	background-size: 11px;
+}
+
+%circle-arrow-small-left {
+	@extend %circle-arrow-left;
+	@extend %circle-arrow-small;
+}
+

@@ -2,21 +2,25 @@
 <li class="level-0">
 	<header class="pane-toggle pane--header">
 		<h2 class="pane--title">Feedback</h2>
+		<a class="content-nav--toggle js-content-nav--toggle" href="#"></a>
 	</header>
 	<% if(text != null) { %>
  	<section class="pane--content">
-		<div class="count-box">
-			<h6>Sentences marked as interesting</h6>
-			<span class="num"><%= text.getAnnotatedSentenceCount() %></span>
-		</div>
-		<div class="count-box">
-			<h6>Sentences Indexed</h6>
-			<span class="num">0</span>
-		</div>
-		<div class="count-box">
-			<h6>Readers who have offered feedback</h6>
-			<span class="num"><%= text.getAnnotationCount() %></span>
-		</div>
+ 		<ul class="count-box-list">
+ 			<li class="count-box">
+ 				<h6 class="count-box--title">Sentences marked as interesting</h6>
+				<span class="count-box--number"><%= text.getAnnotatedSentenceCount() %></span>
+ 			</li>
+ 			<li class="count-box">
+ 				<h6 class="count-box--title">Sentences Indexed</h6>
+				<span class="count-box--number">0</span>
+ 			</li>
+ 			<li class="count-box">
+ 				<h6 class="count-box--title">Readers who have offered feedback</h6>
+				<span class="count-box--number"><%= text.getAnnotationCount() %></span>
+ 			</li>
+ 		</ul>
+ 		<!-- <a class="content--toggle" href="">Click to expand for options to hide or show feedback</a> -->
 	</section>
 	<% } %>
 </li>

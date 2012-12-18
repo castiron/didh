@@ -313,10 +313,11 @@ span.sentence {
 // <li>
 // Lives inside nav-panes
 .pane--content {
-	@extend %delta;
 	width: 100%;
+	@extend %delta;
 	line-height: $tightLineHeight;
 	padding: 40px 20px 30px 50px;
+	position: relative;	
 	.pane-top & {
 		padding-top: 160px;
 	}
@@ -373,17 +374,38 @@ span.sentence {
 .pane--title {
 	@extend %with-gray-dark;
 	@extend %epsilon;
-	// TODO: Scott to figure out why I need to hard-code the size here instead
-	// of having it be picked up from %epsilon as it probably should be. -ZD
-	font-size: 11px !important;
 	@include rotate(-90deg, top left);
 	line-height: 1;
 	text-align: center;
 	padding-top: 13px;
 	position: absolute;
-	bottom: -24px;
+	bottom: 12.5%;
 	left: 0;
 	overflow: hidden;
+}
+
+.pane-bottom--title {
+	top: 50%;
+	bottom: auto;
+}
+
+// <a>
+.content-nav--toggle {
+	@extend %circle-arrow;
+	position: absolute;
+	top: 25%;
+	left: 6px;
+}
+
+// Pane content toggle
+// Lives inside .pane--content
+// --------------------------
+// <a>
+.content--toggle {
+	@extend %eta;
+	@extend %with-gray-dark;
+	position: absolute;
+	bottom: 0;	
 }
 
 // Highlight navigation
@@ -408,25 +430,37 @@ span.sentence {
 	@extend %circle-item;
 }
 
-// Count Box [SM TO REVIEW]
+// Count boxes
 // --------------------------
-// <div>
+// <ul>
+.count-box-list {
+	@extend %tight-floated-list;
+	position: absolute;
+	bottom: $space * 2;
+}
+
+// <li>
 .count-box {
-	margin-top: 18px;
-	width: 78px;
+	height: 100px;
+	width: 84px;
 	background-color: $gray;
-	float: left;
-	padding: 10px;
-	margin-right: 10px;
-	.num {
-		@extend %alpha;
-	}
-	h6 {
-		height: 50px;
-		text-transform: uppercase;
-		margin: 0;
-		font-weight: normal;
-	}
+	padding: 0 10px;
+	position: relative;
+}
+
+.count-box--title {
+	@extend %zeta;
+	@extend %with-gray-dark;
+	margin: 0;
+	position: absolute;
+	bottom: 40px;
+}
+
+.count-box--number {
+	@extend %deca;
+	@extend %with-gray-darker;
+	position: absolute;
+	bottom: 5px;
 }
 
 // Table of contents
@@ -588,7 +622,7 @@ span.sentence {
 }
 
 
-// Annotation Counter [SM TO REVIEW]
+// Annotation Counter [SM TO REVIEW] -- this is not being used yet, so you can ignore it for now.
 // --------------------------
 // <div>
 .annotation-counter {
