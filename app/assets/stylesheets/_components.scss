@@ -365,6 +365,7 @@ span.sentence {
 	width: $navClosedWidth;
 	left: 0;
 	white-space: nowrap;
+	z-index: 10;
 }
 
 // Width set to height of parent (pane--header)
@@ -435,6 +436,7 @@ span.sentence {
 .count-box--title {
 	@extend %zeta;
 	@extend %with-gray-dark;
+	width: 64px;
 	margin: 0;
 	position: absolute;
 	bottom: 40px;
@@ -642,7 +644,8 @@ span.sentence {
 
 // Body.page [SM TO REVIEW]
 // --------------------------
-body.page {
+// <body>
+.page {
 	.interior-content {
 		width: 1000px;
 		margin-left: 15%;
@@ -663,7 +666,7 @@ body.page {
 .link-box {
 	@extend %delta;
 	padding: 15px;
-	background: $gray;
+	background: $grayLight;
 }
 
 

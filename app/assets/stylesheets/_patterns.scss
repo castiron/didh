@@ -58,12 +58,12 @@
 %zeta {
 	@extend %epsilon;
 	font-weight: 300;
+	letter-spacing: 0;
 }
 
 %eta {
 	@extend %zeta;
 	text-transform: none;
-	letter-spacing: 0;
 	font-style: italic;
 }
 
