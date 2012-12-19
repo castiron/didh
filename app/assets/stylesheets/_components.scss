@@ -97,6 +97,7 @@
 	background-color: $black;
 	padding: ($space * 2) $shim 0;
 	left: 0;
+	z-index: 10;
 	.nav-open & {
 		@include respond-max(1092px) {
 			width: 14.9%;
@@ -117,7 +118,7 @@
 	}
 }
 
-
+// Interior content wrapper
 // TODO adjust margin-left on small screens
 .interior-content {
 	@extend %smooth-resize;
@@ -135,24 +136,37 @@
 			width: 47%;
 		}
 	}
-	.page & {
-		width: 1000px;
-		position: relative;
-		&:after {
-			@extend %vertical-bar;
-			content: "";
-			display: block;			
-			width: 2000px;
-			background-color: $grayLight;
-			left: 100%;
-		}
-		// TODO fix flash of :after during transition
-		@include respond-max(1092px) {
-			width: 508px;
-			&:after {
-				display: none;
-			}
-		}
+}
+
+// Content wrapper for frontend_page layout
+.interior-content-page {
+	@extend %smooth-resize;
+	width: 1070px;
+	background-color: $white;
+	padding: ($space * 2) 50px 0 240px;
+	padding-right: 80px;
+}
+
+// Content components
+// --------------------------
+.callout {
+	@extend %callout;	
+}
+
+// Block quotes
+// --------------------------
+.blockquote {
+	margin-bottom: $shim;
+}
+
+// Lives inside .blockquote
+.attribution {
+	display: block;
+	font-weight: 700;
+	font-style: normal;
+	text-align: right;
+	&:before {
+		content: "\2014";
 	}
 }
 
@@ -164,6 +178,12 @@
 
 .chapter-heading {
 	@extend %beta;
+	margin-bottom: 1em;
+}
+
+.chapter-byline {
+	@extend %gamma;
+	text-transform: uppercase;
 	margin-bottom: 1em;
 }
 
@@ -211,9 +231,6 @@
 		margin-top: 1em;
 		margin-bottom: 1em;
 		text-indent: 0;
-	}
-	h3 {
-		margin-bottom: 1em;
 	}
 	.epigraph {
 		margin-top: 1em;
@@ -309,7 +326,6 @@ span.sentence {
 }
 // <ul>
 // Lives inside nav-content
-
 .nav-pane {
 	@extend %delta;
 	position: relative;
@@ -720,34 +736,9 @@ span.sentence {
 	height: 150px;
 }
 
-// Two equal columns
-// --------------------------
-// <section>
-.two-col-equal {
-	@extend %clearfix;
-}
-
-.two-col-equal--column {
-	@extend %hyphenated;
-	width: 350px;
-	float: left;
-	& + & {
-		margin-left: 50px;
-	}
-	@include respond-max(1092px) {
-		width: 100%;
-		float: none;
-		& + & {
-			margin-left: 0;
-		}
-	}
-}
-
-.link-box {
-	@extend %callout;	
-}
-
-// Link list
+// Lists
+// --------------------------------------------------------
+// Link-list
 // --------------------------
 .link-list {
 	@extend %unstyled-list;
@@ -776,23 +767,57 @@ span.sentence {
 	margin-left: 6em;
 }
 
+// Name list
+// --------------------------
+.name-list {
+	@extend %delta;
+	@extend %unstyled-list;
+}
 
+// Two column layouts
+// Best suited to frontend_page layout
+// -------------------------------------------------------- 
+.columns {
+	@extend %clearfix;
+}
 
+// Two equal-width columns
+// To be used only alongside another column-equal
+.column-equal {
+	@extend %column;
+	width: 350px;
+	// @include respond-max(1092px) {
+	// 	width: 100%;
+	// 	float: none;
+	// 	& + & {
+	// 		margin-left: 0;
+	// 	}
+	// }
+}
 
+// To be used alongside column-narrow
+.column-wide {
+	@extend %column;
+	width: 500px;
+}
 
+// To be used alongside column-wide
+.column-narrow {
+	@extend %column;
+	width: 200px;
+}
 
+// full-width column
+// Allows mixing of partial-width & full-width content
+// within .columns
+.column-single {
+	width: 100%;
+	margin-bottom: $shim * 2;
+	clear: both;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Column typographic components
+// --------------------------
+.column--heading {
+	@extend %subsection-heading;
+}
