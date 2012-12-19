@@ -25,7 +25,7 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 
 		@model = model
 		@model.bind('change', @render, @)
-#		@model.bind('change:sentences', @render, @)
+		@model.bind('change:sentences', @render, @)
 #		@render()
 
 	getVisualizationType: () ->
