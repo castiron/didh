@@ -455,6 +455,12 @@ span.sentence {
 	margin-right: 5px;
 }
 
+.content--toggle--arrow-right {
+	@extend %circle-arrow-small;
+	float: left;
+	margin-right: 5px;
+}
+
 // Count boxes
 // --------------------------
 // <ul>

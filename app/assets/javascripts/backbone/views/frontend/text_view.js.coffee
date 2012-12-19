@@ -34,10 +34,11 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 		@visualization = type
 		@updateAnnotations(true)
 
+	getCurrentVisualizationType: () ->
+		@visualization
+
 	updateAnnotations: (animate) ->
 		@$el.find('.annotation').remove()
-
-		console.log @visualization
 
 		if @visualization == 'none' then return
 
