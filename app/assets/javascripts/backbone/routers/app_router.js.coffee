@@ -14,7 +14,6 @@ class Didh.Routers.AppRouter extends Backbone.Router
 		@tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
 		@tocView.render()
 		@annotator.render()
-		@feedbackView.render()
 
 	routes:
 		"text/:textId/part/:partId"	: "showPartAndText"
@@ -52,8 +51,8 @@ class Didh.Routers.AppRouter extends Backbone.Router
 			if text.get('isLoaded')
 				@texts.setActiveText(text.get('id'))
 				@feedbackView.setModel(text)
-				@textView = new Didh.Views.Frontend.TextView(el: $("#backbone-textView"), model: text, visualization: @feedbackView.getVisualizationType(), parts: @parts, texts: @texts, annotator: @annotator, router: @ )
 				@feedbackView.render()
+				@textView = new Didh.Views.Frontend.TextView(el: $("#backbone-textView"), model: text, visualization: @feedbackView.getVisualizationType(), parts: @parts, texts: @texts, annotator: @annotator, router: @ )
 				@textView.render()
 			else
 				text.fetch({

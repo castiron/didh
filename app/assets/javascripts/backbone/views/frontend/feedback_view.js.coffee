@@ -5,17 +5,18 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 	
 	events: 
 		"click .pane-toggle"						: "togglePane"
-		"click .pane-close" 						:  "closePane"
-		"click .pane-open" 							:  "openPane"
-		"click #feedback-view-interesting" 			:  "updateVisualizationType"
-		"click #feedback-view-interesting-stacked" 	:  "updateVisualizationType"
-		"click #feedback-view-interesting-opacity" 	:  "updateVisualizationType"
+		"click .pane-close" 						: "closePane"
+		"click .pane-open" 							: "openPane"
+		"click #feedback-view-interesting" 			: "updateVisualizationType"
+		"click #feedback-view-interesting-stacked" 	: "updateVisualizationType"
+		"click #feedback-view-interesting-opacity" 	: "updateVisualizationType"
 
 	initialize: () ->
 		@isOpen = false
 		@parts = @options.parts
 		@texts = @options.texts
 		@router = @options.router
+		@defaultVisualization = 'stacked'
 	
 	setModel: (model) ->
 		if @model?
@@ -24,8 +25,8 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 
 		@model = model
 		@model.bind('change', @render, @)
-		@model.bind('change:sentences', @render, @)
-		@render()
+#		@model.bind('change:sentences', @render, @)
+#		@render()
 
 	getVisualizationType: () ->
 		if @$el.find('#feedback-view-interesting').attr('checked') == 'checked'
@@ -36,29 +37,39 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 				type = 'opacity'
 		else
 			type = 'none'
+		console.log type
 		type
 
 	updateVisualizationType: () ->
-		@router.updateVisualizationType(@getVisualizationType())
+		visualization = @getVisualizationType()
+		@visualization = visualization
+		@router.updateVisualizationType(@visualization)
 
 	closePane: (e) ->
 		if e? then e.stopPropagation()
+		@$el.find('.show-if-pane-open').hide()
+		@$el.find('.show-if-pane-closed').show()
 		if @isOpen == true then @.$el.animate(right: 0 )
 		@isOpen = false
+		false
 
 	openPane: (e) ->
 		if e? then e.stopPropagation()
+		@$el.find('.show-if-pane-open').show()
+		@$el.find('.show-if-pane-closed').hide()
 		if @isOpen == false then @.$el.animate(right: (@.$el.width()) + 4)
 		@isOpen = true
+		@el.
+		false
 
 	togglePane: (e) ->
-		console.log 'test'
 		if e? then e.stopPropagation()
 		togglePane: () ->
 		if @isOpen == true
 			@closePane(e)
 		else
 			@openPane(e)		
+		false
 
 	normalizePaneHeight: () ->
 		@.$el.find('.part').each( (i, part) =>
@@ -72,8 +83,11 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 		)
 
 	render: =>
-		$(@el).html(@template(text: @model))
-		# @normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
+		if @visualization?
+			visualization = @visualization
+		else
+			visualization = @defaultVisualization
+		$(@el).html(@template(text: @model, visualization: visualization))
 		@normalizePaneHeight()
 
 

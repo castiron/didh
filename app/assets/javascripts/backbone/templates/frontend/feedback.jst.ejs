@@ -1,4 +1,3 @@
-
 <li class="level-0">
 	<header class="pane-toggle pane--header">
 		<h2 class="pane--title">Feedback</h2>
@@ -20,7 +19,13 @@
 				<span class="count-box--number"><%= text.getAnnotationCount() %></span>
  			</li>
  		</ul>
- 		<a class="content--toggle pane-open" href="#"><b class="content--toggle--arrow"></b>Click to expand for options to hide or show feedback</a>
+ 		<a class="content--toggle pane-open show-if-pane-closed" href="#">
+ 			<b class="content--toggle--arrow"></b>Click to expand for options to hide or show feedback
+ 		</a>
+ 		<a class="content--toggle pane-close show-if-pane-open" style="display:none;" href="#">
+ 			<b class="content--toggle--arrow-right"></b>Click to minimize Feedback section
+ 		</a>
+
 	</section>
 	<% } %>
 </li>
@@ -30,25 +35,25 @@
 	</header>
 	<section class="pane--content pane--vertical-stage">
 		<div class="feedback-options">
-			<h2 class="feedback-options--title">Feedback Options</h2>
+			<h2 class="feedback-options--title">Feedback Options <%= visualization %></h2>
 			<ul class="feedback-options--list">
 				<li>
 					<label class="feedback-options--label">
-						<input class="feedback-options--checkbox" type="checkbox" checked="checked" id="feedback-view-interesting" />
+						<input class="feedback-options--checkbox" type="checkbox" <% if(visualization != 'none') { %> checked="checked" <% } %> id="feedback-view-interesting" />
 						<b></b>
 						View text marked as interesting
 					</label>
 					<ul class="feedback-options--sublist">
 						<li>
 							<label class="feedback-options--label">
-								<input class="feedback-options--radio" type="radio" name="feedback-type" id="feedback-view-interesting-stacked" />
+								<input class="feedback-options--radio" type="radio" <% if(visualization == 'stacked') { %> checked="checked" <% } %> name="feedback-type" id="feedback-view-interesting-stacked" />
 								<b></b>
 								<span class="stacked-label">Stacked</span>
 							</label>
 						</li>
 						<li>
 							<label class="feedback-options--label">
-								<input class="feedback-options--radio" type="radio" name="feedback-type" id="feedback-view-interesting-opacity" />
+								<input class="feedback-options--radio" type="radio" <% if(visualization == 'opacity') { %> checked="checked" <% } %> name="feedback-type" id="feedback-view-interesting-opacity" />
 								<b></b>
 								<span class="opacity-label">Opacity</span>
 							</label>
