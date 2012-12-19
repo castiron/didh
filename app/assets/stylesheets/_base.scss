@@ -11,6 +11,11 @@
 
 // Global
 // --------------------------------------------------------
+html,
+body {
+	overflow-x: hidden;
+}
+
 html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -36,10 +41,7 @@ body {
 }
 
 .page {
-	.interior-content {
-		width: 1000px;
-		margin-left: 15%;
-	}
+	// background-color: $grayLight;
 }
 
 // Typography
@@ -85,6 +87,11 @@ ul, ol {
 // Inline elements
 // --------------------------
 a {
+	color: inherit;
 	@include transition(0.05s color ease-out);
 	text-decoration: none;
+	// TODO is this a horrible idea?
+	.interior-content p & {
+		@extend %body-link;
+	}
 }

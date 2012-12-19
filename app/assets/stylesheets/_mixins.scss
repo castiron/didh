@@ -30,11 +30,10 @@
 // Hyphenation & justification
 // TODO get this working in chrome
 // --------------------------
-@mixin justify {
+@mixin hyphenate {
 	-moz-hyphens: auto;
 	-webkit-hyphens: auto;
-	hyphens: auto;
-	text-align: justify;
+	hyphens: auto;	
 }
 
 // Spaced items

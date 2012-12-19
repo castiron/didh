@@ -1,6 +1,13 @@
 // Components
 // ----------
 
+// General purpose classes
+// --------------------------------------------------------
+.aside {
+	@extend %delta;
+	@extend %with-gray-dark;
+}
+
 // Homepage components
 // --------------------------------------------------------
 .home-header {
@@ -128,14 +135,31 @@
 			width: 47%;
 		}
 	}
+	.page & {
+		width: 1000px;
+		position: relative;
+		&:after {
+			@extend %vertical-bar;
+			content: "";
+			display: block;			
+			width: 2000px;
+			background-color: $grayLight;
+			left: 100%;
+		}
+		// TODO fix flash of :after during transition
+		@include respond-max(1092px) {
+			width: 508px;
+			&:after {
+				display: none;
+			}
+		}
+	}
 }
 
 // Chapter
 // --------------------------
 .chapter {
 	position: relative;
-	p {
-	}
 }
 
 .chapter-heading {
@@ -210,7 +234,7 @@
 }
 
 .chapter-body {
-	@include justify;
+	@extend %justified;
 }
 
 .chapter-notes {
@@ -696,22 +720,79 @@ span.sentence {
 	height: 150px;
 }
 
-// Body.page [SM TO REVIEW]
-// --------------------------
-
-// Two equal columns [SM TO REVIEW]
+// Two equal columns
 // --------------------------
 // <section>
 .two-col-equal {
-	.left, .right {
-		width: 350px;
-		margin-right: 50px;
-		float: left;
+	@extend %clearfix;
+}
+
+.two-col-equal--column {
+	@extend %hyphenated;
+	width: 350px;
+	float: left;
+	& + & {
+		margin-left: 50px;
+	}
+	@include respond-max(1092px) {
+		width: 100%;
+		float: none;
+		& + & {
+			margin-left: 0;
+		}
 	}
 }
 
 .link-box {
-	@extend %delta;
-	padding: 15px;
-	background: $grayLight;
+	@extend %callout;	
 }
+
+// Link list
+// --------------------------
+.link-list {
+	@extend %unstyled-list;
+	li {
+		position: relative;
+	}
+	li + li {
+		margin-top: $shim;
+	}
+}
+
+.link-list--title {
+	@extend %delta;
+	width: 5.5em;
+	text-transform: uppercase;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.link-list--link {
+	@extend %delta;
+	display: block;
+	color: $black;
+	word-wrap: break-word;
+	margin-left: 6em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

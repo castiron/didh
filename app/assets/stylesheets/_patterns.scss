@@ -26,6 +26,15 @@
 
 // Typography
 // --------------------------------------------------------
+%hyphenated {
+	@include hyphenate;
+}
+
+%justified {
+	@extend %hyphenated;
+	text-align: justify;
+}
+
 // Hierarchy
 // --------------------------
 %alpha {
@@ -102,6 +111,14 @@
 	color: $white;
 	&:hover {
 		color: $yellow;
+	}
+}
+
+%body-link {
+	color: $black;
+	text-decoration: underline !important;
+	&:hover {
+		text-decoration: none !important;
 	}
 }
 
@@ -329,3 +346,10 @@
 	@extend %circle-arrow-small;
 }
 
+// Callout box
+// --------------------------
+%callout {
+	padding: $shim $shim $space;
+	background: $grayLight;
+	margin-bottom: $space;
+}
