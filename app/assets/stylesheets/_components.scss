@@ -98,11 +98,11 @@
 	padding: ($space * 2) $shim 0;
 	left: 0;
 	z-index: 10;
-	.nav-open & {
-		@include respond-max(1092px) {
-			width: 14.9%;
-		}
-	}
+	// .nav-open & {
+	// 	@include respond-max(1092px) {
+	// 		width: 14.9%;
+	// 	}
+	// }
 }
 
 .interior-title {
@@ -121,21 +121,8 @@
 // Interior content wrapper
 // TODO adjust margin-left on small screens
 .interior-content {
-	@extend %smooth-resize;
-	width: 508px;
+	@extend %content-wrapper;
 	padding: ($space * 2) 0;
-	margin-left: 29%;
-	.nav-open & {
-		@include respond-max(1550px) {
-			margin-left: 20%;
-		}
-		@include respond-max(1160px) {
-			margin-left: 196px;
-		}
-		@include respond-max(1092px) {
-			width: 47%;
-		}
-	}
 }
 
 // Content wrapper for frontend_page layout
@@ -145,6 +132,66 @@
 	background-color: $white;
 	padding: ($space * 2) 50px 0 240px;
 	padding-right: 80px;
+}
+
+// Page banner
+// --------------------------
+.banner-wrapper {
+	@extend %content-wrapper;
+	padding-top: 0.5em;
+}
+
+.page-banner {
+	@extend %clearfix;
+	margin: 0 -100px;
+	position: relative;
+}
+
+.banner--control {
+	@extend %deci;
+	@extend %with-gray-dark;
+	font-style: italic;
+	padding: 2px 18px 2px;
+	background: transparent url('icon-x.jpg') no-repeat right top;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
+.banner--header,
+.banner--content {
+	height: 118px;	
+	float: left;
+}
+
+.banner--header {
+	width: 46%;
+	color: $white;
+	background: $black url('bg-banner.jpg') no-repeat left top;
+	padding: 1em 1em 1em 80px;
+}
+
+.banner--title {
+	@extend %delta;
+	margin-bottom: 0.5em;
+}
+
+.banner--description {
+	@extend %theta;
+	line-height: $looseLineHeight;
+}
+
+.banner--content {
+	width: 54%;
+	background-color: $white;
+	padding: 1em;
+	border-top: 1px solid $black;
+	border-right: 1px solid $black;
+	border-bottom: 1px solid $black;
+}
+
+.banner--list {
+	@extend %floated-list;
 }
 
 // Content components
@@ -354,7 +401,7 @@ span.sentence {
 // Lives inside nav-panes
 .pane--content {
 	width: 100%;
-	@extend %delta;
+	// @extend %delta;
 	line-height: $tightLineHeight;
 	padding: 40px 20px 30px 50px;
 	position: relative;	
@@ -445,6 +492,7 @@ span.sentence {
 .content--toggle {
 	@extend %eta;
 	@extend %with-gray-dark;
+	font-style: italic;
 	position: absolute;
 	bottom: $space;
 }
@@ -480,9 +528,10 @@ span.sentence {
 }
 
 .count-box--title {
-	@extend %zeta;
+	@extend %eta;
 	@extend %with-gray-dark;
 	width: 64px;
+	text-transform: uppercase;
 	margin: 0;
 	position: absolute;
 	bottom: 40px;
@@ -492,7 +541,7 @@ span.sentence {
 	@extend %deca;
 	@extend %with-gray-darker;
 	position: absolute;
-	bottom: 5px;
+	bottom: 2px;
 }
 
 // Feedback options
@@ -503,6 +552,7 @@ span.sentence {
 }
 
 .feedback-options--title {
+	@extend %beta;
 	@extend %with-gray-dark;
 	font-style: italic;
 	margin-bottom: 1em;
@@ -526,7 +576,7 @@ span.sentence {
 
 .feedback-options--label {
 	@extend %input-label;
-	@extend %delta;
+	@extend %zeta;
 	text-transform: uppercase;
 	position: relative;
 	.stacked-label {
@@ -576,6 +626,7 @@ span.sentence {
 // <ul>
 .nav-index {
 	@extend %unstyled-list;
+	@extend %delta;
 	@include spaced-items(li, 17px);	
 	li:first-child {
 		margin-top: 0;
