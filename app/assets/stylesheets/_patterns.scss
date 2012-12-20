@@ -73,7 +73,11 @@
 %eta {
 	@extend %zeta;
 	text-transform: none;
-	font-style: italic;
+}
+
+%theta {
+	font-size: 0.6em;
+	font-weight: 300;
 }
 
 // Extra-hierarchy
@@ -84,6 +88,11 @@
 %deca {
 	font-size: 2em;
 	font-weight: 300;	
+}
+
+%deci {
+	font-size: 0.5em;
+	font-weight: 300;
 }
 
 // Block-level
@@ -265,6 +274,23 @@
 	position: fixed;
 	top: 0;
 	bottom: 0;
+}
+
+// Interior wrapper
+// --------------------------
+%content-wrapper {
+	@extend %smooth-resize;
+	width: 508px;
+	margin-left: 29%;
+	@include respond-max(1550px) {
+		margin-left: 20%;
+	}
+	@include respond-max(1160px) {
+		margin-left: 196px;
+	}
+	@include respond-max(1092px) {
+		width: 47%;
+	}
 }
 
 // Circles with text

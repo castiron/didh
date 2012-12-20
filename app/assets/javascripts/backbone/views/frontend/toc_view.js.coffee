@@ -12,7 +12,7 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 		@texts = @options.texts
 		@router = @options.router
 		@paneHeight = @.$el.height()
-		@parts.bind('change:active', @render, @)
+		@parts.bind('change:active', @highlightActivePart, @)
 		@texts.bind('change:active', @closePane, @)
 
 	normalizePaneHeight: () ->
@@ -40,6 +40,14 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 			@closePane()
 		else
 			@openPane()		
+
+	highlightActivePart: () ->
+		activePart = _.first(@parts.where({active: true}))
+		@$el.find('.nav-item-part').each( ->
+			$(@).css({'font-weight': 'normal'})
+		)
+		activeEl = @$el.find('.nav-item-part-' + activePart.get('id')).first()
+		activeEl.css({'font-weight': 'bold'})
 
 	showPart: (part) ->
 		@parts.setActivePart(part.id)

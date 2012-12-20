@@ -12,6 +12,7 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 		"click #feedback-view-interesting-opacity" 	: "updateVisualizationType"
 
 	initialize: () ->
+		@firstCheck = true
 		@isOpen = false
 		@parts = @options.parts
 		@texts = @options.texts
@@ -29,6 +30,10 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 #		@render()
 
 	getVisualizationType: () ->
+		if @firstCheck == true 
+			@firstCheck = false
+			return 'stacked'
+
 		if @$el.find('#feedback-view-interesting').attr('checked') == 'checked'
 			type = 'stacked'
 			if @$el.find("#feedback-view-interesting-stacked").attr('checked') == 'checked'
@@ -37,7 +42,6 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 				type = 'opacity'
 		else
 			type = 'none'
-		console.log type
 		type
 
 	updateVisualizationType: () ->
@@ -46,7 +50,9 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 		@router.updateVisualizationType(@visualization)
 
 	closePane: (e) ->
-		if e? then e.stopPropagation()
+		if e?
+			console.log 'stopping prop' 
+			e.stopPropagation()
 		@$el.find('.show-if-pane-open').hide()
 		@$el.find('.show-if-pane-closed').show()
 		if @isOpen == true then @.$el.animate(right: 0 )
@@ -59,7 +65,6 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 		@$el.find('.show-if-pane-closed').hide()
 		if @isOpen == false then @.$el.animate(right: (@.$el.width()) + 4)
 		@isOpen = true
-		@el.
 		false
 
 	togglePane: (e) ->
