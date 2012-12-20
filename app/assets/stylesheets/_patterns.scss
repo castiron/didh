@@ -95,6 +95,14 @@
 	}
 }
 
+%subsection-heading {
+	@extend %delta;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin-bottom: $shim;
+}
+
 // Inline
 // --------------------------
 
@@ -352,4 +360,16 @@
 	padding: $shim $shim $space;
 	background: $grayLight;
 	margin-bottom: $space;
+}
+
+// Columns
+// --------------------------------------------------------
+// NB: only extend this on unnested selectors (so the '& + &' selector works)
+%column {
+	@extend %hyphenated;
+	margin-bottom: $shim * 2;
+	float: left;
+	& + & {
+		margin-left: 50px;
+	}
 }
