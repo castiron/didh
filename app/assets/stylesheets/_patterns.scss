@@ -73,7 +73,11 @@
 %eta {
 	@extend %zeta;
 	text-transform: none;
-	font-style: italic;
+}
+
+%theta {
+	font-size: 0.6em;
+	font-weight: 300;
 }
 
 // Extra-hierarchy
@@ -86,6 +90,11 @@
 	font-weight: 300;	
 }
 
+%deci {
+	font-size: 0.5em;
+	font-weight: 300;
+}
+
 // Block-level
 // --------------------------
 %heading {
@@ -93,6 +102,14 @@
 	p + & {
 		@extend %loose-top-space;
 	}
+}
+
+%subsection-heading {
+	@extend %delta;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin-bottom: $shim;
 }
 
 // Inline
@@ -259,6 +276,23 @@
 	bottom: 0;
 }
 
+// Interior wrapper
+// --------------------------
+%content-wrapper {
+	@extend %smooth-resize;
+	width: 508px;
+	margin-left: 29%;
+	@include respond-max(1550px) {
+		margin-left: 20%;
+	}
+	@include respond-max(1160px) {
+		margin-left: 196px;
+	}
+	@include respond-max(1092px) {
+		width: 47%;
+	}
+}
+
 // Circles with text
 // --------------------------
 %circle-base {
@@ -352,4 +386,16 @@
 	padding: $shim $shim $space;
 	background: $grayLight;
 	margin-bottom: $space;
+}
+
+// Columns
+// --------------------------------------------------------
+// NB: only extend this on unnested selectors (so the '& + &' selector works)
+%column {
+	@extend %hyphenated;
+	margin-bottom: $shim * 2;
+	float: left;
+	& + & {
+		margin-left: 50px;
+	}
 }

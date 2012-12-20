@@ -19,4 +19,5 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/didh
+//= require page
 //= require_tree .

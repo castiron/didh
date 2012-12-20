@@ -11,11 +11,6 @@
 
 // Global
 // --------------------------------------------------------
-html,
-body {
-	overflow-x: hidden;
-}
-
 html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -41,7 +36,7 @@ body {
 }
 
 .page {
-	// background-color: $grayLight;
+	background-color: $grayLight;
 }
 
 // Typography
