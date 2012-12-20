@@ -5,14 +5,8 @@
 	<section class="pane--content">
 		<ul class="nav-index">
 			<% parts.each( function(part) { %> 
-				<li>
-					<% if(part.get('active') == true) { %>
-						<strong>
-							<a href="<%= part.getUrl(activeText) %>"><%= part.get('label') %></a>
-						</strong>
-					<% } else { %>
-							<a href="<%= part.getUrl(activeText) %>"><%= part.get('label') %></a>
-					<% } %>
+				<li class="nav-item-part nav-item-part-<%= part.get('id') %>">
+					<a href="<%= part.getUrl(activeText) %>"><%= part.get('label') %></a>
 				</li>
 			<% }) %>
 		</ul>

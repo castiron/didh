@@ -28,7 +28,9 @@ class Didh.Routers.AppRouter extends Backbone.Router
 		@showPart(partId)
 
 	setDefaultText: () ->
-		@setActiveText(1)
+		part = _.first(@parts.where({label: "Introduction"}))
+		text = _.first(@texts.where({part: part.id}))
+		@setActiveText(text.id)
 
 	renderTextView: () ->
 		@textView.render()
@@ -52,6 +54,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
 				@texts.setActiveText(text.get('id'))
 				@feedbackView.setModel(text)
 				@feedbackView.render()
+				console.log @feedbackView.getVisualizationType(), 'test'
 				@textView = new Didh.Views.Frontend.TextView(el: $("#backbone-textView"), model: text, visualization: @feedbackView.getVisualizationType(), parts: @parts, texts: @texts, annotator: @annotator, router: @ )
 				@textView.render()
 			else
