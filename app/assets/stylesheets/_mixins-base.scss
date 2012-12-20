@@ -15,6 +15,12 @@
 	}
 }
 
+@mixin respond-max-height($height) {
+	@media all and (max-height: $height) {
+		@content;
+	}
+}
+
 // Selection background
 // --------------------------
 @mixin selection($color) {

@@ -26,7 +26,7 @@
 		</script>
 
 	</head>
-	<body class="interior nav-open">
+	<body class="interior nav-open banner-open">
 		<div class="annotator" style="top: -1000px;" id="backbone-annotatorView" ></div>
 		<header class="page-header">
 			<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
@@ -34,22 +34,17 @@
 				<%= render "shared/menu" %>
 			</ul>
 		</header>
-		<div class="banner-wrapper">
-			<aside class="page-banner">
-				<a class="banner--control js-banner-close" href="#">Click to close</a>
-				<header class="banner--header">
-					<h1 class="banner--title">A Note on Using This Site</h1>
-					<p class="banner--description">You can select the text to select words or sentences to expressinterest to the community, or help mark for our index.</p>
-				</header>
-				<div class="banner--content">
-					<ul class="banner--list">
-						<li>
-							
-						</li>
-					</ul>
-				</div>
-			</aside>
-		</div>
+		<aside class="page-banner">
+			<div class="legend">
+				<a class="legend--toggle" href="#">Click to close</a>
+				<h1 class="legend--title">A Note on Using This Site</h1>
+				<p class="legend--description">You can select and mark passages to express interest to the community, or help tag sentences for our index. Passages marked as interesting will feature a blue line in the margin.</p>
+				<aside class="legend--note">Tip: to turn off the visual feedback, click <%= image_tag("icon-legend.png", :width => 99) %> in the Feedback section for more options.</aside>
+			</div>
+			<nav class="nav-hud">
+				
+			</nav>
+		</aside>
 		<section class="interior-content">
 			<article class="chapter">
 				<%= yield %>

@@ -19,23 +19,26 @@
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	</head>
 	<body class="home">
-		<header class="home-header">
-			<h1 class="home-title"><a href="/">Debates in the Digital Humanities</a></h1>
-			<h2 class="byline">Matthew K. Gold, Editor</h2>
-		</header>
-		<section class="home-content">
-			<%= yield %>
-			<ul class="nav-primary">
-				<%= render "shared/menu" %>
-			</ul>
-			<footer class="home-footer">
-				<ul class="nav-footer">
-					<li><a class="logo-cuny" href="http://www.gc.cuny.edu/">The Graduate Center, CUNY</a></li>
-					<li><a class="logo-umn" href="http://www.upress.umn.edu/">University of Minnesota Press</a></li>
-					<li><a class="logo-gcdi" href="http://gcdi.commons.gc.cuny.edu/">GC Digital Initiatives</a></li>
+		<div class="home-wrapper">
+			<header class="home-header">
+				<a class="home-masthead" href="/"></a>
+				<h1 class="home-title">Debates in the Digital Humanities</h1>
+				<h2 class="home-byline">Matthew K. Gold, Editor</h2>
+			</header>
+			<section class="home-content">
+				<%= yield %>
+				<ul class="nav-primary">
+					<%= render "shared/menu" %>
 				</ul>
-			</footer>
-		</section>
+				<footer class="home-footer">
+					<ul class="nav-footer">
+						<li><a class="logo-cuny" href="http://www.gc.cuny.edu/">The Graduate Center, CUNY</a></li>
+						<li><a class="logo-umn" href="http://www.upress.umn.edu/">University of Minnesota Press</a></li>
+						<li><a class="logo-gcdi" href="http://gcdi.commons.gc.cuny.edu/">GC Digital Initiatives</a></li>
+					</ul>
+				</footer>
+			</section>
+		</div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="Resources/Javascript/Libs/jQuery/jquery-1.8.2.min.js"><\/script>')</script>
