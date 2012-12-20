@@ -112,7 +112,7 @@
 	background-color: $black;
 	padding: ($space * 2) $shim 0;
 	left: 0;
-	z-index: 10;
+	z-index: 30;
 	// .nav-open & {
 	// 	@include respond-max(1092px) {
 	// 		width: 14.9%;
@@ -138,6 +138,8 @@
 .interior-content {
 	@extend %content-wrapper;
 	padding: ($space * 3) 0;
+	position: relative;
+	z-index: 10;
 	.banner-open & {
 		padding-top: $space * 7;
 	}
@@ -161,6 +163,7 @@
 	position: fixed;
 	left: 0;
 	right: 0;
+	z-index: 20;
 }
 
 // Lives inside .page--banner
@@ -356,6 +359,7 @@ span.sentence {
 	width: $navOpenWidth;
 //	background-color: $grayLight;
 	right: 0px;
+	z-index: 30;
 //	overflow: hidden;
 //	.nav-open & {
 //		width: $navOpenWidth;
