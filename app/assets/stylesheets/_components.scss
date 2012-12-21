@@ -815,7 +815,9 @@ span.sentence {
 .annotate-close {
 	padding-left: 30px;
 	margin-top: 10px;
-	position: relative;
+	background: transparent url('icon-x-alt.png') no-repeat 4px center;
+	background-size: 12px;
+	// position: relative;
 }
 
 .annotate-close--x {
