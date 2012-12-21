@@ -828,6 +828,12 @@ span.sentence {
 	position: absolute;
 	left: -100px;
 	overflow: visible;
+	@include respond-max(1375px) {
+		left: -60px;
+	}
+	@include respond-max(1148px) {
+		left: -36px;
+	}
 }
 
 
