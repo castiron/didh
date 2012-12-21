@@ -141,9 +141,9 @@
 	padding: ($space * 3) 0;
 	position: relative;
 	z-index: 10;
-	.banner-open & {
-		padding-top: $space * 7;
-	}
+	// .banner-open & {
+	// 	padding-top: $space * 7;
+	// }
 }
 
 // Content wrapper for frontend_page layout
@@ -158,24 +158,24 @@
 // Page banner
 // --------------------------
 .page-banner {
-	background-color: $black;
+	background-color: $grayAlt;
+	border-top: 1px solid darken($grayAlt, 10%);
 	margin-left: 160px;
 	position: fixed;
-	left: 0;
 	right: 0;
+	bottom: 0;
+	left: 0;
 	z-index: 20;
 }
 
-// Lives inside .page--banner
+// Lives inside .page-banner
 .legend {
 	display: none;
 	width: 690px;
 	height: 160px;
-	color: $white;
-	background: $black url('bg-banner.jpg') no-repeat left top;
-	background-size: 90px 160px;
-	padding: 20px 120px 0 90px;
-	border-bottom: 2px solid $black;
+	background: $grayAlt url('bg-banner.jpg') no-repeat left top;
+	background-size: auto 160px;
+	padding: 20px 120px 0 96px;
 	position: relative;
 	.banner-open & {
 		display: block;
@@ -201,20 +201,22 @@
 
 .legend--toggle {
 	@extend %theta;
-	@extend %with-gray;
-	display: block;
+	display: inline-block;
 	font-weight: 500;
 	font-style: italic;
-	padding: 1px 20px 1px 0;
-	background: transparent url('icon-x-white.png') no-repeat right top;
-	background-size: 16px;
-	position: absolute;
-	top: 13px;
-	right: 0;
+	line-height: 18px;
+	padding-left: 24px;
+	background: transparent url('icon-x.png') no-repeat left center;
+	background-size: 18px;
 }
 
-// Lives inside .page-banner
+// Head-up display
+// --------------------------
 .nav-hud {
+	display: none;
+}
+
+.hud--list {
 	@extend %delta;
 	@extend %floated-list;
 	// height: 42px;
