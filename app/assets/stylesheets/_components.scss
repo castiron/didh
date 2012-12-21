@@ -382,7 +382,7 @@ span.sentence {
 	@extend %vertical-bar-fixed;
 	@extend %smooth-resize;
 	width: $navOpenWidth;
-	background-color: $white;
+	// background-color: $white;
 	right: 0px;
 	z-index: 30;
 //	overflow: hidden;
