@@ -11,46 +11,18 @@
 // Homepage components
 // --------------------------------------------------------
 .home-wrapper {
-	padding-left: 50%;
-	position: relative;
-	@include respond-max(1400px) {
-		// padding-left: 25%;
-	}
-}
-
-.home-header {
-	@extend %vertical-bar-fixed;
-	width: 487px;
-	left: 0;
-	@include respond-max(1400px) {
-		width: 35%;
-		// right: 61%;
-		// left: auto;
-	}
-}
-
-.home-masthead {
-	$w: 974px;
-	$h: 1510px;
-	width: $w / 2;
-	height: $h / 2;
-	display: block;
-	background: transparent url('bg-home.jpg') no-repeat left bottom;
-	@include background-size(contain);
+	margin-left: 35%;
 	position: absolute;
-	top: 16%;
-	@include respond-max(1400px) {
-		width: 100%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	@include respond-max(922px) {
+		margin-left: 25%;
 	}
-	@include respond-max(1100px) {
-		width: 385px;
-		position: absolute;
-		right: 0;
+	@include respond-min(2000px) {
+		margin-left: 700px;
 	}
-	@include respond-max-height(900px) {
-		top: auto;
-		bottom: 0;
-	}	
 }
 
 .home-title,
@@ -58,10 +30,39 @@
 	display: none;
 }
 
+.home-header {
+	$w: 974px;
+	$h: 1510px;
+	@extend %vertical-bar-fixed;
+	width: 35%;
+	background: transparent url('bg-home.jpg') no-repeat left bottom;
+	background-size: 100% auto;
+	left: 0;
+	@include respond-max(1391px) {
+		background-position: right bottom;
+		background-size: ($w / 2) ($h / 2);
+	}
+	@include respond-max(922px) {
+		width: 25%;
+		background-size: ($w / 3) ($h / 3);
+	}
+	@include respond-min(2000px) {
+		width: 700px;
+	}
+}
+
 .home-content {
 	width: 480px;
 	padding-bottom: 197px;
-	position: relative;
+	margin: 0 0 $space ($space * 3);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	@include respond-max(922px) {
+		width: 380px;
+		font-size: 0.8em;
+		margin-left: ($space * 2);
+	}
 }
 
 .nav-start {
