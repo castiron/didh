@@ -717,7 +717,7 @@ span.sentence {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 10;
+	z-index: 20;
 	&:before {
 		content: "";
 		border: 15px solid transparent;
