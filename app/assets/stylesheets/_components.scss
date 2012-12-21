@@ -524,14 +524,14 @@ span.sentence {
 
 // <a>
 .content-nav--toggle {
-	@extend %circle-arrow-right;
+	@extend %circle-arrow;
 	position: absolute;
 	top: 25%;
 	left: 6px;
 }
 
 .content-nav--toggle-pos2 {
-	@extend %circle-arrow-right;
+	@extend %circle-arrow-left;
 }
 
 
