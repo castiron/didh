@@ -19,7 +19,6 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 		false
 
 	goToPosition: (position) ->
-
 		# Feedback view also controls the TocView in some cases
 		if @tocView?
 			if position == 2
@@ -28,6 +27,20 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 				@tocView.goToPosition(1)
 
 		if @currentPosition != position
+			switch position
+				when 0
+					@$el.find('.js-content-nav--pos1-show').hide()
+					@$el.find('.js-content-nav--pos2-show').hide()
+					@$el.find('.js-content-nav--pos0-show').show()
+				when 1
+					@$el.find('.js-content-nav--pos0-show').hide()
+					@$el.find('.js-content-nav--pos2-show').hide()
+					@$el.find('.js-content-nav--pos1-show').show()
+				when 2
+					@$el.find('.js-content-nav--pos0-show').hide()
+					@$el.find('.js-content-nav--pos1-show').hide()
+					@$el.find('.js-content-nav--pos2-show').show()
+
 			@currentPosition = position
 			leftDistance = @positions[position]
 			@$el.animate({left: @positions[position]})

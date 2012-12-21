@@ -24,7 +24,6 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		if @annotatorHeight == 0 then @annotatorHeight = @$el.height()
 		clickX = event.pageX
 		clickY = event.pageY
-		console.log @$el.height()
 		position = {top: (clickY - @annotatorHeight - 40)+ 'px', left: (clickX - 43) + 'px'}
 
 	showAnnotatorOn: (sentenceEl, event) ->
