@@ -1,13 +1,14 @@
-Didh.Views.Frontend ||= {}
+#= require ./pane_view
 
-class Didh.Views.Frontend.TocView extends Backbone.View
+class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
 	template: JST["backbone/templates/frontend/toc"]
 	
-	events: 
-		"click .pane-toggle" : "togglePane"
+	events:
+		"click .js-content-nav--open-toggle"		: "toggleOpen"
+		"click .js-content-nav--visible-toggle"		: "toggleVisibility"
 
 	initialize: () ->
-		@isOpen = false
+		@currentPosition = 1
 		@parts = @options.parts
 		@texts = @options.texts
 		@router = @options.router
@@ -20,27 +21,6 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 			$(part).height(@.paneHeight)
 		)
 
-	normalizePaneHeaderPosition: () ->
-		$('.pane--title').each( ->
-			paneHeight = $(@).parents('.pane--header').height()
-			$(@).width(paneHeight)
-		)		
-
-	closePane: () ->
-		if @isOpen == true then @.$el.animate(right: 0 )
-		@isOpen = false
-
-	openPane: () ->
-		if @isOpen == false then @.$el.animate(right: (@.$el.width() * 2) + 8 )
-		@isOpen = true
-
-	togglePane: () ->
-		togglePane: () ->
-		if @isOpen == true
-			@closePane()
-		else
-			@openPane()		
-
 	highlightActivePart: () ->
 		activePart = _.first(@parts.where({active: true}))
 		@$el.find('.nav-item-part').each( ->
@@ -51,13 +31,24 @@ class Didh.Views.Frontend.TocView extends Backbone.View
 
 	showPart: (part) ->
 		@parts.setActivePart(part.id)
-		@openPane()
+		@goToPosition(0)
 		@partsContainer = @.$el.find('.parts:first')
 		target = @.$el.find('#toc-part-' + part.get('id'))
 		@partsContainer.animate({top: -1 * target.position().top})
 
+	setOpenCloseHiddenPositions: () ->
+		firstPaneWidth = @$el.find('.level-0').first().width()
+		secondPaneWidth = @$el.find('.level-1').first().width()
+		handleWidth = @$el.find('header').first().width()
+		@positions = {
+			0: -1 * (secondPaneWidth + 12 - 50)
+			1: 0
+			2: (firstPaneWidth - handleWidth)
+		}
+
 	render: =>
 		$(@el).html(@template(parts: @parts, texts: @texts, activeText: @router.getRequestedText()))
-		# @normalizePaneHeaderPosition() # TODO: Move this into a sidebar view, perhaps
+
+		@setOpenCloseHiddenPositions()
 		@normalizePaneHeight()
 

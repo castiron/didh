@@ -391,7 +391,7 @@ span.sentence {
 		position: relative;
 		height: 100%;
 		border-left: 4px solid $white;
-		width: $navOpenWidth * 2;
+		width: ($navOpenWidth * 2) + 50;
 		border-bottom: 4px solid $white;
 		left: $navOpenWidth + 0px;
 	}

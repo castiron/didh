@@ -1,24 +1,27 @@
+#= require ./pane_view
+
 Didh.Views.Frontend ||= {}
 
-class Didh.Views.Frontend.FeedbackView extends Backbone.View
+class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	template: JST["backbone/templates/frontend/feedback"]
 	
 	events: 
-		"click .pane-toggle"						: "togglePane"
-		"click .pane-close" 						: "closePane"
-		"click .pane-open" 							: "openPane"
+		"click .js-content-nav--open-toggle"		: "toggleOpen"
+		"click .js-content-nav--visible-toggle"		: "toggleVisibility"
+
 		"click #feedback-view-interesting" 			: "updateVisualizationType"
 		"click #feedback-view-interesting-stacked" 	: "updateVisualizationType"
 		"click #feedback-view-interesting-opacity" 	: "updateVisualizationType"
 
 	initialize: () ->
 		@firstCheck = true
-		@isOpen = false
+		@currentPosition = 1
 		@parts = @options.parts
 		@texts = @options.texts
 		@router = @options.router
+		@tocView = @options.tocView
 		@defaultVisualization = 'stacked'
-	
+
 	setModel: (model) ->
 		if @model?
 			@model.off('change')
@@ -49,43 +52,20 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 		@visualization = visualization
 		@router.updateVisualizationType(@visualization)
 
-	closePane: (e) ->
-		if e?
-			console.log 'stopping prop' 
-			e.stopPropagation()
-		@$el.find('.show-if-pane-open').hide()
-		@$el.find('.show-if-pane-closed').show()
-		if @isOpen == true then @.$el.animate(right: 0 )
-		@isOpen = false
-		false
-
-	openPane: (e) ->
-		if e? then e.stopPropagation()
-		@$el.find('.show-if-pane-open').show()
-		@$el.find('.show-if-pane-closed').hide()
-		if @isOpen == false then @.$el.animate(right: (@.$el.width()) + 4)
-		@isOpen = true
-		false
-
-	togglePane: (e) ->
-		if e? then e.stopPropagation()
-		togglePane: () ->
-		if @isOpen == true
-			@closePane(e)
-		else
-			@openPane(e)		
-		false
-
 	normalizePaneHeight: () ->
 		@.$el.find('.part').each( (i, part) =>
 			$(part).height(@.paneHeight)
 		)
 
-	normalizePaneHeaderPosition: () ->
-		@.$el.find('.pane--title').each( ->
-			paneHeight = $(@).parents('.pane--header').height()
-			$(@).width(paneHeight)
-		)
+	setOpenCloseHiddenPositions: () ->
+		firstPaneWidth = @$el.find('.level-0').first().width()
+		secondPaneWidth = 376
+		handleWidth = @$el.find('header').first().width()
+		@positions = {
+			0: -1 * (secondPaneWidth - handleWidth)
+			1: 0
+			2: (firstPaneWidth - handleWidth)
+		}
 
 	render: =>
 		if @visualization?
@@ -93,6 +73,9 @@ class Didh.Views.Frontend.FeedbackView extends Backbone.View
 		else
 			visualization = @defaultVisualization
 		$(@el).html(@template(text: @model, visualization: visualization))
+
+		@setOpenCloseHiddenPositions()
 		@normalizePaneHeight()
+
 
 
