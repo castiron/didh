@@ -415,6 +415,13 @@
 	margin-bottom: $shim * 2;
 	float: left;
 	& + & {
-		margin-left: 50px;
+		padding-left: 50px;
 	}
+	@include respond-max(960px) {
+		width: 100% !important;
+		float: none;
+		& + & {
+			padding-left: 0;
+		}
+	}	
 }

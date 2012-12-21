@@ -151,8 +151,14 @@
 	@extend %smooth-resize;
 	width: 1070px;
 	background-color: $white;
-	padding: ($space * 2) 50px 0 240px;
-	padding-right: 80px;
+	padding: ($space * 2) 80px 0 240px;
+	@include respond-max(1070px) {
+		width: 100%;
+	}
+	@include respond-max(776px) {
+		padding-right: 40px;
+		padding-left: 200px;
+	}
 }
 
 // Page banner
@@ -909,25 +915,35 @@ span.sentence {
 .column-equal {
 	@extend %column;
 	width: 350px;
-	// @include respond-max(1092px) {
-	// 	width: 100%;
-	// 	float: none;
-	// 	& + & {
-	// 		margin-left: 0;
-	// 	}
-	// }
+	img {
+		width: 100%;
+	}
+	@include respond-max(1070px) {
+		width: 50%;
+	}
+	@include respond-max(960px) {
+		img {
+			max-width: 350px;
+		}
+	}	
 }
 
 // To be used alongside column-narrow
 .column-wide {
 	@extend %column;
 	width: 500px;
+	@include respond-max(1070px) {
+		width: 70%;
+	}
 }
 
 // To be used alongside column-wide
 .column-narrow {
 	@extend %column;
 	width: 200px;
+	@include respond-max(1070px) {
+		width: 30%;
+	}
 }
 
 // full-width column
