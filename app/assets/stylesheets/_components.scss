@@ -138,7 +138,7 @@
 // TODO adjust margin-left on small screens
 .interior-content {
 	@extend %content-wrapper;
-	padding: ($space * 3) 0;
+	padding: ($space * 4) 0;
 	position: relative;
 	z-index: 10;
 	// .banner-open & {
@@ -158,13 +158,11 @@
 // Page banner
 // --------------------------
 .page-banner {
+	@extend %horizontal-bar-fixed;
 	background-color: $grayAlt;
 	border-top: 1px solid darken($grayAlt, 10%);
 	margin-left: 160px;
-	position: fixed;
-	right: 0;
 	bottom: 0;
-	left: 0;
 	z-index: 20;
 }
 
@@ -213,18 +211,21 @@
 // Head-up display
 // --------------------------
 .nav-hud {
-	display: none;
+	@extend %horizontal-bar-fixed;
+	background-color: $white;
+	border-bottom: 1px solid lighten($black, 70%);
+	margin-left: 160px;
+	top: 0;
+	z-index: 20;
 }
 
 .hud--list {
 	@extend %delta;
 	@extend %floated-list;
-	// height: 42px;
-	background-color: $white;
-	padding-left: 18px;
-	border-bottom: 1px solid $black;
+	color: lighten($black, 40%);
+	padding: 10px 0 10px 18px;
 	li {
-		line-height: 40px;
+		line-height: 22px;
 	}
 }
 
@@ -425,7 +426,8 @@ span.sentence {
 	@extend %delta;
 	position: relative;
 	@extend %unstyled-list;
-	li.level-0, li.level-1 {
+	.level-0,
+	.level-1 {
 		@extend %vertical-bar;
 		width: $navOpenWidth;
 		background-color: $grayLight;
@@ -435,7 +437,7 @@ span.sentence {
 			inset ($navClosedWidth + 4) 0 0 0 $white
 		);
 	}
-	li.level-1 {
+	.level-1 {
 		position: relative;
 		height: 100%;
 		border-left: 4px solid $white;
@@ -477,6 +479,8 @@ span.sentence {
 }
 
 .pane-bottom {
+	height: 60%;
+	top: 0;
 	&.reveal-level-0 {
 		right: 0;
 	}
@@ -486,9 +490,9 @@ span.sentence {
 	&.reveal-level-2 {
 		right: ($navOpenWidth * 2) + 4px;
 	}
-
-	height: 60%;
-	top: 0;
+	.level-0 {
+		margin-bottom: 0;
+	}
 }
 
 .pane--header {
@@ -652,27 +656,28 @@ span.sentence {
 	@extend %radio;
 }
 
-// Highlight navigation
-// --------------------------
-// <ul>
-.nav-highlight {
-	@extend %unstyled-list;
-	@include spaced-items(li, 12px);
-	margin-top: 16px;
-	a {
-		display: inline-block;
-	}
-}
+// TODO remove if possible
+// // Highlight navigation
+// // --------------------------
+// // <ul>
+// .nav-highlight {
+// 	@extend %unstyled-list;
+// 	@include spaced-items(li, 12px);
+// 	margin-top: 16px;
+// 	a {
+// 		display: inline-block;
+// 	}
+// }
 
-// <a>
-.highlight-emphasis {
-	@extend %circle-item-blue;
-}
+// // <a>
+// .highlight-emphasis {
+// 	@extend %circle-item-blue;
+// }
 
-// <a>
-.highlight-mark {
-	@extend %circle-item;
-}
+// // <a>
+// .highlight-mark {
+// 	@extend %circle-item;
+// }
 
 // Table of contents
 // --------------------------

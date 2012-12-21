@@ -280,6 +280,14 @@
 	bottom: 0;
 }
 
+// Fixes block-level element to left & right of viewport
+// Be sure to specify top or bottom positioning
+%horizontal-bar-fixed {
+	position: fixed;
+	right: 0;
+	left: 0;
+}
+
 // Interior wrapper
 // --------------------------
 %content-wrapper {
