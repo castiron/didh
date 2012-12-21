@@ -10,6 +10,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
 		@keywords = new Didh.Collections.KeywordsCollection()
 
 		@annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), keywords: @keywords, annotations: @annotations, parts: @parts, texts: @texts, router: @ )
+		@banner= new Didh.Views.Frontend.BannerView(el: $("#backbone-bannerView"), texts: @texts, router: @ )
 		@tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
 		@feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), tocView: @tocView, texts: @texts, router: @ )
 		@tocView.render()
@@ -54,7 +55,6 @@ class Didh.Routers.AppRouter extends Backbone.Router
 				@texts.setActiveText(text.get('id'))
 				@feedbackView.setModel(text)
 				@feedbackView.render()
-				console.log @feedbackView.getVisualizationType(), 'test'
 				@textView = new Didh.Views.Frontend.TextView(el: $("#backbone-textView"), model: text, visualization: @feedbackView.getVisualizationType(), parts: @parts, texts: @texts, annotator: @annotator, router: @ )
 				@textView.render()
 			else
@@ -69,10 +69,12 @@ class Didh.Routers.AppRouter extends Backbone.Router
 
 	showPart: (id) ->
 		@annotator.stopAnnotating()
-		@requestedPartId = id
 		part = @parts.get(id)
-		text = _.first(@texts.where({part: part.id}))
-		@setActiveText(text.id)
+		if !@texts.getActiveTextId()
+			@requestedPartId = id
+			text = _.first(@texts.where({part: part.id}))
+			@setActiveText(text.id)
+
 		@tocView.showPart(part)
 
 	getRequestedText: () ->
