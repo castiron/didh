@@ -1,7 +1,8 @@
 <li class="level-0">
-	<header class="pane-toggle pane--header">
+	<header class="js-content-nav--open-toggle pane--header">
 		<h2 class="pane--title">Feedback</h2>
-		<a class="content-nav--toggle js-content-nav--toggle" href=""></a>
+		<a class="content-nav--toggle js-content-nav--pos0-show js-content-nav--pos1-show js-content-nav--visible-toggle" href=""></a>
+		<a style="display: none;" class="content-nav--toggle content-nav--toggle-pos2 js-content-nav--pos2-show js-content-nav--visible-toggle" href=""></a>
 	</header>
 	<% if(text != null) { %>
  	<section class="pane--content">
@@ -19,13 +20,12 @@
 				<span class="count-box--number"><%= text.getAnnotationCount() %></span>
  			</li>
  		</ul>
- 		<a class="content--toggle pane-open show-if-pane-closed" href="">
+ 		<a class="content--toggle js-content-nav--pos1-show js-content-nav--pos2-show js-content-nav--open-toggle" href="">
  			<b class="content--toggle--arrow"></b>Show/hide feedback
  		</a>
- 		<a class="content--toggle pane-close show-if-pane-open" style="display:none;" href="">
- 			<b class="content--toggle--arrow-right"></b>Show/hide feedback
+ 		<a class="content--toggle js-content-nav--pos0-show js-content-nav--open-toggle" style="display:none;" href="">
+ 			<b class="content--toggle--arrow-right"></b>Hide feedback options
  		</a>
-
 	</section>
 	<% } %>
 </li>
@@ -61,7 +61,7 @@
 					</ul>
 				</li>
 			</ul>
-			<!-- <a href="#" class="pane-close">click to minimize feedback options</a> -->
+			<!-- <a href="#" class="js-content-nav--open-toggle">click to minimize feedback options</a> -->
 		</div>
 	</section>
 </li>

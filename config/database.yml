@@ -16,5 +16,5 @@ test:
 production:
   adapter: postgresql
   database: rails_app_prod
-  username: postgres
+  username: rails_app_prod
   password: ZryWNuy2fctGcwFWifm2
