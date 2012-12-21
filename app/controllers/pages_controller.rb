@@ -20,7 +20,7 @@ class PagesController < ActionController::Base
 	def about
 	end
 
-	def blog
+	def news
 	end
 
 end

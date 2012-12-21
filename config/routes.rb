@@ -5,7 +5,7 @@ Didh::Application.routes.draw do
   match 'debates/' => 'debates#index'
   match 'book/' => 'pages#book'
   match 'about/' => 'pages#about'
-  match 'blog/' => 'pages#blog'
+  match 'news/' => 'pages#news'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
