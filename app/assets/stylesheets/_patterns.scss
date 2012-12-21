@@ -213,6 +213,7 @@
 		width: 20px;
 		height: 23px;
 		background: transparent url('checkbox.png') no-repeat left top;
+		background-size: 100% auto;
 		bottom: 0;
 	}
 	&:checked {
@@ -234,6 +235,7 @@
 		width: 18px;
 		height: 18px;
 		background: transparent url('radio.png') no-repeat left top;
+		background-size: 100% auto;
 		bottom: -2px;
 	}
 }
