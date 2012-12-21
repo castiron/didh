@@ -530,6 +530,11 @@ span.sentence {
 	left: 6px;
 }
 
+.content-nav--toggle-pos2 {
+	@extend %circle-arrow-left;
+}
+
+
 // Pane content toggle
 // Lives inside .pane--content
 // --------------------------
