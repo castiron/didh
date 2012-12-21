@@ -157,7 +157,6 @@
 // Page banner
 // --------------------------
 .page-banner {
-	color: $white;
 	background-color: $black;
 	margin-left: 160px;
 	position: fixed;
@@ -168,13 +167,18 @@
 
 // Lives inside .page--banner
 .legend {
+	display: none;
 	width: 690px;
 	height: 160px;
+	color: $white;
 	background: $black url('bg-banner.jpg') no-repeat left top;
 	background-size: 90px 160px;
 	padding: 20px 120px 0 90px;
 	border-bottom: 2px solid $black;
 	position: relative;
+	.banner-open & {
+		display: block;
+	}
 }
 
 .legend--title {
@@ -210,7 +214,28 @@
 
 // Lives inside .page-banner
 .nav-hud {
+	@extend %delta;
+	@extend %floated-list;
+	// height: 42px;
+	background-color: $white;
+	padding-left: 18px;
+	border-bottom: 1px solid $black;
+	li {
+		line-height: 40px;
+	}
+}
 
+.hud--title {
+
+}
+
+.hud--author {
+	@extend %delta;	
+	text-transform: uppercase;
+}
+
+.hud--details {
+	@extend %delta;
 }
 
 // Content components
