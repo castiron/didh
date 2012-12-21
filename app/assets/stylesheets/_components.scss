@@ -10,43 +10,58 @@
 
 // Homepage components
 // --------------------------------------------------------
-.home-header {
-	@extend %vertical-bar-fixed;
-	width: 469px;
-	background: transparent url('bg-home.jpg') no-repeat left bottom;
-	background-size: 468px 726px;
-	left: 0;
-}
-
-.home-title {
-	position: absolute;
-	bottom: 151px;
-	right: 17px;
-	a {
-		@extend %hidden-text;
-		display: block;
-		@include background-2x(logo-ddh, 197px, 922px);
+.home-wrapper {
+	padding-left: 50%;
+	position: relative;
+	@include respond-max(1400px) {
+		// padding-left: 25%;
 	}
 }
 
-.byline {
-	@extend %hidden-text;
-	@include background-2x(byline, 254px, 151px);
-	position: absolute;
-	bottom: 52px;
-	right: 0;
+.home-header {
+	@extend %vertical-bar-fixed;
+	width: 487px;
+	left: 0;
+	@include respond-max(1400px) {
+		width: 35%;
+		// right: 61%;
+		// left: auto;
+	}
 }
 
-// TODO modify positioning on small screens & fix left margin
+.home-masthead {
+	$w: 974px;
+	$h: 1510px;
+	width: $w / 2;
+	height: $h / 2;
+	display: block;
+	background: transparent url('bg-home.jpg') no-repeat left bottom;
+	@include background-size(contain);
+	position: absolute;
+	top: 16%;
+	@include respond-max(1400px) {
+		width: 100%;
+	}
+	@include respond-max(1100px) {
+		width: 385px;
+		position: absolute;
+		right: 0;
+	}
+	@include respond-max-height(900px) {
+		top: auto;
+		bottom: 0;
+	}	
+}
+
+.home-title,
+.home-byline {
+	display: none;
+}
+
 .home-content {
 	width: 480px;
 	padding-bottom: 197px;
-	// margin: 0 0 $space 598px;
-	margin: 0 0 $space 50%;
-	// position: relative;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	position: relative;
 }
 
 .nav-start {
@@ -97,7 +112,7 @@
 	background-color: $black;
 	padding: ($space * 2) $shim 0;
 	left: 0;
-	z-index: 10;
+	z-index: 30;
 	// .nav-open & {
 	// 	@include respond-max(1092px) {
 	// 		width: 14.9%;
@@ -122,7 +137,12 @@
 // TODO adjust margin-left on small screens
 .interior-content {
 	@extend %content-wrapper;
-	padding: ($space * 2) 0;
+	padding: ($space * 3) 0;
+	position: relative;
+	z-index: 10;
+	.banner-open & {
+		padding-top: $space * 7;
+	}
 }
 
 // Content wrapper for frontend_page layout
@@ -136,62 +156,86 @@
 
 // Page banner
 // --------------------------
-.banner-wrapper {
-	@extend %content-wrapper;
-	padding-top: 0.5em;
-}
-
 .page-banner {
-	@extend %clearfix;
-	margin: 0 -100px;
-	position: relative;
+	background-color: $black;
+	margin-left: 160px;
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 20;
 }
 
-.banner--control {
-	@extend %deci;
-	@extend %with-gray-dark;
-	font-style: italic;
-	padding: 2px 18px 2px;
-	background: transparent url('icon-x.jpg') no-repeat right top;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-}
-
-.banner--header,
-.banner--content {
-	height: 118px;	
-	float: left;
-}
-
-.banner--header {
-	width: 46%;
+// Lives inside .page--banner
+.legend {
+	display: none;
+	width: 690px;
+	height: 160px;
 	color: $white;
 	background: $black url('bg-banner.jpg') no-repeat left top;
-	padding: 1em 1em 1em 80px;
+	background-size: 90px 160px;
+	padding: 20px 120px 0 90px;
+	border-bottom: 2px solid $black;
+	position: relative;
+	.banner-open & {
+		display: block;
+	}
 }
 
-.banner--title {
-	@extend %delta;
+.legend--title {
+	@extend %gamma;
 	margin-bottom: 0.5em;
 }
 
-.banner--description {
+.legend--description {
+	@extend %eta;
+	margin-bottom: 1em;
+}
+
+.legend--note {
 	@extend %theta;
-	line-height: $looseLineHeight;
+	img {
+		vertical-align: middle;
+	}
 }
 
-.banner--content {
-	width: 54%;
-	background-color: $white;
-	padding: 1em;
-	border-top: 1px solid $black;
-	border-right: 1px solid $black;
-	border-bottom: 1px solid $black;
+.legend--toggle {
+	@extend %theta;
+	@extend %with-gray;
+	display: block;
+	font-weight: 500;
+	font-style: italic;
+	padding: 1px 20px 1px 0;
+	background: transparent url('icon-x-white.png') no-repeat right top;
+	background-size: 16px;
+	position: absolute;
+	top: 13px;
+	right: 0;
 }
 
-.banner--list {
+// Lives inside .page-banner
+.nav-hud {
+	@extend %delta;
 	@extend %floated-list;
+	// height: 42px;
+	background-color: $white;
+	padding-left: 18px;
+	border-bottom: 1px solid $black;
+	li {
+		line-height: 40px;
+	}
+}
+
+.hud--title {
+
+}
+
+.hud--author {
+	@extend %delta;	
+	text-transform: uppercase;
+}
+
+.hud--details {
+	@extend %delta;
 }
 
 // Content components
@@ -340,6 +384,7 @@ span.sentence {
 	width: $navOpenWidth;
 //	background-color: $grayLight;
 	right: 0px;
+	z-index: 30;
 //	overflow: hidden;
 //	.nav-open & {
 //		width: $navOpenWidth;

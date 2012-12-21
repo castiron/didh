@@ -240,6 +240,10 @@
 
 // Text colors
 // --------------------------
+%with-gray {
+	color: $grayMedium;
+}
+
 %with-gray-dark {
 	color: $grayDark;
 }
