@@ -289,11 +289,18 @@
 	@include respond-max(1550px) {
 		margin-left: 20%;
 	}
-	@include respond-max(1160px) {
-		margin-left: 196px;
+	@include respond-max(1148px) {
+		margin-left: 200px;
 	}
-	@include respond-max(1092px) {
-		width: 47%;
+	@include respond-max(1087px) {
+		width: 400px;
+		font-size: 0.9em;
+	}
+	@include respond-max(978px) {
+		margin-left: 180px;
+		width: 350px;
+		font-size: 0.8em;
+		line-height: 1.45;
 	}
 }
 

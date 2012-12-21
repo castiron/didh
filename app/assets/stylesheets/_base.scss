@@ -21,6 +21,7 @@ html {
 
 body {
 	@include font-museo;
+	// min-width: 878px;
 	font-size: 1.125em;
 	font-weight: 300;
 	line-height: $baseLineHeight;
