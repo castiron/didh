@@ -7,12 +7,16 @@
 	<%= text.get('body') %>
 </div>
 
+<% if(text.get('notes')) { %>
 <div class="chapter-section chapter-notes">
 	<h2 class="chapter-heading">Notes</h2>
 	<%= text.get('notes') %>
 </div>
+<% } %>
 
+<% if(text.get('bibliography')) { %>
 <div class="chapter-section chapter-bibliography">
 	<h2 class="chapter-heading">Bibliography</h2>
 	<%= text.get('bibliography') %>
 </div>
+<% } %>

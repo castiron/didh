@@ -236,7 +236,11 @@
 }
 
 .hud--title {
-
+	// TODO: Scott should figure out how to handle this responsively. --ZD
+	// This sets the width of the title in the HUD. The title needs to wrap,
+	// but this max width is probably to some degree a factor of the window
+	// size.
+	max-width: 400px;
 }
 
 .hud--author {

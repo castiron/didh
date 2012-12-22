@@ -2,7 +2,8 @@ development:
   adapter: postgresql
   database: rails_app_dev
   username: rails_app_dev
-  password: ZryWNuy2fctGcwFWifm2
+#  password: ZnafOXoqmrmMYASdbbxS
+  password: urtrules345
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -11,10 +12,10 @@ test:
   adapter: postgresql
   database: rails_app_test
   username: rails_app_test
-  password: ZryWNuy2fctGcwFWifm2
+  password: ZnafOXoqmrmMYASdbbxS
 
 production:
   adapter: postgresql
   database: rails_app_prod
   username: rails_app_prod
-  password: ZryWNuy2fctGcwFWifm2
+  password: ZnafOXoqmrmMYASdbbxS
