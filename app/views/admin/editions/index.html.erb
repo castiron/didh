@@ -1,0 +1,23 @@
+<h3>Manage Editions</h3>
+
+<table class="table">
+  <tr>
+    <th>Label</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @editions.each do |edition| %>
+  <tr>
+    <td><%= edition.label %></td>
+    <td><%= link_to 'Show', admin_edition_path(edition) %></td>
+    <td><%= link_to 'Edit', edit_admin_edition_path(edition) %></td>
+    <td><%= link_to 'Destroy', admin_edition_path(edition), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Edition', new_admin_edition_path %>

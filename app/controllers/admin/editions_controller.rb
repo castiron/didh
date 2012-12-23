@@ -1,4 +1,4 @@
-class EditionsController < ApplicationController
+class Admin::EditionsController < ApplicationController
 
   layout "admin"
 
@@ -36,8 +36,8 @@ class EditionsController < ApplicationController
   end
 
   # GET /editions/1/edit
-  def edition
-    @part = Edition.find(params[:id])
+  def edit
+    @edition = Edition.find(params[:id])
   end
 
   # POST /editions
@@ -47,7 +47,7 @@ class EditionsController < ApplicationController
 
     respond_to do |format|
       if @edition.save
-        format.html { redirect_to @edition, notice: 'Edition was successfully created.' }
+        format.html { redirect_to admin_edition_path(@edition), notice: 'Edition was successfully created.' }
         format.json { render json: @edition, status: :created, location: @edition }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class EditionsController < ApplicationController
 
     respond_to do |format|
       if @edition.update_attributes(params[:edition])
-        format.html { redirect_to @edition, notice: 'Edition was successfully updated.' }
+        format.html { redirect_to admin_edition_path(@edition), notice: 'Edition was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,7 +79,7 @@ class EditionsController < ApplicationController
     @edition.destroy
 
     respond_to do |format|
-      format.html { redirect_to editions_url }
+      format.html { redirect_to admin_editions_url }
       format.json { head :no_content }
     end
   end

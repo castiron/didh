@@ -38,7 +38,7 @@ namespace :texts do
     	title = htmlDoc.css("p.ct span").inner_html
     	puts "   found title: #{title}"
 
-    	# Todo: auto-assign texts to parts.
+    	# auto-assign texts to parts.
     	part = htmlDoc.css("p.cn span a").inner_html
     	puts "   found part: #{part}"
     	if part.include? "Introduction" then part_num = 0 end
@@ -49,6 +49,10 @@ namespace :texts do
     	if part.include? "PART V" then part_num = 5 end
     	if part.include? "PART VI" then part_num = 6 end
     	part = Part::where(:sorting => part_num).first
+
+    	# assign texts to the correct edition
+    	edition = Edition.first
+
 
     	# Handle the authors string
     	authorString = htmlDoc.css("p.au span").inner_html
@@ -163,6 +167,7 @@ namespace :texts do
 			:source_file => fileBasename
 		}
 
+		text.edition = edition
 		text.part = part
 		text.save
 
