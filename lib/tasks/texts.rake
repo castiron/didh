@@ -34,7 +34,9 @@ namespace :texts do
 		fileBasename = File.basename(file)
     	htmlDoc = Nokogiri::HTML(File.open(file))
 
+
     	# Get the title
+    	sorting = fileBasename.gsub(/[^0-9]/, '')
     	title = htmlDoc.css("p.ct span").inner_html
     	puts "   found title: #{title}"
 
@@ -160,6 +162,7 @@ namespace :texts do
 		# Set the text object's attributes.
 		text.attributes = {
 			:title => title, 
+			:sorting => sorting,
 			:body => body, 
 			:authors => authorsArray, 
 			:notes => notes, 

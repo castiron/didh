@@ -3,7 +3,7 @@ class Admin::TextsController < ApplicationController
   layout "admin"
 
   def index
-    @texts = Text.all
+    @texts = Text.order('sorting ASC').all
 
     respond_to do |format|
       format.html # index.html.erb

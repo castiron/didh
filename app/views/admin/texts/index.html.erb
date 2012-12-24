@@ -6,6 +6,7 @@
     <th>Authors</th>
     <th>Source</th>
     <th>Part</th>
+    <th>Sorting</th>
     <th>Edition</th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= text.authors.collect { |author| author.name }.join(', ') %></td>
     <td style="white-space: nowrap"><%= text.source_file %></td>
     <td><%= text.part.label rescue '' %></td>
+    <td><%= text.sorting rescue '' %></td>
     <td><%= text.edition.label rescue '' %></td>
     <td><%= link_to 'Edit', edit_admin_text_path(text), :class => 'btn' %></td>
     <td><%= link_to 'Destroy', admin_text_path(text), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %></td>

@@ -4,7 +4,7 @@ class DebatesController < ApplicationController
 	
 	def index
 		@text = Text::find(1)
-		@texts = Text::find(:all)
+		@texts = Text.order('sorting ASC').all
 		@parts = Part::find(:all)
 	end
 
