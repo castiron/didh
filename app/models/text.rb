@@ -1,5 +1,5 @@
 class Text < ActiveRecord::Base
-	attr_accessible :body, :edition_id, :title, :abstract, :notes, :bibliography, :source_file, :authors, :author_ids, :part, :part_id
+	attr_accessible :body, :edition_id, :title, :abstract, :notes, :bibliography, :source_file, :authors, :author_ids, :part, :part_id, :sorting
 	has_and_belongs_to_many :authors
 	belongs_to :part
 	belongs_to :edition
@@ -28,6 +28,7 @@ class Text < ActiveRecord::Base
 				:notes => notes,
 				:bibliography => bibliography,
 				:authors => authors,
+				:edition => edition.label,
 				:sentences => annotations.all_grouped
 			}
 		end

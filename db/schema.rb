@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216214443) do
+ActiveRecord::Schema.define(:version => 20121224143531) do
 
   create_table "annotations", :force => true do |t|
     t.integer  "text_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20121216214443) do
     t.string   "source_file"
     t.integer  "part_id"
     t.integer  "edition_id"
+    t.integer  "sorting"
   end
 
 end
