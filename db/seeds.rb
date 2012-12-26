@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+editions = Edition.create([
+  { label: '2012 Print Edition'}
+])
+
 parts = Part.create([
 	{ label: 'Introduction', sorting: 0 },
 	{ label: 'Part I. Defining the Digital Humanities', sorting: 1 },
