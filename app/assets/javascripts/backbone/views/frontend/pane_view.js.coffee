@@ -32,14 +32,17 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 					@$el.find('.js-content-nav--pos1-show').hide()
 					@$el.find('.js-content-nav--pos2-show').hide()
 					@$el.find('.js-content-nav--pos0-show').show()
+					$('body').addClass('nav-open')
 				when 1
 					@$el.find('.js-content-nav--pos0-show').hide()
 					@$el.find('.js-content-nav--pos2-show').hide()
 					@$el.find('.js-content-nav--pos1-show').show()
+					$('body').addClass('nav-open')
 				when 2
 					@$el.find('.js-content-nav--pos0-show').hide()
 					@$el.find('.js-content-nav--pos1-show').hide()
 					@$el.find('.js-content-nav--pos2-show').show()
+					$('body').removeClass('nav-open')
 
 			@currentPosition = position
 			leftDistance = @positions[position]
