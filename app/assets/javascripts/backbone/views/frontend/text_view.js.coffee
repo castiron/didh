@@ -21,7 +21,8 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 		"click .sentence" 	: "showAnnotator"
 
 	showAnnotator: (e) ->
-		@annotator.showAnnotatorOn(e.target, e)
+		if $(e.target).hasClass('sentence')
+			@annotator.showAnnotatorOn(e.target, e)
 
 	showAnnotationDetail: (e) ->
 		$el = $(e.target)

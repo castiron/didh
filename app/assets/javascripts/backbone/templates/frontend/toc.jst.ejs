@@ -6,7 +6,7 @@
 		<ul class="nav-index">
 			<% parts.each( function(part) { %> 
 				<li class="nav-item-part nav-item-part-<%= part.get('id') %>">
-					<a href="<%= part.getUrl(activeText) %>"><%= part.get('label') %></a>
+					<a href="/debates/part/<%= part.get('id') %>"><%= part.get('label') %></a>
 				</li>
 			<% }) %>
 		</ul>
@@ -26,7 +26,7 @@
 					<ul class="nav-index nav-index-col">
 						<% _.each(textGroup, function(text) { %>
 							<li>
-								<a href="/debates#text/<%= text.get('id') %>">
+								<a class="" href="/debates/text/<%= text.get('id') %>">
 								<span class="title"><%= text.get('title') %></span>
 								<span class="author"><%= text.getAuthorsList() %></span>
 								</a>

@@ -1,6 +1,28 @@
 class Didh.Routers.AppRouter extends Backbone.Router
 	initialize: (options) ->
 
+
+		$(document).on "click", "a[href^='/debates/']", (event) =>
+			href = $(event.currentTarget).attr('href')
+			if !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
+				event.preventDefault()
+
+				# Remove root part of the URL and hash bangs (backward compatablility)
+				url = href.replace(/^\/debates/,'').replace('\#\!\/','')
+
+				# Instruct Backbone to trigger routing events
+				@navigate url, { trigger: true }
+
+				return false
+
+		$(document).on "click", "a[href^='#']", (event) =>
+			href = $(event.currentTarget).attr('href')
+			if !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
+				anchor = href.replace(/^#/,'');
+				$('html, body').animate({scrollTop: $('#' + anchor).offset().top - 50}, 250)
+				return false
+
+
 		@parts = new Didh.Collections.PartsCollection()
 		@parts.reset options.parts
 		@texts = new Didh.Collections.TextsCollection()
@@ -18,16 +40,9 @@ class Didh.Routers.AppRouter extends Backbone.Router
 		@annotator.render()
 
 	routes:
-		"text/:textId/part/:partId"	: "showPartAndText"
-		"part/:id"					: "showPart"
-		"text/:id"					: "showText"
+		"part/:id"			: "showPart"
+		"text/:id"			: "showText"
 		"*catchall"					: "setDefaultText" # Backbone, wtf does this work?
-
-	showPartAndText: (textId, partId) ->
-		@requestedTextId = textId
-		@requestedPartId = partId
-		@setActiveText(textId)
-		@showPart(partId)
 
 	setDefaultText: () ->
 		part = _.first(@parts.where({label: "Introduction"}))

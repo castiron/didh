@@ -1,8 +1,9 @@
 Didh::Application.routes.draw do
   
 
-  match 'debates/:id' => 'debates#show', :as => :debates_text
   match 'debates/' => 'debates#index'
+  match 'debates/part/:id' => 'debates#index'
+  match 'debates/text/:id' => 'debates#index'
   match 'book/' => 'pages#book'
   match 'about/' => 'pages#about'
   match 'news/' => 'pages#news'

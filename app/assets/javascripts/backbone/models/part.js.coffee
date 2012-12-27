@@ -4,13 +4,6 @@ class Didh.Models.Part extends Backbone.Model
 	defaults:
 		label: null
 
-	getUrl: (activeText) ->
-		if activeText == null
-			out = '#part/' + @.get('id')
-		else
-			out = '#text/' + activeText.get('id') + '/part/' + @.get('id')
-		return out
-
 class Didh.Collections.PartsCollection extends Backbone.Collection
 	model: Didh.Models.Part
 	url: '/parts'
