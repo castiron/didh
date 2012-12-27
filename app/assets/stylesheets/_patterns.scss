@@ -294,26 +294,18 @@
 // --------------------------
 %content-wrapper {
 	@extend %smooth-resize;
-	width: 28.22em;
+	width: 30.22em;
+	padding-right: 2em !important;
 	margin-left: 29%;
-	@include respond-max(900px) {
-		margin-left: 250px;
+	@include respond-max(1280px) {
+		margin-left: 250px !important;
 	}
-	@include respond-max(800px) {
-		margin-left: 200px;
+	@include respond-max(810px) {
+		margin-left: 180px !important;
 	}	
 	.nav-open & {
 		@include respond-max(1550px) {
 			margin-left: 20%;
-		}
-		@include respond-max(1148px) {
-			margin-left: 200px;
-		}
-		@include respond-max(1100px) {
-			font-size: 0.9em;
-		}		
-		@include respond-max(1016px) {
-			font-size: 1em;
 		}
 	}
 }
