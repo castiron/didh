@@ -17,6 +17,7 @@ gem 'modernizr-rails'
 gem 'jquery-rails'
 gem 'nokogiri'
 
+gem 'bcrypt-ruby'
 gem 'devise'
 gem 'rails-backbone'
 gem 'stanford-core-nlp'
