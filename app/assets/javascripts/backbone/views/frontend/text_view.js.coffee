@@ -59,7 +59,6 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 
 			count = @model.getAnnotationCountFor( sentence.sentence)
 			annotation = $('<span data-sentence="' + sentence.sentence + '" style="display: none; width: ' + minWidth + 'px; height: ' + height + 'px;" class="annotation"></span>')
-#			annotation.append('<div class="annotation-counter">This section was marked as interesting ' + count + ' times.</div>')
 
 			$el.before(annotation)
 			if animate == true
@@ -73,9 +72,7 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 					annotation.fadeTo(0, opacity)
 				else
 					annotation.css({display: 'block'})
-					annotation.width(width)
-
-
+					annotation.css({width: width + 'px'})
 		)
 
 	render: () =>

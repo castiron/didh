@@ -21,7 +21,6 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 	goToPosition: (position, recursionBuster) ->
 
 		if !recursionBuster? then recursionBuster = false
-		console.log @linkedPane
 		if @linkedPane && recursionBuster == false
 			if position == 2
 				@linkedPane.goToPosition(2, true)
