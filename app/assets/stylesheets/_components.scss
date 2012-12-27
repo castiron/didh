@@ -63,6 +63,10 @@
 		font-size: 0.8em;
 		margin-left: ($space * 2);
 	}
+	@include respond-max-height(800px) {
+		font-size: 0.8em;
+		// margin-left: ($space * 2);
+	}
 }
 
 .nav-start {
