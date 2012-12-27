@@ -17,13 +17,6 @@
 
 		<script type="text/javascript" src="//use.typekit.net/jlo5jay.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-		
-		<script type="text/javascript">
-		  $(function() {
-		    window.router = new Didh.Routers.AppRouter({parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
-		    Backbone.history.start();
-		  });
-		</script>
 
 	</head>
 	<body class="interior page">

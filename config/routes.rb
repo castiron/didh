@@ -7,6 +7,7 @@ Didh::Application.routes.draw do
   match 'debates/part/:id' => 'debates#index'
   match 'debates/text/:id' => 'debates#index'
   match 'book/' => 'pages#book'
+  match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
   match 'about/' => 'pages#about'
   match 'news/' => 'pages#news'
 
@@ -62,6 +63,8 @@ Didh::Application.routes.draw do
     resources :editions
     resources :parts
   end
+
+
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

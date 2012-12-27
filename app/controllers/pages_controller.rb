@@ -18,7 +18,20 @@ class PagesController < ActionController::Base
 	end
 
 	def about
+    @message = Message.new
 	end
+
+  def sendMessage
+    @message = Message.new(params[:message])
+
+    if @message.valid?
+      NotificationsMailer.new_message(@message).deliver
+      redirect_to(about_path, :notice => "Message was successfully sent.")
+    else
+      flash.now.alert = "Please fill all fields."
+      render :about
+    end
+  end
 
 	def news
 	end
