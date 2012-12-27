@@ -28,7 +28,6 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		position = {top: (clickY - @annotatorHeight - 40)+ 'px', left: (clickX - 43) + 'px'}
 
 	showAnnotatorOn: (sentenceEl, event) ->
-		@isVisible = true
 		@stopAnnotating()
 		@currentSentenceEl = $(sentenceEl)
 		@currentSentenceId = @currentSentenceEl.attr('data-id')
@@ -45,13 +44,13 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 			# Bind a global click event to hide the annotator
 			$('html').on('click', (event) =>
 				if event.target != @el && $(event.target).parents().index(@$el) == -1
-					console.log @isVisible, 'detected'
-					if @isVisible == true then @stopAnnotating()
+					@stopAnnotating()
 			)
 
 		)
 
 	stopAnnotating: (e) ->
+
 		# Unbind a global click event to hide the annotator
 		$('html').off('click')
 
@@ -76,8 +75,11 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 
 	annotateIndex: (e) ->
 		# TODO: Set focus on the input
-		@$el.find('.annotate-index-input').first().slideDown()
-		@$el.find('.annotate-index-input input').focus()
+		distance = @$el.find('.annotator-pane').first().height() * -1
+		console.log distance
+		@$el.find('.annotator-panes').animate({top: distance})
+#		@$el.find('.annotate-index-input').first().slideDown()
+#		@$el.find('.annotate-index-input input').focus()
 	
 	createIndexKeyword: (e) ->
 		word = @$el.find('.annotate-index-input input').first().val()

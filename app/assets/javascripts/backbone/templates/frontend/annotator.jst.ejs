@@ -1,18 +1,28 @@
 <div class="annotator--left">
-	<header class="annotator--top">
-		Mark selected text as
-	</header>
-	<ul class="annotator--bottom annotate-actions">
-		<li class="annotate-interesting">Interesting</li>
-		<li class="annotate-index">Add to index</li>
-		<li class="annotate-index-input" style="display: none; margin-top: 15px; margin-bottom: 10px;">
-			Under what term should we index this sentence?
-			<form id="annotate-index-form" action="#">
-			<input class="keyword" name="keyword" style="width: 100%; margin-top: 5px;" />
-			</form>
-		</li>
-		<li class="annotate-close">Nevermind, don't mark text</li>
-	</ul>
+	<div class="annotator-panes">
+		<div class="annotator-pane annotator-interface-default">
+			<header class="annotator--top">
+				Mark selected text as
+			</header>
+			<ul class="annotator--bottom annotate-actions">
+				<li class="annotate-interesting">Interesting</li>
+				<li class="annotate-index">Add to index</li>
+				<li class="annotate-close">Nevermind, don't mark text</li>
+			</ul>
+		</div>
+		<div class="annotator-interface-index">
+			<ul class="annotator--bottom annotate-actions">
+				<li class="annotate-index-input" >
+					Under what term should we index this sentence?
+					<form id="annotate-index-form" action="#">
+					<input class="keyword" name="keyword" />
+					<input type="submit" value="submit" />
+					</form>
+				</li>
+				<li class="annotate-close">Nevermind, don't mark text</li>
+			</ul>
+		</div>
+	</div>
 </div>
 <% if(typeof text !== 'undefined') { %>
 	<% count = text.getAnnotationCountFor(sentenceId) %>
