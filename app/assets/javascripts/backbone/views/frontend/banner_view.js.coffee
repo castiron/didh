@@ -7,17 +7,18 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 		"click .js-legend--toggle" 	: "hideInstructions"
 
 	hideInstructions: () ->
+		# Send an XHR request to Rails, which will in turn set session data to prevent
+		# the instructions from appearing again.
+		$.ajax('/debates/hide_instructions.json')
 		@$el.find('.legend').slideUp()
 		$('body').switchClass('banner-open','banner-closed')
 		false
 
 	initialize: () ->
 		@router = @options.router
-		@render()
+		if @$el.attr('data-hide-instructions') == '1'
+			@remove()
+		else
+			@render()
 
 	render: ->
-		# text = @texts.getActiveText()
-		# if text?
-		# 	showHud = true
-		# 	$(@el).html(@template({showHud: true, text: text}))
-		# 	return @

@@ -6,6 +6,8 @@ Didh::Application.routes.draw do
   match 'debates/' => 'debates#index'
   match 'debates/part/:id' => 'debates#index'
   match 'debates/text/:id' => 'debates#index'
+  match 'debates/hide_instructions' => 'debates#hide_instructions'
+  match 'debates/show_instructions' => 'debates#show_instructions'
   match 'book/' => 'pages#book'
   match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
   match 'about/' => 'pages#about'
