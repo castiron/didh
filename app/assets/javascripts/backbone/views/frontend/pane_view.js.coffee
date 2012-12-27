@@ -18,6 +18,9 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 			when 2 then @goToPosition 1
 		false
 
+	closeIfOpen: () ->
+		if @currentPosition == 0 then @goToPosition(1)
+
 	goToPosition: (position, recursionBuster) ->
 
 		if !recursionBuster? then recursionBuster = false
@@ -30,6 +33,7 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 		if @currentPosition != position
 			switch position
 				when 0
+					@annotator.stopAnnotating()
 					@$el.find('.js-content-nav--pos1-show').hide()
 					@$el.find('.js-content-nav--pos2-show').hide()
 					@$el.find('.js-content-nav--pos0-show').show()

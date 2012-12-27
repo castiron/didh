@@ -29,6 +29,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 
 	showAnnotatorOn: (sentenceEl, event) ->
 		@stopAnnotating()
+		@router.closePanes()
 		@currentSentenceEl = $(sentenceEl)
 		@currentSentenceId = @currentSentenceEl.attr('data-id')
 		@currentSentenceEl.addClass('hover')

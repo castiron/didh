@@ -12,6 +12,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
 		@currentPosition = 1
 		@parts = @options.parts
 		@texts = @options.texts
+		@annotator = @options.annotator
 		@router = @options.router
 		@paneHeight = @.$el.height()
 		@parts.bind('change:active', @highlightActivePart, @)

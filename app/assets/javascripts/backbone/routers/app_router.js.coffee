@@ -36,8 +36,8 @@ class Didh.Routers.AppRouter extends Backbone.Router
 		@banner= new Didh.Views.Frontend.HudView(el: $("#backbone-hudView"), texts: @texts, router: @ )
 
 		# The two views are linked, and need to be able to trigger open and closing on one another.
-		@tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
-		@feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), linkedPane: @tocView, texts: @texts, router: @ )
+		@tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), annotator: @annotator, parts: @parts, texts: @texts, router: @ )
+		@feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), annotator: @annotator, linkedPane: @tocView, texts: @texts, router: @ )
 		@tocView.linkedPane = @feedbackView
 
 		@tocView.render()
@@ -55,6 +55,10 @@ class Didh.Routers.AppRouter extends Backbone.Router
 
 	renderTextView: () ->
 		@textView.render()
+
+	closePanes: () ->
+		@feedbackView.closeIfOpen()
+		@tocView.closeIfOpen()
 
 	showText: (textId) ->
 		@tocView.goToPosition(1)
