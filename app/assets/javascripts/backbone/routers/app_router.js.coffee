@@ -19,7 +19,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
 			href = $(event.currentTarget).attr('href')
 			if !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
 				anchor = href.replace(/^#/,'');
-				$('html, body').animate({scrollTop: $('#' + anchor).offset().top - 50}, 250)
+				$('html, body').animate({scrollTop: $('#' + anchor).offset().top - 100}, 250)
 				return false
 
 
