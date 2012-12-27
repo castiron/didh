@@ -19,7 +19,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 		@parts = @options.parts
 		@texts = @options.texts
 		@router = @options.router
-		@tocView = @options.tocView
+		@linkedPane = @options.linkedPane
 		@defaultVisualization = 'stacked'
 
 	setModel: (model) ->

@@ -18,13 +18,15 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 			when 2 then @goToPosition 1
 		false
 
-	goToPosition: (position) ->
-		# Feedback view also controls the TocView in some cases
-		if @tocView?
+	goToPosition: (position, recursionBuster) ->
+
+		if !recursionBuster? then recursionBuster = false
+
+		if @linkedPane && recursionBuster == false
 			if position == 2
-				@tocView.goToPosition(2)
+				@linkedPane.goToPosition(2, true)
 			if position == 1 && @currentPosition == 2
-				@tocView.goToPosition(1)
+				@linkedPane.goToPosition(1, true)
 
 		if @currentPosition != position
 			switch position
@@ -45,5 +47,4 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 					$('body').removeClass('nav-open')
 
 			@currentPosition = position
-			leftDistance = @positions[position]
 			@$el.animate({left: @positions[position]})

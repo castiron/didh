@@ -2,7 +2,8 @@
 
 class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
 	template: JST["backbone/templates/frontend/toc"]
-	
+	linkedPane: null
+
 	events:
 		"click .js-content-nav--open-toggle"		: "toggleOpen"
 		"click .js-content-nav--visible-toggle"		: "toggleVisibility"
