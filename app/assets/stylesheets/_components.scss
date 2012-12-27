@@ -422,7 +422,7 @@ span.sentence {
 .nav-content {
 	@extend %vertical-bar-fixed;
 	@extend %smooth-resize;
-	width: $navOpenWidth;
+	width: $navClosedWidth;
 	right: 0;
 	z-index: 30;
 }
@@ -452,6 +452,7 @@ span.sentence {
 	.level-0,
 	.level-1 {
 		@extend %vertical-bar;
+        left:  -$navOpenWidth + $navClosedWidth;
 		width: $navOpenWidth;
 		background-color: $grayLight;
 		margin-bottom: 4px;
@@ -466,7 +467,7 @@ span.sentence {
 		border-left: 4px solid $white;
 		width: ($navOpenWidth * 2) + 50;
 		border-bottom: 4px solid $white;
-		left: $navOpenWidth + 0px;
+		left: $navClosedWidth;
 	}
 }
 
