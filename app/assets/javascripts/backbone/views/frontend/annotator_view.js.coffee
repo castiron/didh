@@ -2,8 +2,9 @@ Didh.Views.Frontend ||= {}
 
 class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 	template: JST["backbone/templates/frontend/annotator"]
+	isVisible: false
 
-	events: 
+	events:
 		'click .annotate-close'			: 'stopAnnotating'
 		'click .annotate-interesting'	: 'annotateInteresting'
 		'click .annotate-index'			: 'annotateIndex'
@@ -27,6 +28,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		position = {top: (clickY - @annotatorHeight - 40)+ 'px', left: (clickX - 43) + 'px'}
 
 	showAnnotatorOn: (sentenceEl, event) ->
+		@isVisible = true
 		@stopAnnotating()
 		@currentSentenceEl = $(sentenceEl)
 		@currentSentenceId = @currentSentenceEl.attr('data-id')
@@ -39,9 +41,20 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		# Then apply any effects
 		@$el.fadeIn(75, =>
 			@$el.find('.js-right').animate({ left: 316}, 250)
+
+			# Bind a global click event to hide the annotator
+			$('html').on('click', (event) =>
+				if event.target != @el && $(event.target).parents().index(@$el) == -1
+					console.log @isVisible, 'detected'
+					if @isVisible == true then @stopAnnotating()
+			)
+
 		)
 
 	stopAnnotating: (e) ->
+		# Unbind a global click event to hide the annotator
+		$('html').off('click')
+
 		@$el.hide()
 		if @currentSentenceEl? then @currentSentenceEl.removeClass('hover')
 		@currentSentenceEl = null
