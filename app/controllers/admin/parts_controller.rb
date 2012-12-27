@@ -1,9 +1,8 @@
 class Admin::PartsController < ApplicationController
 
   layout "admin"
+  before_filter :authenticate_admin!
 
-  # GET /parts
-  # GET /parts.json
   def index
     @parts = Part.all
 
@@ -13,8 +12,6 @@ class Admin::PartsController < ApplicationController
     end
   end
 
-  # GET /parts/1
-  # GET /parts/1.json
   def show
     @part = Part.find(params[:id])
 
@@ -24,8 +21,6 @@ class Admin::PartsController < ApplicationController
     end
   end
 
-  # GET /parts/new
-  # GET /parts/new.json
   def new
     @part = Part.new
 
@@ -35,13 +30,10 @@ class Admin::PartsController < ApplicationController
     end
   end
 
-  # GET /parts/1/edit
   def edit
     @part = Part.find(params[:id])
   end
 
-  # POST /parts
-  # POST /parts.json
   def create
     @part = Part.new(params[:part])
 
@@ -56,8 +48,6 @@ class Admin::PartsController < ApplicationController
     end
   end
 
-  # PUT /parts/1
-  # PUT /parts/1.json
   def update
     @part = Part.find(params[:id])
 
@@ -72,8 +62,6 @@ class Admin::PartsController < ApplicationController
     end
   end
 
-  # DELETE /parts/1
-  # DELETE /parts/1.json
   def destroy
     @part = Part.find(params[:id])
     @part.destroy

@@ -1,9 +1,8 @@
 class Admin::EditionsController < ApplicationController
 
   layout "admin"
+  before_filter :authenticate_admin!
 
-  # GET /editions
-  # GET /editions.json
   def index
     @editions = Edition.all
 
@@ -13,8 +12,6 @@ class Admin::EditionsController < ApplicationController
     end
   end
 
-  # GET /editions/1
-  # GET /editions/1.json
   def show
     @edition = Edition.find(params[:id])
 
@@ -24,8 +21,6 @@ class Admin::EditionsController < ApplicationController
     end
   end
 
-  # GET /editions/new
-  # GET /editions/new.json
   def new
     @edition = Edition.new
 
@@ -35,13 +30,10 @@ class Admin::EditionsController < ApplicationController
     end
   end
 
-  # GET /editions/1/edit
   def edit
     @edition = Edition.find(params[:id])
   end
 
-  # POST /editions
-  # POST /editions.json
   def create
     @edition = Edition.new(params[:edition])
 
@@ -56,8 +48,6 @@ class Admin::EditionsController < ApplicationController
     end
   end
 
-  # PUT /edition/1
-  # PUT /editions/1.json
   def update
     @edition = Edition.find(params[:id])
 
@@ -72,8 +62,6 @@ class Admin::EditionsController < ApplicationController
     end
   end
 
-  # DELETE /editions/1
-  # DELETE /editions/1.json
   def destroy
     @edition = Edition.find(params[:id])
     @edition.destroy

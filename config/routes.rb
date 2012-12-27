@@ -1,6 +1,8 @@
 Didh::Application.routes.draw do
   
 
+  devise_for :admins
+
   match 'debates/' => 'debates#index'
   match 'debates/part/:id' => 'debates#index'
   match 'debates/text/:id' => 'debates#index'
@@ -55,6 +57,7 @@ Didh::Application.routes.draw do
   #   end
 
   namespace :admin do
+    root :to => 'texts#index'
     resources :texts
     resources :editions
     resources :parts

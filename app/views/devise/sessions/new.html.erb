@@ -1,0 +1,32 @@
+<h2>Sign in</h2>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <fieldset>
+	<div id="legend">
+	  <legend class="">Login</legend>
+	</div>
+	<div class="control-group">
+
+	  <%= f.label :email %>
+	  <div class="controls">
+		<%= f.email_field :email %>
+	  </div>
+	</div>
+
+	<div class="control-group">
+
+	  <%= f.label :password %>
+	  <div class="controls">
+		<%= f.password_field :password %>
+	  </div>
+	</div>
+
+
+	<div class="control-group">
+
+	  <div class="controls">
+		<%= f.submit "Sign in" %>
+	  </div>
+	</div>
+  </fieldset>
+<% end %>

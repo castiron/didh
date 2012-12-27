@@ -38,8 +38,11 @@
 				<a class="brand" href="#">Debates in the Digital Humanities</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li><%= link_to 'Parts', :controller => 'parts' %></li>
-						<li><%= link_to 'Texts', :controller => 'texts' %></li>
+						<li><%= link_to 'Texts', :controller => '/admin/texts', :action => :index  %></li>
+						<li><%= link_to 'Parts', :controller => '/admin/parts', :action => :index %></li>
+					  	<li><%= link_to 'Editions', :controller => '/admin/editions', :action => :index  %></li>
+  					    <li><%= link_to 'Frontend', :controller => '/pages', :action => :index %></li>
+ 					  	<li><%= link_to 'Logout', destroy_admin_session_path, :method => :delete %></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>

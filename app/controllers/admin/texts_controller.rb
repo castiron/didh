@@ -1,6 +1,7 @@
 class Admin::TextsController < ApplicationController
 
   layout "admin"
+  before_filter :authenticate_admin!
 
   def index
     @texts = Text.order('sorting ASC').all
