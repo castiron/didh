@@ -21,7 +21,7 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 	goToPosition: (position, recursionBuster) ->
 
 		if !recursionBuster? then recursionBuster = false
-
+		console.log @linkedPane
 		if @linkedPane && recursionBuster == false
 			if position == 2
 				@linkedPane.goToPosition(2, true)
@@ -47,4 +47,5 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 					$('body').removeClass('nav-open')
 
 			@currentPosition = position
+
 			@$el.animate({left: @positions[position]})
