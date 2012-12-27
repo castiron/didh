@@ -76,6 +76,8 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 
 		@setOpenCloseHiddenPositions()
 		@normalizePaneHeight()
+		console.log $(window).width()
+		if $(window).width() <= 1030 then @goToPosition(2)
 
 
 
