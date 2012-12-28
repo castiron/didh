@@ -308,9 +308,9 @@
 		margin-left: 180px !important;
 	}	
 	.nav-open & {
-		@include respond-max(1550px) {
-			margin-left: 20%;
-		}
+		//@include respond-max(1550px) {
+		//	margin-left: 20%;
+		//}
 	}
 }
 
