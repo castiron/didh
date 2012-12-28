@@ -30,6 +30,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 	showAnnotatorOn: (sentenceEl, event) ->
 		@stopAnnotating()
 		@router.closePanes()
+		@router.closePanes()
 		@currentSentenceEl = $(sentenceEl)
 		@currentSentenceId = @currentSentenceEl.attr('data-id')
 		@currentSentenceEl.addClass('hover')
@@ -77,11 +78,8 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 	annotateIndex: (e) ->
 		# TODO: Set focus on the input
 		distance = @$el.find('.annotator-pane').first().height() * -1
-		console.log distance
 		@$el.find('.annotator-panes').animate({top: distance})
-#		@$el.find('.annotate-index-input').first().slideDown()
-#		@$el.find('.annotate-index-input input').focus()
-	
+
 	createIndexKeyword: (e) ->
 		word = @$el.find('.annotate-index-input input').first().val()
 		if !word
