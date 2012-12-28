@@ -6,9 +6,7 @@ class Didh.Views.Frontend.HudView extends Backbone.View
 	events:
 		"click .js-legend--toggle" 	: "hideInstructions"
 
-
 	initialize: () ->
-		@router = @options.router
 		@texts = @options.texts
 		@texts.bind('change:active', @render, @)
 		@render()

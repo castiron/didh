@@ -26,7 +26,9 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 		, @)
 
 		Backbone.Mediator.subscribe('pane:change', (position) =>
-			if position == 0 then @stopAnnotating()
+			breakPosition = 0
+			if $('body').width() <= 1280 then breakPosition = 1
+			if position <= breakPosition then @stopAnnotating()
 		, @)
 
 	calculateAnnotatorLocationFor: (sentenceEl, event) ->
@@ -100,6 +102,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 				text_id: @texts.getActiveText().id
 			})
 			keyword.save({})
+			Backbone.Mediator.publish('annotator:keyword_added', keyword);
 			@stopAnnotating()
 		false
 
