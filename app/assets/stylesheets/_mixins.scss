@@ -59,3 +59,14 @@
 	-o-transform-origin: $origin;
 	transform-origin: $origin;
 }
+
+// Appearance
+// Possible values listed here:
+// http://css-tricks.com/almanac/properties/a/appearance/
+// Usually has to override styles in normalize/reset
+// --------------------------
+@mixin appearance($value) {
+	-webkit-appearance: $value !important;
+	-moz-appearance: $value !important;
+	appearance: $value !important;
+}
