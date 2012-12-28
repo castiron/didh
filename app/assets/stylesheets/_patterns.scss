@@ -102,6 +102,9 @@
 	p + & {
 		@extend %loose-top-space;
 	}
+	.page & {
+		margin-bottom: 1em;
+	}
 }
 
 %subsection-heading {

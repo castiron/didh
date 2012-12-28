@@ -164,7 +164,7 @@
 	@extend %smooth-resize;
 	width: 1070px;
 	background-color: $white;
-	padding: ($space * 2) 80px 0 240px;
+	padding: ($space * 2) 80px ($space * 2) 240px;
 	@include respond-max(1070px) {
 		width: 100%;
 	}
