@@ -19,6 +19,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
 	setupViews: (options) ->
 		@banner= new Didh.Views.Frontend.BannerView(el: $("#backbone-bannerView"))
 		@annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), keywords: @keywords, annotations: @annotations, parts: @parts, texts: @texts)
+		@hudView = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView"), texts: @texts )
 		@tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
 		@feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), linkedPane: @tocView, texts: @texts, static: @static)
 
