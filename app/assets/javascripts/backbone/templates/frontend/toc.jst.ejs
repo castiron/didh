@@ -26,7 +26,11 @@
 					<ul class="nav-index nav-index-col">
 						<% _.each(textGroup, function(text) { %>
 							<li>
+								<% if(text.get('is_static') == true) { %>
+								<a class="" href="/static/debates/text/<%= text.get('id') %>">
+								<% } else { %>
 								<a class="" href="/debates/text/<%= text.get('id') %>">
+								<% } %>
 								<span class="title"><%= text.get('title') %></span>
 								<span class="author"><%= text.getAuthorsList() %></span>
 								</a>

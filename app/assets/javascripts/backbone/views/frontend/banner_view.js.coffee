@@ -15,7 +15,6 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 		false
 
 	initialize: () ->
-		@router = @options.router
 		if @$el.attr('data-hide-instructions') == '1'
 			@remove()
 		else

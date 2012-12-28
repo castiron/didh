@@ -120,14 +120,12 @@ namespace :texts do
       chunkNLP = StanfordCoreNLP::Text.new(chunk)
       pipeline.annotate(chunkNLP)
       chunkNLP.get(:sentences).each do |sentence|
-        puts "sentence: #{sentence}"
         i = i + 1
         sentenceString = sentence.to_s
         sentenceString.sub! /^\d{1,3}<\/sup><\/a>/, ''
         if sentenceString.length > 5 && !sentenceString.start_with?('http') && !sentenceString.start_with?('www.')
           checksum = sentenceString.to_s.sum
           replacementSentence = "<span class=\"sentence\" data-id=\"#{checksum}\" id=\"sentence-#{checksum}\">#{sentenceString}</span>"
-          puts "replacementSentence: #{replacementSentence}"
           res = body.sub! sentenceString, replacementSentence
 
           if res == nil

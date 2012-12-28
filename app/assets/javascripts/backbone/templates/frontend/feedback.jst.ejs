@@ -4,8 +4,8 @@
 		<a class="content-nav--toggle js-content-nav--pos0-show js-content-nav--pos1-show js-content-nav--visible-toggle" href=""></a>
 		<a style="display: none;" class="content-nav--toggle content-nav--toggle-pos2 js-content-nav--pos2-show js-content-nav--visible-toggle" href=""></a>
 	</header>
-	<% if(text != null) { %>
  	<section class="pane--content">
+	<% if(text != null && static != true) { %>
  		<ul class="count-box-list">
  			<li class="count-box">
  				<h6 class="count-box--title">Sentences marked as interesting</h6>
@@ -26,8 +26,12 @@
  		<a class="content--toggle js-content-nav--pos0-show js-content-nav--open-toggle" style="display:none;" href="">
  			<b class="content--toggle--arrow-right"></b>Hide feedback options
  		</a>
-	</section>
+	<% } else { %>
+			<span class="content--toggle">
+ 					This text does not support user feedback at this time.
+     		</span>
 	<% } %>
+	</section>
 </li>
 <li class="level-1">
 	<header class="js-content-nav--open-toggle pane--header">

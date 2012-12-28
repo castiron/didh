@@ -2,7 +2,6 @@ Didh.Views.Frontend ||= {}
 
 class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 	template: JST["backbone/templates/frontend/annotator"]
-	isVisible: false
 
 	events:
 		'click .annotate-close'			: 'stopAnnotating'
@@ -13,11 +12,22 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 	initialize: () ->
 		@annotatorHeight = 0
 		@currentSentenceId = null
+
+		# Assign collection objects
 		@parts = @options.parts
 		@keywords = @options.keywords
 		@annotations = @options.annotations
 		@texts = @options.texts
-		@router = @options.router
+		@setupSubscriptions()
+
+	setupSubscriptions: () ->
+		Backbone.Mediator.subscribe('annotator:request', (sentenceEl, event) =>
+			@showAnnotatorOn(sentenceEl, event)
+		, @)
+
+		Backbone.Mediator.subscribe('pane:change', (position) =>
+			if position == 0 then @stopAnnotating()
+		, @)
 
 	calculateAnnotatorLocationFor: (sentenceEl, event) ->
 		# We only set the height once, on the first appearance, and then treat it as constant.
@@ -29,8 +39,8 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 
 	showAnnotatorOn: (sentenceEl, event) ->
 		@stopAnnotating()
-		@router.closePanes()
-		@router.closePanes()
+
+		Backbone.Mediator.publish('annotator:open');
 		@currentSentenceEl = $(sentenceEl)
 		@currentSentenceId = @currentSentenceEl.attr('data-id')
 		@currentSentenceEl.addClass('hover')
@@ -48,18 +58,17 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 				if event.target != @el && $(event.target).parents().index(@$el) == -1
 					@stopAnnotating()
 			)
-
 		)
 
 	stopAnnotating: (e) ->
-
-		# Unbind a global click event to hide the annotator
-		$('html').off('click')
-
-		@$el.hide()
-		if @currentSentenceEl? then @currentSentenceEl.removeClass('hover')
-		@currentSentenceEl = null
-		@currentSentenceId = null
+		if @$el.is(':visible')
+			# Unbind a global click event to hide the annotator
+			$('html').off('click')
+			Backbone.Mediator.publish('annotator:closed');
+			@$el.hide()
+			if @currentSentenceEl? then @currentSentenceEl.removeClass('hover')
+			@currentSentenceEl = null
+			@currentSentenceId = null
 
 	annotateInteresting: (e) ->
 		activeText = @texts.getActiveText()

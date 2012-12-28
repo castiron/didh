@@ -12,11 +12,11 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
 		@currentPosition = 1
 		@parts = @options.parts
 		@texts = @options.texts
-		@annotator = @options.annotator
 		@router = @options.router
 		@paneHeight = @.$el.height()
 		@parts.bind('change:active', @highlightActivePart, @)
 		@texts.bind('change:active', @closePane, @)
+		@setupSubscriptions()
 
 	normalizePaneHeight: () ->
 		@.$el.find('.part').each( (i, part) =>
@@ -50,7 +50,6 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
 
 	render: =>
 		$(@el).html(@template(parts: @parts, texts: @texts, activeText: @router.getRequestedText()))
-
 		@setOpenCloseHiddenPositions()
 		@normalizePaneHeight()
 

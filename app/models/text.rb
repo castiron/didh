@@ -1,5 +1,5 @@
 class Text < ActiveRecord::Base
-	attr_accessible :body, :edition_id, :title, :abstract, :notes, :bibliography, :source_file, :authors, :author_ids, :part, :part_id, :sorting
+	attr_accessible :body, :edition_id, :title, :abstract, :notes, :bibliography, :source_file, :authors, :author_ids, :part, :part_id, :sorting, :is_static
 	has_and_belongs_to_many :authors
 	belongs_to :part
 	belongs_to :edition
@@ -16,6 +16,7 @@ class Text < ActiveRecord::Base
 				:id => id,
 				:title => title,
 				:part => part_id,
+        :is_static => is_static,
 				:authors => authors
 
 			}
@@ -24,6 +25,7 @@ class Text < ActiveRecord::Base
 				:id => id,
 				:title => title,
 				:part => part_id,
+        :is_static => is_static,
 				:body => body,
 				:notes => notes,
 				:bibliography => bibliography,

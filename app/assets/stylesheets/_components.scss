@@ -411,6 +411,11 @@ span.sentence {
 		background-color: lighten($yellow, 10%);
 	}
 }
+body.static-true span.sentence:hover {
+  background-color: #FFF;
+  cursor: auto;
+}
+
 
 
 // Interior navigation
