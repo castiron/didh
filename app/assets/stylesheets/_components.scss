@@ -194,8 +194,8 @@
 	display: none;
 	width: 690px;
 	background: $grayAlt url('bg-banner.jpg') no-repeat left top;
-	background-size: auto 180px;
-	padding: 20px 120px 20px 106px;
+	background-size: auto 260px;
+	padding: 20px 120px 20px 145px;
 	position: relative;
 	.banner-open & {
 		display: block;
@@ -207,12 +207,12 @@
 }
 
 .legend--title {
-	@extend %gamma;
+	@extend %beta;
 	margin-bottom: 0.5em;
 }
 
 .legend--description {
-	@extend %eta;
+	@extend %delta;
 	margin-bottom: 1em;
 }
 

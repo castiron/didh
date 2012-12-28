@@ -3,10 +3,20 @@ Didh.Views.Frontend ||= {}
 class Didh.Views.Frontend.PaneView extends Backbone.View
 
 	setupSubscriptions: () ->
+		# When we're moving from pos 2 to pos 1 or from pos 1 to pos 2, the panes move in unison
 		Backbone.Mediator.subscribe('pane:change', (position) =>
-			if position == 1 || position == 2
+			if position == 2
+				@goToPosition(position)
+			else if position == 1 && @currentPosition == 2
 				@goToPosition(position)
 		, @);
+
+		# Panes need to recalculate height when the orientation changes
+		Backbone.Mediator.subscribe('app:orientationchange', () =>
+			@normalizePaneHeight()
+		, @);
+
+		# In some cases, the panes need to close when the annotator opens
 		Backbone.Mediator.subscribe('annotator:open', () =>
 			breakPosition = 0
 			if $('body').width() <= 1280 then breakPosition = 1

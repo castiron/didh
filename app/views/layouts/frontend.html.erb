@@ -12,12 +12,12 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 
 		<%= stylesheet_link_tag    "application", :media => "all" %>
+
+	    <script type="text/javascript" src="//use.typekit.net/jlo5jay.js"></script>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
 
-		<script type="text/javascript" src="//use.typekit.net/jlo5jay.js"></script>
-		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-		
+
 		<script type="text/javascript">
 		  $(function() {
 		    window.router = new Didh.Routers.AppRouter({static: <%= @static %>, parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});

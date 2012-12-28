@@ -23,7 +23,7 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 
 	hideBanner: (callback) ->
 		if @isVisible == true
-			@$el.find('.legend').slideUp( 500, callback )
+			@$el.find('.legend').slideUp( 250, callback )
 			$('body').switchClass('banner-open','banner-closed')
 			@isVisible = false
 		false
@@ -51,7 +51,7 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 		)
 		setTimeout( =>
 			@hideBanner()
-		, 3000)
+		, 5000)
 
 
 	setupSubscriptions: () ->

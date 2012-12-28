@@ -14,8 +14,10 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
 		@texts = @options.texts
 		@router = @options.router
 		@paneHeight = @.$el.height()
+
 		@parts.bind('change:active', @highlightActivePart, @)
 		@texts.bind('change:active', @closePane, @)
+
 		@setupSubscriptions()
 
 	normalizePaneHeight: () ->

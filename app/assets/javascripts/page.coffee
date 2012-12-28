@@ -1,26 +1,12 @@
-# try
-# 	Typekit.load(
-# 		loading: ->
-# 			alert('loading')
-# 		active: ->
-# 			windowHeight = $(window).height()
-# 			contentHeight = $('.js-content').outerHeight()
-# 			console.log(windowHeight)
-# 			console.log(contentHeight)
-# 			if contentHeight < windowHeight
-# 				$('.js-content').outerHeight(windowHeight)
-# 	)
-# catch e
+try
+	Typekit.load(
+		loading: ->
 
-# pageContentHeight = {
-# 	init: ->
-# 		windowHeight = $(window).height()
-# 		contentHeight = $('.js-content').outerHeight()
-# 		console.log(windowHeight)
-# 		console.log(contentHeight)
-# 		if contentHeight < windowHeight
-# 			$('.js-content').outerHeight(windowHeight)
-# }
+		active: ->
+			windowHeight = $(window).height()
+			contentHeight = $('.js-content').outerHeight()
+			if contentHeight < windowHeight
+				$('.js-content').outerHeight(windowHeight)
+	)
+catch e
 
-# $ ->
-# 	pageContentHeight.init()
