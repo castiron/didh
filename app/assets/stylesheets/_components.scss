@@ -17,11 +17,8 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	@include respond-max(922px) {
-		margin-left: 25%;
-	}
-	@include respond-min(2000px) {
-		margin-left: 700px;
+	@include respond-max(1100px) {
+		margin-left: 30%;
 	}
 }
 
@@ -42,30 +39,24 @@
 		background-position: right bottom;
 		background-size: ($w / 2) ($h / 2);
 	}
-	@include respond-max(922px) {
-		width: 25%;
-		background-size: ($w / 3) ($h / 3);
-	}
-	@include respond-min(2000px) {
-		width: 700px;
+	@include respond-max(1100px) {
+		width: 30%;
 	}
 }
 
 .home-content {
-	width: 480px;
-	padding-bottom: 197px;
-	margin: 0 0 $space ($space * 3);
+	width: 40em;
+	padding: $space 0 11em;
+	margin: 0 0 $space 10%;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	@include respond-max(922px) {
-		width: 380px;
-		font-size: 0.8em;
-		margin-left: ($space * 2);
+	@include respond-max(1300px) {
+		font-size: 0.88em;
 	}
-	@include respond-max-height(800px) {
-		font-size: 0.8em;
-		// margin-left: ($space * 2);
+	@include respond-max(1100px) {
+		width: 90%;
+		padding-right: 10px;
 	}
 }
 
@@ -94,6 +85,9 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
+	@include respond-max(1100px) {
+		right: 10px;
+	}
 	a {
 		@extend %hidden-text;
 	}
@@ -153,7 +147,7 @@
 .interior-content {
 	@extend %content-wrapper;
 	padding-top: ($space * 4);
-	padding-bottom: ($space * 4);
+	padding-bottom	: ($space * 4);
 	position: relative;
 	z-index: 10;
 }

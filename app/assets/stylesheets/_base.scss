@@ -21,7 +21,6 @@ html {
 
 body {
 	@include font-museo;
-	// min-width: 900px;
 	font-size: 1.125em;
 	font-weight: 300;
 	line-height: $baseLineHeight;
@@ -31,9 +30,9 @@ body {
 // Body classes
 // --------------------------
 .home {
-	background-color: $black;
-	color: $white;
 	line-height: $looseLineHeight;
+	color: $white;
+	background-color: $black;
 }
 
 .page {
@@ -74,6 +73,13 @@ p {
 	& + & {
 		text-indent: 1.35em;
 	}
+	.home & {
+		@extend %beta;
+		& + p {
+			text-indent: 0;
+			margin-top: 1.35em;
+		}
+	}
 }
 
 ul, ol {
@@ -86,8 +92,10 @@ a {
 	color: inherit;
 	@include transition(0.05s color ease-out);
 	text-decoration: none;
-	// TODO is this a horrible idea?
 	.interior-content p & {
 		@extend %body-link;
+	}
+	.home p & {
+		@extend %home-link;
 	}
 }
