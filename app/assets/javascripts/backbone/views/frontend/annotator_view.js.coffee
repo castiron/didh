@@ -92,7 +92,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 	createIndexKeyword: (e) ->
 		word = @$el.find('.annotate-index-input input').first().val()
 		if !word
-			@$el.find('.annotate-index-input input').first().effect("shake", { times:2, distance: 5}, 50);
+			@$el.find('.annotate-index-input').first().effect("shake", { times:2, distance: 5}, 50);
 		else
 			keyword = new Didh.Models.Keyword({
 				sentence: @currentSentenceId
