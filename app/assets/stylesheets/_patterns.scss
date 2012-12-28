@@ -169,6 +169,10 @@
 			display: block;
 		}
 	}
+}
+
+%loose-floated-list {
+	@extend %floated-list;
 	li + li {
 		margin-left: $space;
 	}

@@ -89,7 +89,7 @@
 
 // <ul>
 .nav-footer {
-	@extend %floated-list;
+	@extend %loose-floated-list;
 	margin-bottom: 10px;
 	position: absolute;
 	bottom: 0;
@@ -252,25 +252,35 @@
 	padding: 0.69em 0 0.69em 1.25em;
 	li {
 		line-height: 22px;
+		padding-right: $space;
+		&:last-child {
+			padding-right: $navClosedWidth + 2;
+		}
+		@include respond-max(1024px) {
+			max-width: 25%;
+			padding-right: 3%;
+		}
 		@include respond-max(800px) {
-			line-height: 18px
+			line-height: 18px;
 		}
 	}
 }
 
+// <li>
 .hud--title {
-	// TODO: Scott should figure out how to handle this responsively. --ZD
-	// This sets the width of the title in the HUD. The title needs to wrap,
-	// but this max width is probably to some degree a factor of the window
-	// size.
-	max-width: 400px;
+	max-width: 25.25em;
+	@include respond-max(1024px) {
+		max-width: 50% !important;
+	}
 }
 
+// <span>
 .hud--author {
 	@extend %delta;	
 	text-transform: uppercase;
 }
 
+// <span>
 .hud--details {
 	@extend %delta;
 }
