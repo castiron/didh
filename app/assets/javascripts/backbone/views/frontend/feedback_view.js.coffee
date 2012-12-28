@@ -20,6 +20,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 		@texts = @options.texts
 		@router = @options.router
 		@linkedPane = @options.linkedPane
+		@annotator = @options.annotator
 		@defaultVisualization = 'stacked'
 
 	setModel: (model) ->
@@ -76,7 +77,6 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 
 		@setOpenCloseHiddenPositions()
 		@normalizePaneHeight()
-		console.log $('body').width()
 		if $('body').width() <= 1024 then @goToPosition(2)
 
 

@@ -792,6 +792,16 @@ span.sentence {
 	background-color: $gray;
 	position: relative;
 	z-index: 20;
+    height: 140px;
+    overflow:  hidden;
+}
+
+.annotator-pane {
+    height: 140px;
+}
+
+.annotator-panes {
+    position: relative;
 }
 
 // Bottom
@@ -819,8 +829,10 @@ span.sentence {
 }
 
 .annotate-index-input {
-	padding-left: 15px;
-	padding-right: 15px;
+    input.keyword {
+      margin-top: 5px;
+      width:  200px;;
+    }
 }
 
 
