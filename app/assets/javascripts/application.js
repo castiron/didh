@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require lib/backbone-mediator.js
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/didh

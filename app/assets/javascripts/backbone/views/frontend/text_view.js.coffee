@@ -3,33 +3,41 @@ Didh.Views.Frontend ||= {}
 class Didh.Views.Frontend.TextView extends Backbone.View
 	template: JST["backbone/templates/frontend/text"]
 
+	events:
+		"click .sentence" 	: "requestAnnotator"
+
 	initialize: () ->
 		@parts = @options.parts
 		@texts = @options.texts
 		@annotations = @options.annotations
 		@router = @options.router
-		@annotator = @options.annotator
+
+		@setupSubscriptions()
+
 		if @options.visualization?
 			@visualization = @options.visualization
 		else
 			@visualization = 'none'
 
+
 		@model.bind('change:isLoaded', @render, @)
 		@model.bind('change:sentences', @updateAnnotations, @)
 
-	events: 
-		"click .sentence" 	: "showAnnotator"
+	setupSubscriptions: () ->
+		Backbone.Mediator.subscribe('visualization:update', (type) =>
+			@updateVisualizationType(type)
+		, @)
 
-	showAnnotator: (e) ->
+	requestAnnotator: (e) ->
 		if $(e.target).hasClass('sentence')
-			@annotator.showAnnotatorOn(e.target, e)
+			Backbone.Mediator.publish('annotator:request', e.target, e);
 
 	showAnnotationDetail: (e) ->
 		$el = $(e.target)
 		$el.find('.annotation-counter').show()
 
 	showText: (text) ->
-		text = @texts.where({active: true})	
+		text = @texts.where({active: true})
 
 	updateVisualizationType: (type) ->
 		@visualization = type

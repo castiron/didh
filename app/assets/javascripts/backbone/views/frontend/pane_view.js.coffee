@@ -2,6 +2,15 @@ Didh.Views.Frontend ||= {}
 
 class Didh.Views.Frontend.PaneView extends Backbone.View
 
+	setupSubscriptions: () ->
+		Backbone.Mediator.subscribe('pane:change', (position) =>
+			if position == 1 || position == 2
+				@goToPosition(position)
+		, @);
+		Backbone.Mediator.subscribe('annotator:open', () =>
+			if @currentPosition == 0 then @goToPosition(1)
+		, @);
+
 	toggleOpen: (e) ->
 		if e then e.stopPropagation()
 		switch @currentPosition
@@ -23,17 +32,9 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 
 	goToPosition: (position, recursionBuster) ->
 
-		if !recursionBuster? then recursionBuster = false
-		if @linkedPane && recursionBuster == false
-			if position == 2
-				@linkedPane.goToPosition(2, true)
-			if position == 1 && @currentPosition == 2
-				@linkedPane.goToPosition(1, true)
-
 		if @currentPosition != position
 			switch position
 				when 0
-					@annotator.stopAnnotating()
 					@$el.find('.js-content-nav--pos1-show').hide()
 					@$el.find('.js-content-nav--pos2-show').hide()
 					@$el.find('.js-content-nav--pos0-show').show()
@@ -50,5 +51,6 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 					$('body').removeClass('nav-open')
 
 			@currentPosition = position
+			Backbone.Mediator.publish('pane:change', position);
 
 			@$el.animate({left: @positions[position]})

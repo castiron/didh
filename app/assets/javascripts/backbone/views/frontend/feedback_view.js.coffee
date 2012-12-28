@@ -8,7 +8,6 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	events: 
 		"click .js-content-nav--open-toggle"		: "toggleOpen"
 		"click .js-content-nav--visible-toggle"		: "toggleVisibility"
-
 		"click #feedback-view-interesting" 			: "updateVisualizationType"
 		"click #feedback-view-interesting-stacked" 	: "updateVisualizationType"
 		"click #feedback-view-interesting-opacity" 	: "updateVisualizationType"
@@ -16,12 +15,11 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	initialize: () ->
 		@firstCheck = true
 		@currentPosition = 1
+		@static = @options.static
 		@parts = @options.parts
 		@texts = @options.texts
-		@router = @options.router
-		@linkedPane = @options.linkedPane
-		@annotator = @options.annotator
 		@defaultVisualization = 'stacked'
+		@setupSubscriptions()
 
 	setModel: (model) ->
 		if @model?
@@ -51,7 +49,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	updateVisualizationType: () ->
 		visualization = @getVisualizationType()
 		@visualization = visualization
-		@router.updateVisualizationType(@visualization)
+		Backbone.Mediator.publish('visualization:update', @visualization);
 
 	normalizePaneHeight: () ->
 		@.$el.find('.part').each( (i, part) =>
@@ -73,7 +71,8 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 			visualization = @visualization
 		else
 			visualization = @defaultVisualization
-		$(@el).html(@template(text: @model, visualization: visualization))
+
+		$(@el).html(@template(text: @model, static: @static, visualization: visualization))
 
 		@setOpenCloseHiddenPositions()
 		@normalizePaneHeight()

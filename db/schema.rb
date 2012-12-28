@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227185115) do
+ActiveRecord::Schema.define(:version => 20121228200502) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20121227185115) do
     t.integer  "part_id"
     t.integer  "edition_id"
     t.integer  "sorting"
+    t.boolean  "is_static"
   end
 
 end

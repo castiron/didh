@@ -6,16 +6,17 @@ class Didh.Views.Frontend.HudView extends Backbone.View
 	events:
 		"click .js-legend--toggle" 	: "hideInstructions"
 
-	hideInstructions: () ->
-		@$el.find('.legend').slideUp()
-		$('body').switchClass('banner-open','banner-closed')
-		false
 
 	initialize: () ->
 		@router = @options.router
 		@texts = @options.texts
 		@texts.bind('change:active', @render, @)
 		@render()
+
+	hideInstructions: () ->
+		@$el.find('.legend').slideUp()
+		$('body').switchClass('banner-open','banner-closed')
+		false
 
 	render: ->
 		text = @texts.getActiveText()

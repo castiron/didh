@@ -27,7 +27,10 @@
 		<%= f.label :edition, :class => "control-label" %>
 		<%= collection_select :text, :edition_id, Edition.all, :id, :label, {}, {} %>
 
-		<div>
+		<%= f.label :is_static, :class => "control-label" %>
+		<%= f.check_box :is_static, :class => "span8" %>
+
+		<div style="margin-top: 15px;">
 			<%= f.submit 'Save', :class => 'btn' %>
 		</div>
 	</fieldset>

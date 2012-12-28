@@ -3,6 +3,7 @@ class DebatesController < ApplicationController
 	layout "frontend"
 	
 	def index
+    @static = false
 		@text = Text::find(1)
 		@texts = Text.order('sorting ASC').all
 		@parts = Part::find(:all)
@@ -31,6 +32,7 @@ class DebatesController < ApplicationController
   end
 
 	def show
+    @static = true
 		@text = Text.find(params[:id])
 		@texts = Text::find(:all)
 		@parts = Part::find(:all)

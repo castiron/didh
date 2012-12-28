@@ -20,13 +20,13 @@
 		
 		<script type="text/javascript">
 		  $(function() {
-		    window.router = new Didh.Routers.AppRouter({parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
+		    window.router = new Didh.Routers.AppRouter({static: <%= @static %>, parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
 	  	    Backbone.history.start({pushState: true, root: "/debates/"})
 		  });
 		</script>
 
 	</head>
-	<body class="interior nav-open banner-open">
+	<body class="interior nav-open banner-open static-<%= @static %>">
 		<div class="annotator" style="top: -1000px;" id="backbone-annotatorView" ></div>
 		<header class="page-header">
 			<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
