@@ -1,0 +1,33 @@
+// Print styles
+// ------------
+
+@media print {
+	.page-header,
+	.nav-hud,
+	.nav-content,
+	.annotation {
+		display: none !important;
+	}
+
+	html {
+		font-size: 70%;
+		padding: 0.5in;
+	}
+
+	.page {
+		background-color: transparent;
+	}
+
+	.interior-content {
+		max-width: 30.22em;
+		width: 100%;
+		padding: 0;
+		margin: 0 !important;
+	}
+
+	.interior-content-page {
+		max-width: 30.22em;
+		width: 100%;
+		padding: 0;
+	}
+}

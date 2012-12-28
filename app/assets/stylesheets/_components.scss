@@ -152,7 +152,8 @@
 // TODO adjust margin-left on small screens
 .interior-content {
 	@extend %content-wrapper;
-	padding: ($space * 4) 0;
+	padding-top: ($space * 4);
+	padding-bottom: ($space * 4);
 	position: relative;
 	z-index: 10;
 }
