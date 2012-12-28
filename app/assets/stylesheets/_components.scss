@@ -193,14 +193,17 @@
 .legend {
 	display: none;
 	width: 690px;
-	height: 160px;
 	background: $grayAlt url('bg-banner.jpg') no-repeat left top;
-	background-size: auto 160px;
-	padding: 20px 120px 0 96px;
+	background-size: auto 180px;
+	padding: 20px 120px 20px 106px;
 	position: relative;
 	.banner-open & {
 		display: block;
 	}
+}
+
+.legend-no-bgimage {
+  background:  none;
 }
 
 .legend--title {

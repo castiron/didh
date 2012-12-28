@@ -8,7 +8,9 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 				@goToPosition(position)
 		, @);
 		Backbone.Mediator.subscribe('annotator:open', () =>
-			if @currentPosition == 0 then @goToPosition(1)
+			breakPosition = 0
+			if $('body').width() <= 1280 then breakPosition = 1
+			if @currentPosition <= breakPosition then @goToPosition(breakPosition + 1)
 		, @);
 
 	toggleOpen: (e) ->
