@@ -299,7 +299,7 @@
 %content-wrapper {
 	@extend %smooth-resize;
 	width: 30.22em;
-	padding-right: 2em !important;
+	padding-right: 2em;
 	margin-left: 29%;
 	@include respond-max(1280px) {
 		margin-left: 250px !important;
