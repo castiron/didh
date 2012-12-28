@@ -58,6 +58,9 @@
 		width: 90%;
 		padding-right: 10px;
 	}
+	@include respond-max(740px) {
+		padding-bottom: 0;
+	}
 }
 
 .nav-start {
@@ -89,18 +92,31 @@
 		right: 10px;
 	}
 	a {
-		@extend %hidden-text;
+		height: 6.6em;
+		@include respond-max(860px) {
+			height: 5em;
+		}
 	}
-	.logo-cuny {
-		@include background-2x(logo-cuny, 101px, 181px);
+	img {
+		height: 100%;
 	}
-	.logo-umn {
-		@include background-2x(logo-umn, 69px, 183px);
-	}
-	.logo-gcdi {
-		@include background-2x(logo-gcdi, 123px, 185px);
-	}
+	// .logo-cuny {
+	// 	@include background-2x(logo-cuny, 101px, 181px);
+	// }
+	// .logo-umn {
+	// 	@include background-2x(logo-umn, 69px, 183px);
+	// }
+	// .logo-gcdi {
+	// 	@include background-2x(logo-gcdi, 123px, 185px);
+	// }
+}
 
+.nav-primary,
+.nav-footer {
+	@include respond-max(740px) {
+		padding-top: $space;
+		position: static;
+	}
 }
 
 // Interior page components
