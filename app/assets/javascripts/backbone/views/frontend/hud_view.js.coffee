@@ -4,17 +4,15 @@ class Didh.Views.Frontend.HudView extends Backbone.View
 	template: JST["backbone/templates/frontend/hud"]
 
 	events:
-		"click .js-legend--toggle" 	: "hideInstructions"
+		"click" 	: "requestScroll"
 
 	initialize: () ->
 		@texts = @options.texts
 		@texts.bind('change:active', @render, @)
 		@render()
 
-	hideInstructions: () ->
-		@$el.find('.legend').slideUp()
-		$('body').switchClass('banner-open','banner-closed')
-		false
+	requestScroll: () ->
+		Backbone.Mediator.publish('text:request_scroll');
 
 	render: ->
 		text = @texts.getActiveText()

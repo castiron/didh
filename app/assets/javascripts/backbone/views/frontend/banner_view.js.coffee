@@ -14,7 +14,7 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 		@render(@instructionsTemplate)
 		if @$el.attr('data-hide-instructions') != '1'
 			@showBanner()
-		
+
 	hideInstructions: () ->
 		# Send an XHR request to Rails, which will in turn set session data to prevent
 		# the instructions from appearing again.

@@ -27,6 +27,9 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 		Backbone.Mediator.subscribe('visualization:update', (type) =>
 			@updateVisualizationType(type)
 		, @)
+		Backbone.Mediator.subscribe('text:request_scroll', () =>
+			@scrollTop()
+		, @)
 
 	requestAnnotator: (e) ->
 		if $(e.target).hasClass('sentence')
@@ -83,7 +86,10 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 					annotation.css({width: width + 'px'})
 		)
 
-	render: () =>
+	scrollTop: () ->
+		$('html, body').animate({scrollTop: 0}, 500)
+
+	render: () ->
 		text = _.first @texts.where({active: true})
 		$('html, body').animate({scrollTop: 0}, 500)
 
