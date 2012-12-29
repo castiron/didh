@@ -46,13 +46,13 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 		false
 
 	showKeywordAddedBanner: (keyword) ->
-		@reloadBanner( =>
-			@render(@keywordAddedTemplate)
-		)
-		setTimeout( =>
-			@hideBanner()
-		, 5000)
-
+		if @isVisible == false
+			@reloadBanner( =>
+				@render(@keywordAddedTemplate)
+			)
+			setTimeout( =>
+				@hideBanner()
+			, 5000)
 
 	setupSubscriptions: () ->
 		Backbone.Mediator.subscribe('annotator:keyword_added', (keyword) =>
