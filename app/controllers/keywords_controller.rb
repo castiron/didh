@@ -7,7 +7,7 @@ class KeywordsController < ApplicationController
 
     respond_to do |format|
       if @keyword.save
-        format.json { render json: @keyword, status: :created, location: keyword_url(@keyword) }
+        format.json { render json: @keyword, status: :created, location: text_keyword_url(@keyword.text, @keyword) }
       else
         format.json { render json: @keyword.errors, status: :unprocessable_entity }
       end
