@@ -1,7 +1,5 @@
 try
 	Typekit.load(
-		loading: ->
-
 		active: ->
 			windowHeight = $(window).height()
 			contentHeight = $('.js-content').outerHeight()
@@ -9,4 +7,3 @@ try
 				$('.js-content').outerHeight(windowHeight)
 	)
 catch e
-
