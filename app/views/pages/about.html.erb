@@ -41,42 +41,34 @@
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam ab dolor explicabo id eveniet eos reprehenderit error vitae eligendi itaque excepturi corporis. Culpa tempore quae placeat! Eum iure omnis exercitationem blanditiis maiores laborum pariatur ipsa repellat dolorum doloremque ratione qui. Enim officiis dolorum veritatis ipsam omnis numquam quo exercitationem maiores reiciendis laudantium totam commodi architecto.</p>
 	<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam officia tempora dolor quaerat impedit laudantium blanditiis nostrum aperiam unde earum quos nesciunt perferendis asperiores animi sunt nihil libero veritatis iusto nisi quis laborum. Eum eos maxime voluptatum voluptates minima id quidem mollitia in incidunt dicta assumenda nisi explicabo obcaecati laboriosam consectetur eveniet quae inventore a tenetur perspiciatis repudiandae quasi iure quo dignissimos adipisci. Sequi quaerat cupiditate quibusdam exercitationem incidunt dolorem vitae nihil similique saepe illum nulla aliquid in officia totam quos quod magni aut ratione inventore voluptate illo deserunt</p>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod velit!</p> -->
-
-
-	<h1 class="column--heading" style="margin-top: 50px;">Send Us Your Feedback</h1>
+  </section>
+  <section class="column-single">
+	<h1 class="column--heading">Send Us Your Feedback</h1>
 	<% flash.each do |key, value| %>
 		<%= content_tag(:div, value, :class => "flash #{key}") %>
 	<% end %>
 
 	<%= form_for @message, :url => about_path do |form| %>
-		<div class="field" style="width: 250px; margin-right: 15px; float: left">
-		  <%= form.label 'name:', :style => "display: inline-block; width: 75px" %>
-		  <%= form.text_field :name, :style => "display: inline-block; width: 150px"  %>
+		<div class="row">
+			<div class="field-half">
+				<%= form.label 'name:', :class => "field--label" %><%= form.text_field :name, :class => "field--input" %>
+			</div>
+
+			<div class="field-half">
+				<%= form.label 'email:', :class => "field--label" %><%= form.text_field :email, :class => "field--input"  %>
+			</div>
 		</div>
 
-		<div class="field" style="width: 250px; margin-right: 15px; float: left">
-		  <%= form.label 'email:', :style => "display: inline-block; width: 65px" %>
-		  <%= form.text_field :email, :style => "display: inline-block; width: 150px"  %>
+		<div class="row">
+			<%= form.label 'subject:', :class => "field--label" %><%= form.text_field :subject, :class => "field--input" %>
 		</div>
 
-		<div style="clear: both"></div>
-
-		<div class="field" style="width: 500px; margin-top: 15px; margin-right: 5%; float: left">
-		  <%= form.label 'subject:', :style => "display: inline-block; width: 75px" %>
-		  <%= form.text_field :subject, :style => "display: inline-block; width: 405px" %>
+		<div class="row">
+			<%= form.label 'body:', :class => "field--label" %><%= form.text_area :body, :class => "field--textarea" %>
 		</div>
 
-		<div style="clear: both"></div>
-
-		<div class="field" style="width: 500px; margin-top: 15px; margin-right: 5%; float: left">
-		  <%= form.label 'body:', :style => "display: inline-block; width: 75px" %>
-		  <%= form.text_area :body, :style => "display: inline-block; height: 200px; width: 405px" %>
-		</div>
-		<div style="clear: both"></div>
-
-		<div class="field" style="width: 500px; margin-bottom: 50px; margin-top: 15px; margin-right: 5%; float: left">
-		  <div style="display: inline-block; width: 75px"></div>
-		  <%= form.submit "Send" %>
+		<div class="row row-submit">
+			<%= form.submit "Send", :class => "field--button" %>
 		</div>
 
 	<% end %>

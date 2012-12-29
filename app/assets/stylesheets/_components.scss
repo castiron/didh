@@ -883,7 +883,6 @@ body.static-true span.sentence:hover {
 	}
 }
 
-
 // Annotation Counter [SM TO REVIEW] -- this is not being used yet, so you can ignore it for now.
 // --------------------------
 // <div>
@@ -932,6 +931,101 @@ body.static-true span.sentence:hover {
 .name-list {
 	@extend %delta;
 	@extend %unstyled-list;
+}
+
+// Forms
+// --------------------------------------------------------
+.new_message {
+	display: inline-block;
+	background-color: $grayLight;
+	padding: 1em $space 1em 1em;
+}
+
+.row {
+	@extend %clearfix;
+	width: 30.22em;
+	& + & {
+		margin-top: 1em;
+	}
+	@include respond-max(870px) {
+		width: 100%;
+	}
+}
+
+.row-submit {
+	&:before {
+		content: "";
+		display: block;
+		width: 18%;
+		height: 1px;
+		float: left;
+		@include respond-max(650px) {
+			display: none;
+		}
+	}
+}
+
+.field-half {
+	width: 50%;
+	float: left;
+	&:last-child {
+		padding-left: 1em;
+	}
+	@include respond-max(700px) {
+		width: 100%;
+		&:last-child {
+			padding-left: 0;
+			margin-top: 1em;
+		}
+	}
+}
+
+.field--label {
+	width: 18%;
+	padding: 0.5em 0;
+	float: left;
+	.field-half & {
+		width: 36%;
+		@include respond-max(700px) {
+			width: 18%;
+		}
+	}
+	@include respond-max(650px) {
+		display: block;
+		float: none;
+	}
+}
+
+.field--input {
+	@extend %text-input;
+	width: 82%;
+	float: left;
+	.field-half & {
+		width: 64%;
+		@include respond-max(700px) {
+			width: 82%;
+		}
+	}
+
+}
+
+.field--textarea {
+	@extend %text-input;
+	width: 82%;
+	resize: none;
+}
+
+.field--button {
+	@extend %button-input;
+}
+
+.flash {
+	@extend %epsilon;
+	display: inline-block;
+	color: $white;
+	background-color: $orange;
+	padding: 0.5em;
+	margin-bottom: $shim;
 }
 
 // Two column layouts
