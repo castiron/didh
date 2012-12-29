@@ -58,13 +58,28 @@
 		width: 90%;
 		padding-right: 10px;
 	}
+	@include respond-max(900px) {
+		font-size: 0.7em;
+	}
+	@include respond-max(800px) {
+		font-size: 0.6em !important;
+	}
 	@include respond-max(740px) {
 		padding-bottom: 0;
+	}
+	@include respond-max-height(900px) {
+		font-size: 0.7em;
+	}	
+	@include respond-max-height(800px) {
+		font-size: 0.6em !important;
+	}
+	@include respond-max-height(650px) {
+		position: relative;
 	}
 }
 
 .nav-start {
-	@extend %beta;
+	@extend %alpha;
 	@extend %loose-top-space;
 	a {
 		@extend %home-link;
@@ -75,6 +90,7 @@
 // --------------------------
 // <ul>
 .nav-primary {
+	@extend %alpha;
 	@extend %nav;
 	position: absolute;
 	bottom: 0;
