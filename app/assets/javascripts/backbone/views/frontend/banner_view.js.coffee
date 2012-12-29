@@ -28,16 +28,6 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 			@isVisible = false
 		false
 
-	reloadBanner: (hideCallback, showCallback) ->
-		if @isVisible == true
-			@hideBanner( =>
-				hideCallback()
-				@showBanner()
-			)
-		else
-			hideCallback()
-			@showBanner()
-
 	showBanner: (callback) ->
 		if @isVisible == false
 			@$el.find('.legend').slideDown( 500, callback)
@@ -46,13 +36,12 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 		false
 
 	showKeywordAddedBanner: (keyword) ->
-		@reloadBanner( =>
-			@render(@keywordAddedTemplate)
-		)
+		@isVisible = false
+		@render(@keywordAddedTemplate)
+		@showBanner()
 		setTimeout( =>
 			@hideBanner()
 		, 5000)
-
 
 	setupSubscriptions: () ->
 		Backbone.Mediator.subscribe('annotator:keyword_added', (keyword) =>
