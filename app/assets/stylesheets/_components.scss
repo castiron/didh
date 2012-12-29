@@ -848,28 +848,24 @@ body.static-true span.sentence:hover {
 	margin-left: 1em;
 }
 
-.annotate-index-input {
-    input.keyword {
-      margin-top: 5px;
-      width:  160px;;
-    }
-}
-
-
 // <li>
 .annotate-close {
 	padding-left: 30px;
 	margin-top: 10px;
 	background: transparent url('icon-x-alt.png') no-repeat 4px center;
 	background-size: 12px;
-	// position: relative;
 }
 
-.annotate-close--x {
-	font-weight: 300;
-	position: absolute;
-	top: 0;
-	left: 5px;
+// Index annotation form
+// --------------------------
+.annotator--input {
+	@extend %text-input;
+	width:  200px;
+	margin: 10px 10px 0 0;
+}
+
+.annotator--button {
+	@extend %button-input;
 }
 
 // Annotation flag
