@@ -101,9 +101,18 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
 				word: word
 				text_id: @texts.getActiveText().id
 			})
-			keyword.save({})
-			Backbone.Mediator.publish('annotator:keyword_added', keyword);
-			@stopAnnotating()
+			activeText = @texts.getActiveText()
+			keyword.save({}, {
+				success: =>
+					console.log 'success'
+					activeText.incrementGroupedKeywordCount(@currentSentenceId)
+					Backbone.Mediator.publish('annotator:keyword_added', keyword);
+					@stopAnnotating()
+				error: =>
+					console.log 'error'
+					Backbone.Mediator.publish('annotator:keyword_add_failed', keyword);
+					@stopAnnotating()
+			})
 		false
 
 	render: =>

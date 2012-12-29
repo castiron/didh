@@ -54,6 +54,13 @@ class Didh.Views.Frontend.TextView extends Backbone.View
 
 		if @visualization == 'none' then return
 
+		# Used for debugging indexed sentences. Underlines sentences that have been indexed.
+		#_.each(@model.get('keywords_grouped'), (sentence) =>
+		#	sel = '#sentence-' + sentence.sentence
+		#	$el = $(sel)
+		#	$el.addClass('indexed')
+		#)
+
 		_.each(@model.get('sentences'), (sentence) =>
 			sel = '#sentence-' + sentence.sentence
 			$el = $(sel)
