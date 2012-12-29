@@ -31,6 +31,8 @@ class Text < ActiveRecord::Base
 				:bibliography => bibliography,
 				:authors => authors,
 				:edition => edition.label,
+        :keywords_grouped => keywords.all_grouped,
+        #:keywords => keywords,
 				:sentences => annotations.all_grouped
 			}
 		end

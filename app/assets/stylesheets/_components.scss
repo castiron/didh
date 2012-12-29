@@ -420,6 +420,11 @@
 span.hover {
 	background-color: lighten($yellow, 10%);
 }
+
+span.indexed {
+  text-decoration:  underline;
+}
+
 span.sentence {
 	cursor: pointer;
 	&:hover {

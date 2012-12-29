@@ -30,9 +30,9 @@ Didh::Application.routes.draw do
 
   resources :texts do
     resources :annotations
+    resources :keywords
   end
 
-  resources :keywords
 
   # Sample resource route with options:
   #   resources :products do

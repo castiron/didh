@@ -19,19 +19,53 @@ class Didh.Models.Text extends Backbone.Model
 			parseInt(sentence.sentence) == parseInt(sentenceId)
 		)
 
+	getKeyword: (sentenceId) ->
+		keywords = @get('keywords_grouped')
+		keyword = _.find(keywords, (keyword) ->
+			parseInt(keyword.sentence) == parseInt(sentenceId)
+		)
+
 	getAnnotatedSentenceCount: () ->
 		count = @get('sentences').length
 
+	getIndexedSentencesCount: () ->
+		count = @get('keywords_grouped').length
+
 	getAnnotationCount: () ->
-		count = _.reduce(@get('sentences'), (memo, num) -> 
+		count = _.reduce(@get('sentences'), (memo, num) ->
 			memo + parseInt num.count
 		, 0)
-		
+
+	getTotalMarkedAndIndexed: () ->
+		all = @get('sentences').concat(@get('keywords_grouped'))
+		count = _.reduce(all, (memo, num) ->
+			memo + parseInt num.count
+		, 0)
+
+	getIndexedCount: () ->
+		count = _.reduce(@get('keywords_grouped'), (memo, num) ->
+			memo + parseInt num.count
+		, 0)
 
 	getAnnotationCountFor: (sentenceId) ->
 		sentence = @getSentence(sentenceId)
 		if sentence?
 			sentence.count
+
+	incrementGroupedKeywordCount: (sentenceId) ->
+		keywords = @get('keywords_grouped')
+		console.log keywords, 'before'
+		keyword = @getKeyword(sentenceId)
+		console.log keyword,' a'
+		if keyword?
+			keyword.count++
+		else
+			keywords.push({keyword: sentenceId, count: 1})
+		@set('keywords_grouped', keywords)
+
+		console.log @get('keywords_grouped'), 'after'
+
+		@trigger('change:keywords_grouped')
 
 	incrementAnnotationCount: (sentenceId) ->
 		sentences = @get('sentences')

@@ -13,11 +13,11 @@
  			</li>
  			<li class="count-box">
  				<h6 class="count-box--title">Sentences Indexed</h6>
-				<span class="count-box--number">0</span>
+				<span class="count-box--number"><%= text.getIndexedSentencesCount() %></span>
  			</li>
  			<li class="count-box">
- 				<h6 class="count-box--title">Total feedback count</h6>
-				<span class="count-box--number"><%= text.getAnnotationCount() %></span>
+ 				<h6 class="count-box--title">Total Times Marked or Indexed</h6>
+					<span class="count-box--number"><%= text.getTotalMarkedAndIndexed() %></span>
  			</li>
  		</ul>
  		<a class="content--toggle js-content-nav--pos1-show js-content-nav--pos2-show js-content-nav--open-toggle" href="">
