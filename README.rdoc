@@ -1,14 +1,12 @@
-Spin up a DIDH instance:
+A detailed README for this project is coming soon. In the meantime, if you're registered with CIC's chef server, you can spin up a DIDH instance with:
 
 	knife ec2 server create -I ami-184fc128 --flavor m1.medium --region us-west-2 -G default -x ubuntu -N production.dhdebates.org -S office-aws --security-group-ids sg-0e66f23e --ebs-size 20
 
-Resize file system from default 8GB to 20GB with
+Be sure to resize file system from default 8GB to 20GB with
 
 	resize2fs /dev/sda1
 
-
-Provision it with:
+And then provision it with:
 
 	sudo chef-client -o cic_projects::project_didh -E production
-
 
