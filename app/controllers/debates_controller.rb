@@ -7,12 +7,7 @@ class DebatesController < ApplicationController
 		@text = Text::find(1)
 		@texts = Text.order('sorting ASC').all
 		@parts = Part::find(:all)
-
-		if session[:hide_instructions] == true
-			@hide_instructions = 1
-		else
-			@hide_instructions = 0
-		end
+		@hide_instructions = check_hide_instructions()
 	end
 
 	def hide_instructions
@@ -36,6 +31,19 @@ class DebatesController < ApplicationController
 		@text = Text.find(params[:id])
 		@texts = Text::find(:all)
 		@parts = Part::find(:all)
+		@hide_instructions = check_hide_instructions()
+	end
+
+	####################################################
+	private
+	####################################################
+
+	def check_hide_instructions
+		if session[:hide_instructions] == true
+			@hide_instructions = 1
+		else
+			@hide_instructions = 0
+		end
 	end
 
 end
