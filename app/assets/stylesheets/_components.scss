@@ -49,7 +49,7 @@
 
 .home-content {
 	width: 40em;
-	padding: $space 0 11em;
+	padding-bottom: 11em;
 	margin: 0 0 $space 10%;
 	position: absolute;
 	bottom: 0;
@@ -57,13 +57,15 @@
 
 	@include respond-max(1268px) {
 		width: 90%;
+		font-size: 0.9em;
 		padding-right: 10px;
 	}
 	@include respond-max(740px) {
 		font-size: 0.88em;
 		padding-bottom: 0;
 	}
-	@include respond-max-height(700px) {
+	@include respond-max-height(650px) {
+		padding-top: $space;
 		position: relative;
 	}
 }
@@ -209,6 +211,9 @@
 	position: relative;
 	.banner-open & {
 		display: block;
+	}
+	.no-backgroundsize & {
+		background-image: url('bg-banner-half.jpg');
 	}
 }
 
