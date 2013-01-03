@@ -42,6 +42,9 @@
 	@include respond-max(1100px) {
 		width: 30%;
 	}
+	.lt-ie9 & {
+		background-image: url('bg-home-half.jpg');
+	}
 }
 
 .home-content {
@@ -149,6 +152,10 @@
 		background: transparent url('logo-ddh.png') no-repeat left bottom;
 		background-size: 100% auto;
 		margin: 0 auto;
+		.lt-ie9 & {
+			background-image: url('logo-ddh-half.png');
+		}
+
 	}
 }
 
