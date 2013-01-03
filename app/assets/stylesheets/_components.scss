@@ -52,28 +52,29 @@
 	bottom: 0;
 	left: 0;
 	@include respond-max(1300px) {
-		font-size: 0.88em;
+		// font-size: 0.88em;
 	}
-	@include respond-max(1100px) {
+	@include respond-max(1268px) {
 		width: 90%;
 		padding-right: 10px;
 	}
 	@include respond-max(900px) {
-		font-size: 0.7em;
+		// font-size: 0.7em;
 	}
 	@include respond-max(800px) {
-		font-size: 0.6em !important;
+		// font-size: 0.6em !important;
 	}
 	@include respond-max(740px) {
+		font-size: 0.88em;
 		padding-bottom: 0;
 	}
 	@include respond-max-height(900px) {
-		font-size: 0.7em;
+		// font-size: 0.7em;
 	}	
 	@include respond-max-height(800px) {
-		font-size: 0.6em !important;
+		// font-size: 0.6em !important;
 	}
-	@include respond-max-height(650px) {
+	@include respond-max-height(700px) {
 		position: relative;
 	}
 }
@@ -104,13 +105,13 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	@include respond-max(1100px) {
+	@include respond-max(1268px) {
 		right: 10px;
 	}
 	a {
-		height: 6.6em;
+		height: 5em;
 		@include respond-max(860px) {
-			height: 5em;
+			height: 4em;
 		}
 	}
 	img {
@@ -458,6 +459,7 @@ body.static-true span.sentence:hover {
 // --------------------------
 // <ul>
 .nav-interior {
+	@extend %beta;
 	@extend %nav;
 }
 
@@ -468,21 +470,11 @@ body.static-true span.sentence:hover {
 	z-index: 30;
 }
 
-.nav-content--control {
-//	color: inherit;
-//	position: absolute;
-//	bottom: 20px;
-//	right: 20px;
-//	z-index: 10;
-//	&:focus {
-//		outline: 0;
-//	}
-}
-
 .nav-panes {
 	height: 100%;
 	position: relative;
 }
+
 // <ul>
 // Lives inside nav-content
 .nav-pane {
@@ -522,19 +514,18 @@ body.static-true span.sentence:hover {
 // Lives inside nav-panes
 .pane--content {
 	width: 100%;
+	height: 100%;
 	line-height: $tightLineHeight;
 	padding: 40px 20px 30px 50px;
 	position: relative;	
 	.pane-top & {
 		padding-top: 160px;
 	}
-	height: 100%;
-	& .part {
-		margin-bottom: 50px;
+	.part {
 		@extend %clearfix;
-
+		margin-bottom: 50px;
 	}
-	& .parts {
+	.parts {
 		position: relative;
 	}
 }
@@ -958,35 +949,6 @@ body.static-true span.sentence:hover {
 .contents-list {
 	@extend %unstyled-list;
 }
-
-// // Link-list
-// // --------------------------
-// .link-list {
-// 	@extend %unstyled-list;
-// 	li {
-// 		position: relative;
-// 	}
-// 	li + li {
-// 		margin-top: $shim;
-// 	}
-// }
-
-// .link-list--title {
-// 	@extend %delta;
-// 	width: 5.5em;
-// 	text-transform: uppercase;
-// 	position: absolute;
-// 	top: 0;
-// 	left: 0;
-// }
-
-// .link-list--link {
-// 	@extend %delta;
-// 	display: block;
-// 	color: $black;
-// 	word-wrap: break-word;
-// 	margin-left: 6em;
-// }
 
 // Forms
 // --------------------------------------------------------
