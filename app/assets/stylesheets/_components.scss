@@ -17,7 +17,7 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	@include respond-max(1100px) {
+	@include respond-max(1120px) {
 		margin-left: 30%;
 	}
 }
@@ -39,7 +39,7 @@
 		background-position: right bottom;
 		background-size: ($w / 2) ($h / 2);
 	}
-	@include respond-max(1100px) {
+	@include respond-max(1120px) {
 		width: 30%;
 	}
 	.no-backgroundsize & {
@@ -55,7 +55,7 @@
 	bottom: 0;
 	left: 0;
 
-	@include respond-max(1268px) {
+	@include respond-max(1040px) {
 		width: 90%;
 		font-size: 0.9em;
 		padding-right: 10px;
@@ -63,6 +63,10 @@
 	@include respond-max(740px) {
 		font-size: 0.88em;
 		padding-bottom: 0;
+	}
+	@include respond-max(500px) {
+		padding-top: $space;
+		position: relative;
 	}
 	@include respond-max-height(650px) {
 		padding-top: $space;
@@ -96,7 +100,7 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	@include respond-max(1268px) {
+	@include respond-max(1040px) {
 		right: 10px;
 	}
 	a {
