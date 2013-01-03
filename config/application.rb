@@ -64,8 +64,8 @@ module Didh
         :address              => "smtp.gmail.com",
         :port                 => 587,
         :domain               => "dhdebates.gc.cuny.edu",
-        :user_name            => "dhdebates@gmail.com",
-        :password             => "Ja90fjlk1904ad",
+        :user_name            => Didh_Configuration[:gmail_username],
+        :password             => Didh_Configuration[:gmail_password],
         :authentication       => :plain,
         :enable_starttls_auto => true
     }
