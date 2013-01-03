@@ -303,7 +303,7 @@
 // --------------------------------------------------------
 // <ul>
 %nav {
-	@extend %beta;
+	// @extend %beta;
 	@extend %unstyled-list;
 	line-height: $looseLineHeight;
 	a {
