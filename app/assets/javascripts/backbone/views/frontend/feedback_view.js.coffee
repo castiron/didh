@@ -30,7 +30,6 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 		@model.bind('change', @render, @)
 		@model.bind('change:sentences', @render, @)
 		@model.bind('change:keywords_grouped', @render, @)
-#		@render()
 
 	getVisualizationType: () ->
 		if @firstCheck == true 

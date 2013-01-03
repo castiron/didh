@@ -16,7 +16,7 @@ class Text < ActiveRecord::Base
 				:id => id,
 				:title => title,
 				:part => part_id,
-        :is_static => is_static,
+				:is_static => is_static,
 				:authors => authors
 
 			}
@@ -25,14 +25,13 @@ class Text < ActiveRecord::Base
 				:id => id,
 				:title => title,
 				:part => part_id,
-        :is_static => is_static,
+				:is_static => is_static,
 				:body => body,
 				:notes => notes,
 				:bibliography => bibliography,
 				:authors => authors,
 				:edition => edition.label,
-        :keywords_grouped => keywords.all_grouped,
-        #:keywords => keywords,
+				:keywords_grouped => keywords.all_grouped,
 				:sentences => annotations.all_grouped
 			}
 		end
