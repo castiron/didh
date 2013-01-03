@@ -42,7 +42,7 @@
 	@include respond-max(1100px) {
 		width: 30%;
 	}
-	.lt-ie9 & {
+	.no-backgroundsize & {
 		background-image: url('bg-home-half.jpg');
 	}
 }
@@ -152,7 +152,7 @@
 		background: transparent url('logo-ddh.png') no-repeat left bottom;
 		background-size: 100% auto;
 		margin: 0 auto;
-		.lt-ie9 & {
+		.no-backgroundsize & {
 			background-image: url('logo-ddh-half.png');
 		}
 
@@ -242,6 +242,9 @@
 	padding-left: 24px;
 	background: transparent url('icon-x.png') no-repeat left center;
 	background-size: 18px;
+	.no-backgroundsize & {
+		background-image: url('icon-x-half.png');
+	}
 }
 
 // Head-up display
@@ -576,11 +579,18 @@ body.static-true span.sentence:hover {
 	bottom: 12.5%;
 	left: 0;
 	overflow: hidden;
+	.lt-ie9 & {
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+		bottom: 150px;
+	}
 }
 
 .pane-bottom--title {
 	top: 50%;
 	bottom: auto;
+	.lt-ie9 & {
+		top: 150px;
+	}
 }
 
 // <a>
@@ -695,12 +705,18 @@ body.static-true span.sentence:hover {
 		background-size: auto 100%;
 		padding: 2px 0 2px 13px;
 		margin-left: 2px;
+		.no-backgroundsize & {
+			background-image: url('icon-stacked-half.png');
+		}
 	}
 	.opacity-label {
 		background: transparent url('icon-opacity.png') no-repeat left top;
 		background-size: auto 100%;
 		padding: 2px 0 2px 11px;
 		margin-left: 2px;
+		.no-backgroundsize & {
+			background-image: url('icon-opacity-half.png');
+		}
 	}
 }
 
@@ -766,21 +782,21 @@ body.static-true span.sentence:hover {
 	z-index: 20;
 	&:before {
 		content: "";
-		border: 15px solid transparent;
-		border-top: 28px solid $gray;
-		position: absolute;
-		bottom: -43px;
-		left: 26px;
-		z-index: 14;
-	}
-	&:after {
-		content: "";
 		border: 17px solid transparent;
 		border-top: 32px solid $white;
 		position: absolute;
 		bottom: -49px;
 		left: 24px;
 		z-index: 12;
+	}
+	&:after {
+		content: "";
+		border: 15px solid transparent;
+		border-top: 28px solid $gray;
+		position: absolute;
+		bottom: -43px;
+		left: 26px;
+		z-index: 14;
 	}
 }
 
@@ -854,6 +870,9 @@ body.static-true span.sentence:hover {
 	margin-top: 10px;
 	background: transparent url('icon-x-alt.png') no-repeat 4px center;
 	background-size: 12px;
+	.no-backgroundsize & {
+		background-image: url('icon-x-alt-half.png');
+	}
 }
 
 // Index annotation form

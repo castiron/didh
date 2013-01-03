@@ -11,9 +11,9 @@ class Didh.Routers.AppRouter extends Backbone.Router
 		@annotator.render()
 		@feedbackView.render()
 
-		window.addEventListener('orientationchange', () ->
-			Backbone.Mediator.publish('app:orientationchange');
-		, false)
+		# window.addEventListener('orientationchange', () ->
+		# 	Backbone.Mediator.publish('app:orientationchange');
+		# , false)
 
 	routes:
 		"part/:id"			: "showPart"
