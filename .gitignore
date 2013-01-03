@@ -7,8 +7,10 @@
 # Ignore bundler config
 /.bundle
 
-# Ignore the DB config file
+# Ignore the DB config file and the app secrets config file
 /config/database.yml
+#/config/initializers/secret_token.rb
+#/config/application.rb
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
