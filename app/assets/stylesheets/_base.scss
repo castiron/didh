@@ -95,7 +95,13 @@ a {
 	.interior-content p & {
 		@extend %body-link;
 	}
+	.interior-content-page & {
+		@extend %body-link;
+	}
 	.home p & {
 		@extend %home-link;
+	}
+	.callout & {
+		@extend %body-link;
 	}
 }

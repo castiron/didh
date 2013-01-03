@@ -1,76 +1,67 @@
+<h1 class="page-title">About</h1>
+<ul class="contents-list">
+	<li><a href="#whats-new">What's New</a></li>
+	<li><a href="#editions">Editions</a></li>
+	<li><a href="#contribute">Contribute</a></li>
+	<li><a href="#credits">Credits</a></li>
+	<li><a href="#contact-us">Contact Us</a></li>
+</ul>
 <div class="columns">
-  <section class="column-narrow">
-	<h1 class="column--heading">Contributors</h1>
-	<ul class="name-list">
-	  <li>Matthew Kirschenbaum</li>
-	  <li>Kathleen Fitzpatrick</li>
-	  <li>Lisa Spiro</li>
-	  <li>Patrik Svensson</li>
-	  <li>Rafael Alvarado</li>
-	  <li>Tom Scheinfeldt</li>
-	  <li>Michael Gavin</li>
-	  <li>Kathleen Marie Smith</li>
-	  <li>Stephen Ramsay</li>
-	  <li>Geoffrey Rockwell</li>
-	  <li>Matthew Kirschenbaum</li>
-	  <li>Kathleen Fitzpatrick</li>
-	  <li>Lisa Spiro</li>
-	  <li>Patrik Svensson</li>
-	  <li>Rafael Alvarado</li>
-	  <li>Tom Scheinfeldt</li>
-	  <li>Michael Gavin</li>
-	  <li>Kathleen Marie Smith</li>
-	  <li>Stephen Ramsay</li>
-	  <li>Geoffrey Rockwell</li>
-	</ul>
-  </section>
-  <section class="column-wide">
-	<blockquote class="blockquote">
-	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque neque labore quae at rem odit libero ab asperiores cum nam ipsa distinctio maxime dolorum ducimus adipisci error ullam recusandae repudiandae.</p>
-	  <cite class="attribution">Clive Thompson, columnist for Wired and contributing writer for the New York Times Magazine</cite>
-	</blockquote>
-	<blockquote class="blockquote">
-	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ut ex earum doloribus facere ipsa deleniti laudantium iusto quam illo.</p>
-	  <cite class="attribution">Inside Higher Ed</cite>
-	</blockquote>
-  </section>
-  <section class="column-single">
-	<h1 class="column--heading">Site Version History</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio quos quaerat rerum corporis porro ducimus consequatur nam quas architecto consequuntur. In temporibus consectetur minima!</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id eum enim exercitationem recusandae laboriosam voluptas ducimus molestiae dolorum explicabo atque? Accusamus illo dolores dolore totam quam vel hic eaque impedit iusto pariatur laudantium atque modi quia sapiente nostrum. Veritatis maiores quis ullam cupiditate harum eius voluptatum inventore aliquid officia vero accusantium possimus itaque dolorem dolores assumenda nostrum nesciunt? Aperiam dolore voluptates ipsam commodi recusandae labore neque natus quod et facilis? Quis voluptates qui numquam iste quia magnam maiores ex mollitia animi fugiat non minima iusto. Alias reprehenderit suscipit nihil dicta facere nobis est hic praesentium quisquam nesciunt tempore odio ullam.</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam ab dolor explicabo id eveniet eos reprehenderit error vitae eligendi itaque excepturi corporis. Culpa tempore quae placeat! Eum iure omnis exercitationem blanditiis maiores laborum pariatur ipsa repellat dolorum doloremque ratione qui. Enim officiis dolorum veritatis ipsam omnis numquam quo exercitationem maiores reiciendis laudantium totam commodi architecto.</p>
-	<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam officia tempora dolor quaerat impedit laudantium blanditiis nostrum aperiam unde earum quos nesciunt perferendis asperiores animi sunt nihil libero veritatis iusto nisi quis laborum. Eum eos maxime voluptatum voluptates minima id quidem mollitia in incidunt dicta assumenda nisi explicabo obcaecati laboriosam consectetur eveniet quae inventore a tenetur perspiciatis repudiandae quasi iure quo dignissimos adipisci. Sequi quaerat cupiditate quibusdam exercitationem incidunt dolorem vitae nihil similique saepe illum nulla aliquid in officia totam quos quod magni aut ratione inventore voluptate illo deserunt</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod velit!</p> -->
-  </section>
-  <section class="column-single">
-	<h1 class="column--heading">Send Us Your Feedback</h1>
-	<% flash.each do |key, value| %>
-		<%= content_tag(:div, value, :class => "flash #{key}") %>
-	<% end %>
+	<section class="column-single">
+		<h2 class="column--heading" id="whats-new">What's New</h2>
+		<p>We’re delighted to <a href="/news">announce</a> the debut of the open-access edition of Debates in the Digital Humanities.</p>
 
-	<%= form_for @message, :url => about_path do |form| %>
-		<div class="row">
-			<div class="field-half">
-				<%= form.label 'name:', :class => "field--label" %><%= form.text_field :name, :class => "field--input" %>
+		<h2 class="column--heading" id="editions">Editions</h2>
+		<ul class="contents-list">
+			<li><a href="#2012-a">2012 Print Edition</a></li>
+			<li><a href="#2013-a">2013 Open-Access Edition</a></li>
+			<li><a href="#2013-b">2013 Expanded Open-Access Edition (<em>forthcoming</em>)</a></li>
+		</ul>
+		<h3 class="column--subheading" id="2012-a">2012 Print Edition</h3>
+		<p><em>Debates in the Digital Humanities</em>, an edited collection featuring contributions from over forty DH scholars and practitioners, straddles the line between print and digital publication. The first edition of the printed text, which was published by the University of Minnesota Press in January 2012, is composed predominately of essays but also incorporates a variety of web-based materials such as blog posts, tweets, and wiki pages. The printed book was, from the earliest stages of the publication process, intertwined with digital platforms: following the model of peer-to-peer review described by Kathleen Fitzpatrick in <em>Planned Obsolescence</em>, all essays in the book were part of a semi-public, web-based review process that mixed new forms of peer-to-peer review with more traditional models of publisher-based blind peer review. </p>
+		<p>In an attempt to move the university-press based print publication process along at a rapid pace that would allow <em>Debates</em> to address current conversations in a rapidly moving field, the book went from initial conception and solicitation of essays to printed publication in the space of a single calendar year, a timeline that involved substantial efforts from contributors and from the Press. The book was conceived of less as an attempt to create a monumental, standard reference guide for DH than as a snapshot of current conversations within it a key moment of growth, with the primary purpose of introducing DH to scholars unfamiliar with its projects, practitioners, and debates.</p>
+		<p>The print edition of the book has gone through numerous printings and has been lauded by reviewers as a key text in the emerging literature on the digital humanities.</p>
+		<p><a href="/book">Find out more about the 2012 Print Edition of Debates in the Digital Humanities.</a></p>
+		<h3 class="column--subheading" id="2013-a">2013 Open-Access Edition</h3>
+		<p>Published in January 2013, the open-access edition of <em>Debates in the Digital Humanities</em> marked not just the opening up of the printed text, but also the debut of a custom-built social reading platform. Going beyond the basic task of making the contents of the printed edition accessible, the OA platform makes the text interactive, with key features that allow readers to interact with the text by marking passages as interesting and adding terms to a crowdsourced index.</p>
+		<p>The OA platform marks a significant shift for <em>Debates in the Digital Humanities</em> in that it moves it from a single printed edition of collected essays to an expanded, ongoing digital publication stream that the Press plans to draw upon to publish both future editions of collection and other publications on more focused DH topics. While the first iteration of the digital platform contains only the content of the printed text, an expanded edition with new additions will appear in March 2013. </p>
+		<p>To learn more about the 2013 Open Access Edition of <em>Debates in the Digital Humanities</em>, please visit our <a href="">launch post on the News page</a>.</p>
+		<h3 class="column--subheading" id="2013-b">2013 Expanded Open-Access Edition (<em>forthcoming</em>)</h3>
+		<p><em>Debates in the Digital Humanities</em> will be expanded twice in 2013 so that the collection will remain current and continue to track new debates in the field. New clusters of essays are currently planned for March 2013 and early Winter 2013. For more on the OA Expanded edition, please see our <a href="">related post on the news page</a> and please stay tuned for a forthcoming CFP.</p>
+
+		<h2 class="column--heading" id="contribute">Contribute</h2>
+		<p>Scholars interested in contributing essays or blog posts to the collection should stay tuned for our forthcoming CFP.</p>
+		<p>Digital Humanities practitioners interested in contributing ideas or code to the project are encouraged to contact us through the <a href="#contact-us">contact form</a> below and/or to be begin working with our code on <a href="https://github.com/castiron/didh">Github</a>. We welcome your ideas for the project!</p>
+
+		<h2 class="column--heading" id="contact-us">Contact Us</h2>
+		<p>Please use the form below to contact the editorial and development teams with your feedback, questions, and ideas:</p>
+		<% flash.each do |key, value| %>
+			<%= content_tag(:div, value, :class => "flash #{key}") %>
+		<% end %>
+
+		<%= form_for @message, :url => about_path do |form| %>
+			<div class="row">
+				<div class="field-half">
+					<%= form.label 'name:', :class => "field--label" %><%= form.text_field :name, :class => "field--input" %>
+				</div>
+
+				<div class="field-half">
+					<%= form.label 'email:', :class => "field--label" %><%= form.text_field :email, :class => "field--input"  %>
+				</div>
 			</div>
 
-			<div class="field-half">
-				<%= form.label 'email:', :class => "field--label" %><%= form.text_field :email, :class => "field--input"  %>
+			<div class="row">
+				<%= form.label 'subject:', :class => "field--label" %><%= form.text_field :subject, :class => "field--input" %>
 			</div>
-		</div>
 
-		<div class="row">
-			<%= form.label 'subject:', :class => "field--label" %><%= form.text_field :subject, :class => "field--input" %>
-		</div>
+			<div class="row">
+				<%= form.label 'body:', :class => "field--label" %><%= form.text_area :body, :class => "field--textarea" %>
+			</div>
 
-		<div class="row">
-			<%= form.label 'body:', :class => "field--label" %><%= form.text_area :body, :class => "field--textarea" %>
-		</div>
+			<div class="row row-submit">
+				<%= form.submit "Send", :class => "field--button" %>
+			</div>
 
-		<div class="row row-submit">
-			<%= form.submit "Send", :class => "field--button" %>
-		</div>
-
-	<% end %>
-  </section>
+		<% end %>
+	</section>
 </div>

@@ -918,41 +918,69 @@ body.static-true span.sentence:hover {
 
 // Lists
 // --------------------------------------------------------
-// Link-list
-// --------------------------
-.link-list {
-	@extend %unstyled-list;
-	li {
-		position: relative;
-	}
-	li + li {
-		margin-top: $shim;
-	}
-}
-
-.link-list--title {
-	@extend %delta;
-	width: 5.5em;
-	text-transform: uppercase;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.link-list--link {
-	@extend %delta;
-	display: block;
-	color: $black;
-	word-wrap: break-word;
-	margin-left: 6em;
-}
-
 // Name list
 // --------------------------
 .name-list {
 	@extend %delta;
 	@extend %unstyled-list;
+	li + li {
+		margin-top: 0.5em;
+	}
+	small {
+		@extend %delta;
+		display: block;
+		color: $grayDark;
+	}
 }
+
+// Details list
+// --------------------------
+.details-list {
+	@extend %delta;
+	@extend %unstyled-list;
+	& > li + li {
+		margin-top: 1.35em;
+	}
+	ul {
+		@extend %unstyled-list;
+	}
+}
+
+// Contents list
+// --------------------------
+.contents-list {
+	@extend %unstyled-list;
+	margin-bottom: 1.35em;
+}
+
+// // Link-list
+// // --------------------------
+// .link-list {
+// 	@extend %unstyled-list;
+// 	li {
+// 		position: relative;
+// 	}
+// 	li + li {
+// 		margin-top: $shim;
+// 	}
+// }
+
+// .link-list--title {
+// 	@extend %delta;
+// 	width: 5.5em;
+// 	text-transform: uppercase;
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// }
+
+// .link-list--link {
+// 	@extend %delta;
+// 	display: block;
+// 	color: $black;
+// 	word-wrap: break-word;
+// 	margin-left: 6em;
+// }
 
 // Forms
 // --------------------------------------------------------
@@ -960,6 +988,7 @@ body.static-true span.sentence:hover {
 	display: inline-block;
 	background-color: $grayLight;
 	padding: 1em $space 1em 1em;
+	margin: 1.35em 0;
 }
 
 .row {
@@ -1049,9 +1078,15 @@ body.static-true span.sentence:hover {
 	margin-bottom: $shim;
 }
 
+// frontend_page components
+// --------------------------------------------------------
+.page-title {
+	@extend %alpha;
+}
+
 // Two column layouts
 // Best suited to frontend_page layout
-// -------------------------------------------------------- 
+// --------------------------------------------------------
 .columns {
 	@extend %clearfix;
 }
@@ -1104,5 +1139,9 @@ body.static-true span.sentence:hover {
 // Column typographic components
 // --------------------------
 .column--heading {
+	@extend %beta;
+}
+
+.column--subheading {
 	@extend %subsection-heading;
 }

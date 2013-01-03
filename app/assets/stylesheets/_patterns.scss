@@ -142,6 +142,13 @@
 	}
 }
 
+%light-link {
+	color: $grayDark;
+	&:hover {
+		color: $black;
+	}
+}
+
 // https://github.com/h5bp/html5-boilerplate/blob/master/css/main.css#L120
 %hidden-text {
 	background-color: transparent;
@@ -438,7 +445,7 @@
 // Callout box
 // --------------------------
 %callout {
-	padding: $shim $shim $space;
+	padding: $shim;
 	background: $grayLight;
 	margin-bottom: $space;
 }
