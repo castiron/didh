@@ -70,8 +70,15 @@ h5 {
 
 p {
 	margin: 0;
-	& + & {
-		text-indent: 1.35em;
+	.interior-content & {
+		& + p {
+			text-indent: 1.35em;
+		}
+	}
+	.interior-content-page & {
+		& + p {
+			margin-top: 1.35em;
+		}
 	}
 	.home & {
 		@extend %beta;
@@ -84,6 +91,9 @@ p {
 
 ul, ol {
 	margin: 0;
+	.interior-content-page & {
+		margin: 1.35em 0;
+	}
 }
 
 // Inline elements

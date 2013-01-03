@@ -918,11 +918,16 @@ body.static-true span.sentence:hover {
 
 // Lists
 // --------------------------------------------------------
+.unstyled-list {
+	@extend %unstyled-list;
+}
+
 // Name list
 // --------------------------
 .name-list {
 	@extend %delta;
 	@extend %unstyled-list;
+	margin: 0 !important;
 	li + li {
 		margin-top: 0.5em;
 	}
@@ -938,11 +943,13 @@ body.static-true span.sentence:hover {
 .details-list {
 	@extend %delta;
 	@extend %unstyled-list;
+	margin: 0 !important;
 	& > li + li {
 		margin-top: 1.35em;
 	}
 	ul {
 		@extend %unstyled-list;
+		margin: 0;
 	}
 }
 
@@ -950,7 +957,6 @@ body.static-true span.sentence:hover {
 // --------------------------
 .contents-list {
 	@extend %unstyled-list;
-	margin-bottom: 1.35em;
 }
 
 // // Link-list
@@ -1144,4 +1150,31 @@ body.static-true span.sentence:hover {
 
 .column--subheading {
 	@extend %subsection-heading;
+}
+
+// News components
+// --------------------------------------------------------
+.post {
+	& + & {
+		padding-top: $space * 2;
+		border-top: 1px solid $grayLight;
+		margin-top: $space * 2;
+	}
+}
+
+.post--title {
+	@extend %beta;
+}
+
+.post--dateline {
+	@extend %delta;
+	@extend %with-gray-dark;
+	display: block;
+	margin-bottom: 0.25em;
+}
+
+.post--byline {
+	@extend %gamma;
+	@extend %with-gray-dark;
+	text-transform: uppercase;
 }
