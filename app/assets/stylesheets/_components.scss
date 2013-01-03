@@ -51,28 +51,14 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	@include respond-max(1300px) {
-		// font-size: 0.88em;
-	}
+
 	@include respond-max(1268px) {
 		width: 90%;
 		padding-right: 10px;
 	}
-	@include respond-max(900px) {
-		// font-size: 0.7em;
-	}
-	@include respond-max(800px) {
-		// font-size: 0.6em !important;
-	}
 	@include respond-max(740px) {
 		font-size: 0.88em;
 		padding-bottom: 0;
-	}
-	@include respond-max-height(900px) {
-		// font-size: 0.7em;
-	}	
-	@include respond-max-height(800px) {
-		// font-size: 0.6em !important;
 	}
 	@include respond-max-height(700px) {
 		position: relative;
