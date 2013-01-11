@@ -108,7 +108,7 @@ namespace :texts do
 			chunk.gsub! /<span[^>]*>/, ''
 			chunk.gsub! /<\/span>/, ''
 
-			chunkNLP = StanfordCoreNLP::Text.new(chunk)
+			chunkNLP = StanfordCoreNLP::Annotation.new(chunk)
 			pipeline.annotate(chunkNLP)
 			chunkNLP.get(:sentences).each do |sentence|
 				i = i + 1
