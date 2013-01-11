@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 gem 'pg'
 
@@ -20,10 +20,8 @@ gem 'nokogiri'
 gem 'bcrypt-ruby'
 gem 'devise'
 gem 'rails-backbone'
-gem 'stanford-core-nlp'
+gem 'stanford-core-nlp', '=0.5.1'
 
 # Gems required for serving the app
-gem 'libv8'
-gem 'therubyracer'
-gem 'debugger'
+gem 'therubyracer', '~> 0.11.1'
 gem 'unicorn'
