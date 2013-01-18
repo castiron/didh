@@ -766,6 +766,9 @@ body.static-true span.sentence:hover {
 		&.active {
 			color: $black;
 		}
+		&:focus {
+			outline: 0;
+		}
 		span {
 			display: block
 		}
