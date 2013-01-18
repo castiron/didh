@@ -140,6 +140,11 @@
 	@include respond-max-height(800px) {
 		padding-top: $shim / 2;
 	}
+	@include respond-max-height(700px) {
+		width: 128px;
+		font-size: 0.8em;
+		padding-top: $space;
+	}
 }
 
 .interior-title {
@@ -201,6 +206,9 @@
 	bottom: 0;
 	z-index: 20;
 	@include respond-max(810px) {
+		margin-left: 128px;
+	}
+	@include respond-max-height(700px) {
 		margin-left: 128px;
 	}
 }
@@ -266,6 +274,10 @@
 	top: 0;
 	z-index: 20;
 	@include respond-max(810px) {
+		font-size: 0.8em;
+		margin-left: 128px;
+	}
+	@include respond-max-height(700px) {
 		font-size: 0.8em;
 		margin-left: 128px;
 	}
@@ -775,6 +787,17 @@ body.static-true span.sentence:hover {
 	}
 	width: $navOpenWidth - 62;
 	float: left;
+}
+
+// Reduce TOC font size on short screens
+.nav-index,
+parts {
+	@include respond-max-height(700px) {
+		font-size: 0.8em;
+	}
+	@include respond-max-height(600px) {
+		font-size: 0.7em;
+	}
 }
 
 // The floating annotator
