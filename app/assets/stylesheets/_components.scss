@@ -298,7 +298,11 @@
 		line-height: 22px;
 		padding-right: $space;
 		&:last-child {
-			padding-right: $navClosedWidth + 2;
+			padding-right: 0;
+			margin-right: $navClosedWidth + 20;
+			.nav-open & {
+				margin-right: $navOpenWidth + 20;
+			}
 		}
 		@include respond-max(1024px) {
 			max-width: 25%;
@@ -327,6 +331,68 @@
 // <span>
 .hud--details {
 	@extend %delta;
+}
+
+// <li>
+.hud--user {
+	@extend %smooth-resize;
+	width: 160px;
+	color: lighten($black, 40%);
+	text-align: right;
+	// This !important overrides the default %floated list styles
+	float: right !important;
+	position: relative;
+	strong {
+		font-weight: 300;
+		color: $black;
+	}
+}
+
+// Authentication dropdown
+// --------------------------
+// Lives inside .nav-hud
+.authentication {
+	@extend %smooth-resize;
+	background-color: $grayDarker;
+	padding: 20px;
+	position: absolute;
+	top: 46px;
+	right: $navClosedWidth;
+	.nav-open & {
+		right: $navOpenWidth;
+	}
+	ul {
+		@extend %unstyled-list;
+		text-align: right;
+		margin-top: 20px;
+		li {
+			margin-top: 14px;
+		}
+	}
+	form {
+		@extend %clearfix;
+		.right,
+		.left {
+			margin-top: 14px;
+		}
+		.right {
+			float: right;
+		}
+		.left {
+			float: left;
+		}
+	}
+}
+
+.authentication--label {
+	@extend %eta;
+	display: block;
+	font-style: italic;
+	color: $white;
+	margin-bottom: 6px;
+	&.right {
+		text-align: right;
+	}
 }
 
 // Content components
@@ -476,7 +542,6 @@ body.static-true span.sentence:hover {
 // --------------------------
 // <p>
 // Paragraphs that contain sentences with comments get this class
-p,
 .contains-comment {
 	position: relative;
 	&:after {
@@ -1219,4 +1284,23 @@ parts {
 	@extend %gamma;
 	@extend %with-gray-dark;
 	text-transform: uppercase;
+}
+
+// Generic components
+// --------------------------------------------------------
+// Links
+// --------------------------
+.white-button {
+	@extend %white-button;
+}
+
+.white-ex-button {
+	@extend %white-ex-button;
+}
+
+// Form Components
+// --------------------------
+.text-input {
+	@extend %text-input;
+	margin-bottom: 6px;
 }

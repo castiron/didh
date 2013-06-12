@@ -163,6 +163,47 @@
     }
 }
 
+// Buttons
+// --------------------------
+%white-button {
+	@extend %delta;
+	@extend %standard-input;
+	@include appearance(none);
+	display: inline-block;
+	color: $black;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 1;
+	background-color: $white;
+	padding: 0.3em 1.2em;
+	border: none;
+	border-radius: 0.5em;
+}
+
+%white-ex-button {
+	@extend %white-button;
+	padding-right: 0.6em;
+	padding-left: 0.4em;
+	&:before {
+		content: "";
+		display: inline-block;
+		vertical-align: top;
+		width: 16px;
+		height: 16px;
+		background-image: url('icon-x.png');
+		background-size: 16px;
+		margin-right: 0.4em;
+		.no-backgroundsize & {
+			background-image: url('icon-x-half.png');
+		}
+	}
+}
+
+%white-bordered-button {
+	@extend %white-button;
+	border: 1px solid $gray;
+}
+
 // Lists
 // --------------------------
 %unstyled-list {
@@ -173,9 +214,9 @@
 %floated-list {
 	@extend %clearfix;
 	@extend %unstyled-list;
-	li {
+	> li {
 		float: left;
-		a {
+		> a {
 			display: block;
 		}
 	}

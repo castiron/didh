@@ -2,4 +2,27 @@
 	<li class="hud--title"><%= text.get('title') %></li>
 	<li><span class="hud--author"><%= text.getAuthorsList() %></span></li>
 	<li><span class="hud--details"><%= text.get('edition') %></span></li>
+	<li class="hud--user">
+		<!-- If user is logged in -->
+		<em>logged in as</em> <strong>jmoriarty</strong>
+		<!-- else -->
+		<!-- <strong>Log in</strong> -->
+	</li>
 </ul>
+<div class="authentication">
+	<!-- If user is logged in -->
+	<span class="authentication--label right">You've made<br> 211 comments.</span>
+	<ul>
+		<li><a class="white-button" href="#">Log off</a></li>
+		<li><a class="white-button" href="#">Sign in as<br> another<br> user</a></li>
+	</ul>
+	<!-- else -->
+	<!-- <form>
+		<input class="text-input" type="text">
+		<label class="authentication--label">email</label>
+		<input class="text-input" type="text">
+		<label class="authentication--label">username</label>
+		<a class="white-ex-button left" href="#">Close</a>
+		<input class="white-button right" type="submit" value="login">
+	</form> -->
+</div>
