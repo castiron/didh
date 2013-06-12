@@ -451,6 +451,8 @@
 	}
 }
 
+// Sentences
+// --------------------------
 span.hover {
 	background-color: lighten($yellow, 10%);
 }
@@ -470,7 +472,38 @@ body.static-true span.sentence:hover {
   cursor: auto;
 }
 
+// Comment indicator
+// --------------------------
+// <p>
+// Paragraphs that contain sentences with comments get this class
+p,
+.contains-comment {
+	position: relative;
+	&:after {
+		content: "";
+		display: block;
+		width: 21px;
+		height: 22px;
+		background: transparent url('speech-bubble-gray.png') no-repeat left top;
+		background-size: 21px 22px;
+		position: absolute;
+		top: 0.2em;
+		right: -3em;
+		.no-backgroundsize {
+			background-image: url('speech-bubble-gray-half.png')
+		}
+		@include respond-max(860px) {
+			right: -1.8em;
+		}
+	}
+}
 
+// Sentences with comments get this class
+.has-comment {
+	p:hover & {
+		background-color: #ffe0b2;
+	}
+}
 
 // Interior navigation
 // --------------------------
