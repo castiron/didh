@@ -287,6 +287,7 @@
 	@extend %delta;
 	@extend %floated-list;
 	color: lighten($black, 40%);
+	background-color: $white;
 	padding: 0.69em 0 0.69em 1.25em;
 	border-bottom: 1px solid lighten($black, 70%);
 	cursor: pointer;
@@ -356,8 +357,11 @@
 	background-color: $grayDarker;
 	padding: 20px;
 	position: absolute;
-	top: 46px;
+	bottom: 0;
+	// TODO remove once set by javascript
+	bottom: -190px;
 	right: $navClosedWidth;
+	z-index: -1;
 	.nav-open & {
 		right: $navOpenWidth;
 	}
