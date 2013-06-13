@@ -204,6 +204,17 @@
 	border: 1px solid $gray;
 }
 
+%white-bordered-ex-button {
+	@extend %white-ex-button;
+	border: 1px solid $gray;
+}
+
+%small-white-button {
+	@extend %white-button;
+	padding: 0.2em 0.8em 0.1em;
+	border-radius: 0.3em;
+}
+
 // Lists
 // --------------------------
 %unstyled-list {
@@ -268,6 +279,7 @@
 %standard-input {
 	@include font-museo;
 	display: inline-block;
+	-webkit-font-smoothing: antialiased;
 }
 
 // <input type="text">

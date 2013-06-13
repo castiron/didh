@@ -905,6 +905,146 @@ parts {
 	}
 }
 
+// Comment drawer
+// --------------------------------------------------------
+// Lives inside .nav-content
+.comment-drawer {
+	$width: 620px;
+	@extend %smooth-resize;
+	width: $width;
+	background-color: $yellowLight;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: $navClosedWidth;
+	z-index: 40;
+	&.open {
+		// @include box-shadow(
+		// 	-6px 0 0 0 transparentize($black, 0.97)
+		// );
+		left: $navClosedWidth - $width;
+	}
+	@include respond-max(1000px) {
+		$width: 480px;
+		width: $width;
+		&.open {
+			left: $navClosedWidth - $width;
+		}
+	}
+}
+
+.comment-drawer--scroll {
+	padding-right: 10px;
+	position: absolute;
+	top: 40px;
+	right: 30px;
+	bottom: 80px;
+	left: 40px;
+	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 0;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: transparentize($grayDark, 0.4);
+		border-radius: 8px;
+	}
+	&::-webkit-scrollbar-track:vertical {
+		margin-bottom: 10px;
+	}
+	@include respond-max(1000px) {
+		padding-right: 6px;
+		right: 14px;
+		left: 20px;
+	}
+}
+
+.comment-drawer--footer {
+	padding: 26px 32px;
+	border-top: 1px solid transparentize($black, 0.82);
+	position: absolute;
+	right: 40px;
+	bottom: 0;
+	left: 40px;
+}
+
+.comment-drawer--heading {
+	@extend %gamma;
+	padding-left: 32px;
+	margin-bottom: 0.88em;
+}
+
+// <blockquote>
+.comment-drawer--reference {
+	@extend %delta;
+	@extend %justified;
+	background-color: $white;
+	padding: 20px 32px;
+	margin-bottom: 32px;
+}
+
+.comment-drawer--list {
+	@extend %delta;
+	@extend %unstyled-list;
+	padding: 0 32px 20px;
+}
+
+.comment-drawer--comment {
+	@extend %clearfix;
+	padding: 20px 10px 0 42px;
+	border-top: 1px solid transparentize($black, 0.92);
+	margin: 0 -10px 0 -42px;
+	& + & {
+		margin-top: 20px;
+	}
+	p {
+		@extend %justified;
+		background-color: $yellowLighter;
+		padding: 4px 10px;
+		margin: 0 -10px 3px;
+	}
+	ul {
+		@extend %unstyled-list;
+		padding-left: 32px;
+		margin-top: 20px;
+	}
+	.comment-drawer--list > & {
+		padding-left: 10px;
+		margin-left: -10px;
+		&:first-child {
+			padding-top: 0;
+			border-top: none;
+		}
+	}
+}
+
+.comment-drawer--form {
+	@extend %clearfix;
+	display: none;
+	margin-top: 10px;
+	.text-input {
+		width: 100%;
+	}
+	.active > & {
+		display: block;
+	}
+}
+
+.comment-drawer--user {
+	display: inline-block;
+	font-style: italic;
+}
+
+.comment-drawer--reply {
+	@extend %small-white-button;
+	letter-spacing: 0.1em;
+	margin-top: 2px;
+	float: right;
+	.active > & {
+		display: none;
+	}
+}
+
 // The floating annotator
 // --------------------------------------------------------
 // <div>
@@ -1290,6 +1430,16 @@ parts {
 	text-transform: uppercase;
 }
 
+// Generic utilities
+// --------------------------------------------------------
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
 // Generic components
 // --------------------------------------------------------
 // Links
@@ -1298,8 +1448,16 @@ parts {
 	@extend %white-button;
 }
 
+.white-bordered-button {
+	@extend %white-bordered-button;
+}
+
 .white-ex-button {
 	@extend %white-ex-button;
+}
+
+.white-bordered-ex-button {
+	@extend %white-bordered-ex-button;
 }
 
 // Form Components
