@@ -8,10 +8,12 @@ Didh::Application.routes.draw do
   match 'static/debates/text/:id' => 'debates#show'
   match 'debates/hide_instructions' => 'debates#hide_instructions'
   match 'debates/show_instructions' => 'debates#show_instructions'
+
   match 'book/' => 'pages#book'
   match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
   match 'about/' => 'pages#about'
   match 'news/' => 'pages#news'
+  match 'pages/*page' => 'pages#dynamic', :via => :get
 
   resources :texts do
     resources :annotations

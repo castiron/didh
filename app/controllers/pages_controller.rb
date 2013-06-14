@@ -36,4 +36,9 @@ class PagesController < ActionController::Base
 	def news
 	end
 
+	def dynamic
+		page = params[:page]
+	    render page
+	end
+
 end
