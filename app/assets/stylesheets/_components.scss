@@ -1076,6 +1076,13 @@ parts {
 	font-style: italic;
 }
 
+.comment-drawer--timestamp {
+	@extend %delta;
+	display: inline-block;
+	font-style: italic;
+	color: transparentize($black, 0.62);
+}
+
 .comment-drawer--reply {
 	@extend %small-white-button;
 	letter-spacing: 0.1em;
@@ -1083,6 +1090,21 @@ parts {
 	float: right;
 	.active > & {
 		display: none;
+	}
+}
+
+.comment-drawer--action {
+	@extend %delta;
+	color: transparentize($black, 0.72);
+	margin: 2px 0 0 10px;
+	float: right;
+	&:hover {
+		color: $black;
+	}
+	&.reply {
+		.active > & {
+			display: none;
+		}
 	}
 }
 

@@ -18,7 +18,7 @@ $ ->
 		$('.comment-drawer').removeClass('open')
 		event.preventDefault()
 	)
-	$('.comment-drawer--reply').click((event) ->
+	$('.icon-reply').click((event) ->
 		$(@).parent('.comment-drawer--comment').addClass('active')
 		event.preventDefault()
 	)
