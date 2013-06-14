@@ -13,7 +13,7 @@ Didh::Application.routes.draw do
   match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
   match 'about/' => 'pages#about'
   match 'news/' => 'pages#news'
-  match 'pages/*page' => 'pages#dynamic', :via => :get
+  match 'pages/*page' => 'pages#development', :via => :get
 
   resources :texts do
     resources :annotations

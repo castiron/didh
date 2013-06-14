@@ -534,7 +534,8 @@ span.indexed {
 span.sentence {
 	cursor: pointer;
 	&:hover {
-		background-color: lighten($yellow, 10%);
+		@extend %active-sentence;
+		background-color: lighten($yellow, 15%);
 	}
 }
 body.static-true span.sentence:hover {
@@ -553,8 +554,9 @@ body.static-true span.sentence:hover {
 		display: block;
 		width: 21px;
 		height: 22px;
-		background: transparent url('speech-bubble-gray.png') no-repeat left top;
+		background: transparent url('speech-bubble-gray.png') no-repeat right top;
 		background-size: 21px 22px;
+		padding: 0 0 20px 34px;
 		position: absolute;
 		top: 0.2em;
 		right: -3em;
@@ -570,6 +572,7 @@ body.static-true span.sentence:hover {
 // Sentences with comments get this class
 .has-comment {
 	p:hover & {
+		@extend %active-sentence;
 		background-color: #ffe0b2;
 	}
 }
@@ -919,9 +922,9 @@ parts {
 	left: $navClosedWidth;
 	z-index: 40;
 	&.open {
-		// @include box-shadow(
-		// 	-6px 0 0 0 transparentize($black, 0.97)
-		// );
+		@include box-shadow(
+			-6px 0 0 0 transparentize($black, 0.97)
+		);
 		left: $navClosedWidth - $width;
 	}
 	@include respond-max(1000px) {

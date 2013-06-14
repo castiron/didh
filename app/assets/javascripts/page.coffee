@@ -10,8 +10,12 @@ catch e
 
 # TODO temporary; remove once real controls are in place
 $ ->
+	$('.has-comment').click((event) ->
+		$('.comment-drawer').addClass('open')
+		event.preventDefault()		
+	)
 	$('.js-comment-toggle').click((event) ->
-		$('.comment-drawer').toggleClass('open')
+		$('.comment-drawer').removeClass('open')
 		event.preventDefault()
 	)
 	$('.comment-drawer--reply').click((event) ->

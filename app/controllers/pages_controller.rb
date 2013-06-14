@@ -6,6 +6,8 @@ class PagesController < ActionController::Base
 		case action_name
 			when "index"
 				"frontend_home"
+			when "development"
+				"frontend"
 			else
 				"frontend_page"
 			end
@@ -36,7 +38,7 @@ class PagesController < ActionController::Base
 	def news
 	end
 
-	def dynamic
+	def development
 		page = params[:page]
 	    render page
 	end
