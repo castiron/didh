@@ -538,6 +538,7 @@ span.sentence {
 		background-color: lighten($yellow, 15%);
 	}
 }
+
 body.static-true span.sentence:hover {
   background-color: #FFF;
   cursor: auto;
@@ -550,6 +551,7 @@ body.static-true span.sentence:hover {
 .contains-comment {
 	position: relative;
 	&:after {
+		@extend %smooth-resize;
 		content: "";
 		display: block;
 		width: 21px;
@@ -565,6 +567,36 @@ body.static-true span.sentence:hover {
 		}
 		@include respond-max(860px) {
 			right: -1.8em;
+			padding-left: 12px;
+		}
+	}
+	&:hover {
+		.comment-count {
+			display: block;
+		}
+	}
+	.comment-count {
+		@extend %smooth-resize;
+		@extend %eta;
+		// display: none;
+		width: 92px;
+		font-weight: 300;
+		color: $grayDark;
+		text-indent: 0;
+		position: absolute;
+		top: 0.3em;
+		right: -153px;
+		@include respond-max(960px) {
+			span {
+				display: none;
+			}
+		}
+		@include respond-max(880px) {
+			top: 28px;
+			right: -125px;
+		}
+		@include respond-max(860px) {
+			right: -103px;
 		}
 	}
 }
