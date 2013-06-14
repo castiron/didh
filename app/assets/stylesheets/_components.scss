@@ -578,7 +578,7 @@ body.static-true span.sentence:hover {
 	.comment-count {
 		@extend %smooth-resize;
 		@extend %eta;
-		// display: none;
+		display: none;
 		width: 92px;
 		font-weight: 300;
 		color: $grayDark;
@@ -1005,8 +1005,14 @@ parts {
 
 .comment-drawer--heading {
 	@extend %gamma;
-	padding-left: 32px;
+	background: transparent url('speech-bubble-gray.png') no-repeat left center;
+	background-size: auto 21px;
+	padding-left: 36px;
+	margin-left: 32px;
 	margin-bottom: 0.88em;
+	.no-backgroundsize & {
+		background-image: url('speech-bubble-gray-half.png')
+	}
 }
 
 // <blockquote>
