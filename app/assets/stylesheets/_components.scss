@@ -537,11 +537,12 @@ span.sentence {
 	&:hover {
 		@extend %active-sentence;
 		background-color: lighten($yellow, 15%);
+		border-bottom: 1px solid lighten($yellow, 15%);
 	}
 }
 
 body.static-true span.sentence:hover {
-  background-color: #FFF;
+  background-color: #fff;
   cursor: auto;
 }
 
@@ -606,7 +607,7 @@ body.static-true span.sentence:hover {
 .has-comment {
 	p:hover & {
 		@extend %active-sentence;
-		background-color: #ffe0b2;
+		border-bottom: 1px dotted $blueDark;
 	}
 }
 
