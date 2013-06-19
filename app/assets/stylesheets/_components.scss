@@ -523,9 +523,9 @@
 
 // Sentences
 // --------------------------
-span.hover {
-	background-color: lighten($yellow, 10%);
-}
+// span.hover {
+// 	background-color: lighten($yellow, 10%);
+// }
 
 span.indexed {
   text-decoration:  underline;
@@ -533,6 +533,7 @@ span.indexed {
 
 span.sentence {
 	cursor: pointer;
+	&.hover,
 	&:hover {
 		@extend %active-sentence;
 		background-color: lighten($yellow, 15%);

@@ -7,7 +7,7 @@ class PagesController < ActionController::Base
 			when "index"
 				"frontend_home"
 			when "development"
-				"frontend"
+				"frontend_development"
 			else
 				"frontend_page"
 			end
