@@ -19,13 +19,20 @@ class Didh.Views.Frontend.HudView extends Backbone.View
   hideAuthentication: (e) ->
     if e? then e.preventDefault()
     @authVisible = false
-    @$el.find('.js-authentication').fadeOut()
+    @$el.find('.js-authentication').animate({bottom: 0}, 200)
     @router.navigate 'text/' + @texts.getActiveTextId()
 
-  showAuthentication: (e) ->
+  showAuthentication: (e, animate = true) ->
     if e? then e.preventDefault()
     @authVisible = true
-    @$el.find('.js-authentication').fadeIn()
+    $el = @$el.find('.js-authentication')
+    height = $el.outerHeight()
+    if animate == true
+      $el.animate({bottom: height * -1}, 200)
+    else
+      console.log 'b'
+      $el.css({bottom: height * -1})
+
     @router.navigate 'text/' + @texts.getActiveTextId() + '/auth'
 
   requestScroll: () ->
@@ -35,5 +42,5 @@ class Didh.Views.Frontend.HudView extends Backbone.View
     text = @texts.getActiveText()
     if text?
       $(@el).html(@template({text: text, currentUser: window.currentUser}))
-      if @authVisible then @showAuthentication()
+      if @authVisible then @showAuthentication(null, false)
       return @

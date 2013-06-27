@@ -87,7 +87,7 @@
 // --------------------------
 %deca {
 	font-size: 2em;
-	font-weight: 300;	
+	font-weight: 300;
 }
 
 %deci {
@@ -408,7 +408,7 @@
 	}
 	@include respond-max(810px) {
 		margin-left: 180px !important;
-	}	
+	}
 	.nav-open & {
 		//@include respond-max(1550px) {
 		//	margin-left: 20%;
@@ -459,6 +459,13 @@
 		width: $h;
 		height: $h;
 	}
+}
+
+%circle-item-small-yellow {
+  @extend %circle-item-small;
+  &:before {
+    background-color: $yellow;
+  }
 }
 
 %circle-item-small-blue {
@@ -539,7 +546,7 @@
 		& + & {
 			padding-left: 0;
 		}
-	}	
+	}
 }
 
 // Sentences

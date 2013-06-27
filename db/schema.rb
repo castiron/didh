@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627030141) do
+ActiveRecord::Schema.define(:version => 20130627201426) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(:version => 20130627030141) do
     t.integer  "part_id"
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.integer  "text_id"
+    t.string   "sentence_checksum"
+    t.text     "body"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "editions", :force => true do |t|
     t.string   "label"
     t.datetime "created_at", :null => false
@@ -79,6 +89,14 @@ ActiveRecord::Schema.define(:version => 20130627030141) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "sorting"
+  end
+
+  create_table "sentences", :force => true do |t|
+    t.text     "body"
+    t.integer  "text_id"
+    t.string   "checksum"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "texts", :force => true do |t|

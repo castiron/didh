@@ -2,6 +2,8 @@ namespace :texts do
 
 	desc "Tasks relating to text imports"
 
+
+  # EG: bundle exec rake texts:import[./texts/ump-gold0014.html] to import one text or just bundle exec rake texts:import to import all texts in ./texts
 	task :import, [:files] => [:environment] do |t, args|
 		args.with_defaults(:files => './texts')
 		if File.directory?(args[:files])
@@ -102,6 +104,20 @@ namespace :texts do
 		pipeline = StanfordCoreNLP.load(:tokenize, :ssplit)
 
 		i = 0
+
+    # Check for an existing text to update, otherwise create a new text.
+    existingText = Text.where(:source_file => fileBasename).first
+
+    if existingText != nil
+      puts "[#{file}] [info] updating existing text"
+      text = existingText
+    else
+      puts "[#{file}] [info] creating a new text"
+      text = Text.new
+    end
+
+    sentences = []
+
 		bodyDoc = Nokogiri::HTML(body)
 		bodyDoc.xpath('//*[self::div or self::p or self::blockquote or self::a]').each do |node|
 			chunk = node.inner_html
@@ -111,21 +127,20 @@ namespace :texts do
 			chunkNLP = StanfordCoreNLP::Annotation.new(chunk)
 			pipeline.annotate(chunkNLP)
 			chunkNLP.get(:sentences).each do |sentence|
-				i = i + 1
 				sentenceString = sentence.to_s
 				sentenceString.sub! /^\d{1,3}<\/sup><\/a>/, ''
 				if sentenceString.length > 5 && !sentenceString.start_with?('http') && !sentenceString.start_with?('www.')
+          i = i + 1
 					checksum = sentenceString.to_s.sum
+          sentenceModel = Sentence.find_or_create_by_checksum_and_text_id(checksum, text.id)
+          sentenceModel.body = sentenceString
 					replacementSentence = "<span class=\"sentence\" data-id=\"#{checksum}\" id=\"sentence-#{checksum}\">#{sentenceString}</span>"
 					res = body.sub! sentenceString, replacementSentence
-
-					if res == nil
-					end
+          sentences << sentenceModel
 				end
 				i
 			end
-		end
-		puts "[#{file}] [info] found #{i} sentences"
+    end
 
 		# Fix all image paths
 		imageSources = htmlDoc.css('img').map { |i| i['src'] }
@@ -152,17 +167,6 @@ namespace :texts do
 			puts "[#{file}] [info] found #{noteNodes.length} endnote nodes"
 		end
 
-		# Check for an existing text to update, otherwise create a new text.
-		existingText = Text.where(:source_file => fileBasename).first
-
-		if existingText != nil
-			puts "[#{file}] [info] updating existing text"
-			text = existingText
-		else
-			puts "[#{file}] [info] creating a new text"
-			text = Text.new
-		end
-
 		# Set the text object's attributes.
 		text.attributes = {
 				:title => title,
@@ -177,6 +181,10 @@ namespace :texts do
 		text.edition = edition
 		text.part = part
 		text.save
+
+    sentences.each do |sentence|
+      sentence.save()
+    end
 
 
 	end

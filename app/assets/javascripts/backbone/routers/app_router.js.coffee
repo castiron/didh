@@ -3,7 +3,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
   initialLoad: true
 
   initialize: (options) ->
-    @static = options.static
+    @isStatic = options.static
     @setupLinkClickHandlers(options)
     @setupCollections(options)
     @setupViews(options)
@@ -12,21 +12,23 @@ class Didh.Routers.AppRouter extends Backbone.Router
     @feedbackView.render()
 
     # window.addEventListener('orientationchange', () ->
-    # 	Backbone.Mediator.publish('app:orientationchange');
+    #   Backbone.Mediator.publish('app:orientationchange');
     # , false)
 
   routes:
-    "part/:id"			: "showPart"
-    "text/:id"			: "showText"
-    "text/:id/auth"	: "showTextAndAuth"
-    "*catchall"			: "setDefaultText" # Backbone, wtf does this work?
+    "part/:id"          : "showPart"
+    "text/:id"          : "showText"
+    "text/:id/comment/:sentence"  : "showComments"
+    "text/:id/auth"     : "showTextAndAuth"
+    "*catchall"         : "setDefaultText" # Backbone, wtf does this work?
 
   setupViews: (options) ->
     @banner= new Didh.Views.Frontend.BannerView(el: $("#backbone-bannerView"))
-    @annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), keywords: @keywords, annotations: @annotations, parts: @parts, texts: @texts)
+    @annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), keywords: @keywords, router: @, annotations: @annotations, parts: @parts, texts: @texts)
     @hudView = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView"), texts: @texts, router: @ )
     @tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
-    @feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), linkedPane: @tocView, texts: @texts, static: @static)
+    @feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), linkedPane: @tocView, texts: @texts, isStatic: @isStatic)
+    @commentsView = new Didh.Views.Frontend.CommentsView(el: $('#backbone-commentsView'), texts: @texts, router: @)
 
   setupCollections: (options) ->
     @parts = new Didh.Collections.PartsCollection()
@@ -55,7 +57,8 @@ class Didh.Routers.AppRouter extends Backbone.Router
       href = $(event.currentTarget).attr('href')
       if !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey
         anchor = href.replace(/^#/,'');
-        $('html, body').animate({scrollTop: $('#' + anchor).offset().top - 100}, 250)
+        if $('#' + anchor).length > 0
+          $('html, body').animate({scrollTop: $('#' + anchor).offset().top - 100}, 250)
         return false
 
   setDefaultText: () ->
@@ -65,6 +68,13 @@ class Didh.Routers.AppRouter extends Backbone.Router
 
   renderTextView: () ->
     @textView.render()
+
+  showComments: (textId, sentenceId) ->
+    @showText(textId)
+    @commentsView.open(textId, sentenceId)
+    Backbone.Mediator.subscribeOnce('text:rendered', () =>
+      @commentsView.render()
+    )
 
   showTextAndAuth: (textId) ->
     @showText(textId)

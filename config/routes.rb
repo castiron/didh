@@ -1,5 +1,5 @@
 Didh::Application.routes.draw do
-  
+
   devise_for :users
 
   devise_for :admins
@@ -8,6 +8,7 @@ Didh::Application.routes.draw do
   match 'debates/part/:id' => 'debates#index'
   match 'debates/text/:id' => 'debates#index'
   match 'debates/text/:id/auth' => 'debates#index'
+  match 'debates/text/:id/comment/:sentence' => 'debates#index'
 
   match 'static/debates/text/:id' => 'debates#show'
   match 'debates/hide_instructions' => 'debates#hide_instructions'
@@ -20,6 +21,7 @@ Didh::Application.routes.draw do
   match 'pages/*page' => 'pages#development', :via => :get
 
   resources :texts do
+    resources :comments
     resources :annotations
     resources :keywords
   end

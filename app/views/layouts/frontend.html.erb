@@ -29,7 +29,7 @@
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
 
-		</script> 
+		</script>
 
 		<script type="text/javascript">
 		  $(function() {
@@ -64,7 +64,7 @@
 		<!-- Instructional banner -->
 		<aside id="backbone-bannerView" data-hide-instructions="<%= @hide_instructions %>" class="page-banner">
 		</aside>
-		
+
 		<section class="interior-content">
 			<article class="chapter">
 				<%= yield %>
@@ -74,78 +74,9 @@
 			<div class="nav-panes--toggle js-nav-toggle"></div>
 			<ul id="backbone-feedbackView" class="nav-pane pane-top"></ul>
 			<ul id="backbone-tocView" class="nav-pane pane-bottom reveal-level-0"></ul>
-			<div class="comment-drawer">
-				<div class="comment-drawer--scroll">
-					<h2 class="comment-drawer--heading">Selected passage:</h2>
-					<blockquote class="comment-drawer--reference">Mr. Sherlock Holmes, who was usually very late in the mornings, save upon those not infrequent occasions when he was up all night, was seated at the breakfast table.</blockquote>
-					<ul class="comment-drawer--list">
-						<li class="comment-drawer--comment active">
-							<form class="comment-drawer--form">
-								<input class="text-input" type="text">
-								<input class="comment-drawer--reply" type="submit" value="Add comment">
-							</form>
-						</li>
-						<li class="comment-drawer--comment">
-							<p>Well, Watson, what do you make of it?</p>
-							<small class="comment-drawer--user">&ndash; SH</small>
-							<small class="comment-drawer--timestamp">(4 minutes ago)</small>
-							<a class="comment-drawer--action icon-reply reply" href="#"></a>
-							<a class="comment-drawer--action icon-remove" href="#"></a>
-							<a class="comment-drawer--action icon-pencil" href="#"></a>
-							<form class="comment-drawer--form">
-								<input class="text-input" type="text">
-								<input class="comment-drawer--reply" type="submit" value="Add comment">
-							</form>
-							<ul>
-								<li class="comment-drawer--comment">
-									<p>How did you know what I was doing? I believe you have eyes in the back of your head.</p>
-									<small class="comment-drawer--user">&ndash; JW</small>
-									<small class="comment-drawer--timestamp">(4 minutes ago)</small>
-									<a class="comment-drawer--action icon-reply reply" href="#"></a>
-									<a class="comment-drawer--action icon-remove" href="#"></a>
-									<a class="comment-drawer--action icon-pencil" href="#"></a>
-									<form class="comment-drawer--form">
-										<input class="text-input" type="text">
-										<input class="comment-drawer--reply" type="submit" value="Add comment">
-									</form>
-									<ul>
-										<li class="comment-drawer--comment">
-											<p>I have, at least, a well-polished, silver-plated coffee-pot in front of me.</p>
-											<small class="comment-drawer--user">&ndash; SH</small>
-											<small class="comment-drawer--timestamp">(3 minutes ago)</small>
-											<a class="comment-drawer--action icon-reply reply" href="#"></a>
-											<a class="comment-drawer--action icon-remove" href="#"></a>
-											<a class="comment-drawer--action icon-pencil" href="#"></a>
-											<form class="comment-drawer--form">
-												<input class="text-input" type="text">
-												<input class="comment-drawer--reply" type="submit" value="Add comment">
-											</form>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li class="comment-drawer--comment">
-							<p>A dabbler in science, Mr. Holmes, a picker up of shells on the shores of the great unknown ocean.</p>
-							<small class="comment-drawer--user">&ndash; jmortimer</small>
-							<small class="comment-drawer--timestamp">(a minute ago)</small>
-							<a class="comment-drawer--action icon-reply reply" href="#"></a>
-							<a class="comment-drawer--action icon-remove" href="#"></a>
-							<a class="comment-drawer--action icon-pencil" href="#"></a>
-							<form class="comment-drawer--form">
-								<input class="text-input" type="text">
-								<input class="comment-drawer--reply" type="submit" value="Add comment">
-							</form>
-						</li>
-					</ul>
-				</div>
-				<footer class="comment-drawer--footer">
-					<a class="white-bordered-ex-button pull-left js-comment-toggle" href="#">Close</a>
-					<a class="white-bordered-button pull-right" href="#">Login</a>
-				</footer>
-			</div>
+			<div id="backbone-commentsView" class="comment-drawer"></div>
 		</nav>
-		
+
 		<!--[if lt IE 9]>
 			<script src="Resources/Javascript/Libs/Selectivizr/selectivizr-min.js"></script>
 		<![endif]-->

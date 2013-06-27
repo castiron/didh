@@ -1,0 +1,16 @@
+
+<%= model.get('body') %>
+
+<small class="comment-drawer--user">&ndash; <%= model.get('author') %></small>
+<small class="comment-drawer--timestamp">(<%= model.get('age') %>)</small>
+<a class="js-action-reply comment-drawer--action icon-reply reply" href="#"></a>
+<a class="js-action-remove comment-drawer--action icon-remove" href="#"></a>
+<!--
+<a class="comment-drawer--action icon-pencil" href="#"></a>
+-->
+<form data-parent="<%= model.id %>" class="comment-drawer--form">
+  <textarea class="text-input"></textarea>
+  <input class="comment-drawer--reply" type="submit" value="Add comment">
+</form>
+<ul class="js-comment-container">
+</ul>
