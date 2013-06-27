@@ -33,6 +33,13 @@
 
 		<script type="text/javascript">
 		  $(function() {
+        <% if current_user %>
+        window.currentUser = {
+          email: '<%= current_user.email %>'
+        }
+        <% else %>
+        window.currentUser = null
+        <% end %>
 		    window.router = new Didh.Routers.AppRouter({static: <%= @static %>, parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
 	  	    Backbone.history.start({pushState: true, root: "/debates/"})
 		  });

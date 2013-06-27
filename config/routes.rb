@@ -1,10 +1,14 @@
 Didh::Application.routes.draw do
   
+  devise_for :users
+
   devise_for :admins
 
   match 'debates/' => 'debates#index'
   match 'debates/part/:id' => 'debates#index'
   match 'debates/text/:id' => 'debates#index'
+  match 'debates/text/:id/auth' => 'debates#index'
+
   match 'static/debates/text/:id' => 'debates#show'
   match 'debates/hide_instructions' => 'debates#hide_instructions'
   match 'debates/show_instructions' => 'debates#show_instructions'
