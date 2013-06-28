@@ -274,11 +274,11 @@
 	top: 0;
 	z-index: 20;
 	@include respond-max(810px) {
-		font-size: 0.8em;
+		// font-size: 0.8em;
 		margin-left: 128px;
 	}
 	@include respond-max-height(700px) {
-		font-size: 0.8em;
+		// font-size: 0.8em;
 		margin-left: 128px;
 	}
 }
@@ -286,42 +286,75 @@
 .hud--list {
 	@extend %delta;
 	@extend %floated-list;
+	@extend %smooth-resize;
 	color: lighten($black, 40%);
 	background-color: $white;
-	padding: 0.69em 0 0.69em 1.25em;
+	padding: 0.69em 1.25em;
 	border-bottom: 1px solid lighten($black, 70%);
+	margin-right: $navClosedWidth;
 	cursor: pointer;
 	&:hover {
 		color: $black;
 		border-bottom-color: $black;
 	}
+	.nav-open & {
+		margin-right: $navOpenWidth;
+	}
 	li {
+		width: 22%;
+		max-width: 14em;
 		line-height: 22px;
-		padding-right: $space;
+		padding-left: $space;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		&.hud--title {
+			width: 34%;
+			max-width: 20em;
+		}
+		&:first-child {
+			padding-left: 0;
+		}
 		&:last-child {
-			padding-right: 0;
-			margin-right: $navClosedWidth + 20;
-			.nav-open & {
-				margin-right: $navOpenWidth + 20;
+			padding-left: 0;
+		}
+	}
+	@include respond-max(1100px) {
+		padding: 0.69em 0.625em;
+		li {
+			padding-left: $space / 2;
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				padding-left: 0;
 			}
 		}
-		@include respond-max(1024px) {
-			max-width: 25%;
-			padding-right: 3%;
-		}
-		@include respond-max(800px) {
-			line-height: 18px;
+	}
+	@include respond-max(800px) {
+		.nav-open & {
+			li {
+				display: none;
+				width: 25%;
+				&.hud--title,
+				&.hud--user {
+					display: block;
+				}
+				&.hud--title {
+					width: 75%;
+				}
+			}
 		}
 	}
 }
 
 // <li>
-.hud--title {
-	max-width: 25.25em;
-	@include respond-max(1024px) {
-		max-width: 50% !important;
-	}
-}
+// .hud--title {
+// 	max-width: 25.25em;
+// 	@include respond-max(1024px) {
+// 		max-width: 50% !important;
+// 	}
+// }
 
 // <span>
 .hud--author {
@@ -336,8 +369,7 @@
 
 // <li>
 .hud--user {
-	@extend %smooth-resize;
-	width: 160px;
+	// width: 160px;
 	color: lighten($black, 40%);
 	text-align: right;
 	// This !important overrides the default %floated list styles
