@@ -1443,6 +1443,13 @@ label {
 	width: 100%;
 }
 
+.form-message {
+	@extend %eta;
+	display: block;
+	line-height: 1;
+	margin-bottom: 10px;
+}
+
 // Form errors
 // --------------------------
 #error_explanation {

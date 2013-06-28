@@ -3,23 +3,34 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <div class="row">
+    <%= f.label :email %>
+    <%= f.email_field :email, :class => "text-input" %>
+  </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+  <div class="row">
+    <%= f.label :password %> <i class="form-message">(leave blank if you don't want to change it)</i>
+    <%= f.password_field :password, :autocomplete => "off", :class => "text-input" %>
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div class="row">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => "text-input" %>
+  </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <div class="row">
+    <%= f.label :current_password %> <i class="form-message">(we need your current password to confirm your changes)</i>
+    <%= f.password_field :current_password, :class => "text-input" %>
+  </div>
 
-  <div><%= f.submit "Update" %></div>
+  <div class="row">
+    <%= f.submit "Update", :class => "field--button" %>
+  </div>
+
+  <div class="row">
+    <p class="small">
+      Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.<br>
+      <%= link_to "Back", :back %>
+    </p>
+  </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
