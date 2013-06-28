@@ -890,7 +890,9 @@ body.static-true span.sentence:hover {
 	@extend %input-label;
 	@extend %zeta;
 	text-transform: uppercase;
+	margin-bottom: 0;
 	position: relative;
+	cursor: pointer;
 	.stacked-label {
 		background: transparent url('icon-stacked.png') no-repeat left top;
 		background-size: auto 100%;
@@ -1383,7 +1385,9 @@ body.page form, .new_message {
 
 .field--label {
 	width: 18%;
+	line-height: 1.25;
 	padding: 0.5em 0;
+	margin-bottom: 0;
 	float: left;
 	.field-half & {
 		width: 36%;
@@ -1427,6 +1431,41 @@ body.page form, .new_message {
 	background-color: $orange;
 	padding: 0.5em;
 	margin-bottom: $shim;
+}
+
+label {
+	display: block;
+	margin-bottom: 6px;
+}
+
+.text-input {
+	@extend %text-input;
+	width: 100%;
+}
+
+// Form errors
+// --------------------------
+#error_explanation {
+	color: $white;
+	background-color: $orange;
+	padding: 0.69em;
+	margin-bottom: 1em;
+	h2 {
+		@extend %epsilon;
+		line-height: 1;
+		margin: 0 0 0.69em;
+	}
+	ul {
+		// @extend %unstyled-list;
+		padding-left: 1.69em;
+		margin: 0;
+	}
+	li {
+		@extend %epsilon;
+	}
+	li + li {
+		margin-top: 0.3em;
+	}
 }
 
 // frontend_page components
@@ -1534,6 +1573,10 @@ body.page form, .new_message {
 	float: right;
 }
 
+.small {
+	@extend %zeta;
+}
+
 // Generic components
 // --------------------------------------------------------
 // Links
@@ -1552,11 +1595,4 @@ body.page form, .new_message {
 
 .white-bordered-ex-button {
 	@extend %white-bordered-ex-button;
-}
-
-// Form Components
-// --------------------------
-.text-input {
-	@extend %text-input;
-	margin-bottom: 6px;
 }

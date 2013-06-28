@@ -305,6 +305,9 @@
 	background-color: transparent;
 	padding: 0.25em 0.5em;
 	border: 1px solid lighten($black, 20%);
+	&:focus {
+		outline: 0;
+	}
 }
 
 // Checkbox
