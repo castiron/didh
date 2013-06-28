@@ -70,8 +70,9 @@ class Didh.Routers.AppRouter extends Backbone.Router
     @textView.render()
 
   showComments: (textId, sentenceId) ->
-    @showText(textId)
+    if parseInt(@texts.getActiveTextId()) != parseInt(textId) then @showText(textId)
     @commentsView.open(textId, sentenceId)
+    Backbone.Mediator.publish('panes:close')
     Backbone.Mediator.subscribeOnce('text:rendered', () =>
       @commentsView.render()
     )

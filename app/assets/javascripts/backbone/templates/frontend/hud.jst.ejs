@@ -10,11 +10,14 @@
 		<% } %>
 	</li>
 </ul>
+
 <div style="bottom: 0" class="authentication js-authentication">
   <% if (currentUser != null) { %>
 	<!-- If user is logged in -->
-	<span class="authentication--label right">You've made<br> 211 comments.</span>
 	<ul>
+	  <li>
+	    	<a class="white-button left" style="width: 99%; margin-top: 20px;" href="/users/edit">Edit Profile</a>
+	  </li>
 		<li>
       <a class="white-button" data-method="delete" href="/users/sign_out/?redirect=/debates/text/<%= text.id %>">Log off</a>
       <a class="white-ex-button left js-close-authentication" href="#">Close</a>
@@ -30,6 +33,9 @@
 		<label class="authentication--label">password</label>
 		<a class="white-ex-button left js-close-authentication" href="#">Close</a>
 		<input class="white-button right" type="submit" value="login">
+		<br />
+		<a class="white-button left" style="width: 100%" href="/users/sign_up">Create Account</a>
+
 	</form>
 	<% } %>
 </div>

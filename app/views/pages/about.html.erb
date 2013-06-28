@@ -44,22 +44,23 @@
 		  </ul>
 		</p>
 
+    <a name="message-form"></a>
 		<h2 class="column--heading" id="contact-us">Contact Us</h2>
 		<p>Please use the form below to contact the editorial and development teams with your feedback, questions, and ideas:</p>
-		<% flash.each do |key, value| %>
-			<%= content_tag(:div, value, :class => "flash #{key}") %>
-		<% end %>
 
-		<%= form_for @message, :url => about_path do |form| %>
+		<%= form_for @message, :url => about_path(:anchor => 'message-form') do |form| %>
+
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, :class => "flash #{key}") %>
+      <% end %>
+
 			<div class="row">
-				<div class="field-half">
 					<%= form.label 'name:', :class => "field--label" %><%= form.text_field :name, :class => "field--input" %>
-				</div>
+      </div>
 
-				<div class="field-half">
-					<%= form.label 'email:', :class => "field--label" %><%= form.text_field :email, :class => "field--input"  %>
-				</div>
-			</div>
+      <div class="row">
+        <%= form.label 'email:', :class => "field--label" %><%= form.text_field :email, :class => "field--input"  %>
+      </div>
 
 			<div class="row">
 				<%= form.label 'subject:', :class => "field--label" %><%= form.text_field :subject, :class => "field--input" %>

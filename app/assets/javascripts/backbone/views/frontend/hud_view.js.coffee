@@ -11,6 +11,12 @@ class Didh.Views.Frontend.HudView extends Backbone.View
     'click .js-close-authentication'   : "hideAuthentication"
 
   initialize: () ->
+
+    Backbone.Mediator.subscribe('authentication:show', () =>
+      console.log 'heard authentication:show'
+      @showAuthentication()
+    )
+
     @router = @options.router
     @texts = @options.texts
     @texts.bind('change:active', @render, @)

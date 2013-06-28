@@ -58,10 +58,17 @@ class Didh.Views.Frontend.SingleCommentView extends Backbone.View
 class Didh.Views.Frontend.CommentsView extends Backbone.View
 
   template: JST["backbone/templates/frontend/comments"]
+
   events: {
+    'click .js-open-authentication': 'openAuth'
     'click .js-comment-close':  'close'
     'submit form': 'saveComment'
   }
+
+  openAuth: (e) ->
+    if e?
+      e.preventDefault()
+    Backbone.Mediator.publish('authentication:show')
 
   saveComment: (e) ->
     if e? then e.preventDefault()
@@ -85,17 +92,18 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
     @currentTextId = textId
     @collection.textId = @currentTextId
     params = {data: {sentence: sentenceId}}
-    console.log params
     @collection.fetch(params)
     @$el.removeClass('open')
     @$el.addClass('open')
 
   close: (e) ->
     if e? then e.preventDefault()
+    @router.navigate('text/' + @currentTextId)
     @$el.removeClass('open')
 
   initialize: () ->
     @loadedViews = []
+    @router = @options.router
     @collection = new Didh.Collections.CommentsCollection()
 
     @collection.bind('add', () =>
@@ -111,7 +119,6 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
     )
 
   render: (template) ->
-    console.log @collection
 
     _.each(@loadedViews, (view) =>
         view.remove()
@@ -125,7 +132,10 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
     selector = "#sentence-#{@currentSentenceId}"
     @currentSentenceText = $(selector).html()
 
-    $(@el).html(@template({reference: @currentSentenceText}))
+    $(@el).html(@template({
+      reference: @currentSentenceText
+      currentUser: window.currentUser
+    }))
 
     comments = @collection.where({parent_id: null})
     container = @$el.find('.js-comment-container:first')

@@ -1301,10 +1301,10 @@ parts {
 
 // Forms
 // --------------------------------------------------------
-.new_message {
+body.page form, .new_message {
 	display: inline-block;
 	background-color: $grayLight;
-	padding: 1em $space 1em 1em;
+	padding: 1em 1em 1em 1em;
 	margin: 1.35em 0;
 }
 
@@ -1388,7 +1388,7 @@ parts {
 
 .flash {
 	@extend %epsilon;
-	display: inline-block;
+	display: block;
 	color: $white;
 	background-color: $orange;
 	padding: 0.5em;
