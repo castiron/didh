@@ -274,11 +274,9 @@
 	top: 0;
 	z-index: 20;
 	@include respond-max(810px) {
-		// font-size: 0.8em;
 		margin-left: 128px;
 	}
 	@include respond-max-height(700px) {
-		// font-size: 0.8em;
 		margin-left: 128px;
 	}
 }
@@ -302,7 +300,7 @@
 	}
 	li {
 		width: 22%;
-		max-width: 14em;
+		max-width: 20em;
 		line-height: 22px;
 		padding-left: $space;
 		white-space: nowrap;
@@ -331,7 +329,7 @@
 			}
 		}
 	}
-	@include respond-max(800px) {
+	@include respond-max(810px) {
 		.nav-open & {
 			li {
 				display: none;
@@ -379,6 +377,11 @@
 		font-weight: 300;
 		color: $black;
 	}
+	@include respond-max(810px) {
+		em {
+			display: none;
+		}
+	}
 }
 
 // Authentication dropdown
@@ -397,8 +400,7 @@
 	ul {
 		@extend %unstyled-list;
 		text-align: right;
-		margin-top: 20px;
-		li {
+		li + li {
 			margin-top: 14px;
 		}
 	}
