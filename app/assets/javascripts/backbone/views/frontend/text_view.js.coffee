@@ -99,17 +99,29 @@ class Didh.Views.Frontend.TextView extends Backbone.View
   underlineCommentedSentences: () ->
     comments = @model.get('comments')
     _.each(comments, (count, checksum) =>
-      console.log checksum, count
       selector = '#sentence-' + checksum
       $el = @$el.find(selector)
       $el.addClass('has-comment')
-      $el.closest('p').addClass('contains-comment')
+      count = @model.getCommentCountFor(checksum)
+      paragraph = $el.closest('p')
+      paragraph.addClass('contains-comment')
+      pcount = paragraph.attr('data-count')
+      if pcount? then pcount = parseInt(pcount) else pcount = 0
+      pcount = pcount + parseInt(count)
+      paragraph.attr('data-count', pcount)
     )
-    console.log comments
+    @$el.find('[data-count]').each (index, el) ->
+      $el = $(el)
+      count = $el.attr('data-count')
+      $el.prepend('<b class="comment-count">' + count + '<span> comments</span></b>')
+
+
 
   render: () ->
     text = _.first @texts.where({active: true})
     $('html, body').animate({scrollTop: 0}, 500)
+
+    console.log text.get('comments')
 
     @$el.fadeOut({
       complete: =>

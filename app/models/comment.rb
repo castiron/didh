@@ -15,6 +15,20 @@ class Comment < ActiveRecord::Base
     simple_format(sanitize(body, tags: %w(strong, em)))
   end
 
+  def screen_name()
+		if user
+			if user.alias
+				user.alias
+			elsif user.name
+				user.name
+			else
+				'no name'
+			end
+		else
+			'anonymous'
+		end
+  end
+
   def author_name()
     if !user_id
       'Anonymous'
@@ -45,7 +59,7 @@ class Comment < ActiveRecord::Base
         :parent_id => parent_id,
         :id => id,
         :text_id => text_id,
-        :author => author_name,
+        :author => screen_name(),
         :sentence_checksum => sentence_checksum,
         :age =>  calculate_age(),
         :timestamp => created_at.to_i
