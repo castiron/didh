@@ -126,5 +126,12 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
     false
 
   render: =>
-    $(@el).html(@template({text: @texts.getActiveText(), sentenceId: @currentSentenceId}))
+    context = {
+      text: @texts.getActiveText()
+      sentenceId: @currentSentenceId
+    }
+    if context.text? then context.annotationCount = context.text.getAnnotationCountFor(@currentSentenceId) else context.annotationCount = 0
+    if context.text? then context.commentCount = context.text.getCommentCountFor(@currentSentenceId) else context.commentCount = 0
+    console.log context.commentCount, @currentSentenceId
+    $(@el).html(@template(context))
     return @
