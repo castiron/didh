@@ -19,6 +19,7 @@ Didh::Application.routes.draw do
   match 'news/' => 'pages#news'
   match 'pages/*page' => 'pages#development', :via => :get
 
+  resources :comments, :only => [:index]
   resources :texts, :only => [:index, :show, :destroy] do
     resources :comments, :only => [:index, :create, :show, :destroy]
     resources :annotations, :only => [:index, :show, :create]

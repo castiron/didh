@@ -1,13 +1,15 @@
 class CommentsController < ApplicationController
 
-  respond_to :json
+  respond_to :json, :atom
 
   def index
-    @text = Text.find(params[:text_id])
     if params[:sentence]
-      @comments = @text.comments.where('sentence_checksum = ?', params[:sentence])
-    else
+      @comments = Comment.where('sentence_checksum = ?', params[:sentence])
+    elsif params[:text_id]
+      @text = Text.find(params[:text_id])
       @comments = @text.comments
+    else
+      @comments = Comment.all()
     end
     respond_with @comments
   end

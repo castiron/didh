@@ -2,8 +2,14 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery
 
 	layout :layout_by_resource
+  before_filter :set_hostname
+
 
 	protected
+
+  def set_hostname()
+    @hostname = request.host || "dhdebates.gc.cuny.edu"
+  end
 
 	def after_sign_in_path_for(resource_or_scope)
 		params[:redirect] || debates_path

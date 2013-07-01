@@ -5,6 +5,8 @@ class Comment < ActiveRecord::Base
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::SanitizeHelper
 
+  default_scope order('created_at DESC')
+
   belongs_to :text
   belongs_to :user
 
@@ -49,7 +51,7 @@ class Comment < ActiveRecord::Base
       return "#{hours} hours and #{minutes} minutes ago"
     else
       days = ((minutes / 60)/24).floor
-      return "about #{days} ago"
+      return "about #{days} days ago"
     end
   end
 
