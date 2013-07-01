@@ -17,10 +17,13 @@
 
 	def destroy
 		@text = Text.find(params[:id])
-		@text.destroy
-
-		respond_to do |format|
-			format.json { head :no_content }
-		end
+    if current_user.admin?
+      @text.destroy
+      respond_with @text
+    else
+      respond_to do |format|
+        format.json { render json: {}, status: :forbidden}
+      end
+    end
 	end
 end

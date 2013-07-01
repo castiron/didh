@@ -12,6 +12,11 @@ class CommentsController < ApplicationController
     respond_with @comments
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    respond_with @comment
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     if current_user.admin?
