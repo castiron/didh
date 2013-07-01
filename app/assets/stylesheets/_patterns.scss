@@ -178,6 +178,9 @@
 	padding: 0.3em 1.2em;
 	border: none;
 	border-radius: 0.5em;
+	&:focus {
+		outline: 0;
+	}
 }
 
 %white-ex-button {
