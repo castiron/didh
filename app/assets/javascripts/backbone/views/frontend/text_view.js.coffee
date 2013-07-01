@@ -121,8 +121,6 @@ class Didh.Views.Frontend.TextView extends Backbone.View
     text = _.first @texts.where({active: true})
     $('html, body').animate({scrollTop: 0}, 500)
 
-    console.log text.get('comments')
-
     @$el.fadeOut({
       complete: =>
         $(@el).html(@template(text: @model, parts: @options.parts.toJSON() ))

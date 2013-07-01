@@ -17,7 +17,7 @@ class Didh.Views.Frontend.SingleCommentView extends Backbone.View
     if e?
       e.preventDefault()
       e.stopPropagation()
-    @model.destroy()
+    @model.destroy({wait: true})
 
   toggleReply: (e) ->
     if e?
@@ -41,7 +41,13 @@ class Didh.Views.Frontend.SingleCommentView extends Backbone.View
     )
 
   render: () ->
-    $(@el).html(@template({model: @model}))
+
+    if window.currentUser? && window.currentUser.admin == true
+      admin = true
+    else
+      admin = false
+
+    $(@el).html(@template({model: @model, admin: admin}))
 
     comments = @collection.where({parent_id: @model.id})
     if comments.length > 0
@@ -132,10 +138,23 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
     selector = "#sentence-#{@currentSentenceId}"
     @currentSentenceText = $(selector).html()
 
+    if window.currentUser? && window.currentUser.id?
+      authenticated = true
+    else
+      authenticated = false
+
+    if window.currentUser? && window.currentUser.screenName?
+      screenName = window.currentUser.screenName
+    else
+      screenName = false
+
+
     $(@el).html(@template({
       reference: @currentSentenceText
-      currentUser: window.currentUser
+      authenticated: authenticated
+      screenName: screenName
     }))
+
 
     comments = @collection.where({parent_id: null})
     container = @$el.find('.js-comment-container:first')

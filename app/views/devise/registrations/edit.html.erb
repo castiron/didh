@@ -9,6 +9,16 @@
   </div>
 
   <div class="row">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "text-input" %>
+  </div>
+
+  <div class="row">
+    <%= f.label :alias %>
+    <%= f.text_field :alias, :class => "text-input" %>
+  </div>
+
+  <div class="row">
     <%= f.label :password %> <i class="form-message">(leave blank if you don't want to change it)</i>
     <%= f.password_field :password, :autocomplete => "off", :class => "text-input" %>
   </div>

@@ -24,7 +24,15 @@
         <div class="row">
           <%= f.submit "Sign in", :class => "field--button" %>
         </div>
+
+        <div class="row">
+          <p class="small">
+            <%= render :partial => "devise/shared/links" %>
+          </p>
+        </div>
+
     <% end %>
+
   </section>
 </div>
 

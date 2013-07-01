@@ -4,7 +4,7 @@
 	<li><span class="hud--details"><%= text.get('edition') %></span></li>
 	<li class="hud--user js-open-authentication">
     <% if (currentUser != null) { %>
-		<em>logged in as</em> <strong><%= currentUser.email %></strong>
+		<em>logged in as</em> <strong><%= currentUser.screenName %></strong>
 	  <% } else { %>
 		<strong >Log in</strong>
 		<% } %>

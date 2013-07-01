@@ -114,12 +114,10 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
       activeText = @texts.getActiveText()
       keyword.save({}, {
         success: =>
-          console.log 'success'
           activeText.incrementGroupedKeywordCount(@currentSentenceId)
           Backbone.Mediator.publish('annotator:keyword_added', keyword);
           @stopAnnotating()
         error: =>
-          console.log 'error'
           Backbone.Mediator.publish('annotator:keyword_add_failed', keyword);
           @stopAnnotating()
       })
@@ -132,6 +130,5 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
     }
     if context.text? then context.annotationCount = context.text.getAnnotationCountFor(@currentSentenceId) else context.annotationCount = 0
     if context.text? then context.commentCount = context.text.getCommentCountFor(@currentSentenceId) else context.commentCount = 0
-    console.log context.commentCount, @currentSentenceId
     $(@el).html(@template(context))
     return @

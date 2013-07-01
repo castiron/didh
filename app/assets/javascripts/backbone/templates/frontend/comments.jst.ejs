@@ -17,5 +17,9 @@
 				</div>
 				<footer class="comment-drawer--footer">
 					<a class="white-bordered-ex-button pull-left js-comment-close" href="#">Close</a>
+          <% if (!authenticated) { %>
 					<a class="white-bordered-button pull-right js-comment-close js-open-authentication" href="#">Login</a>
+					<% } else { %>
+          <a class="white-bordered-button pull-right js-comment-close js-open-authentication" href="#">Logged in as <%= screenName %></a>
+          <% }  %>
 				</footer>

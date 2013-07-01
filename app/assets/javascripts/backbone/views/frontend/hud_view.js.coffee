@@ -6,7 +6,7 @@ class Didh.Views.Frontend.HudView extends Backbone.View
   authVisible: false
 
   events:
-    'click'   : "requestScroll"
+    'click .hud--title'   : "requestScroll"
     'click .js-open-authentication'   : "showAuthentication"
     'click .js-close-authentication'   : "hideAuthentication"
 
@@ -23,13 +23,17 @@ class Didh.Views.Frontend.HudView extends Backbone.View
     @render()
 
   hideAuthentication: (e) ->
-    if e? then e.preventDefault()
+    if e?
+      e.preventDefault()
+      e.stopPropagation()
     @authVisible = false
     @$el.find('.js-authentication').animate({bottom: 0}, 200)
     @router.navigate 'text/' + @texts.getActiveTextId()
 
   showAuthentication: (e, animate = true) ->
-    if e? then e.preventDefault()
+    if e?
+      e.preventDefault()
+      e.stopPropagation()
     @authVisible = true
     $el = @$el.find('.js-authentication')
     height = $el.outerHeight()

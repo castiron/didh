@@ -13,23 +13,33 @@
       </div>
 
       <div class="row">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => "text-input" %>
+      </div>
+
+      <div class="row">
+        <%= f.label :alias %>
+        <%= f.text_field :alias, :class => "text-input" %>
+      </div>
+
+      <div class="row">
         <%= f.label :password %><%= f.password_field :password, :class => 'text-input' %>
       </div>
 
       <div class="row">
-        <%= f.label :password_confirmation %><%= f.password_field :password_confirmation, :class => 'text-input' %></div>
-      <div>
+        <%= f.label :password_confirmation %><%= f.password_field :password_confirmation, :class => 'text-input' %>
+      </div>
 
       <div class="row" style="margin: 1em 0;">
         <%= f.submit "Sign up", :class => 'field--button' %>
       </div>
 
     <% end %>
-    
+
     <p class="small">
       <%= render :partial => "devise/shared/links" %>
     </p>
-    
+
   </section>
 </div>
 
