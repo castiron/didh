@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   belongs_to :text
   belongs_to :user
 
-  attr_accessible :body, :parent_id, :sentence_checksum, :text_id, :user_id
+  attr_accessible :body, :parent_id, :sentence_checksum, :text_id, :user_id, :author_name, :author_email
   has_many :children, :class_name => 'Comment', :foreign_key => 'parent_id', :dependent => :destroy
 
   def sanitized_body
