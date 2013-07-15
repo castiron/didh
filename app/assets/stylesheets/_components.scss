@@ -1359,6 +1359,7 @@ parts {
 body.page form, 
 .new_message {
 	display: inline-block;
+	max-width: 100%;
 	background-color: $grayLight;
 	padding: 1em 1em 1em 1em;
 	margin: 1.35em 0;
@@ -1367,13 +1368,11 @@ body.page form,
 .row {
 	@extend %clearfix;
 	width: 30.22em;
+	max-width: 100%;
 	& + & {
 		margin-top: 1em;
 	}
 	.comment-drawer--form & {
-		width: 100%;
-	}
-	@include respond-max(870px) {
 		width: 100%;
 	}
 }
