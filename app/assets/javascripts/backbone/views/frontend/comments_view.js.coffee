@@ -48,7 +48,11 @@ class Didh.Views.Frontend.SingleCommentView extends Backbone.View
     else
       admin = false
 
-    $(@el).html(@template({model: @model, authenticated: @authenticated, admin: admin}))
+    $(@el).html(@template({
+      model: @model,
+      authenticated: @authenticated,
+      admin: admin
+    }))
 
     comments = @collection.where({parent_id: @model.id})
     if comments.length > 0
@@ -78,12 +82,29 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
     Backbone.Mediator.publish('authentication:show')
 
   saveComment: (e) ->
+
     if e? then e.preventDefault()
+
     $target = $(e.target)
     body = $target.find('textarea').val()
+
+    if $target.find('[name="name"]').length > 0
+      name = $target.find('[name="name"]').val()
+    else
+      name = ''
+
+    if $target.find('[name="name"]').length > 0
+      email = $target.find('[name="email"]').val()
+    else
+      email = ''
+
+    errorsEl = $target.find('.errors')
+
     if $target.data().parent then parent = $target.data().parent else parent = null
     comment = new Didh.Models.Comment({
       body: body
+      author_name: name
+      author_email: email
       sentence_checksum: @currentSentenceId
       text_id: @currentTextId
       parent_id: parent
@@ -92,6 +113,18 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
       success: () =>
         @collection.add(comment)
         $target.find('textarea').val('')
+      error: (comment, xhr, options) =>
+        console.log errorsEl
+        errorsEl.html()
+        errors = []
+        response = JSON.parse(xhr.responseText)
+        _.each(response, (fieldErrors, fieldName) =>
+          fieldName = fieldName.replace('_',' ')
+          _.each(fieldErrors, (fieldError) =>
+            errorsEl.append("<li>#{fieldName} #{fieldError}</li>")
+            errors.push("#{fieldName} #{fieldError}")
+          )
+        )
     })
 
   open: (textId, sentenceId) ->
@@ -149,13 +182,11 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
     else
       screenName = false
 
-
     $(@el).html(@template({
       reference: @currentSentenceText
       authenticated: authenticated
       screenName: screenName
     }))
-
 
     comments = @collection.where({parent_id: null})
     container = @$el.find('.js-comment-container:first')
@@ -167,10 +198,4 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
 
     @$el.find('textarea').autosize()
 
-
-#
-#    selector = "#sentence-#{@currentSentenceId}"
-#    @currentSentenceText = $(selector).html()
-#
-#    out
 

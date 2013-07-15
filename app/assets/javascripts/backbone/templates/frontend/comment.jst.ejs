@@ -11,6 +11,7 @@
 <% } %>
 
 <form data-parent="<%= model.id %>" class="comment-drawer--form">
+  <ul class="errors"></ul>
   <% if (!authenticated) { %>
   Name
   <input class="input" type="text" name="name" />

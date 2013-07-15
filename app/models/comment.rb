@@ -12,6 +12,15 @@ class Comment < ActiveRecord::Base
   attr_accessible :body, :parent_id, :sentence_checksum, :text_id, :user_id, :author_name, :author_email
   has_many :children, :class_name => 'Comment', :foreign_key => 'parent_id', :dependent => :destroy
 
+  validates :body, :sentence_checksum, presence: true
+  validates :parent_id, numericality: true, allow_nil: true
+  validates :user_id, numericality: true, allow_nil: true
+
+  with_options unless: :user_id? do |comment|
+    comment.validates :author_name, :author_email, presence: true
+  end
+
+
   def sanitized_body
     simple_format(sanitize(body, tags: %w(strong, em)))
   end
