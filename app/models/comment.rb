@@ -5,7 +5,6 @@ class Comment < ActiveRecord::Base
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::SanitizeHelper
 
-
   belongs_to :text
   belongs_to :user
 
@@ -65,6 +64,7 @@ class Comment < ActiveRecord::Base
         :text_id => text_id,
         :author => screen_name(),
         :sentence_checksum => sentence_checksum,
+        :sentence => Sentence.find_by_checksum(sentence_checksum).body,
         :age =>  calculate_age(),
         :timestamp => created_at.to_i
     }

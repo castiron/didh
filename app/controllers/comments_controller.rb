@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       @text = Text.find(params[:text_id])
       @comments = @text.comments.order('created_at DESC')
     else
-      @comments = Comment.all().order('created_at DESC')
+      @comments = Comment.order('created_at DESC').all()
     end
     respond_with @comments
   end

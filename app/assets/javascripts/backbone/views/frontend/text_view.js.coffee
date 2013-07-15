@@ -62,6 +62,7 @@ class Didh.Views.Frontend.TextView extends Backbone.View
     #)
 
     _.each(@model.get('sentences'), (sentence) =>
+      console.log sentence, 'sentence'
       sel = '#sentence-' + sentence.sentence
       $el = $(sel)
       $el.addClass('annotated')
