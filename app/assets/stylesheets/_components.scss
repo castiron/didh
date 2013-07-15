@@ -1056,7 +1056,7 @@ parts {
 	@extend %justified;
 	background-color: $white;
 	padding: 20px 32px;
-	margin-bottom: 32px;
+	margin-bottom: 20px;
 }
 
 .comment-drawer--list {
@@ -1097,9 +1097,25 @@ parts {
 .comment-drawer--form {
 	@extend %clearfix;
 	display: none;
-	margin-top: 10px;
+	margin-top: 22px;
 	.text-input {
 		width: 100%;
+	}
+	label {
+		em {
+			color: transparentize($black, 0.62);
+		}
+	}
+	.errors {
+		@extend %unstyled-list;
+		background-color: $orange;
+		margin: 0 0 $shim;
+		> li {
+			@extend %epsilon;
+			color: $white;
+			background-color: $orange;
+			padding: 0.5em;
+		}
 	}
 	.active > & {
 		display: block;
@@ -1121,7 +1137,7 @@ parts {
 .comment-drawer--reply {
 	@extend %small-white-button;
 	letter-spacing: 0.1em;
-	margin-top: 2px;
+	margin-top: 6px;
 	float: right;
 	.active > & {
 		display: none;
@@ -1131,7 +1147,7 @@ parts {
 .comment-drawer--action {
 	@extend %delta;
 	color: transparentize($black, 0.72);
-	margin: 2px 0 0 10px;
+	margin: 6px 0 0 10px;
 	float: right;
 	&:hover {
 		color: $black;
@@ -1337,7 +1353,8 @@ parts {
 
 // Forms
 // --------------------------------------------------------
-body.page form, .new_message {
+body.page form, 
+.new_message {
 	display: inline-block;
 	background-color: $grayLight;
 	padding: 1em 1em 1em 1em;
@@ -1349,6 +1366,9 @@ body.page form, .new_message {
 	width: 30.22em;
 	& + & {
 		margin-top: 1em;
+	}
+	.comment-drawer--form & {
+		width: 100%;
 	}
 	@include respond-max(870px) {
 		width: 100%;
