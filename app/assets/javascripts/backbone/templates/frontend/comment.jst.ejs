@@ -11,7 +11,14 @@
 <% } %>
 
 <form data-parent="<%= model.id %>" class="comment-drawer--form">
-  <textarea class="text-input"></textarea>
+  <% if (!authenticated) { %>
+  Name
+  <input class="input" type="text" name="name" />
+  Email
+  <input class="input" type="text" name="email" />
+  <% } %>
+  Your Comment
+  <textarea class="text-input" ></textarea>
   <input class="comment-drawer--reply" type="submit" value="Add comment">
 </form>
 <ul class="js-comment-container">

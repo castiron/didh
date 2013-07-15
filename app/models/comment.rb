@@ -24,18 +24,12 @@ class Comment < ActiveRecord::Base
 				user.name
 			else
 				'no name'
-			end
+      end
+    elsif author_name
+      author_name
 		else
 			'anonymous'
 		end
-  end
-
-  def author_name()
-    if !user_id
-      'Anonymous'
-    else
-      'TODO: Add username'
-    end
   end
 
   def calculate_age()

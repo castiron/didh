@@ -8,6 +8,13 @@
 
 						<li class="comment-drawer--comment active">
 							<form class="comment-drawer--form">
+                <% if (!authenticated) { %>
+                Name
+                <input class="input" type="text" name="name" />
+                Email
+                <input class="input" type="text" name="email" />
+                <% } %>
+                Your Comment
 								<textarea class="text-input" ></textarea>
 								<input class="comment-drawer--reply" type="submit" value="Add comment">
 							</form>

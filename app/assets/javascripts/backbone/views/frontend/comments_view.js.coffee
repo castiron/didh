@@ -29,6 +29,7 @@ class Didh.Views.Frontend.SingleCommentView extends Backbone.View
       @$el.addClass('active')
 
   initialize: (options) ->
+    @authenticated = options.authenticated
     @id = @model.id
     @render()
 
@@ -47,13 +48,13 @@ class Didh.Views.Frontend.SingleCommentView extends Backbone.View
     else
       admin = false
 
-    $(@el).html(@template({model: @model, admin: admin}))
+    $(@el).html(@template({model: @model, authenticated: @authenticated, admin: admin}))
 
     comments = @collection.where({parent_id: @model.id})
     if comments.length > 0
       $container = @$el.find('.js-comment-container:first')
       _.each(comments, (comment) =>
-        child = new Didh.Views.Frontend.SingleCommentView({model: comment, collection: @collection})
+        child = new Didh.Views.Frontend.SingleCommentView({model: comment, authenticated: @authenticated, collection: @collection})
         @loadedViews.push child
         $container.append(child.$el)
       )
@@ -159,7 +160,7 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
     comments = @collection.where({parent_id: null})
     container = @$el.find('.js-comment-container:first')
     _.each(comments, (comment) =>
-      child = new Didh.Views.Frontend.SingleCommentView({model: comment, collection: @collection})
+      child = new Didh.Views.Frontend.SingleCommentView({model: comment, authenticated: authenticated, collection: @collection})
       @loadedViews.push child
       container.append(child.$el)
     )
