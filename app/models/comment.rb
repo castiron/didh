@@ -5,7 +5,6 @@ class Comment < ActiveRecord::Base
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::SanitizeHelper
 
-  default_scope order('created_at DESC')
 
   belongs_to :text
   belongs_to :user

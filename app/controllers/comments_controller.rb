@@ -7,9 +7,9 @@ class CommentsController < ApplicationController
       @comments = Comment.where('sentence_checksum = ?', params[:sentence])
     elsif params[:text_id]
       @text = Text.find(params[:text_id])
-      @comments = @text.comments
+      @comments = @text.comments.order('created_at DESC')
     else
-      @comments = Comment.all()
+      @comments = Comment.all().order('created_at DESC')
     end
     respond_with @comments
   end
