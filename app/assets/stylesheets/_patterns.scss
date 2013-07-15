@@ -303,6 +303,7 @@
 	@extend %gamma;
 	padding: 0.5em;
 	border: none;
+	resize: none;
 	&:focus {
 		outline: none;
 	}
