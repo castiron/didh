@@ -1110,6 +1110,9 @@ parts {
 		@extend %unstyled-list;
 		background-color: $orange;
 		margin: 0 0 $shim;
+		&:empty {
+			margin-bottom: 0;
+		}
 		> li {
 			@extend %epsilon;
 			color: $white;

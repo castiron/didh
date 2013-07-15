@@ -178,6 +178,18 @@
 	padding: 0.3em 1.2em;
 	border: none;
 	border-radius: 0.5em;
+	&.truncated {
+		max-width: 375px;
+		text-align: left;
+		padding-right: 0.6em;
+		padding-left: 0.6em;
+		white-space: pre;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include respond-max(1000px) {
+			max-width: 242px;			
+		}
+	}
 	&:focus {
 		outline: 0;
 	}
