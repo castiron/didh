@@ -19,7 +19,6 @@ class Comment < ActiveRecord::Base
     comment.validates :author_name, :author_email, presence: true
   end
 
-
   def sanitized_body
     simple_format(sanitize(body, tags: %w(strong, em)))
   end
@@ -27,17 +26,18 @@ class Comment < ActiveRecord::Base
   def screen_name()
 		if user
 			if user.alias
-				user.alias
+				out = user.alias
 			elsif user.name
-				user.name
+				out = user.name
 			else
-				'no name'
+				out = 'no name'
       end
     elsif author_name
-      author_name
+      out = author_name
 		else
-			'anonymous'
-		end
+			out = 'anonymous'
+    end
+    sanitize(out, :tags => [])
   end
 
   def calculate_age()
@@ -62,7 +62,7 @@ class Comment < ActiveRecord::Base
         :parent_id => parent_id,
         :id => id,
         :text_id => text_id,
-        :author => screen_name(),
+        :author => screen_name,
         :sentence_checksum => sentence_checksum,
         :sentence => Sentence.find_by_checksum(sentence_checksum).body,
         :age =>  calculate_age(),

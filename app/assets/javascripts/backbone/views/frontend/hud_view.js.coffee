@@ -13,7 +13,6 @@ class Didh.Views.Frontend.HudView extends Backbone.View
   initialize: () ->
 
     Backbone.Mediator.subscribe('authentication:show', () =>
-      console.log 'heard authentication:show'
       @showAuthentication()
     )
 
@@ -40,7 +39,6 @@ class Didh.Views.Frontend.HudView extends Backbone.View
     if animate == true
       $el.animate({bottom: height * -1}, 200)
     else
-      console.log 'b'
       $el.css({bottom: height * -1})
 
     @router.navigate 'text/' + @texts.getActiveTextId() + '/auth'

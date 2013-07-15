@@ -8,5 +8,4 @@ class Didh.Collections.AnnotationsCollection extends Backbone.Collection
 	model: Didh.Models.Annotation
 
 	url: (model) ->
-		console.log model
 		'/texts/' + @text.get(id) + '/annotations';

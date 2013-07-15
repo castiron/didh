@@ -62,17 +62,12 @@ class Didh.Models.Text extends Backbone.Model
 
   incrementGroupedKeywordCount: (sentenceId) ->
     keywords = @get('keywords_grouped')
-    console.log keywords, 'before'
     keyword = @getKeyword(sentenceId)
-    console.log keyword,' a'
     if keyword?
       keyword.count++
     else
       keywords.push({keyword: sentenceId, count: 1})
     @set('keywords_grouped', keywords)
-
-    console.log @get('keywords_grouped'), 'after'
-
     @trigger('change:keywords_grouped')
 
   incrementAnnotationCount: (sentenceId) ->

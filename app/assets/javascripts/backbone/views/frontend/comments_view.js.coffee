@@ -114,8 +114,7 @@ class Didh.Views.Frontend.CommentsView extends Backbone.View
         @collection.add(comment)
         $target.find('textarea').val('')
       error: (comment, xhr, options) =>
-        console.log errorsEl
-        errorsEl.html()
+        errorsEl.html('')
         errors = []
         response = JSON.parse(xhr.responseText)
         _.each(response, (fieldErrors, fieldName) =>
