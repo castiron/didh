@@ -25,7 +25,7 @@
 	</ul>
   <% } else { %>
 	<form method="post" action="/users/sign_in">
-		<input name="user[email]" class="text-input" type="text">
+		<input name="user[email]" class="text-input" type="email">
 		<label class="authentication--label">email</label>
 		<input name="user[password]" class="text-input" type="password">
     <input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr('content') %>"/>
