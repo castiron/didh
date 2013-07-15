@@ -145,6 +145,7 @@
 		font-size: 0.8em;
 		padding-top: $space;
 	}
+
 }
 
 .interior-title {
@@ -269,6 +270,9 @@
 .nav-hud {
 	@extend %smooth-resize;
 	@extend %horizontal-bar-fixed;
+  .touch & {
+    position: absolute;
+  }
 	background-color: $white;
 	margin-left: 160px;
 	top: 0;
@@ -280,6 +284,8 @@
 		margin-left: 128px;
 	}
 }
+
+
 
 .hud--list {
 	@extend %delta;
@@ -1356,7 +1362,7 @@ parts {
 
 // Forms
 // --------------------------------------------------------
-body.page form, 
+body.page form,
 .new_message {
 	display: inline-block;
 	background-color: $grayLight;
