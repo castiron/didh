@@ -12,6 +12,10 @@
 
 <form data-parent="<%= model.id %>" class="comment-drawer--form">
   <ul class="errors"></ul>
+  <div class="row">
+    <label>Your Comment</label>
+    <textarea class="text-input test"></textarea>
+  </div>
   <% if (!authenticated) { %>
   <div class="row">
     <div class="field-half">
@@ -25,8 +29,6 @@
   </div>
   <% } %>
   <div class="row">
-    <label>Your Comment</label>
-    <textarea class="text-input test"></textarea>
     <input class="comment-drawer--reply" type="submit" value="Add comment">
   </div>
 </form>
