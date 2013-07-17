@@ -14,10 +14,11 @@ Didh::Application.routes.draw do
   match 'debates/show_instructions' => 'debates#show_instructions'
 
   match 'book/' => 'pages#book'
+  match 'apis/' => 'pages#apis'
   match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
   match 'about/' => 'pages#about'
   match 'news/' => 'pages#news'
-  match 'pages/*page' => 'pages#development', :via => :get
+#  match 'pages/*page' => 'pages#development', :via => :get
 
   resources :comments, :only => [:index]
   resources :texts, :only => [:index, :show, :destroy] do

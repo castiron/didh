@@ -1,0 +1,37 @@
+<div class="api-docs">
+
+  <h1 class="page-title">APIs and Feeds</h1>
+
+  <p>The following read-only APIs are available to users of this site:</p>
+
+  <h2>/texts/:text_id/comments.json</h2>
+  <p>returns all comments for the given text [<a target="_blank" href="/texts/2/comments.json">example</a>]</p>
+
+  <h2>/texts/:text_id/comments.json?sentence=:sentence_checksum</h2>
+  <p>returns all comments for a single sentence in a given text [<a target="_blank" href="/texts/2/comments.json?sentence=39640">example</a>]</p>
+
+  <h2>/texts/:text_id/comments/:comment_id.json</h2>
+  <p>returns a single comment in a given text</p>
+
+  <h2>/texts/:text_id/annotations.json</h2>
+  <p>returns all flagged (as important) sentences in a given text and the flag count for each sentence [<a target="_blank" href="/texts/2/annotations.json">example</a>]</p>
+
+  <h2>/texts/:text_id/keywords.json</h2>
+  <p>returns all index keywords recorded for a given text [<a target="_blank" href="/texts/2/keywords.json">example</a>]</p>
+
+  <h2>/texts/:text_id.json</h2>
+  <p>returns a single text [<a target="_blank" href="/texts/2.json">example</a>]</p>
+
+  <h2>/texts/:text_id/sentences.json</h2>
+  <p>returns parsed sentences in the given text [<a target="_blank" href="/texts/2/sentences.json">example</a>]</p>
+
+  <h2>/texts/:text_id/sentences/:sentence_id.json</h2>
+  <p>returns detailed information about a given sentence (by ID), including annotations, comments, and keywords</p>
+
+  <h2><a name="feeds"></a>/comments.atom</h2>
+  <p>an Atom feed of all comments posted on the site in reverse chronological order [<a target="_blank" href="/comments.atom">example</a>]</p>
+
+  <h2>/texts/:text_id/comments.atom</h2>
+  <p>an Atom feed of all comments for a given text in reverse chronological order [<a target="_blank" href="/texts/2/comments.atom">example</a>]</p>
+
+</div>

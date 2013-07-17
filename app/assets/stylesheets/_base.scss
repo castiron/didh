@@ -1,8 +1,8 @@
 // Base
 // ----
 
-// Applies a natural box layout model to all the things 
-* { 
+// Applies a natural box layout model to all the things
+* {
 	@include box-sizing(border-box);
 }
 
@@ -52,21 +52,24 @@ h1 {
 h2 {
 	@extend %heading;
 	@extend %beta;
+  .api-docs & {
+    margin-bottom: .5em;
+  }
 }
 
 h3 {
 	@extend %heading;
-	@extend %gamma;	
+	@extend %gamma;
 }
 
 h4 {
 	@extend %heading;
-	@extend %delta;	
+	@extend %delta;
 }
 
 h5 {
 	@extend %heading;
-	@extend %epsilon;	
+	@extend %epsilon;
 }
 
 p {
