@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       @text = Text.find(params[:text_id])
       @comments = @text.comments.order('created_at DESC')
     else
-      @comments = Comment.order('created_at DESC').all()
+      @comments = Comment.order('created_at DESC')
     end
     respond_with @comments
   end
@@ -32,7 +32,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params[:comment])
+    p = params.require(:comment).permit(:body, :author_name, :author_email, :sentence_checksum, :text_id, :parent_id)
+    @comment = Comment.new(p)
     @comment.user = current_user
 
     respond_to do |format|

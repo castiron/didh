@@ -21,7 +21,8 @@ class AnnotationsController < ApplicationController
 	end
 
 	def create
-		@annotation = Annotation.new(params[:annotation])
+		p = params.require(:annotation).permit(:sentence, :text_id)
+		@annotation = Annotation.new(p)
 		@annotation.ip = request.remote_ip
 
 		respond_to do |format|
