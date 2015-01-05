@@ -13,11 +13,11 @@ class KeywordsController < ApplicationController
   end
 
 	def create
-		p = params.require(:keyword).permit(:sentence, :word, :text_id)
-		@keyword = Keyword.new(p)
+		@keyword = Keyword.new(params[:keyword])
+
 		respond_to do |format|
 			if @keyword.save
-				format.json { render json: @keyword, status: :created, location: nil }
+				format.json { render json: @keyword, status: :created, location: text_keyword_url(@keyword.text, @keyword) }
 			else
 				format.json { render json: @keyword.errors, status: :unprocessable_entity }
 			end
