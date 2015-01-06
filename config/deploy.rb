@@ -22,7 +22,7 @@ namespace :deploy do
   task :import_texts do
     on roles(:app) do
       within release_path do
-        execute :rake, 'text:import'
+        execute :rake, 'texts:import'
       end
     end
   end
