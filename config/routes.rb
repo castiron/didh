@@ -17,6 +17,7 @@ Didh::Application.routes.draw do
   match 'apis/' => 'pages#apis'
   match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
   match 'about/' => 'pages#about'
+  match 'cfps/' => 'pages#cfps'
   match 'news/' => 'pages#news'
 #  match 'pages/*page' => 'pages#development', :via => :get
 
