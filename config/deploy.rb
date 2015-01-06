@@ -18,6 +18,16 @@ namespace :deploy do
     end
   end
 
+  desc 'Import Texts'
+  task :import_texts do
+    on roles(:app) do
+      within release_path do
+        execute :rake, 'text:import'
+      end
+    end
+  end
+
+  after 'deploy:normalize_assets', :import_texts
   after :publishing, :restart
 
 end
