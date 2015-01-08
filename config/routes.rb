@@ -18,6 +18,8 @@ Didh::Application.routes.draw do
   match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
   match 'about/' => 'pages#about'
   match 'cfps/' => 'pages#cfps'
+  match 'cfps/cfp_2015_ddh' => 'pages#cfp_2015_ddh'
+  match 'cfps/cfp_2015_mhm' => 'pages#cfp_2015_mhm'
   match 'news/' => 'pages#news'
 #  match 'pages/*page' => 'pages#development', :via => :get
 
