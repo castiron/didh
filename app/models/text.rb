@@ -1,14 +1,20 @@
 class Text < ActiveRecord::Base
-	attr_accessible :body, :edition_id, :title, :abstract, :notes, :bibliography, :source_file, :authors, :author_ids, :part, :part_id, :sorting, :is_static
+	attr_accessible :body, :edition_id, :comments, :title, :abstract, :notes, :bibliography, :source_file, :authors, :author_ids, :part, :part_id, :sorting, :is_static
 	has_and_belongs_to_many :authors
 	belongs_to :part
 	belongs_to :edition
 	has_many :keywords
+  has_many :comments
+  has_many :sentences
 	has_many :annotations
 
 	def author_names
 		self.authors.collect { |author| author.name }.join(', ')
 	end
+
+  def comment_counts
+    comments.count(group: :sentence_checksum)
+  end
 
 	def as_json(options={})
 		if options[:bootstrap] == true
@@ -22,6 +28,7 @@ class Text < ActiveRecord::Base
 			}
 		else
 			{
+        :comments => comment_counts,
 				:id => id,
 				:title => title,
 				:part => part_id,

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Debates in the Digital Humanities</title>
+		<!-- <meta name="description" content=""> -->
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+
+	    <script type="text/javascript" src="//use.typekit.net/jlo5jay.js"></script>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-37686216-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script> 
+
+		<script type="text/javascript">
+		  $(function() {
+		    window.router = new Didh.Routers.AppRouter({static: <%= @static %>, parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
+	  	    Backbone.history.start({pushState: true, root: "/debates/"})
+		  });
+		</script>
+
+	</head>
+	<body class="interior nav-open banner-open static-<%= @static %>">
+		<div class="annotator" style="top: -1000px;" id="backbone-annotatorView" ></div>
+		<header class="page-header">
+			<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
+			<ul class="nav-interior">
+				<%= render "shared/menu" %>
+			</ul>
+		</header>
+
+		<!-- <aside id="backbone-bannerView" class="page-banner"></aside> -->
+
+		<!-- HUD -->
+		<nav id="backbone-hudView" class="nav-hud">
+			<ul class="hud--list">
+				<li class="hud--title">The Digital Humanities Moment</li>
+				<li><span class="hud--author">MATTHEW K. GOLD</span></li>
+				<li><span class="hud--details">2012 Print Edition</span></li>
+				<li class="hud--user">
+					<em>logged in as</em> <strong>jmoriarty</strong>
+				</li>
+			</ul>
+			<div class="authentication js-authentication">
+				<span class="authentication--label right">You've made<br> 221 comments.</span>
+				<ul>
+					<li><a class="white-button" href="#">Log off</a></li>
+					<li><a class="white-button" href="#">Sign in as<br> another<br> user</a></li>
+				</ul>
+
+			</div>
+		</nav>
+
+		<!-- Instructional banner -->
+		<aside id="backbone-bannerView" data-hide-instructions="<%= @hide_instructions %>" class="page-banner">
+		</aside>
+		
+		<section class="interior-content">
+			<article class="chapter">
+				<%= yield %>
+			</article>
+		</section>
+		<nav class="nav-content">
+			<div class="nav-panes--toggle js-nav-toggle"></div>
+			<ul id="backbone-feedbackView" class="nav-pane pane-top">
+				<li class="level-0">
+					<header class="js-content-nav--open-toggle pane--header">
+						<h2 class="pane--title">Feedback</h2>
+						<a class="content-nav--toggle js-content-nav--pos0-show js-content-nav--pos1-show js-content-nav--visible-toggle" href="" style="display: block;"></a>
+						<a style="display: none;" class="content-nav--toggle content-nav--toggle-pos2 js-content-nav--pos2-show js-content-nav--visible-toggle" href=""></a>
+					</header>
+				 	<section class="pane--content">
+					
+				 		<ul class="count-box-list">
+				 			<li class="count-box">
+				 				<h6 class="count-box--title">Sentences marked as interesting</h6>
+								<span class="count-box--number">1</span>
+				 			</li>
+				 			<li class="count-box">
+				 				<h6 class="count-box--title">Sentences Indexed</h6>
+								<span class="count-box--number">0</span>
+				 			</li>
+				 			<li class="count-box">
+				 				<h6 class="count-box--title">Total Times Marked or Indexed</h6>
+									<span class="count-box--number">1</span>
+				 			</li>
+				 		</ul>
+				 		<a class="content--toggle js-content-nav--pos1-show js-content-nav--pos2-show js-content-nav--open-toggle" href="" style="display: block;">
+				 			<b class="content--toggle--arrow"></b>Show/hide feedback
+				 		</a>
+				 		<a class="content--toggle js-content-nav--pos0-show js-content-nav--open-toggle" style="display: none;" href="">
+				 			<b class="content--toggle--arrow-right"></b>Hide feedback options
+				 		</a>
+					</section>
+				</li>
+				<li class="level-1">
+					<header class="js-content-nav--open-toggle pane--header">
+						<h2 class="pane--title">Options</h2>
+					</header>
+					<section class="pane--content pane--vertical-stage">
+						<div class="feedback-options">
+							<h2 class="feedback-options--title">Feedback Options</h2>
+							<ul class="feedback-options--list">
+								<li>
+									<label class="feedback-options--label">
+										<input class="feedback-options--checkbox" type="checkbox" checked="checked" id="feedback-view-interesting">
+										<b></b>
+										View text marked as interesting
+									</label>
+									<ul class="feedback-options--sublist">
+										<li>
+											<label class="feedback-options--label">
+												<input class="feedback-options--radio" type="radio" checked="checked" name="feedback-type" id="feedback-view-interesting-stacked">
+												<b></b>
+												<span class="stacked-label">Stacked</span>
+											</label>
+										</li>
+										<li>
+											<label class="feedback-options--label">
+												<input class="feedback-options--radio" type="radio" name="feedback-type" id="feedback-view-interesting-opacity">
+												<b></b>
+												<span class="opacity-label">Opacity</span>
+											</label>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</li>
+			</ul>
+			<ul id="backbone-tocView" class="nav-pane pane-bottom reveal-level-0">
+				<li class="level-0">
+					<header class="js-content-nav--open-toggle pane--header">
+						<h2 class="pane--title pane-bottom--title">Table of Contents</h2>
+					</header>
+					<section class="pane--content">
+						<ul class="nav-index">
+							 
+								<li class="nav-item-part nav-item-part-1" style="font-weight: bold;">
+									<a href="/debates/part/1">Introduction</a>
+								</li>
+							 
+								<li class="nav-item-part nav-item-part-2" style="font-weight: normal;">
+									<a href="/debates/part/2">Part I. Defining the Digital Humanities</a>
+								</li>
+							 
+								<li class="nav-item-part nav-item-part-3" style="font-weight: normal;">
+									<a href="/debates/part/3">Part II. Theorizing the Digital Humanities</a>
+								</li>
+							 
+								<li class="nav-item-part nav-item-part-4" style="font-weight: normal;">
+									<a href="/debates/part/4">Part III. Critiquing the Digital Humanities</a>
+								</li>
+							 
+								<li class="nav-item-part nav-item-part-5" style="font-weight: normal;">
+									<a href="/debates/part/5">Part IV. Practicing the Digital Humanities</a>
+								</li>
+							 
+								<li class="nav-item-part nav-item-part-6" style="font-weight: normal;">
+									<a href="/debates/part/6">Part V. Teaching the Digital Humanities</a>
+								</li>
+							 
+								<li class="nav-item-part nav-item-part-7" style="font-weight: normal;">
+									<a href="/debates/part/7">Part VI. Envisioning the Future of the Digital Humanities</a>
+								</li>
+							
+						</ul>
+					</section>
+				</li>
+				<li class="level-1">
+					<header class="js-content-nav--open-toggle pane--header">
+						<h2 class="pane--title pane-bottom--title">Articles</h2>
+					</header>
+					<section class="pane--content pane--vertical-stage">
+						<div class="parts">
+							 
+							<div id="toc-part-1" class="part" style="height: 792px;">
+								
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/1">
+												
+												<span class="title">The Digital Humanities Moment</span>
+												<span class="author">MATTHEW K. GOLD</span>
+												</a>
+											</li>	
+										
+									</ul>
+								
+								
+									<ul class="nav-index nav-index-col"><!-- a column shim --></ul>
+								
+							</div>
+							 
+							<div id="toc-part-2" class="part" style="height: 792px;">
+								
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/2">
+												
+												<span class="title">What Is Digital Humanities and What’s It Doing in English Departments?</span>
+												<span class="author">MATTHEW KIRSCHENBAUM</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/3">
+												
+												<span class="title">The Humanities, Done Digitally</span>
+												<span class="author">KATHLEEN FITZPATRICK</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/4">
+												
+												<span class="title">“This Is Why We Fight”: Defining the Values of the Digital Humanities</span>
+												<span class="author">LISA SPIRO</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/5">
+												
+												<span class="title">Beyond the Big Tent</span>
+												<span class="author">PATRIK SVENSSON</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/6">
+												
+												<span class="title">The Digital Humanities Situation</span>
+												<span class="author">RAFAEL C. ALVARADO</span>
+												</a>
+											</li>	
+										
+									</ul>
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/7">
+												
+												<span class="title">Where’s the Beef? Does Digital Humanities Have to Answer Questions?</span>
+												<span class="author">TOM SCHEINFELDT</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/8">
+												
+												<span class="title">Why Digital Humanities Is “Nice”</span>
+												<span class="author">TOM SCHEINFELDT</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/9">
+												
+												<span class="title">An Interview with Brett Bobley</span>
+												<span class="author">MICHAEL GAVIN, KATHLEEN MARIE SMITH</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/10">
+												
+												<span class="title">Day of DH: Defining the Digital Humanities</span>
+												<span class="author"></span>
+												</a>
+											</li>	
+										
+									</ul>
+								
+								
+							</div>
+							 
+							<div id="toc-part-3" class="part" style="height: 792px;">
+								
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/11">
+												
+												<span class="title">Developing Things: Notes toward an Epistemology of Building in the Digital Humanities</span>
+												<span class="author">STEPHEN RAMSAY, GEOFFREY ROCKWELL</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/12">
+												
+												<span class="title">Humanistic Theory and Digital Scholarship</span>
+												<span class="author">JOHANNA DRUCKER</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/13">
+												
+												<span class="title">This Digital Humanities Which Is Not One</span>
+												<span class="author">JAMIE “SKYE” BIANCO</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/14">
+												
+												<span class="title">A Telescope for the Mind?</span>
+												<span class="author">WILLARD MCCARTY</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/15">
+												
+												<span class="title">Sunset for Ideology, Sunrise for Methodology?</span>
+												<span class="author">TOM SCHEINFELDT</span>
+												</a>
+											</li>	
+										
+									</ul>
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/16">
+												
+												<span class="title">Has Critical Theory Run Out of Time for Data-Driven Scholarship?</span>
+												<span class="author">GARY HALL</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/17">
+												
+												<span class="title">There Are No Digital Humanities</span>
+												<span class="author">GARY HALL</span>
+												</a>
+											</li>	
+										
+									</ul>
+								
+								
+							</div>
+							 
+							<div id="toc-part-4" class="part" style="height: 792px;">
+								
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/18">
+												
+												<span class="title">Why Are the Digital Humanities So White? or Thinking the Histories of Race and Computation</span>
+												<span class="author">TARA MCPHERSON</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/19">
+												
+												<span class="title">Hacktivism and the Humanities: Programming Protest in the Era of the Digital University</span>
+												<span class="author">ELIZABETH LOSH</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/20">
+												
+												<span class="title">Unseen and Unremarked On: Don DeLillo and the Failure of the Digital Humanities</span>
+												<span class="author">MARK L. SAMPLE</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/21">
+												
+												<span class="title">Disability, Universal Design, and the Digital Humanities</span>
+												<span class="author">GEORGE H. WILLIAMS</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/22">
+												
+												<span class="title">The Digital Humanities and Its Users</span>
+												<span class="author">CHARLIE EDWARDS</span>
+												</a>
+											</li>	
+										
+									</ul>
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/23">
+												
+												<span class="title">Digital Humanities Triumphant?</span>
+												<span class="author">WILLIAM PANNAPACKER</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/24">
+												
+												<span class="title">What Do Girls Dig?</span>
+												<span class="author">BETHANY NOWVISKIE</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/25">
+												
+												<span class="title">The Turtlenecked Hairshirt</span>
+												<span class="author">IAN BOGOST</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/26">
+												
+												<span class="title">Eternal September of the Digital Humanities</span>
+												<span class="author">BETHANY NOWVISKIE</span>
+												</a>
+											</li>	
+										
+									</ul>
+								
+								
+							</div>
+							 
+							<div id="toc-part-5" class="part" style="height: 792px;">
+								
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/27">
+												
+												<span class="title">Canons, Close Reading, and the Evolution of Method</span>
+												<span class="author">MATTHEW WILKENS</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/28">
+												
+												<span class="title">Electronic Errata: Digital Publishing, Open Review, and the Futures of Correction</span>
+												<span class="author">PAUL FYFE</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/29">
+												
+												<span class="title">The Function of Digital Humanities Centers at the Present Time</span>
+												<span class="author">NEIL FRAISTAT</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/30">
+												
+												<span class="title">Time, Labor, and “Alternate Careers” in Digital Humanities Knowledge Work</span>
+												<span class="author">JULIA FLANDERS</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/31">
+												
+												<span class="title">Can Information Be Unfettered? Race and the New Digital Humanities Canon</span>
+												<span class="author">AMY E. EARHART</span>
+												</a>
+											</li>	
+										
+									</ul>
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/32">
+												
+												<span class="title">The Social Contract of Scholarly Publishing</span>
+												<span class="author">DANIEL J. COHEN</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/33">
+												
+												<span class="title">Introducing Digital Humanities Now</span>
+												<span class="author">DANIEL J. COHEN</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/34">
+												
+												<span class="title">Text: A Massively Addressable Object</span>
+												<span class="author">MICHAEL WITMORE</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/35">
+												
+												<span class="title">The Ancestral Text</span>
+												<span class="author">MICHAEL WITMORE</span>
+												</a>
+											</li>	
+										
+									</ul>
+								
+								
+							</div>
+							 
+							<div id="toc-part-6" class="part" style="height: 792px;">
+								
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/36">
+												
+												<span class="title">Digital Humanities and the “Ugly Stepchildren” of American Higher Education</span>
+												<span class="author">LUKE WALTZER</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/37">
+												
+												<span class="title">Graduate Education and the Ethics of the Digital Humanities</span>
+												<span class="author">ALEXANDER REID</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/38">
+												
+												<span class="title">Should Liberal Arts Campuses Do Digital Humanities? Process and Products in the Small College World</span>
+												<span class="author">BRYAN ALEXANDER, REBECCA FROST DAVIS</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/39">
+												
+												<span class="title">Where’s the Pedagogy? The Role of Teaching and Learning in the Digital Humanities</span>
+												<span class="author">STEPHEN BRIER</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/40">
+												
+												<span class="title">Visualizing Millions of Words</span>
+												<span class="author">MILLS KELLY</span>
+												</a>
+											</li>	
+										
+									</ul>
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/41">
+												
+												<span class="title">What’s Wrong with Writing Essays</span>
+												<span class="author">MARK L. SAMPLE</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/42">
+												
+												<span class="title">Looking for Whitman: A Grand, Aggregated Experiment</span>
+												<span class="author">MATTHEW K. GOLD, JIM GROOM</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/43">
+												
+												<span class="title">The Public Course Blog: The Required Reading We Write Ourselves for the Course That Never Ends</span>
+												<span class="author">TREVOR OWENS</span>
+												</a>
+											</li>	
+										
+									</ul>
+								
+								
+							</div>
+							 
+							<div id="toc-part-7" class="part" style="height: 792px;">
+								
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/44">
+												
+												<span class="title">Digital Humanities As/Is a Tactical Term</span>
+												<span class="author">MATTHEW KIRSCHENBAUM</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/45">
+												
+												<span class="title">The Digital Humanities or a Digital Humanism</span>
+												<span class="author">DAVE PARRY</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/46">
+												
+												<span class="title">The Resistance to Digital Humanities</span>
+												<span class="author">DAVID GREETHAM</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/47">
+												
+												<span class="title">Beyond Metrics: Community Authorization and Open Peer Review</span>
+												<span class="author">KATHLEEN FITZPATRICK</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/48">
+												
+												<span class="title">Trending: The Promises and the Challenges of Big Social Data</span>
+												<span class="author">LEV MANOVICH</span>
+												</a>
+											</li>	
+										
+									</ul>
+								 
+									
+									<ul class="nav-index nav-index-col">
+										
+											<li>
+												
+												<a class="" href="/debates/text/49">
+												
+												<span class="title">Humanities 2.0: Promise, Perils, Predictions</span>
+												<span class="author">CATHY N. DAVIDSON</span>
+												</a>
+											</li>	
+										
+											<li>
+												
+												<a class="" href="/debates/text/50">
+												
+												<span class="title">Where Is Cultural Criticism in the Digital Humanities?</span>
+												<span class="author">ALAN LIU</span>
+												</a>
+											</li>	
+										
+									</ul>
+								
+								
+							</div>
+							
+						<div class="parts">
+					</div></div></section>
+				</li>
+			</ul>
+			<div class="comment-drawer">
+				<div class="comment-drawer--scroll">
+					<h2 class="comment-drawer--heading">Selected passage:</h2>
+					<blockquote class="comment-drawer--reference">Mr. Sherlock Holmes, who was usually very late in the mornings, save upon those not infrequent occasions when he was up all night, was seated at the breakfast table.</blockquote>
+					<ul class="comment-drawer--list">
+						<li class="comment-drawer--comment active">
+							<form class="comment-drawer--form">
+								<input class="text-input" type="text">
+								<input class="comment-drawer--reply" type="submit" value="Add comment">
+							</form>
+						</li>
+						<li class="comment-drawer--comment">
+							<p>Well, Watson, what do you make of it?</p>
+							<small class="comment-drawer--user">&ndash; SH</small>
+							<small class="comment-drawer--timestamp">(4 minutes ago)</small>
+							<a class="comment-drawer--action icon-reply reply" href="#"></a>
+							<a class="comment-drawer--action icon-remove" href="#"></a>
+							<a class="comment-drawer--action icon-pencil" href="#"></a>
+							<form class="comment-drawer--form">
+								<input class="text-input" type="text">
+								<input class="comment-drawer--reply" type="submit" value="Add comment">
+							</form>
+							<ul>
+								<li class="comment-drawer--comment">
+									<p>How did you know what I was doing? I believe you have eyes in the back of your head.</p>
+									<small class="comment-drawer--user">&ndash; JW</small>
+									<small class="comment-drawer--timestamp">(4 minutes ago)</small>
+									<a class="comment-drawer--action icon-reply reply" href="#"></a>
+									<a class="comment-drawer--action icon-remove" href="#"></a>
+									<a class="comment-drawer--action icon-pencil" href="#"></a>
+									<form class="comment-drawer--form">
+										<input class="text-input" type="text">
+										<input class="comment-drawer--reply" type="submit" value="Add comment">
+									</form>
+									<ul>
+										<li class="comment-drawer--comment">
+											<p>I have, at least, a well-polished, silver-plated coffee-pot in front of me.</p>
+											<small class="comment-drawer--user">&ndash; SH</small>
+											<small class="comment-drawer--timestamp">(3 minutes ago)</small>
+											<a class="comment-drawer--action icon-reply reply" href="#"></a>
+											<a class="comment-drawer--action icon-remove" href="#"></a>
+											<a class="comment-drawer--action icon-pencil" href="#"></a>
+											<form class="comment-drawer--form">
+												<input class="text-input" type="text">
+												<input class="comment-drawer--reply" type="submit" value="Add comment">
+											</form>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="comment-drawer--comment">
+							<p>A dabbler in science, Mr. Holmes, a picker up of shells on the shores of the great unknown ocean.</p>
+							<small class="comment-drawer--user">&ndash; jmortimer</small>
+							<small class="comment-drawer--timestamp">(a minute ago)</small>
+							<a class="comment-drawer--action icon-reply reply" href="#"></a>
+							<a class="comment-drawer--action icon-remove" href="#"></a>
+							<a class="comment-drawer--action icon-pencil" href="#"></a>
+							<form class="comment-drawer--form">
+								<input class="text-input" type="text">
+								<input class="comment-drawer--reply" type="submit" value="Add comment">
+							</form>
+						</li>
+					</ul>
+				</div>
+				<footer class="comment-drawer--footer">
+					<a class="white-bordered-ex-button pull-left js-comment-toggle" href="#">Close</a>
+					<a class="white-bordered-button pull-right" href="#">Login</a>
+				</footer>
+			</div>
+		</nav>
+		
+		<!--[if lt IE 9]>
+			<script src="Resources/Javascript/Libs/Selectivizr/selectivizr-min.js"></script>
+		<![endif]-->
+
+	</body>
+</html>

@@ -1,32 +1,38 @@
-<h2>Sign in</h2>
+<div class="columns">
+  <section class="column-single">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <fieldset>
-	<div id="legend">
-	  <legend class="">Login</legend>
-	</div>
-	<div class="control-group">
-
-	  <%= f.label :email %>
-	  <div class="controls">
-		<%= f.email_field :email %>
-	  </div>
-	</div>
-
-	<div class="control-group">
-
-	  <%= f.label :password %>
-	  <div class="controls">
-		<%= f.password_field :password %>
-	  </div>
-	</div>
+    <h2 class="column--heading" id="contact-us">Sign in</h2>
+    <p>Please enter your username and password below.</p>
 
 
-	<div class="control-group">
+    <%= form_for(resource, :as => resource_name, :class => 'new_message', :url => session_path(resource_name)) do |f| %>
 
-	  <div class="controls">
-		<%= f.submit "Sign in" %>
-	  </div>
-	</div>
-  </fieldset>
-<% end %>
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: "flash flash-#{name}"%>
+      <% end -%>
+
+      <div class="row">
+          <%= f.label :email %>
+          <%= f.email_field :email, :class => "text-input" %>
+        </div>
+
+        <div class="row">
+          <%= f.label :password %>
+          <%= f.password_field :password, :class => "text-input" %>
+        </div>
+
+        <div class="row">
+          <%= f.submit "Sign in", :class => "field--button" %>
+        </div>
+
+        <div class="row">
+          <p class="small">
+            <%= render :partial => "devise/shared/links" %>
+          </p>
+        </div>
+
+    <% end %>
+
+  </section>
+</div>
+

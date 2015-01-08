@@ -1,9 +1,14 @@
 class AnnotationsController < ApplicationController
- 
+
 	respond_to :json
- 
+
 	def index
-		@annotations = Annotation.all_grouped
+    @text = Text.find(params[:text_id])
+
+		@annotations = @text.annotations.all(
+        :group => "sentence",
+        :select => "sentence, COUNT(*) as count",
+    )
 		respond_with(@annotations)
 	end
 

@@ -1,0 +1,36 @@
+
+<%= model.get('body') %>
+
+<small class="comment-drawer--user">&ndash; <%= model.get('author') %></small>
+<small class="comment-drawer--timestamp">(<%= model.get('age') %>)</small>
+
+<a class="js-action-reply comment-drawer--action icon-reply reply" href="#"></a>
+
+<% if (admin) { %>
+  <a class="js-action-remove comment-drawer--action icon-remove" href="#"></a>
+<% } %>
+
+<form data-parent="<%= model.id %>" class="comment-drawer--form">
+  <ul class="errors"></ul>
+  <div class="row">
+    <label>Your Comment</label>
+    <textarea class="text-input test"></textarea>
+  </div>
+  <% if (!authenticated) { %>
+  <div class="row">
+    <div class="field-half">
+      <label>Name <em>(required)</em></label>
+      <input class="text-input" type="text" name="name" />
+    </div>
+    <div class="field-half">
+      <label>Email <em>(required)</em></label>
+      <input class="text-input" type="email" name="email" />
+    </div>
+  </div>
+  <% } %>
+  <div class="row">
+    <input class="comment-drawer--reply" type="submit" value="Add comment">
+  </div>
+</form>
+<ul class="js-comment-container">
+</ul>

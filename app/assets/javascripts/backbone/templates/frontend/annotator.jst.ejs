@@ -5,7 +5,8 @@
 				Mark selected text as
 			</header>
 			<ul class="annotator--bottom annotate-actions">
-				<li class="annotate-interesting">Interesting</li>
+				<li class="annotate-interesting">Mark as interesting</li>
+				<li class="annotate-comment">View or add comments</li>
 				<li class="annotate-index">Add to index</li>
 				<li class="annotate-close">Nevermind, don't mark text</li>
 			</ul>
@@ -24,14 +25,35 @@
 	</div>
 </div>
 <% if(typeof text !== 'undefined') { %>
-	<% count = text.getAnnotationCountFor(sentenceId) %>
-	<% if (count > 0) { %>
+	<% if (annotationCount > 0 || commentCount > 0) { %>
 	<div class="annotator--right js-right">
-		<% if (count == 1) { %>
-			This text was marked as interesting one time.
-		<% } else { %>
-			This text was marked as interesting <%= text.getAnnotationCountFor(sentenceId) %> times.
-		<% } %>
+    <% if (annotationCount > 0 && commentCount > 0) { %>
+      <% if (annotationCount == 1) { %>
+        This text was marked as interesting one time
+      <% } else { %>
+        This text was marked as interesting <%= annotationCount %> times
+      <% } %>
+      <% if (commentCount == 1) { %>
+        and commented upon one time.
+      <% } else { %>
+        and commented upon <%= commentCount %> times.
+      <% } %>
+    <% } else { %>
+      <% if (annotationCount > 0) { %>
+        <% if (annotationCount == 1) { %>
+          This text was marked as interesting one time.
+        <% } else { %>
+          This text was marked as interesting <%= annotationCount %> times.
+        <% } %>
+      <% } %>
+      <% if (commentCount > 0) { %>
+        <% if (commentCount == 1) { %>
+          This text was commented upon one time.
+        <% } else { %>
+          This text was commented upon <%= commentCount %> times.
+        <% } %>
+      <% } %>
+    <% } %>
 	</div>
 	<% } %>
 <% } %>

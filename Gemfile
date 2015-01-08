@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 
 gem 'pg'
 
@@ -23,5 +23,5 @@ gem 'rails-backbone'
 gem 'stanford-core-nlp', '=0.5.1'
 
 # Gems required for serving the app
-gem 'therubyracer', '~> 0.11.1'
+#gem 'therubyracer', '= 0.11.1'
 gem 'unicorn'

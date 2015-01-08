@@ -4,8 +4,8 @@ Didh.Views.Frontend ||= {}
 
 class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	template: JST["backbone/templates/frontend/feedback"]
-	
-	events: 
+
+	events:
 		"click .js-content-nav--open-toggle"		: "toggleOpen"
 		"click .js-content-nav--visible-toggle"		: "toggleVisibility"
 		"click #feedback-view-interesting" 			: "updateVisualizationType"
@@ -15,7 +15,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	initialize: () ->
 		@firstCheck = true
 		@currentPosition = 1
-		@static = @options.static
+		@isStatic = @options.isStatic
 		@parts = @options.parts
 		@texts = @options.texts
 		@defaultVisualization = 'stacked'
@@ -32,7 +32,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 		@model.bind('change:keywords_grouped', @render, @)
 
 	getVisualizationType: () ->
-		if @firstCheck == true 
+		if @firstCheck == true
 			@firstCheck = false
 			return 'stacked'
 
@@ -72,7 +72,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 		else
 			visualization = @defaultVisualization
 
-		$(@el).html(@template(text: @model, static: @static, visualization: visualization))
+		$(@el).html(@template(text: @model, isStatic: @isStatic, visualization: visualization))
 
 		@setOpenCloseHiddenPositions()
 		@normalizePaneHeight()

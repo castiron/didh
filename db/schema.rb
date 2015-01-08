@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228200502) do
+ActiveRecord::Schema.define(:version => 20130715203202) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(:version => 20121228200502) do
     t.integer  "part_id"
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.integer  "text_id"
+    t.text     "body"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "author_name"
+    t.string   "author_email"
+    t.integer  "sentence_checksum"
+  end
+
   create_table "editions", :force => true do |t|
     t.string   "label"
     t.datetime "created_at", :null => false
@@ -81,6 +93,14 @@ ActiveRecord::Schema.define(:version => 20121228200502) do
     t.integer  "sorting"
   end
 
+  create_table "sentences", :force => true do |t|
+    t.text     "body"
+    t.integer  "text_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "checksum"
+  end
+
   create_table "texts", :force => true do |t|
     t.text     "body"
     t.datetime "created_at",   :null => false
@@ -95,5 +115,26 @@ ActiveRecord::Schema.define(:version => 20121228200502) do
     t.integer  "sorting"
     t.boolean  "is_static"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "name"
+    t.string   "alias"
+    t.boolean  "admin"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

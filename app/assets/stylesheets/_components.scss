@@ -49,7 +49,7 @@
 
 .home-content {
 	width: 40em;
-	padding-bottom: 11em;
+	padding-bottom: 14em;
 	margin: 0 0 $space 10%;
 	position: absolute;
 	bottom: 0;
@@ -145,6 +145,7 @@
 		font-size: 0.8em;
 		padding-top: $space;
 	}
+
 }
 
 .interior-title {
@@ -269,58 +270,99 @@
 .nav-hud {
 	@extend %smooth-resize;
 	@extend %horizontal-bar-fixed;
+  .touch & {
+    position: absolute;
+  }
 	background-color: $white;
 	margin-left: 160px;
 	top: 0;
 	z-index: 20;
 	@include respond-max(810px) {
-		font-size: 0.8em;
 		margin-left: 128px;
 	}
 	@include respond-max-height(700px) {
-		font-size: 0.8em;
 		margin-left: 128px;
 	}
 }
 
+
+
 .hud--list {
 	@extend %delta;
 	@extend %floated-list;
+	@extend %smooth-resize;
 	color: lighten($black, 40%);
-	padding: 0.69em 0 0.69em 1.25em;
+	background-color: $white;
+	padding: 0.69em 1.25em;
 	border-bottom: 1px solid lighten($black, 70%);
+	margin-right: $navClosedWidth;
 	cursor: pointer;
 	&:hover {
 		color: $black;
 		border-bottom-color: $black;
 	}
+	.nav-open & {
+		margin-right: $navOpenWidth;
+	}
 	li {
+		width: 22%;
+		max-width: 20em;
 		line-height: 22px;
-		padding-right: $space;
+		padding-left: $space;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		&.hud--title {
+			width: 34%;
+			max-width: 20em;
+		}
+		&:first-child {
+			padding-left: 0;
+		}
 		&:last-child {
-			padding-right: $navClosedWidth + 2;
+			padding-left: 0;
 		}
-		@include respond-max(1024px) {
-			max-width: 25%;
-			padding-right: 3%;
+	}
+	@include respond-max(1100px) {
+		padding: 0.69em 0.625em;
+		li {
+			padding-left: $space / 2;
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				padding-left: 0;
+			}
 		}
-		@include respond-max(800px) {
-			line-height: 18px;
+	}
+	@include respond-max(810px) {
+		.nav-open & {
+			li {
+				display: none;
+				width: 25%;
+				&.hud--title,
+				&.hud--user {
+					display: block;
+				}
+				&.hud--title {
+					width: 75%;
+				}
+			}
 		}
 	}
 }
 
 // <li>
-.hud--title {
-	max-width: 25.25em;
-	@include respond-max(1024px) {
-		max-width: 50% !important;
-	}
-}
+// .hud--title {
+// 	max-width: 25.25em;
+// 	@include respond-max(1024px) {
+// 		max-width: 50% !important;
+// 	}
+// }
 
 // <span>
 .hud--author {
-	@extend %delta;	
+	@extend %delta;
 	text-transform: uppercase;
 }
 
@@ -329,10 +371,75 @@
 	@extend %delta;
 }
 
+// <li>
+.hud--user {
+	// width: 160px;
+	color: lighten($black, 40%);
+	text-align: right;
+	// This !important overrides the default %floated list styles
+	float: right !important;
+	position: relative;
+	strong {
+		font-weight: 300;
+		color: $black;
+	}
+	@include respond-max(810px) {
+		em {
+			display: none;
+		}
+	}
+}
+
+// Authentication dropdown
+// --------------------------
+// Lives inside .nav-hud
+.authentication {
+	background-color: $grayDarker;
+	padding: 20px;
+	position: absolute;
+	bottom: 0;
+	right: $navClosedWidth;
+	z-index: -1;
+	.nav-open & {
+		right: $navOpenWidth;
+	}
+	ul {
+		@extend %unstyled-list;
+		text-align: right;
+		li + li {
+			margin-top: 14px;
+		}
+	}
+	form {
+		@extend %clearfix;
+		.right,
+		.left {
+			margin-top: 14px;
+		}
+		.right {
+			float: right;
+		}
+		.left {
+			float: left;
+		}
+	}
+}
+
+.authentication--label {
+	@extend %eta;
+	display: block;
+	font-style: italic;
+	color: $white;
+	margin-bottom: 6px;
+	&.right {
+		text-align: right;
+	}
+}
+
 // Content components
 // --------------------------
 .callout {
-	@extend %callout;	
+	@extend %callout;
 }
 
 // Block quotes
@@ -451,9 +558,11 @@
 	}
 }
 
-span.hover {
-	background-color: lighten($yellow, 10%);
-}
+// Sentences
+// --------------------------
+// span.hover {
+// 	background-color: lighten($yellow, 10%);
+// }
 
 span.indexed {
   text-decoration:  underline;
@@ -461,16 +570,83 @@ span.indexed {
 
 span.sentence {
 	cursor: pointer;
+	&.hover,
 	&:hover {
-		background-color: lighten($yellow, 10%);
+		@extend %active-sentence;
+		background-color: lighten($yellow, 15%);
+		border-bottom: 1px solid lighten($yellow, 15%);
 	}
 }
+
 body.static-true span.sentence:hover {
-  background-color: #FFF;
+  background-color: #fff;
   cursor: auto;
 }
 
+// Comment indicator
+// --------------------------
+// <p>
+// Paragraphs that contain sentences with comments get this class
+.contains-comment {
+	position: relative;
+	&:after {
+		@extend %smooth-resize;
+		content: "";
+		display: block;
+		width: 21px;
+		height: 22px;
+		background: transparent url('speech-bubble-gray.png') no-repeat right top;
+		background-size: 21px 22px;
+		padding: 0 0 20px 34px;
+		position: absolute;
+		top: 0.2em;
+		right: -3em;
+		.no-backgroundsize {
+			background-image: url('speech-bubble-gray-half.png')
+		}
+		@include respond-max(860px) {
+			right: -1.8em;
+			padding-left: 12px;
+		}
+	}
+	&:hover {
+		.comment-count {
+			display: block;
+		}
+	}
+	.comment-count {
+		@extend %smooth-resize;
+		@extend %eta;
+		display: none;
+		width: 92px;
+		font-weight: 300;
+		color: $grayDark;
+		text-indent: 0;
+		position: absolute;
+		top: 0.3em;
+		right: -153px;
+		@include respond-max(960px) {
+			span {
+				display: none;
+			}
+		}
+		@include respond-max(880px) {
+			top: 28px;
+			right: -125px;
+		}
+		@include respond-max(860px) {
+			right: -103px;
+		}
+	}
+}
 
+// Sentences with comments get this class
+.has-comment {
+	p:hover & {
+		@extend %active-sentence;
+		border-bottom: 1px dotted $blueDark;
+	}
+}
 
 // Interior navigation
 // --------------------------
@@ -534,7 +710,7 @@ body.static-true span.sentence:hover {
 	height: 100%;
 	line-height: $tightLineHeight;
 	padding: 40px 20px 30px 50px;
-	position: relative;	
+	position: relative;
 	.pane-top & {
 		padding-top: 160px;
 	}
@@ -703,7 +879,7 @@ body.static-true span.sentence:hover {
 .feedback-options--list {
 	@extend %unstyled-list;
 	& > li + li {
-		margin-top: $shim; 
+		margin-top: $shim;
 	}
 }
 
@@ -720,7 +896,9 @@ body.static-true span.sentence:hover {
 	@extend %input-label;
 	@extend %zeta;
 	text-transform: uppercase;
+	margin-bottom: 0;
 	position: relative;
+	cursor: pointer;
 	.stacked-label {
 		background: transparent url('icon-stacked.png') no-repeat left top;
 		background-size: auto 100%;
@@ -755,14 +933,14 @@ body.static-true span.sentence:hover {
 .nav-index {
 	@extend %unstyled-list;
 	@extend %delta;
-	@include spaced-items(li, 17px);	
+	@include spaced-items(li, 17px);
 	li:first-child {
 		margin-top: 0;
 	}
 	a {
 		line-height: $tightLineHeight;
 		color: $grayDark;
-		&:hover, 
+		&:hover,
 		&.active {
 			color: $black;
 		}
@@ -786,7 +964,7 @@ body.static-true span.sentence:hover {
 }
 .nav-index-col {
 	&:last-child {
-		margin-left: 50px;		
+		margin-left: 50px;
 	}
 	width: $navOpenWidth - 62;
 	float: left;
@@ -803,6 +981,189 @@ parts {
 	}
 }
 
+// Comment drawer
+// --------------------------------------------------------
+// Lives inside .nav-content
+.comment-drawer {
+	$width: 620px;
+	@extend %smooth-resize;
+	width: $width;
+	background-color: $yellowLight;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: $navClosedWidth;
+	z-index: 40;
+	&.open {
+		@include box-shadow(
+			-6px 0 0 0 transparentize($black, 0.97)
+		);
+		left: $navClosedWidth - $width;
+	}
+	@include respond-max(1000px) {
+		$width: 480px;
+		width: $width;
+		&.open {
+			left: $navClosedWidth - $width;
+		}
+	}
+}
+
+.comment-drawer--scroll {
+	padding-right: 10px;
+	position: absolute;
+	top: 40px;
+	right: 30px;
+	bottom: 80px;
+	left: 40px;
+	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 0;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: transparentize($grayDark, 0.4);
+		border-radius: 8px;
+	}
+	&::-webkit-scrollbar-track:vertical {
+		margin-bottom: 10px;
+	}
+	@include respond-max(1000px) {
+		padding-right: 6px;
+		right: 14px;
+		left: 20px;
+	}
+}
+
+.comment-drawer--footer {
+	padding: 26px 32px;
+	border-top: 1px solid transparentize($black, 0.82);
+	position: absolute;
+	right: 40px;
+	bottom: 0;
+	left: 40px;
+}
+
+.comment-drawer--heading {
+	@extend %gamma;
+	background: transparent url('speech-bubble-gray.png') no-repeat left center;
+	background-size: auto 21px;
+	padding-left: 36px;
+	margin-left: 32px;
+	margin-bottom: 0.88em;
+	.no-backgroundsize & {
+		background-image: url('speech-bubble-gray-half.png')
+	}
+}
+
+// <blockquote>
+.comment-drawer--reference {
+	@extend %delta;
+	@extend %justified;
+	background-color: $white;
+	padding: 20px 32px;
+	margin-bottom: 20px;
+}
+
+.comment-drawer--list {
+	@extend %delta;
+	@extend %unstyled-list;
+	padding: 0 32px 20px;
+}
+
+.comment-drawer--comment {
+	@extend %clearfix;
+	padding: 20px 10px 0 42px;
+	border-top: 1px solid transparentize($black, 0.92);
+	margin: 0 -10px 0 -42px;
+	& + & {
+		margin-top: 20px;
+	}
+	p {
+		@extend %justified;
+		background-color: $yellowLighter;
+		padding: 4px 10px;
+		margin: 0 -10px 3px;
+	}
+	ul {
+		@extend %unstyled-list;
+		padding-left: 32px;
+		margin-top: 20px;
+	}
+	.comment-drawer--list > & {
+		padding-left: 10px;
+		margin-left: -10px;
+		&:first-child {
+			padding-top: 0;
+			border-top: none;
+		}
+	}
+}
+
+.comment-drawer--form {
+	@extend %clearfix;
+	display: none;
+	margin-top: 22px;
+	.text-input {
+		width: 100%;
+	}
+	label {
+		em {
+			color: transparentize($black, 0.62);
+		}
+	}
+	.errors {
+		@extend %unstyled-list;
+		background-color: $orange;
+		margin: 0 0 $shim;
+		&:empty {
+			margin-bottom: 0;
+		}
+		> li {
+			@extend %epsilon;
+			color: $white;
+			background-color: $orange;
+			padding: 0.5em;
+		}
+	}
+	.active > & {
+		display: block;
+	}
+}
+
+.comment-drawer--user {
+	display: inline-block;
+	font-style: italic;
+}
+
+.comment-drawer--timestamp {
+	@extend %delta;
+	display: inline-block;
+	font-style: italic;
+	color: transparentize($black, 0.62);
+}
+
+.comment-drawer--reply {
+	@extend %small-white-button;
+	letter-spacing: 0.1em;
+	margin-top: 6px;
+	float: right;
+	.active > & {
+		display: none;
+	}
+}
+
+.comment-drawer--action {
+	@extend %delta;
+	color: transparentize($black, 0.72);
+	margin: 6px 0 0 10px;
+	float: right;
+	&:hover {
+		color: $black;
+	}
+
+}
+
 // The floating annotator
 // --------------------------------------------------------
 // <div>
@@ -814,7 +1175,7 @@ parts {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 20;
+	z-index: 40;
 	&:before {
 		content: "";
 		border: 17px solid transparent;
@@ -853,7 +1214,7 @@ parts {
 	padding: 0.5em;
 	border: 2px solid $white;
 	position: absolute;
-	left: 191px; 
+	left: 191px;
 	top: -2px;
 	bottom: -2px;
 	z-index: 10;
@@ -863,12 +1224,12 @@ parts {
 	background-color: $gray;
 	position: relative;
 	z-index: 20;
-    height: 140px;
+    height: 180px;
     overflow:  hidden;
 }
 
 .annotator-pane {
-    height: 140px;
+    height: 180px;
 }
 
 .annotator-panes {
@@ -883,7 +1244,7 @@ parts {
 	@extend %unstyled-list;
 	padding: 1em;
 	li {
-		@extend %pull-left;
+    margin-bottom: .5em;
 		cursor: pointer;
 	}
 }
@@ -893,16 +1254,18 @@ parts {
 	@extend %circle-item-small-blue;
 }
 
+.annotate-comment {
+  @extend %circle-item-small-yellow;
+}
+
 // <li>
 .annotate-index {
 	@extend %circle-item-small-orange;
-	margin-left: 1em;
 }
 
 // <li>
 .annotate-close {
 	padding-left: 30px;
-	margin-top: 10px;
 	background: transparent url('icon-x-alt.png') no-repeat 4px center;
 	background-size: 12px;
 	.no-backgroundsize & {
@@ -999,20 +1362,23 @@ parts {
 
 // Forms
 // --------------------------------------------------------
+body.page form,
 .new_message {
 	display: inline-block;
+	max-width: 100%;
 	background-color: $grayLight;
-	padding: 1em $space 1em 1em;
+	padding: 1em 1em 1em 1em;
 	margin: 1.35em 0;
 }
 
 .row {
 	@extend %clearfix;
 	width: 30.22em;
+	max-width: 100%;
 	& + & {
 		margin-top: 1em;
 	}
-	@include respond-max(870px) {
+	.comment-drawer--form & {
 		width: 100%;
 	}
 }
@@ -1047,7 +1413,9 @@ parts {
 
 .field--label {
 	width: 18%;
+	line-height: 1.25;
 	padding: 0.5em 0;
+	margin-bottom: 0;
 	float: left;
 	.field-half & {
 		width: 36%;
@@ -1086,11 +1454,53 @@ parts {
 
 .flash {
 	@extend %epsilon;
-	display: inline-block;
+	display: block;
 	color: $white;
 	background-color: $orange;
 	padding: 0.5em;
 	margin-bottom: $shim;
+}
+
+label {
+	display: block;
+	margin-bottom: 6px;
+}
+
+.text-input {
+	@extend %text-input;
+	width: 100%;
+}
+
+.form-message {
+	@extend %eta;
+	display: block;
+	line-height: 1;
+	margin-bottom: 10px;
+}
+
+// Form errors
+// --------------------------
+#error_explanation {
+	color: $white;
+	background-color: $orange;
+	padding: 0.69em;
+	margin-bottom: 1em;
+	h2 {
+		@extend %epsilon;
+		line-height: 1;
+		margin: 0 0 0.69em;
+	}
+	ul {
+		// @extend %unstyled-list;
+		padding-left: 1.69em;
+		margin: 0;
+	}
+	li {
+		@extend %epsilon;
+	}
+	li + li {
+		margin-top: 0.3em;
+	}
 }
 
 // frontend_page components
@@ -1121,7 +1531,7 @@ parts {
 		img {
 			max-width: 350px;
 		}
-	}	
+	}
 }
 
 // To be used alongside column-narrow
@@ -1186,4 +1596,38 @@ parts {
 	@extend %gamma;
 	@extend %with-gray-dark;
 	text-transform: uppercase;
+}
+
+// Generic utilities
+// --------------------------------------------------------
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.small {
+	@extend %zeta;
+}
+
+// Generic components
+// --------------------------------------------------------
+// Links
+// --------------------------
+.white-button {
+	@extend %white-button;
+}
+
+.white-bordered-button {
+	@extend %white-bordered-button;
+}
+
+.white-ex-button {
+	@extend %white-ex-button;
+}
+
+.white-bordered-ex-button {
+	@extend %white-bordered-ex-button;
 }

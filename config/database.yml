@@ -1,0 +1,31 @@
+<%
+
+  def boxen?; ENV['BOXEN_HOME']; end
+  url = ENV["BOXEN_POSTGRESQL_URL"]
+  port = ENV["BOXEN_POSTGRESQL_PORT"]
+
+%>
+
+common: &common
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  pool: 5
+  port: <%= port %>
+
+development:
+  <<: *common
+  database: didh_development
+
+test:
+  <<: *common
+  database: didh_test
+
+staging:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  pool: 5
+  username: didh
+  password: didh
+  database: didh

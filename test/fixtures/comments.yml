@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  parent_id: 1
+  text_id: 1
+  sentence_checksum: MyString
+  body: MyText
+
+two:
+  user_id: 1
+  parent_id: 1
+  text_id: 1
+  sentence_checksum: MyString
+  body: MyText
