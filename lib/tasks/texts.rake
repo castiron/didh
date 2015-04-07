@@ -1,8 +1,15 @@
 namespace :texts do
 
+	desc 'test'
+	task :test_java do |t, args|
+		require 'rjb'
+		Point = Rjb::import('java.awt.Point')
+#		p = Point.new(0, 0)
+#		p.y = 80
+#		puts "x=#{p.x}, y=#{p.y}" # => "0,80"
+	end
+
 	desc "Tasks relating to text imports"
-
-
   # EG: bundle exec rake texts:import[./texts/ump-gold0014.html] to import one text or just bundle exec rake texts:import to import all texts in ./texts
 	task :import, [:files] => [:environment] do |t, args|
 		args.with_defaults(:files => './texts')
@@ -98,11 +105,10 @@ namespace :texts do
 		end
 
 		# Begin natural language parsing
-		StanfordCoreNLP.log_file = '/dev/null'
+		StanfordCoreNLP.log_file = "#{Rails.root}/log/snlp.log"
 		StanfordCoreNLP.jar_path = "#{Rails.root}/lib/vendor/snlp/"
 		StanfordCoreNLP.model_path = "#{Rails.root}/lib/vendor/snlp/"
 		pipeline = StanfordCoreNLP.load(:tokenize, :ssplit)
-
 		i = 0
 
     # Check for an existing text to update, otherwise create a new text.

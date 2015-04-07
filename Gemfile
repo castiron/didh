@@ -15,13 +15,21 @@ end
 gem 'bootstrap-sass', '= 2.1.0.0'
 gem 'modernizr-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'nokogiri'
 
 gem 'bcrypt-ruby'
 gem 'devise'
 gem 'rails-backbone'
-gem 'stanford-core-nlp', '=0.5.1'
+gem 'stanford-core-nlp'
+gem 'rjb', '~> 1.5.3'
 
 # Gems required for serving the app
 #gem 'therubyracer', '= 0.11.1'
 gem 'unicorn'
+
+# Deployment
+gem 'capistrano', '~> 3.2.0'
+gem 'capistrano-rails', '~> 1.1.0'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv', '~> 2.0'
