@@ -4,11 +4,11 @@
 	</header>
 	<section class="pane--content">
 		<ul class="nav-index">
-			<% parts.each( function(part) { %> 
+			<% parts.each( function(part) { %>
 				<li class="nav-item-part nav-item-part-<%= part.get('id') %>">
 					<a href="/debates/part/<%= part.get('id') %>"><%= part.get('label') %></a>
 				</li>
-			<% }) %>
+			<% }); %>
 		</ul>
 	</section>
 </li>
@@ -18,10 +18,10 @@
 	</header>
 	<section class="pane--content pane--vertical-stage">
 		<div class="parts">
-			<% parts.each( function(part) { %> 
+			<% parts.each( function(part) { %>
 			<div id="toc-part-<%= part.get('id') %>" class="part">
-				<% cols = 0 %>
-				<% _.each(texts.byPartGrouped(part.get('id'), 5), function(textGroup) { %> 
+				<% cols = 0; %>
+				<% _.each(texts.byPartGrouped(part.get('id'), 5), function(textGroup) { %>
 					<% cols++ %>
 					<ul class="nav-index nav-index-col">
 						<% _.each(textGroup, function(text) { %>
@@ -34,15 +34,15 @@
 								<span class="title"><%= text.get('title') %></span>
 								<span class="author"><%= text.getAuthorsList() %></span>
 								</a>
-							</li>	
-						<% }) %>
+							</li>
+						<% }); %>
 					</ul>
-				<% }) %>
+				<% }); %>
 				<% if(cols == 1) { %>
 					<ul class="nav-index nav-index-col"><!-- a column shim --></ul>
 				<% } %>
 			</div>
-			<% }) %>
+			<% }); %>
 		<div class="parts">
 	</section>
 </li>
