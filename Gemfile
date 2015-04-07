@@ -15,6 +15,7 @@ end
 gem 'bootstrap-sass', '= 2.1.0.0'
 gem 'modernizr-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'nokogiri'
 
 gem 'bcrypt-ruby'
