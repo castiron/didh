@@ -27,7 +27,7 @@ namespace :deploy do
     end
   end
 
-  after 'deploy:normalize_assets', :import_texts
+  before 'deploy:published', :import_texts
   after :publishing, :restart
 
 end
