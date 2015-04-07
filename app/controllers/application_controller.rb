@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-	protect_from_forgery
 
+	protect_from_forgery
 	layout :layout_by_resource
   before_filter :set_hostname
-
+	include StrongParameters
 
 	protected
 

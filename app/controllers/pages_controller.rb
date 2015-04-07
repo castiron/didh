@@ -1,4 +1,4 @@
-class PagesController < ActionController::Base
+class PagesController < ApplicationController
 
 	layout :resolve_layout
 
@@ -24,7 +24,7 @@ class PagesController < ActionController::Base
 	end
 
 	def sendMessage
-		@message = Message.new(params[:message])
+		@message = Message.new(message_params)
 
 		if @message.valid?
 			NotificationsMailer.new_message(@message).deliver

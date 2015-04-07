@@ -2,8 +2,6 @@ class Annotation < ActiveRecord::Base
 	belongs_to :text
   belongs_to :sentence_model, class_name: 'Sentence', foreign_key: :sentence, primary_key: :checksum
 
-	#attr_accessible :ip, :sentence, :type, :text_id
-
 	def self.all_grouped
 		self.all(
 			:group => "sentence",

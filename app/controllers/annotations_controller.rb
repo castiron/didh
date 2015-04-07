@@ -21,7 +21,7 @@ class AnnotationsController < ApplicationController
 	end
 
 	def create
-		@annotation = Annotation.new(params[:annotation])
+		@annotation = Annotation.new(annotation_params)
 		@annotation.ip = request.remote_ip
 
 		respond_to do |format|
