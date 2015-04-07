@@ -3,25 +3,24 @@ Didh::Application.routes.draw do
   devise_for :users
   devise_for :admins
 
-  match 'debates/' => 'debates#index'
-  match 'debates/part/:id' => 'debates#index'
-  match 'debates/text/:id' => 'debates#index'
-  match 'debates/text/:id/auth' => 'debates#index'
-  match 'debates/text/:id/comment/:sentence' => 'debates#index'
+  get 'debates/' => 'debates#index'
+  get 'debates/part/:id' => 'debates#index'
+  get 'debates/text/:id' => 'debates#index'
+  get 'debates/text/:id/auth' => 'debates#index'
+  get 'debates/text/:id/comment/:sentence' => 'debates#index'
 
-  match 'static/debates/text/:id' => 'debates#show'
-  match 'debates/hide_instructions' => 'debates#hide_instructions'
-  match 'debates/show_instructions' => 'debates#show_instructions'
+  get 'static/debates/text/:id' => 'debates#show'
+  get 'debates/hide_instructions' => 'debates#hide_instructions'
+  get 'debates/show_instructions' => 'debates#show_instructions'
 
-  match 'book/' => 'pages#book'
-  match 'apis/' => 'pages#apis'
-  match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
-  match 'about/' => 'pages#about'
-  match 'cfps/' => 'pages#cfps'
-  match 'cfps/cfp_2015_ddh' => 'pages#cfp_2015_ddh'
-  match 'cfps/cfp_2015_mhm' => 'pages#cfp_2015_mhm'
-  match 'news/' => 'pages#news'
-#  match 'pages/*page' => 'pages#development', :via => :get
+  get 'book/' => 'pages#book'
+  get 'apis/' => 'pages#apis'
+  get 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
+  get 'about/' => 'pages#about'
+  get 'cfps/' => 'pages#cfps'
+  get 'cfps/cfp_2015_ddh' => 'pages#cfp_2015_ddh'
+  get 'cfps/cfp_2015_mhm' => 'pages#cfp_2015_mhm'
+  get 'news/' => 'pages#news'
 
   resources :comments, :only => [:index]
   resources :texts, :only => [:index, :show, :destroy] do

@@ -1,6 +1,6 @@
 class Keyword < ActiveRecord::Base
 	belongs_to :text
-	attr_accessible :word, :sentence, :text_id
+	#attr_accessible :word, :sentence, :text_id
 
 	def self.all_grouped
 		self.all(
