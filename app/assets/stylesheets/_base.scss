@@ -72,6 +72,15 @@ h5 {
 	@extend %epsilon;
 }
 
+.interior-content-page {
+  header + p {
+    margin-top: .65em;
+  }
+  p + header {
+    margin-top: 1.35em;
+  }
+}
+
 p {
 	margin: 0;
 	.interior-content & {
