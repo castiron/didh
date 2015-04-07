@@ -138,7 +138,7 @@ namespace :texts do
 				if sentenceString.length > 5 && !sentenceString.start_with?('http') && !sentenceString.start_with?('www.')
           i = i + 1
 					checksum = sentenceString.to_s.sum
-          sentenceModel = Sentence.find_or_create_by_checksum_and_text_id(checksum, text.id)
+					sentenceModel = Sentence.find_or_create_by(:checksum => checksum, :text_id => text.id)
           sentenceModel.body = sentenceString
 					replacementSentence = "<span class=\"sentence\" data-id=\"#{checksum}\" id=\"sentence-#{checksum}\">#{sentenceString}</span>"
 					res = body.sub! sentenceString, replacementSentence
