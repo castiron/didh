@@ -9,8 +9,6 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   has_many :children, :class_name => 'Comment', :foreign_key => 'parent_id', :dependent => :destroy
 
-
-
   validates :body, :sentence_checksum, presence: true
   validates :parent_id, numericality: true, allow_nil: true
   validates :user_id, numericality: true, allow_nil: true
