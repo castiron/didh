@@ -5,7 +5,7 @@ set :application, 'dhdebates'
 set :repo_url, 'git@github.com:castiron/didh.git'
 set :deploy_to, '/home/dhdebates/dhdebates'
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-#set :linked_files, ["config/secrets.yml"]
+set :linked_files, ["config/secrets.yml"]
 set :keep_releases, 5
 
 namespace :deploy do

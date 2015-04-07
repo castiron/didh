@@ -187,7 +187,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		@include respond-max(1000px) {
-			max-width: 242px;			
+			max-width: 242px;
 		}
 	}
 	&:focus {
@@ -205,11 +205,11 @@
 		vertical-align: top;
 		width: 16px;
 		height: 16px;
-		background-image: url('icon-x.png');
+		background-image: asset-url('icon-x.png');
 		background-size: 16px;
 		margin-right: 0.4em;
 		.no-backgroundsize & {
-			background-image: url('icon-x-half.png');
+			background-image: asset-url('icon-x-half.png');
 		}
 	}
 }
@@ -336,11 +336,11 @@
 	& + b {
 		width: 20px;
 		height: 23px;
-		background: transparent url('checkbox.png') no-repeat left top;
+		background: transparent asset-url('checkbox.png') no-repeat left top;
 		background-size: 100% auto;
 		bottom: 0;
 		.no-backgroundsize & {
-			background-image: url('checkbox-half.png');
+			background-image: asset-url('checkbox-half.png');
 		}
 	}
 }
@@ -356,11 +356,11 @@
 	& + b {
 		width: 18px;
 		height: 18px;
-		background: transparent url('radio.png') no-repeat left top;
+		background: transparent asset-url('radio.png') no-repeat left top;
 		background-size: 100% auto;
 		bottom: -2px;
 		.no-backgroundsize & {
-			background-image: url('radio-half.png');
+			background-image: asset-url('radio-half.png');
 		}
 	}
 }
@@ -508,18 +508,18 @@
 	display: block;
 	width: 22px;
 	height: 22px;
-	background: $white url('icon-arrow-right.png') no-repeat left top;
+	background: $white asset-url('icon-arrow-right.png') no-repeat left top;
 	background-size: 22px;
 	.no-backgroundsize & {
-		background-image: url('icon-arrow-right-half.png');
+		background-image: asset-url('icon-arrow-right-half.png');
 	}
 }
 
 %circle-arrow-left {
 	@extend %circle-arrow;
-	background-image: url('icon-arrow-left.png');
+	background-image: asset-url('icon-arrow-left.png');
 	.no-backgroundsize & {
-		background-image: url('icon-arrow-left-half.png');
+		background-image: asset-url('icon-arrow-left-half.png');
 	}
 }
 
@@ -529,7 +529,7 @@
 	height: 11px;
 	background-size: 11px;
 	.no-backgroundsize & {
-		background-image: url('icon-arrow-right-quarter.png');
+		background-image: asset-url('icon-arrow-right-quarter.png');
 	}
 }
 
@@ -537,7 +537,7 @@
 	@extend %circle-arrow-left;
 	@extend %circle-arrow-small;
 	.no-backgroundsize & {
-		background-image: url('icon-arrow-left-quarter.png');
+		background-image: asset-url('icon-arrow-left-quarter.png');
 	}
 }
 

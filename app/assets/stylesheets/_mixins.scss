@@ -2,7 +2,7 @@
 // ------
 
 // Fonts
-// -------------------------- 
+// --------------------------
 @mixin font-museo {
 	font-family: "museo", serif;
 }
@@ -23,7 +23,7 @@
 @mixin background-2x($image, $w, $h) {
 	width: ($w / 2);
 	height: ($h / 2);
-	background: transparent url('#{$image}.png') no-repeat left top;
+	background: transparent asset-url('#{$image}.png') no-repeat left top;
 	background-size: ($w / 2) ($h / 2);
 }
 
@@ -33,7 +33,7 @@
 @mixin hyphenate {
 	-moz-hyphens: auto;
 	-webkit-hyphens: auto;
-	hyphens: auto;	
+	hyphens: auto;
 }
 
 // Spaced items

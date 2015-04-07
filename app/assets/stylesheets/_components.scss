@@ -32,7 +32,7 @@
 	$h: 1510px;
 	@extend %vertical-bar-fixed;
 	width: 35%;
-	background: transparent url('bg-home.jpg') no-repeat left bottom;
+	background: transparent asset-url('bg-home.jpg') no-repeat left bottom;
 	background-size: 100% auto;
 	left: 0;
 	@include respond-max(1391px) {
@@ -43,7 +43,7 @@
 		width: 30%;
 	}
 	.no-backgroundsize & {
-		background-image: url('bg-home-half.jpg');
+		background-image: asset-url('bg-home-half.jpg');
 	}
 }
 
@@ -161,11 +161,11 @@
 		display: block;
 		width: 58%;
 		height: 435px;
-		background: transparent url('logo-ddh.png') no-repeat left bottom;
+		background: transparent asset-url('logo-ddh.png') no-repeat left bottom;
 		background-size: 100% auto;
 		margin: 0 auto;
 		.no-backgroundsize & {
-			background-image: url('logo-ddh-half.png');
+			background-image: asset-url('logo-ddh-half.png');
 		}
 
 	}
@@ -218,7 +218,7 @@
 .legend {
 	display: none;
 	width: 690px;
-	background: $grayAlt url('bg-banner.jpg') no-repeat left top;
+	background: $grayAlt asset-url('bg-banner.jpg') no-repeat left top;
 	background-size: auto 260px;
 	padding: 20px 120px 20px 145px;
 	position: relative;
@@ -226,7 +226,7 @@
 		display: block;
 	}
 	.no-backgroundsize & {
-		background-image: url('bg-banner-half.jpg');
+		background-image: asset-url('bg-banner-half.jpg');
 	}
 }
 
@@ -258,10 +258,10 @@
 	font-style: italic;
 	line-height: 18px;
 	padding-left: 24px;
-	background: transparent url('icon-x.png') no-repeat left center;
+	background: transparent asset-url('icon-x.png') no-repeat left center;
 	background-size: 18px;
 	.no-backgroundsize & {
-		background-image: url('icon-x-half.png');
+		background-image: asset-url('icon-x-half.png');
 	}
 }
 
@@ -595,14 +595,14 @@ body.static-true span.sentence:hover {
 		display: block;
 		width: 21px;
 		height: 22px;
-		background: transparent url('speech-bubble-gray.png') no-repeat right top;
+		background: transparent asset-url('speech-bubble-gray.png') no-repeat right top;
 		background-size: 21px 22px;
 		padding: 0 0 20px 34px;
 		position: absolute;
 		top: 0.2em;
 		right: -3em;
 		.no-backgroundsize {
-			background-image: url('speech-bubble-gray-half.png')
+			background-image: asset-url('speech-bubble-gray-half.png')
 		}
 		@include respond-max(860px) {
 			right: -1.8em;
@@ -900,21 +900,21 @@ body.static-true span.sentence:hover {
 	position: relative;
 	cursor: pointer;
 	.stacked-label {
-		background: transparent url('icon-stacked.png') no-repeat left top;
+		background: transparent asset-url('icon-stacked.png') no-repeat left top;
 		background-size: auto 100%;
 		padding: 2px 0 2px 13px;
 		margin-left: 2px;
 		.no-backgroundsize & {
-			background-image: url('icon-stacked-half.png');
+			background-image: asset-url('icon-stacked-half.png');
 		}
 	}
 	.opacity-label {
-		background: transparent url('icon-opacity.png') no-repeat left top;
+		background: transparent asset-url('icon-opacity.png') no-repeat left top;
 		background-size: auto 100%;
 		padding: 2px 0 2px 11px;
 		margin-left: 2px;
 		.no-backgroundsize & {
-			background-image: url('icon-opacity-half.png');
+			background-image: asset-url('icon-opacity-half.png');
 		}
 	}
 }
@@ -1046,13 +1046,13 @@ parts {
 
 .comment-drawer--heading {
 	@extend %gamma;
-	background: transparent url('speech-bubble-gray.png') no-repeat left center;
+	background: transparent asset-url('speech-bubble-gray.png') no-repeat left center;
 	background-size: auto 21px;
 	padding-left: 36px;
 	margin-left: 32px;
 	margin-bottom: 0.88em;
 	.no-backgroundsize & {
-		background-image: url('speech-bubble-gray-half.png')
+		background-image: asset-url('speech-bubble-gray-half.png')
 	}
 }
 
@@ -1266,10 +1266,10 @@ parts {
 // <li>
 .annotate-close {
 	padding-left: 30px;
-	background: transparent url('icon-x-alt.png') no-repeat 4px center;
+	background: transparent asset-url('icon-x-alt.png') no-repeat 4px center;
 	background-size: 12px;
 	.no-backgroundsize & {
-		background-image: url('icon-x-alt-half.png');
+		background-image: asset-url('icon-x-alt-half.png');
 	}
 }
 
