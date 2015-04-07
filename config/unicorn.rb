@@ -1,7 +1,7 @@
 rails_env = ENV['RAILS_ENV'] || 'production'
 
 if ENV['BOXEN_SOCKET_DIR']
-  socket = "#{ENV['BOXEN_SOCKET_DIR']}/didh"
+  socket = "#{ENV['BOXEN_SOCKET_DIR']}/dhdebates"
   processes = 3
 else
   socket = "#{ENV['UNICORN_SOCKET_PATH']}"

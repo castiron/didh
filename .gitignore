@@ -24,4 +24,4 @@
 .chef-node
 .idea
 Vagrantfile
-didh.iml
+*.iml

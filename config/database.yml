@@ -4,9 +4,14 @@
 
   url  = ENV["BOXEN_POSTGRESQL_URL"]
   port = ENV["BOXEN_POSTGRESQL_PORT"]
-  user = ENV["RAILS_DB_USER"]
-  pass = ENV["RAILS_DB_PASS"]
-  db   = ENV["RAILS_DB_NAME"] || 'didh_development'
+
+  if boxen?
+    db = 'dhdebates_development'
+  else
+    user = ENV["RAILS_DB_USER"]
+    pass = ENV["RAILS_DB_PASS"]
+    db   = ENV["RAILS_DB_NAME"]
+  end
 
 %>
 
@@ -25,9 +30,8 @@ production:
 
 development:
   <<: *common
-  database: <%= db %>
 
 test:
   <<: *common
-  database: didh_test
+  database: dhdebates_test
 
