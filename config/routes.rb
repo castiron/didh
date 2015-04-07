@@ -15,7 +15,7 @@ Didh::Application.routes.draw do
 
   get 'book/' => 'pages#book'
   get 'apis/' => 'pages#apis'
-  get 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
+  post 'about/' => 'pages#sendMessage', :as => 'about'
   get 'about/' => 'pages#about'
   get 'cfps/' => 'pages#cfps'
   get 'cfps/cfp_2015_ddh' => 'pages#cfp_2015_ddh'

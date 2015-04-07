@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.13'
+gem 'rails', '4.2.1'
 
 gem 'pg'
 
@@ -23,8 +23,11 @@ gem 'stanford-core-nlp'
 gem 'rjb', '~> 1.5.3'
 
 # Gems required for serving the app
-#gem 'therubyracer', '= 0.11.1'
 gem 'unicorn'
+
+group :development do
+  gem 'web-console', '~> 2.0'
+end
 
 # Deployment
 gem 'capistrano', '~> 3.2.0'

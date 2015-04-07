@@ -25,3 +25,4 @@
 .idea
 Vagrantfile
 *.iml
+config/secrets.yml

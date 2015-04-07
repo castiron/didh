@@ -1,7 +1,7 @@
 class NotificationsMailer < ActionMailer::Base
 
-	default :from => "noreply@dhdebates.gc.cuny.edu"
-	default :to => "dhdebates@gmail.com"
+	default :from => Rails.application.secrets.contact_email_from
+	default :to => Rails.application.secrets.contact_email_recipient
 
 	def new_message(message)
 		@message = message
