@@ -14,10 +14,14 @@ Didh::Application.routes.draw do
   match 'debates/show_instructions' => 'debates#show_instructions'
 
   match 'book/' => 'pages#book'
+  match 'apis/' => 'pages#apis'
   match 'about/' => 'pages#sendMessage', :as => 'about', :via => :post
   match 'about/' => 'pages#about'
+  match 'cfps/' => 'pages#cfps'
+  match 'cfps/cfp_2015_ddh' => 'pages#cfp_2015_ddh'
+  match 'cfps/cfp_2015_mhm' => 'pages#cfp_2015_mhm'
   match 'news/' => 'pages#news'
-  match 'pages/*page' => 'pages#development', :via => :get
+#  match 'pages/*page' => 'pages#development', :via => :get
 
   resources :comments, :only => [:index]
   resources :texts, :only => [:index, :show, :destroy] do

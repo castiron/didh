@@ -11,7 +11,7 @@ class Didh.Views.Frontend.BannerView extends Backbone.View
 	initialize: () ->
 		if @$el.is(':visible') then @isVisible = false else @isVisible = true
 		@setupSubscriptions()
-		@render(@instructionsTemplate)
+		#@render(@instructionsTemplate)
 		if @$el.attr('data-hide-instructions') != '1'
 			@showBanner()
 
