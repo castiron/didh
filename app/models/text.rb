@@ -13,7 +13,7 @@ class Text < ActiveRecord::Base
 	end
 
   def comment_counts
-    comments.count(group: :sentence_checksum)
+		comments.group(:sentence_checksum).count
   end
 
 	def as_json(options={})
