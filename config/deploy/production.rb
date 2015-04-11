@@ -1,6 +1,6 @@
-set :branch, "zd/deploy"
-role :app, %w{dhdebates@dhdebates.cic-prd.com}
-role :web, %w{dhdebates@dhdebates.cic-prd.com}
-role :db,  %w{dhdebates@dhdebates.cic-prd.com}
+set :branch, "master"
+role :app, %w{dhdebates-webserver.ciclabs.com}
+role :web, %w{dhdebates-webserver.ciclabs.com}
+role :db,  %w{dhdebates-webserver.ciclabs.com}
 
 
