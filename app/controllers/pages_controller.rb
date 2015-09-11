@@ -24,7 +24,7 @@ class PagesController < ApplicationController
 	end
 
 	def sendMessage
-		@message = Message.new(message_params)
+		@message = Message.new(params[:message])
 
 		if @message.valid?
 			NotificationsMailer.new_message(@message).deliver
