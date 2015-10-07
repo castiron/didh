@@ -19,6 +19,7 @@ Didh::Application.routes.draw do
   get 'about/' => 'pages#about'
   get 'cfps/' => 'pages#cfps'
   get 'cfps/cfp_2015_ddh' => 'pages#cfp_2015_ddh'
+  get 'cfps/cfp_2017_ddh' => 'pages#cfp_2017_ddh'
   get 'cfps/cfp_2015_mhm' => 'pages#cfp_2015_mhm'
   get 'news/' => 'pages#news'
 
