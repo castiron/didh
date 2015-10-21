@@ -18,7 +18,7 @@ end
 timeout 600
 if ENV['RAILS_SERVER_LOG_DIR']
   stderr_path = "#{ENV['RAILS_SERVER_LOG_DIR']}/unicorn.log"
-elseif ENV['UNICORN_LOG_DIR']
+elsif ENV['UNICORN_LOG_DIR']
   stderr_path = "#{ENV['UNICORN_LOG_DIR']}/unicorn.log"
 end
 
