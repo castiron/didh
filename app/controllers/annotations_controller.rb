@@ -5,10 +5,8 @@ class AnnotationsController < ApplicationController
 	def index
     @text = Text.find(params[:text_id])
 
-		@annotations = @text.annotations.all(
-        :group => "sentence",
-        :select => "sentence, COUNT(*) as count",
-    )
+		@annotations = @text.annotations.all_grouped
+
 		respond_with(@annotations)
 	end
 
