@@ -4,7 +4,7 @@ if ENV['BOXEN_SOCKET_DIR']
   socket = "#{ENV['BOXEN_SOCKET_DIR']}/dhdebates"
   processes = 3
 else
-  socket =  "#{ENV['RAILS_SOCKET_PATH']}" || "#{ENV['UNICORN_SOCKET_PATH']}"
+  socket =  "#{ENV['RAILS_SERVER_SOCKET_PATH']}" || "#{ENV['UNICORN_SOCKET_PATH']}"
   processes = 6
 end
 
@@ -16,8 +16,8 @@ if rails_env == 'production'
 end
 
 timeout 600
-if ENV['RAILS_LOG_DIR']
-  stderr_path = "#{ENV['RAILS_LOG_DIR']}/unicorn.log"
+if ENV['RAILS_SERVER_LOG_DIR']
+  stderr_path = "#{ENV['RAILS_SERVER_LOG_DIR']}/unicorn.log"
 elseif ENV['UNICORN_LOG_DIR']
   stderr_path = "#{ENV['UNICORN_LOG_DIR']}/unicorn.log"
 end

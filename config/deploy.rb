@@ -19,7 +19,7 @@ namespace :deploy do
   end
 
   desc 'Import Texts'
-  task :import_texts do
+  task :texts do
     on roles(:app) do
       within release_path do
         execute :rake, 'texts:import'
@@ -27,7 +27,6 @@ namespace :deploy do
     end
   end
 
-  before 'deploy:published', :import_texts
   after :publishing, :restart
 
 end
