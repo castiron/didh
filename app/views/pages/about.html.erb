@@ -65,8 +65,8 @@
     <ul>
       <li>Editor and Project Director: <a href="http://mkgold.net">Matthew K. Gold</a>, <a href="http://www.citytech.cuny.edu">City Tech</a> and <a href="http://www.gc.cuny.edu/Home">Graduate Center, CUNY</a></li>
       <li>Director, <a href="http://www.upress.umn.edu/">University of Minnesota Press</a>: <a href="https://twitter.com/noctambulate">Douglas Armato</a></li>
-      <li>Lead Developer: <a href="http://castironcoding.com/about/meet-the-team/se/view/single/employee/zach-davis.html">Zach Davis</a>, <a href="http://castironcoding.com/">Cast Iron Coding</a></li>
-      <li>Frontend Developer: <a href="http://castironcoding.com/about/meet-the-team/se/view/single/employee/scott-mills.html">Scott Mills</a>, <a href="http://castironcoding.com/">Cast Iron Coding</a></li>
+      <li>Lead Developer: <a href="http://castironcoding.com/about">Zach Davis</a>, <a href="http://castironcoding.com/">Cast Iron Coding</a></li>
+      <li>Frontend Developer: Scott Mills
       <li>Designer: <a href="http://www.markabramsdesign.com/">Mark Abrams</a></li>
       <li>Project Manager: <a href="http://www.mickikaufman.com/">Micki Kaufman</a>, <a href="http://www.gc.cuny.edu/Home">Graduate Center, CUNY</a></li>
       <li>Data Curation Specialist: <a href="http://www.robincamille.com/">Robin Camille Davis</a>, <a href="http://www.jjay.cuny.edu/">John Jay College of Criminal Justice</a></li>
@@ -100,6 +100,10 @@
 
       <div class="row">
         <%= form.label 'body:', :class => "field--label" %><%= form.text_area :body, :class => "field--textarea" %>
+      </div>
+
+      <div class="row row-indent">
+        <%= recaptcha_tags %>
       </div>
 
       <div class="row row-submit">

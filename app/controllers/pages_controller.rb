@@ -27,12 +27,14 @@ class PagesController < ApplicationController
 		@message = Message.new(params[:message])
 
 		if @message.valid?
-			NotificationsMailer.new_message(@message).deliver
-			redirect_to(about_path, :notice => "Message was successfully sent.")
+			if verify_recaptcha(:model => @message)
+				NotificationsMailer.new_message(@message).deliver
+				redirect_to(about_path, :notice => "Message was successfully sent.") and return
+			end
 		else
 			flash.now.alert = "Please fill all fields."
-			render :about
 		end
+		render :about
 	end
 
 	def news

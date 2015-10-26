@@ -28,5 +28,32 @@ namespace :deploy do
   end
 
   after :publishing, :restart
-
 end
+
+namespace :setup do
+  desc "Copy secrets"
+  task :secrets do
+    on roles(:all) do |host|
+      upload! "./config/secrets.yml", "#{shared_path}/config/secrets.yml"
+    end
+  end
+end
+
+task :copy
+
+namespace :info do
+  task :show_branch do
+    on roles(:app) do
+      comparator = 'origin/master'
+      current = capture "cat #{current_path}/REVISION"
+      command = "git show-branch #{current} #{comparator}"
+      puts "\nREMOTE is currently at #{current}"
+      puts "#{command}\n\n"
+      system command
+    end
+  end
+
+  task :default => 'info:new_commits'
+end
+
+task :info => 'info:default'
