@@ -40,7 +40,7 @@ namespace :setup do
 end
 
 namespace :info do
-  task :show_branch do
+  task :new_commits do
     on roles(:app) do
       comparator = 'origin/master'
       current = capture "cat #{current_path}/REVISION"
