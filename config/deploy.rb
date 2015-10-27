@@ -39,8 +39,6 @@ namespace :setup do
   end
 end
 
-task :copy
-
 namespace :info do
   task :show_branch do
     on roles(:app) do
