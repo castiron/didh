@@ -1391,6 +1391,13 @@ body.page form,
 
     .g-recaptcha {
       margin-bottom: 1em;
+      transform-origin:0 0;
+      @include respond-max(650px) {
+        transform:scale(0.77);
+      }
+      @include respond-max(490px) {
+        transform:scale(0.6);
+      }
     }
 }
 
