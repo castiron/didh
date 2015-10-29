@@ -1384,20 +1384,14 @@ body.page form,
 }
 
 .row-submit {
-	&:before {
-		content: "";
-		display: block;
-		width: 18%;
-		height: 1px;
-		float: left;
-		@include respond-max(650px) {
-			display: none;
-		}
-	}
-}
-
-.row-indent {
     margin-left:17.75%;
+    @include respond-max(650px) {
+      margin-left:0;
+    }
+
+    .g-recaptcha {
+      margin-bottom: 1em;
+    }
 }
 
 .field-half {

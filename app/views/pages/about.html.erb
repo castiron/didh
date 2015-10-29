@@ -102,11 +102,8 @@
         <%= form.label 'body:', :class => "field--label" %><%= form.text_area :body, :class => "field--textarea" %>
       </div>
 
-      <div class="row row-indent">
-        <%= recaptcha_tags %>
-      </div>
-
       <div class="row row-submit">
+         <%= recaptcha_tags %>
         <%= form.submit "Send", :class => "field--button" %>
       </div>
 
