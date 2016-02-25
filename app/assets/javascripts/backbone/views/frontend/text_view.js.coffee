@@ -68,12 +68,12 @@ class Didh.Views.Frontend.TextView extends Backbone.View
       height = $el.height()
 
       if @visualization == 'opacity'
-        opacity = sentence.count / 20
+        opacity = sentence.count / sentence.annotations_max_n
         minWidth = 10
         width = 10
       else
         minWidth = 1
-        width = sentence.count * 1
+        width = sentence.count / sentence.annotations_max_n * 100
 
       # unused
       # count = @model.getAnnotationCountFor( sentence.sentence)
