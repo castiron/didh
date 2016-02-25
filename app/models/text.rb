@@ -40,6 +40,7 @@ class Text < ActiveRecord::Base
 				:edition => edition.label,
 				:keywords_grouped => keywords.all_grouped,
 				:sentences => annotations.all_grouped
+                                :annotations_max_n => annotations.all_grouped_max_n
 			}
 		end
 	end

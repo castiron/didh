@@ -6,6 +6,10 @@ class Annotation < ActiveRecord::Base
     self.group(:sentence).select("sentence, COUNT(*) as count")
   end
 
+  def self.all_grouped_max_n
+    self.group(:sentence).select("sentence, COUNT(*) as count").order(count: :desc).limit(1)
+  end
+
   def as_json(options = {})
     h = super(options)
     h[:sentence_body] = sentence_model.body
