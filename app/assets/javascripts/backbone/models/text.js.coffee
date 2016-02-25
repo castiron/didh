@@ -31,10 +31,11 @@ class Didh.Models.Text extends Backbone.Model
   getIndexedSentencesCount: () ->
     count = @get('keywords_grouped').length
 
-  getAnnotationCount: () ->
-    count = _.reduce(@get('sentences'), (memo, num) ->
-      memo + parseInt num.count
-    , 0)
+  # unused
+  # getAnnotationCount: () ->
+  #   count = _.reduce(@get('sentences'), (memo, num) ->
+  #     memo + parseInt num.count
+  #   , 0)
 
   getTotalMarkedAndIndexed: () ->
     all = @get('sentences').concat(@get('keywords_grouped'))

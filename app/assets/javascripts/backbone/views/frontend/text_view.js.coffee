@@ -75,7 +75,8 @@ class Didh.Views.Frontend.TextView extends Backbone.View
         minWidth = 1
         width = sentence.count * 1
 
-      count = @model.getAnnotationCountFor( sentence.sentence)
+      # unused
+      # count = @model.getAnnotationCountFor( sentence.sentence)
       annotation = $('<span data-sentence="' + sentence.sentence + '" style="display: none; width: ' + minWidth + 'px; height: ' + height + 'px;" class="annotation"></span>')
 
       $el.before(annotation)
