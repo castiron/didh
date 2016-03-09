@@ -33,15 +33,38 @@
 		
 	</head>
 	<body class="interior page">
-		<header class="page-header">
-			<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
-			<ul class="nav-interior">
-				<%= render "shared/menu" %>
-			</ul>
-		</header>
-		<section class="interior-content-page js-content">
-			<%= yield %>
-		</section>
+		<% if params[:action] == 'book'%>
+			<header class="book-header">
+				<ul class="nav-interior">
+					<li class="back-link">
+						<%= link_to 'Return to About', {controller: '/pages', action: 'about'}, class: 'icon-chevron-left' %>
+					</li>
+					<li class="<%= 'active' if @edition == '2013' %>">
+						<%= link_to '2013 Edition', :controller => '/pages', :action => 'book' %>
+					</li>
+					<li class="<%= 'active' if @edition == '2016' %>">
+						<%= link_to '2016 Edition', :controller => '/pages', :action => 'book' %>
+					</li>
+				</ul>
+			</header>
+		<% else %>
+			<header class="page-header">
+				<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
+				<ul class="nav-interior">
+					<%= render "shared/menu" %>
+				</ul>
+			</header>
+		<% end %>
+
+		<% if params[:action] == 'book'%>
+			<section class="interior-content-bare js-content">
+				<%= yield %>
+			</section>
+		<% else %>
+			<section class="interior-content-page js-content">
+				<%= yield %>
+			</section>
+		<% end %>
 		<nav class="nav-content">
 		</nav>
 

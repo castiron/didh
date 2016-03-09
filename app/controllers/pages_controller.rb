@@ -17,6 +17,8 @@ class PagesController < ApplicationController
 	end
 
 	def book
+		# this variable eventually defined by param?
+		@edition = '2016'
 	end
 
 	def about

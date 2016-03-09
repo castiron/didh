@@ -110,7 +110,7 @@
 %subsection-heading {
 	@extend %delta;
 	font-weight: 700;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 	letter-spacing: 0.1em;
 	margin-bottom: $shim;
 }
@@ -136,9 +136,11 @@
 
 %body-link {
 	color: $black;
-	text-decoration: underline !important;
+	// text-decoration: underline !important;
+	text-decoration: underline;
 	&:hover {
-		text-decoration: none !important;
+		// text-decoration: none !important;
+		text-decoration: none;
 	}
 }
 
@@ -544,8 +546,8 @@
 // Callout box
 // --------------------------
 %callout {
-	padding: $shim;
-	background: $grayLight;
+	padding: $shim 0px;
+	// background: $grayLight;
 	margin-bottom: $space;
 }
 

@@ -8,6 +8,10 @@
 	@extend %with-gray-dark;
 }
 
+.gray-lighter {
+  background-color: $grayLighter;
+}
+
 // Homepage components
 // --------------------------------------------------------
 .home-wrapper {
@@ -122,6 +126,45 @@
 	}
 }
 
+//Book page components
+// --------------------------------------------------------
+.book-header {
+  background-color: $gray;
+  .nav-interior {
+    font-size: 1em;
+    li {
+      display: inline-block;
+      padding: 8px 24px 8px 15px;
+      a {
+        color: $grayDarker;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+          &:before {
+            text-decoration: none;
+          }
+        }
+      }
+      &.back-link {
+        background-color: $grayMedium;
+        a {
+          color: $white;
+          &:before {
+            padding-right: 8px;
+          }
+        }
+      }
+      &.active {
+        a {
+          color: $blueDark;
+        }
+      }
+    }
+    li + li {
+      margin-left: 34px;
+    }
+  }
+}
 // Interior page components
 // --------------------------------------------------------
 .page-header {
@@ -186,14 +229,35 @@
 	@extend %smooth-resize;
 	width: 1070px;
 	background-color: $white;
-	padding: ($space * 2) 80px ($space * 2) 240px;
-	@include respond-max(1070px) {
-		width: 100%;
-	}
-	@include respond-max(776px) {
-		padding-right: 40px;
-		padding-left: 200px;
-	}
+  padding: ($space * 2) 80px ($space * 2) 240px;
+  @include respond-max(1070px) {
+    width: 100%;
+  }
+  @include respond-max(776px) {
+    padding-right: 40px;
+    padding-left: 200px;
+  }
+}
+
+.interior-content-bare {
+  @extend %smooth-resize;
+  width: 100%;
+  background-color: $white;
+  padding: 0;
+  @include respond-max(970px) {
+    .column-six-fifths {
+      width: 100%;
+      &.padded {
+        padding: 46px;
+      }
+    }
+    .column-half {
+      width: 70%;
+    }
+    .column-fifth {
+      width: 30%;
+    }
+  }
 }
 
 // Page banner
@@ -440,6 +504,43 @@
 // --------------------------
 .callout {
 	@extend %callout;
+  .details-list {
+    li {
+      text-align: center;
+      &.highlighted {
+        padding: 15px 18px;
+        background-color: $blueDark;
+        a {
+          color: $white;
+          font-weight: $regular;
+          text-decoration: none;
+        }
+        &:hover {
+          background-color: transparent;
+          a {
+            color: $blueDark;
+          }
+        }
+      }
+      a {
+        @include transition(0.05s color ease-out);
+        color: $blueDark;
+        font-weight: $regular;
+        text-decoration: none;
+      }
+      &:hover {
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+    li + li {
+      margin-top: 2.5em;
+    }
+    .highlighted + li {
+      margin-top: 1.5em;
+    }
+  }
 }
 
 // Block quotes
@@ -1329,13 +1430,15 @@ parts {
 	@extend %delta;
 	@extend %unstyled-list;
 	margin: 0 !important;
+  font-weight: $regular;
 	li + li {
 		margin-top: 0.5em;
 	}
 	small {
 		@extend %delta;
 		display: block;
-		color: $grayDark;
+    font-weight: $thin;
+		// color: $grayDark;
 	}
 }
 
@@ -1346,7 +1449,7 @@ parts {
 	@extend %unstyled-list;
 	margin: 0 !important;
 	& > li + li {
-		margin-top: 1.35em;
+		margin-top: 0.75em;
 	}
 	ul {
 		@extend %unstyled-list;
@@ -1521,6 +1624,40 @@ label {
 	@extend %clearfix;
 }
 
+.column-half {
+  width: 50%;
+  float: left;
+  &.padded {
+    padding: 95px 80px 46px 22px;
+  }
+  .page-title {
+    font-size: 3.2em;
+    margin-bottom: 0.1em !important;
+  }
+}
+
+.column-fifth {
+  width: 20%;
+  float: left;
+  img {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+  }
+  &.padded {
+    padding: 46px 20px 46px 40px;
+  }
+}
+
+.column-six-fifths {
+  width: 30%;
+  float: left;
+  &.padded {
+    padding: 179px 46px 46px 46px;
+  }
+}
+
+
 // Two equal-width columns
 // To be used only alongside another column-equal
 .column-equal {
@@ -1574,6 +1711,10 @@ label {
 
 .column--subheading {
 	@extend %subsection-heading;
+  margin-bottom: 0.8em !important;
+  .details-list + & {
+    margin-top: 55px;
+  }
 }
 
 // News components
