@@ -47,6 +47,24 @@
 					</li>
 				</ul>
 			</header>
+		<% elsif params[:action] == 'about' %>
+			<header class="about-header">
+			  <ul class="nav-interior">
+			    <li class="back-link">
+			      <%= link_to 'Return to Reading', {controller: '/debates', action: 'index'}, class: 'icon-chevron-left' %>
+			    </li>
+			    <li class="active">
+			      <%= link_to 'About', :controller => '/pages', :action => 'about' %>
+			    </li>
+			    <li>
+			      <%= link_to 'News', :controller => '/pages', :action => 'news' %>
+			    </li>
+			    <li>
+			      <%= link_to 'CFPs', :controller => '/pages', :action => 'cfps' %>
+			    </li>
+				<li class="column-six-fifths regular">Print Editions</li>
+			  </ul>
+			</header>
 		<% else %>
 			<header class="page-header">
 				<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
@@ -56,8 +74,8 @@
 			</header>
 		<% end %>
 
-		<% if params[:action] == 'book'%>
-			<section class="interior-content-bare js-content">
+		<% if params[:action] == 'book' or params[:action] == 'about'%>
+			<section class="interior-content-bare js-content gray-lighter">
 				<%= yield %>
 			</section>
 		<% else %>

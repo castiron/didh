@@ -9,7 +9,35 @@
 }
 
 .gray-lighter {
-  background-color: $grayLighter;
+  background-color: $grayLighter !important;
+}
+
+.blue-dark-type {
+  color: $blueDark;
+}
+
+.white {
+  background-color: $white;
+}
+
+.dark {
+  color: $white;
+  background-color: $black;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.regular {
+  font-weight: $regular;
+}
+
+.mobile-only {
+  display: none;
+  @include respond-max(885px) {
+    display: block;
+  }
 }
 
 // Homepage components
@@ -165,6 +193,51 @@
     }
   }
 }
+
+.about-header {
+  background-color: $blackLight;
+  .nav-interior {
+    font-size: 1em;
+    li {
+      display: inline-block;
+      padding: 8px 24px 8px 15px;
+      a {
+        color: $blueDark;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+          &:before {
+            text-decoration: none;
+          }
+        }
+      }
+      &.back-link {
+        background-color: $blueDark;
+        a {
+          color: $white;
+          &:before {
+            padding-right: 8px;
+          }
+        }
+      }
+      &.active {
+        a {
+          color: $white;
+        }
+      }
+    }
+    li.column-six-fifths {
+      float: right;
+      background-color: $white;
+      @include respond-max(885px) {
+        display: none;
+      }
+    }
+    li + li {
+      margin-left: 34px;
+    }
+  }
+}
 // Interior page components
 // --------------------------------------------------------
 .page-header {
@@ -245,7 +318,10 @@
   background-color: $white;
   padding: 0;
   @include respond-max(970px) {
-    .column-six-fifths {
+    .columns-wrapper {
+      width: 100%;
+    }
+    .column-six-fifths.mobile-full-width {
       width: 100%;
       &.padded {
         padding: 46px;
@@ -256,6 +332,20 @@
     }
     .column-fifth {
       width: 30%;
+    }
+  }
+  @include respond-max(885px) {
+    .column-main {
+      width: 100%;
+      &.padded {
+        padding: 60px 7.49% 0px 7.49%;
+      }
+    }
+    .column-six-fifths {
+      width: 100%;
+      &.padded {
+        padding: 25px 5% 0px 5%;
+      }
     }
   }
 }
@@ -539,6 +629,14 @@
     }
     .highlighted + li {
       margin-top: 1.5em;
+    }
+  }
+  @include respond-max(885px) {
+    .column-six-fifths > & {
+      display: inline-block;
+      width: 49%;
+      padding-left: 15px;
+      padding-right: 15px;
     }
   }
 }
@@ -1459,8 +1557,12 @@ parts {
 
 // Contents list
 // --------------------------
-.contents-list {
+.indented-list {
 	@extend %unstyled-list;
+  margin: 3px 0px 0px 0px !important;
+  li {
+    padding-left: 50px;
+  }
 }
 
 // Forms
@@ -1469,9 +1571,13 @@ body.page form,
 .new_message {
 	display: inline-block;
 	max-width: 100%;
-	background-color: $grayLight;
+	background-color: $blackLight;
 	padding: 1em 1em 1em 1em;
 	margin: 1.35em 0;
+  .field--button {
+    color: $white;
+    border-color: $white;
+  }
 }
 
 .row {
@@ -1617,6 +1723,22 @@ label {
 	@extend %alpha;
 }
 
+.page-heading {
+  font-size: 3.2em;
+  line-height: 1.2;
+  margin-bottom: 0.1em !important;
+  .dark & {
+    color: $yellow;
+  }
+}
+
+.section-heading {
+  font-size: 1em;
+  font-weight: $regular;
+  margin-top: 32px;
+  margin-bottom: 2px !important;
+}
+
 // Two column layouts
 // Best suited to frontend_page layout
 // --------------------------------------------------------
@@ -1624,15 +1746,21 @@ label {
 	@extend %clearfix;
 }
 
+.columns-wrapper {
+  @extend %clearfix;
+  width: 70%;
+  background: white;
+  display: inline-block;
+}
+
 .column-half {
   width: 50%;
   float: left;
+  .columns-wrapper & {
+    width: 65%;
+  }
   &.padded {
     padding: 95px 80px 46px 22px;
-  }
-  .page-title {
-    font-size: 3.2em;
-    margin-bottom: 0.1em !important;
   }
 }
 
@@ -1644,6 +1772,9 @@ label {
     display: block;
     margin: 0 auto;
   }
+  .columns-wrapper & {
+    width: 35%;
+  }
   &.padded {
     padding: 46px 20px 46px 40px;
   }
@@ -1651,9 +1782,23 @@ label {
 
 .column-six-fifths {
   width: 30%;
-  float: left;
-  &.padded {
+  float: right;
+  img {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    &.narrow-image {
+      width: 60%;
+    }
+  }
+  .narrow-paragraph {
+    padding: 5px 0px 0px 16px;
+  }
+  &.padded-top {
     padding: 179px 46px 46px 46px;
+  }
+  &.padded {
+    padding: 25px 32px 0px 38px;
   }
 }
 
@@ -1701,6 +1846,14 @@ label {
 	width: 100%;
 	margin-bottom: $shim * 2;
 	clear: both;
+}
+
+.column-main {
+  width: 70%;
+  float: left;
+  &.padded {
+    padding: 60px 188px 0px 64px;
+  }
 }
 
 // Column typographic components
