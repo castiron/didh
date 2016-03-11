@@ -39,34 +39,34 @@
 // --------------------------
 %alpha {
 	font-size: 1.5em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %beta {
 	font-size: 1.35em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %gamma {
 	font-size: 1em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %delta {
 	font-size: 0.88em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %epsilon {
 	font-size: 0.7em;
-	font-weight: 700;
+	font-weight: $bold;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;
 }
 
 %zeta {
 	@extend %epsilon;
-	font-weight: 300;
+	font-weight: $thin;
 	letter-spacing: 0;
 }
 
@@ -77,7 +77,7 @@
 
 %theta {
 	font-size: 0.6em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 // Extra-hierarchy
@@ -87,12 +87,12 @@
 // --------------------------
 %deca {
 	font-size: 2em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %deci {
 	font-size: 0.5em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 // Block-level
@@ -107,16 +107,6 @@
 	}
 }
 
-%subsection-heading {
-	@extend %delta;
-	font-weight: 700;
-	// text-transform: uppercase;
-	letter-spacing: 0.1em;
-	margin-bottom: $shim;
-}
-
-// Inline
-// --------------------------
 
 // Links
 // --------------------------

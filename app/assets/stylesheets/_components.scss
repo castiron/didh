@@ -8,6 +8,10 @@
 	@extend %with-gray-dark;
 }
 
+.copy-delta {
+  @extend %delta;
+}
+
 .gray-lighter {
   background-color: $grayLighter !important;
 }
@@ -27,6 +31,10 @@
 
 .caps {
   text-transform: uppercase;
+}
+
+.bold {
+  font-weight: $bold;
 }
 
 .regular {
@@ -154,17 +162,16 @@
 	}
 }
 
-//Book page components
+//Page components
 // --------------------------------------------------------
-.book-header {
-  background-color: $gray;
+.book-header, .about-header {
   .nav-interior {
-    font-size: 1em;
+    font-size: 0.88em;
+    font-weight: $regular;
     li {
       display: inline-block;
       padding: 8px 24px 8px 15px;
       a {
-        color: $grayDarker;
         text-decoration: none;
         &:hover {
           text-decoration: underline;
@@ -174,17 +181,11 @@
         }
       }
       &.back-link {
-        background-color: $grayMedium;
         a {
           color: $white;
           &:before {
             padding-right: 8px;
           }
-        }
-      }
-      &.active {
-        a {
-          color: $blueDark;
         }
       }
     }
@@ -194,31 +195,34 @@
   }
 }
 
+.book-header {
+  background-color: $gray;
+  .nav-interior {
+    li {
+      a {
+        color: $grayDarker;
+      }
+      &.back-link {
+        background-color: $grayMedium;
+      }
+      &.active {
+        a {
+          color: $blueDark;
+        }
+      }
+    }
+  }
+}
+
 .about-header {
   background-color: $blackLight;
   .nav-interior {
-    font-size: 1em;
     li {
-      display: inline-block;
-      padding: 8px 24px 8px 15px;
       a {
         color: $blueDark;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-          &:before {
-            text-decoration: none;
-          }
-        }
       }
       &.back-link {
         background-color: $blueDark;
-        a {
-          color: $white;
-          &:before {
-            padding-right: 8px;
-          }
-        }
       }
       &.active {
         a {
@@ -232,9 +236,6 @@
       @include respond-max(885px) {
         display: none;
       }
-    }
-    li + li {
-      margin-left: 34px;
     }
   }
 }
@@ -408,7 +409,7 @@
 .legend--toggle {
 	@extend %theta;
 	display: inline-block;
-	font-weight: 500;
+	font-weight: $regular;
 	font-style: italic;
 	line-height: 18px;
 	padding-left: 24px;
@@ -534,7 +535,7 @@
 	float: right !important;
 	position: relative;
 	strong {
-		font-weight: 300;
+		font-weight: $thin;
 		color: $black;
 	}
 	@include respond-max(810px) {
@@ -592,6 +593,9 @@
 
 // Content components
 // --------------------------
+.callout-wrapper + .callout-wrapper {
+  margin-top: 14px;
+}
 .callout {
 	@extend %callout;
   .details-list {
@@ -631,6 +635,12 @@
       margin-top: 1.5em;
     }
   }
+  img {
+    width: 98%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 9px;
+  }
   @include respond-max(885px) {
     .column-six-fifths > & {
       display: inline-block;
@@ -650,7 +660,7 @@
 // Lives inside .blockquote
 .attribution {
 	display: block;
-	font-weight: 700;
+	font-weight: $bold;
 	font-style: normal;
 	text-align: right;
 	&:before {
@@ -818,7 +828,7 @@ body.static-true span.sentence:hover {
 		@extend %eta;
 		display: none;
 		width: 92px;
-		font-weight: 300;
+		font-weight: $thin;
 		color: $grayDark;
 		text-indent: 0;
 		position: absolute;
@@ -1728,15 +1738,24 @@ label {
   line-height: 1.2;
   margin-bottom: 0.1em !important;
   .dark & {
-    color: $yellow;
+    color: $chartreuse;
   }
 }
 
 .section-heading {
   font-size: 1em;
-  font-weight: $regular;
+  font-weight: $bold;
   margin-top: 32px;
   margin-bottom: 2px !important;
+}
+
+.section-subheading {
+  font-size: 0.88em;
+  font-weight: $bold;
+  margin-bottom: 0.6em !important;
+  .details-list + & {
+    margin-top: 55px;
+  }
 }
 
 // Two column layouts
@@ -1760,23 +1779,18 @@ label {
     width: 65%;
   }
   &.padded {
-    padding: 95px 80px 46px 22px;
+    padding: 83px 80px 46px 22px;
   }
 }
 
 .column-fifth {
   width: 20%;
   float: left;
-  img {
-    width: 90%;
-    display: block;
-    margin: 0 auto;
-  }
   .columns-wrapper & {
     width: 35%;
   }
   &.padded {
-    padding: 46px 20px 46px 40px;
+    padding: 10px 20px 46px 40px;
   }
 }
 
@@ -1787,18 +1801,18 @@ label {
     width: 90%;
     display: block;
     margin: 0 auto;
-    &.narrow-image {
-      width: 60%;
-    }
+  }
+  .narrow-image {
+    width: 77%;
   }
   .narrow-paragraph {
-    padding: 5px 0px 0px 16px;
+    padding: 0px 0px 0px 16px;
   }
   &.padded-top {
-    padding: 179px 46px 46px 46px;
+    padding: 158px 46px 46px 46px;
   }
   &.padded {
-    padding: 25px 32px 0px 38px;
+    padding: 15px 32px 0px 38px;
   }
 }
 
@@ -1860,14 +1874,6 @@ label {
 // --------------------------
 .column--heading {
 	@extend %beta;
-}
-
-.column--subheading {
-	@extend %subsection-heading;
-  margin-bottom: 0.8em !important;
-  .details-list + & {
-    margin-top: 55px;
-  }
 }
 
 // News components

@@ -22,7 +22,7 @@ html {
 body {
 	@include font-museo;
 	font-size: 1.125em;
-	font-weight: $regular;
+	font-weight: $thin;
 	line-height: $baseLineHeight;
 	color: $black;
 }
