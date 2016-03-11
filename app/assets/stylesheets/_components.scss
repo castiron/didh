@@ -67,34 +67,42 @@
 	display: none;
 }
 
-.home-header {
-	$w: 974px;
-	$h: 1510px;
+.home-background {
 	@extend %vertical-bar-fixed;
-	width: 35%;
-	background: transparent asset-url('bg-home.jpg') no-repeat left bottom;
-	background-size: 100% auto;
-	left: 0;
-	@include respond-max(1391px) {
-		background-position: right bottom;
-		background-size: ($w / 2) ($h / 2);
-	}
+	width: 40%;
+	background: $black asset-url('2016bg-home.png') no-repeat left bottom;
+  background-position: left bottom;
+  background-size: auto 100%;
+  left: 0;
+  @include respond-max(1391px) {
+    background-size: 100% auto;
+    background-position: 0px 70%;
+    background-color: $blackGreen;
+  }
+  @include respond-max(1280px) {
+    width: 40%;
+  }
 	@include respond-max(1120px) {
 		width: 30%;
+    background-position: 0px 60%;
 	}
+  @include respond-max-height(650px) {
+    background-size: auto 100%;
+  }
 	.no-backgroundsize & {
-		background-image: asset-url('bg-home-half.jpg');
+		background-image: asset-url('2016bg-home.png');
 	}
 }
 
 .home-content {
 	width: 40em;
-	padding-bottom: 14em;
-	margin: 0 0 $space 10%;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0 0 $space 12%;
+  @include respond-max(1120px) {
+    margin: 0 0 $space 4%;
+  }
 	@include respond-max(1040px) {
 		width: 90%;
 		font-size: 0.9em;
@@ -115,11 +123,57 @@
 }
 
 .nav-start {
+  @extend %clearfix;
 	@extend %alpha;
 	@extend %loose-top-space;
 	a {
 		@extend %home-link;
 	}
+  > .column-half {
+    width: 48%;
+    padding: 9px;
+    background-color: $blackLighter;
+    a {
+      display: block;
+      color: $white;
+      &:hover {
+        color: $yellow;
+      }
+    }
+    img, span {
+      display: inline-block;
+      width: 40%;
+    }
+    img {
+      vertical-align: bottom;
+    }
+    span {
+      padding: 0 0 7.9% 4.4%;
+      font-size: 1.5em;
+      font-weight: $thin;
+      line-height: 1.2;
+    }
+  }
+  .column-half + .column-half {
+    margin-left: 2.5%;
+  }
+  @include respond-max(750px) {
+    .column-half span {
+      font-size: 1em;
+    }
+  }
+  @include respond-max(500px) {
+    .column-half {
+      width: 100%;
+      img {
+        width: 33%;
+      }
+    }
+    .column-half + .column-half {
+      margin-top: 2.5%;
+      margin-left: 0%;
+    }
+  }
 }
 
 // Homepage navigation
@@ -134,23 +188,28 @@
 }
 
 // <ul>
+.home-footer {
+  margin: 0 auto;
+  text-align: center;
+}
 .nav-footer {
 	@extend %loose-floated-list;
-	margin-bottom: 10px;
-	position: absolute;
-	bottom: 0;
-	right: 0;
+	margin: 80px auto 10px auto;
+  li {
+    float: none;
+    display: inline-block;
+  }
+  a {
+    height: 5em;
+    @include respond-max(860px) {
+      height: 4em;
+    }
+  }
+  img {
+    height: 100%;
+  }
 	@include respond-max(1040px) {
 		right: 10px;
-	}
-	a {
-		height: 5em;
-		@include respond-max(860px) {
-			height: 4em;
-		}
-	}
-	img {
-		height: 100%;
 	}
 }
 
@@ -162,9 +221,10 @@
 	}
 }
 
+
 //Page components
 // --------------------------------------------------------
-.book-header, .about-header {
+.book-header, .about-header, .home-header {
   .nav-interior {
     font-size: 0.88em;
     font-weight: $regular;
@@ -190,7 +250,7 @@
       }
     }
     li + li {
-      margin-left: 34px;
+      margin-left: 3px;
     }
   }
 }
@@ -237,6 +297,36 @@
         display: none;
       }
     }
+  }
+}
+
+.home-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: $blackLight;
+  .nav-interior {
+    display: inline-block;
+    font-size: 1em;
+    li {
+      a {
+        color: $blueDark;
+      }
+      &.active {
+        a {
+          color: $white;
+        }
+      }
+    }
+    li:first-child {
+      padding-left: 0px;
+    }
+  }
+  .logo-didh {
+    display: inline-block;
+    vertical-align: middle;
   }
 }
 // Interior page components
