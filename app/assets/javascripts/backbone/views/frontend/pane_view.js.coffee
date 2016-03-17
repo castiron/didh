@@ -47,7 +47,6 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
     if @currentPosition == 0 then @goToPosition(1)
 
   goToPosition: (position, recursionBuster) ->
-
     if @static? && @static == true && position == 0
       return false
 

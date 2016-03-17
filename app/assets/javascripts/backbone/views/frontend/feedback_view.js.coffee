@@ -49,7 +49,22 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	updateVisualizationType: () ->
 		visualization = @getVisualizationType()
 		@visualization = visualization
+		@updateToogleAppearance(@visualization)
 		Backbone.Mediator.publish('visualization:update', @visualization);
+
+	updateToogleAppearance: (visualization) ->
+		$stackedParent = @$el.find("#feedback-view-interesting-stacked").parents('li').first()
+		$opacityParent = @$el.find("#feedback-view-interesting-opacity").parents('li').first()
+
+		if $stackedParent.hasClass('active') then $stackedParent.removeClass('active')
+		if $opacityParent.hasClass('active') then $opacityParent.removeClass('active')
+
+		switch visualization
+			when 'stacked'
+				$stackedParent.addClass('active')
+			when 'opacity'
+				$opacityParent.addClass('active')
+
 
 	normalizePaneHeight: () ->
 		@.$el.find('.part').each( (i, part) =>
@@ -76,6 +91,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 
 		@setOpenCloseHiddenPositions()
 		@normalizePaneHeight()
+		@updateToogleAppearance(visualization)
 		if $('body').width() <= 1024 then @goToPosition(2)
 
 

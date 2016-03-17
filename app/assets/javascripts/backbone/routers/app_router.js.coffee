@@ -26,6 +26,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
     @banner= new Didh.Views.Frontend.BannerView(el: $("#backbone-bannerView"))
     @annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), keywords: @keywords, router: @, annotations: @annotations, parts: @parts, texts: @texts)
     @hudView = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView"), texts: @texts, router: @ )
+    @hudViewSidebar = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView-sidebar"), texts: @texts, router: @ )
     @tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
     @feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), linkedPane: @tocView, texts: @texts, isStatic: @isStatic)
     @commentsView = new Didh.Views.Frontend.CommentsView(el: $('#backbone-commentsView'), texts: @texts, router: @)
@@ -80,6 +81,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
   showTextAndAuth: (textId) ->
     @showText(textId)
     @hudView.showAuthentication()
+    @hudViewSidebar.showAuthentication()
 
   showText: (textId) ->
     if @static == true then window.location.reload()

@@ -16,6 +16,10 @@ class Didh.Views.Frontend.HudView extends Backbone.View
       @showAuthentication()
     )
 
+    Backbone.Mediator.subscribe('pane:change', () =>
+      @hideAuthentication()
+    )
+
     @router = @options.router
     @texts = @options.texts
     @texts.bind('change:active', @render, @)
@@ -26,7 +30,7 @@ class Didh.Views.Frontend.HudView extends Backbone.View
       e.preventDefault()
       e.stopPropagation()
     @authVisible = false
-    @$el.find('.js-authentication').animate({bottom: 0}, 200)
+    @$el.find('.js-authentication').animate({bottom: 100}, 200)
     @router.navigate 'text/' + @texts.getActiveTextId()
 
   showAuthentication: (e, animate = true) ->
@@ -37,9 +41,9 @@ class Didh.Views.Frontend.HudView extends Backbone.View
     $el = @$el.find('.js-authentication')
     height = $el.outerHeight()
     if animate == true
-      $el.animate({bottom: height * -1}, 200)
+      $el.animate({bottom: height * -1 - 15}, 200)
     else
-      $el.css({bottom: height * -1})
+      $el.css({bottom: height * -1 - 15})
 
     @router.navigate 'text/' + @texts.getActiveTextId() + '/auth'
 

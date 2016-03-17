@@ -1,0 +1,17 @@
+<header class="home-header">
+	<%= image_tag("logo-didh-small.png", :class => "logo-didh") %>
+	<ul class="nav-interior">
+		<li class="active bold">
+			<%= link_to 'Debates in the Digital Humanities', {controller: '/pages', action: 'index'}%>
+		</li>
+		<li class="">
+			<%= link_to 'Contents', :controller => '/pages', :action => 'book' %>
+		</li>
+		<li class="">
+			<%= link_to 'About the Series', :controller => '/pages', :action => 'about' %>
+		</li>
+		<% if params[:controller] == 'debates' %>
+			<li id="backbone-hudView" class="nav-hud nav-pane pane-bottom reveal-level-0"></li>
+		<% end %>
+	</ul>
+</header>

@@ -54,18 +54,15 @@
 	</head>
 	<body class="interior nav-open banner-open static-<%= @static %>">
 		<div class="annotator" style="top: -1000px;" id="backbone-annotatorView" ></div>
-		<header class="page-header">
-			<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
-			<ul class="nav-interior">
-				<%= render "shared/menu" %>
-			</ul>
-		</header>
+		<div class="light">
+			<%= render "shared/home_menu" %>
+		</div>
 
 		<!-- <aside id="backbone-bannerView" class="page-banner"></aside> -->
 
 		<!-- HUD -->
-		<nav id="backbone-hudView" class="nav-hud">
-		</nav>
+<!-- 		<nav id="backbone-hudView" class="nav-hud">
+		</nav> -->
 
 		<!-- Instructional banner -->
 		<aside id="backbone-bannerView" data-hide-instructions="<%= @hide_instructions %>" class="page-banner">
@@ -77,9 +74,11 @@
 			</article>
 		</section>
 		<nav class="nav-content">
+			<nav id="backbone-hudView-sidebar" class="nav-hud"></nav>
 			<div class="nav-panes--toggle js-nav-toggle"></div>
-			<ul id="backbone-feedbackView" class="nav-pane pane-top"></ul>
-			<ul id="backbone-tocView" class="nav-pane pane-bottom reveal-level-0"></ul>
+			<ul id="backbone-feedbackView" class="nav-pane pane-top">
+			</ul>
+<!-- 			<ul id="backbone-tocView" class="nav-pane pane-bottom reveal-level-0"></ul> -->
 			<div id="backbone-commentsView" class="comment-drawer"></div>
 		</nav>
 

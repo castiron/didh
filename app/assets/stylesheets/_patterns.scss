@@ -86,12 +86,7 @@
 // Employs SI prefixes
 // --------------------------
 %deca {
-	font-size: 2em;
-	font-weight: $thin;
-}
-
-%deci {
-	font-size: 0.5em;
+	font-size: 3.41em;
 	font-weight: $thin;
 }
 
@@ -250,7 +245,7 @@
 %tight-floated-list {
 	@extend %floated-list;
 	li + li {
-		margin-left: 0.4em;
+		margin-top: 1em;
 	}
 }
 
@@ -268,7 +263,6 @@
 		.lt-ie9 & {
 			display: none;
 		}
-
 	}
 	&:checked {
 		& + b {
@@ -346,13 +340,37 @@
 	@extend %custom-input;
 	margin-right: 8px;
 	& + b {
-		width: 18px;
-		height: 18px;
+		width: 28px;
+		height: 32px;
 		background: transparent asset-url('radio.png') no-repeat left top;
 		background-size: 100% auto;
-		bottom: -2px;
+		bottom: -4px;
 		.no-backgroundsize & {
 			background-image: asset-url('radio-half.png');
+		}
+	}
+	&.opacity-input + b {
+		left: -2px;
+		background: transparent asset-url('icon-opacity-inactive.png') no-repeat left top;	}
+		.no-backgroundsize & {
+			background-image: asset-url('icon-opacity-inactive-half.png');
+		}
+	&.stacked-input + b {
+		left: -2px;
+		background: transparent asset-url('icon-stacked-inactive.png') no-repeat left top;
+		.no-backgroundsize & {
+			background-image: asset-url('icon-stacked-inactive-half.png');
+		}
+	}
+	.active &.opacity-input + b {
+		background: transparent asset-url('icon-opacity-active.png') no-repeat left top;	}
+		.no-backgroundsize & {
+			background-image: asset-url('icon-opacity-active-half.png');
+		}
+	.active &.stacked-input + b {
+		background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
+		.no-backgroundsize & {
+			background-image: asset-url('icon-stacked-active-half.png');
 		}
 	}
 }
@@ -411,14 +429,14 @@
 // --------------------------
 %content-wrapper {
 	@extend %smooth-resize;
-	width: 30.22em;
+	width: 32.22em;
 	padding-right: 2em;
-	margin-left: 29%;
+	margin-left: 9.7%;
 	@include respond-max(1280px) {
-		margin-left: 250px !important;
+		margin-left: 125px !important;
 	}
 	@include respond-max(810px) {
-		margin-left: 180px !important;
+		margin-left: 90px !important;
 	}
 	.nav-open & {
 		//@include respond-max(1550px) {

@@ -33,20 +33,7 @@
 
 	</head>
 	<body class="home">
-		<header class="home-header">
-			<%= image_tag("logo-didh-small.png", :class => "logo-didh") %>
-			<ul class="nav-interior">
-				<li class="active bold">
-					<%= link_to 'Debates in the Digital Humanities', {controller: '/pages', action: 'index'}%>
-				</li>
-				<li class="">
-					<%= link_to 'Contents', :controller => '/pages', :action => 'book' %>
-				</li>
-				<li class="">
-					<%= link_to 'About the Series', :controller => '/pages', :action => 'about' %>
-				</li>
-			</ul>
-		</header>
+		<%= render "shared/home_menu" %>
 		<div class="home-wrapper">
 			<header class="home-background">
 				<h1 class="home-title">Debates in the Digital Humanities</h1>

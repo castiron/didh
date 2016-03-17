@@ -228,7 +228,7 @@
   .nav-interior {
     font-size: 0.88em;
     font-weight: $regular;
-    li {
+    > li {
       display: inline-block;
       padding: 8px 24px 8px 15px;
       a {
@@ -305,8 +305,11 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 20;
   background-color: $blackLight;
+  .light & {
+    background-color: $white;
+  }
   .nav-interior {
     display: inline-block;
     font-size: 1em;
@@ -317,6 +320,9 @@
       &.active {
         a {
           color: $white;
+          .light & {
+            color: $black;
+          }
         }
       }
     }
@@ -327,6 +333,27 @@
   .logo-didh {
     display: inline-block;
     vertical-align: middle;
+  }
+  @include respond-max(875px) {
+    .logo-didh {
+      display: block;
+    }
+    .nav-interior {
+      li:first-child {
+        padding-left: 8px;
+      }
+      li {
+        padding: 8px 0px 0px 8px;
+        &.nav-hud {
+          padding: 8px 12px 8px 8px;
+        }
+      }
+    }
+  }
+  @include respond-max(875px) {
+    li {
+      font-size: 17px;
+    }
   }
 }
 // Interior page components
@@ -514,43 +541,62 @@
 // --------------------------
 .nav-hud {
 	@extend %smooth-resize;
-	@extend %horizontal-bar-fixed;
-  .touch & {
-    position: absolute;
+	// @extend %horizontal-bar-fixed;
+ //  .touch & {
+ //    position: absolute;
+ //  }
+	// background-color: $white;
+	// // margin-left: 160px;
+	// top: 0;
+	// z-index: 20;
+	// @include respond-max(810px) {
+	// 	margin-left: 128px;
+	// }
+	// @include respond-max-height(700px) {
+	// 	margin-left: 128px;
+	// }
+  // display: none;
+  margin-top: 3px;
+  //one hud in the header
+  .home-header & {
+    position: absolute !important;
+    display: inline-block;
+    .nav-open & {
+      display: none;
+    }
   }
-	background-color: $white;
-	margin-left: 160px;
-	top: 0;
-	z-index: 20;
-	@include respond-max(810px) {
-		margin-left: 128px;
-	}
-	@include respond-max-height(700px) {
-		margin-left: 128px;
-	}
+  //clone in the side-drawer
+  .nav-content & {
+    display: none;
+    position: absolute !important;
+    z-index: 10;
+    right: 0;
+    padding: 8px 24px 8px 15px;
+    .nav-open & {
+      display: block;
+    }
+  }
 }
-
-
 
 .hud--list {
 	@extend %delta;
 	@extend %floated-list;
 	@extend %smooth-resize;
 	color: lighten($black, 40%);
-	background-color: $white;
-	padding: 0.69em 1.25em;
-	border-bottom: 1px solid lighten($black, 70%);
+	// background-color: $white;
+	// padding: 0.69em 1.25em;
+	// border-bottom: 1px solid lighten($black, 70%);
 	margin-right: $navClosedWidth;
 	cursor: pointer;
 	&:hover {
 		color: $black;
 		border-bottom-color: $black;
 	}
-	.nav-open & {
-		margin-right: $navOpenWidth;
-	}
+	// .nav-open & {
+	// 	margin-right: $navOpenWidth;
+	// }
 	li {
-		width: 22%;
+		// width: 22%;
 		max-width: 20em;
 		line-height: 22px;
 		padding-left: $space;
@@ -568,33 +614,33 @@
 			padding-left: 0;
 		}
 	}
-	@include respond-max(1100px) {
-		padding: 0.69em 0.625em;
-		li {
-			padding-left: $space / 2;
-			&:first-child {
-				padding-left: 0;
-			}
-			&:last-child {
-				padding-left: 0;
-			}
-		}
-	}
-	@include respond-max(810px) {
-		.nav-open & {
-			li {
-				display: none;
-				width: 25%;
-				&.hud--title,
-				&.hud--user {
-					display: block;
-				}
-				&.hud--title {
-					width: 75%;
-				}
-			}
-		}
-	}
+	// @include respond-max(1100px) {
+	// 	padding: 0.69em 0.625em;
+	// 	li {
+	// 		padding-left: $space / 2;
+	// 		&:first-child {
+	// 			padding-left: 0;
+	// 		}
+	// 		&:last-child {
+	// 			padding-left: 0;
+	// 		}
+	// 	}
+	// }
+	// @include respond-max(810px) {
+	// 	.nav-open & {
+	// 		li {
+	// 			display: none;
+	// 			width: 25%;
+	// 			&.hud--title,
+	// 			&.hud--user {
+	// 				display: block;
+	// 			}
+	// 			&.hud--title {
+	// 				width: 75%;
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 // <li>
@@ -619,15 +665,17 @@
 // <li>
 .hud--user {
 	// width: 160px;
-	color: lighten($black, 40%);
+	color: $blueDark;
+  font-size: 18px;
+  font-weight: $regular;
 	text-align: right;
 	// This !important overrides the default %floated list styles
 	float: right !important;
 	position: relative;
-	strong {
-		font-weight: $thin;
-		color: $black;
-	}
+	// strong {
+	// 	font-weight: $thin;
+	// 	color: $black;
+	// }
 	@include respond-max(810px) {
 		em {
 			display: none;
@@ -642,9 +690,11 @@
 	background-color: $grayDarker;
 	padding: 20px;
 	position: absolute;
-	bottom: 0;
+	bottom: 100px;
 	right: $navClosedWidth;
+  left: -63px;
 	z-index: -1;
+  height: 244px;
 	.nav-open & {
 		right: $navOpenWidth;
 	}
@@ -655,8 +705,17 @@
 			margin-top: 14px;
 		}
 	}
+  li {
+    a {
+      text-decoration: none !important;
+      color: $black !important;
+    }
+  }
 	form {
 		@extend %clearfix;
+    a {
+      color: $black !important;
+    }
 		.right,
 		.left {
 			margin-top: 14px;
@@ -668,6 +727,26 @@
 			float: left;
 		}
 	}
+  &.logged-in {
+    left: -17px;
+    width: 238px;
+  }
+  .home-header & {
+    li {
+      a {
+        font-size: 1em;
+      }
+    }
+  }
+  .nav-content & {
+    right: 30px;
+    left: -57px;
+    &.logged-in {
+      top: 42px;
+      left: -11px;
+      width: 236px;
+    }
+  }
 }
 
 .authentication--label {
@@ -974,10 +1053,13 @@ body.static-true span.sentence:hover {
 	@extend %unstyled-list;
 	background-color: $white;
 	position: relative;
+  .home-header & {
+    background-color: transparent;
+  }
 	.level-0,
 	.level-1 {
 		@extend %vertical-bar;
-        left:  -$navOpenWidth + $navClosedWidth;
+    left:  -$navOpenWidth + $navClosedWidth;
 		width: $navOpenWidth;
 		background-color: $grayLight;
 		@include box-shadow(
@@ -998,8 +1080,15 @@ body.static-true span.sentence:hover {
 .pane-top {
 	.level-0,
 	.level-1 {
-		border-bottom: 4px solid $white;
+    background-color: $black;
+		border-bottom: none;
+    border-left: none;
+    box-shadow: none;
 	}
+  .level-0 {
+    left: -266px;
+    width: $navOpenWidth;
+  }
 }
 
 // <li>
@@ -1011,7 +1100,7 @@ body.static-true span.sentence:hover {
 	padding: 40px 20px 30px 50px;
 	position: relative;
 	.pane-top & {
-		padding-top: 160px;
+		padding: 0 0 0 40px;
 	}
 	.part {
 		@extend %clearfix;
@@ -1027,7 +1116,7 @@ body.static-true span.sentence:hover {
 }
 
 .pane-top {
-	height: 40%;
+	height: 100%;
 	right: 0;
 }
 
@@ -1050,7 +1139,11 @@ body.static-true span.sentence:hover {
 
 .pane--header {
 	.pane-top & {
-		padding-top: 180px;
+    left: 4px;
+    background-color: $black;
+    &:hover {
+      cursor: pointer;
+    }
 	}
 	cursor: pointer;
 	@extend %vertical-bar;
@@ -1091,14 +1184,15 @@ body.static-true span.sentence:hover {
 
 // <a>
 .content-nav--toggle {
-	@extend %circle-arrow;
+	// @extend %circle-arrow;
 	position: absolute;
-	top: 25%;
+	top: 13px;
 	left: 6px;
+  color: $blueDark;
 }
 
 .content-nav--toggle-pos2 {
-	@extend %circle-arrow-left;
+	// @extend %circle-arrow-left;
 }
 
 
@@ -1132,40 +1226,52 @@ body.static-true span.sentence:hover {
 .count-box-list {
 	@extend %tight-floated-list;
 	position: absolute;
-	bottom: 4em;
+	bottom: 40%;
+  left: 0;
 }
 
 // <li>
 .count-box {
-	height: 100px;
-	width: 84px;
-	background-color: $gray;
+	height: auto;
+	width: 100%;
 	padding: 0 10px;
 	position: relative;
+  display: block;
 }
 
 .count-box--title {
-	@extend %eta;
-	@extend %with-gray-dark;
-	width: 64px;
-	text-transform: uppercase;
-	margin: 0;
-	position: absolute;
-	bottom: 40px;
+  font-size: 0.884em;
+  font-weight: $thin;
+  display: inline-block;
+  width: 49%;
+  margin: 0;
+  color: $white;
+  text-align: left;
 }
 
 .count-box--number {
-	@extend %deca;
-	@extend %with-gray-darker;
-	position: absolute;
-	bottom: 2px;
+  @extend %deca;
+  display: inline-block;
+  width: 49%;
+  padding-right: 12px;
+  color: $chartreuse;
+  text-align: right;
 }
 
 // Feedback options
 // --------------------------
 .feedback-options {
 	position: absolute;
-	bottom: 4em;
+  z-index: 200;
+  right: 0;
+  left: 0;
+	bottom: 0;
+  padding-top: 18px;
+  background-color: $blackLight;
+  visibility: hidden;
+  .nav-open & {
+    visibility: visible;
+  }
 }
 
 .feedback-options--title {
@@ -1184,46 +1290,89 @@ body.static-true span.sentence:hover {
 
 .feedback-options--sublist {
 	@extend %floated-list;
-	padding-left: $space;
-	margin-top: 8px;
-	li + li {
-		margin-left: 15px;
-	}
+  li {
+    width: 50%;
+  	padding: 18px 0px 15px 1.3em;
+    &.active {
+      background-color: $black;
+    }
+  }
+	// li + li {
+	// 	margin-left: 15px;
+	// }
 }
 
 .feedback-options--label {
 	@extend %input-label;
-	@extend %zeta;
-	text-transform: uppercase;
+	font-size: 0.884em;
 	margin-bottom: 0;
 	position: relative;
 	cursor: pointer;
-	.stacked-label {
-		background: transparent asset-url('icon-stacked.png') no-repeat left top;
-		background-size: auto 100%;
-		padding: 2px 0 2px 13px;
-		margin-left: 2px;
-		.no-backgroundsize & {
-			background-image: asset-url('icon-stacked-half.png');
-		}
-	}
-	.opacity-label {
-		background: transparent asset-url('icon-opacity.png') no-repeat left top;
-		background-size: auto 100%;
-		padding: 2px 0 2px 11px;
-		margin-left: 2px;
-		.no-backgroundsize & {
-			background-image: asset-url('icon-opacity-half.png');
-		}
-	}
-}
-
-.feedback-options--checkbox {
-	@extend %checkbox;
+  color: $white;
+  .stacked-label, .opacity-label {
+    background-size: auto 100%;
+    margin-left: 2px;
+    color: $grayAlt;
+    .active & {
+      color: $chartreuse;
+    }
+  }
+  .opacity-label {
+    padding: 2px 0 2px 4px;
+  }
+  .stacked-label {
+    padding: 2px 0 2px 11px;
+  }
 }
 
 .feedback-options--radio {
 	@extend %radio;
+}
+
+.feedback-options--checkbox {
+  position: absolute;
+  right: 1.3em;
+  display: inline-block;
+  width: 34px;
+}
+.feedback-options--wrapper {
+  padding-left: 24px;
+  margin-bottom: 12px;
+  span {
+    display: inline-block;
+    color: $white;
+  } 
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 14px;
+  padding: 0;
+  line-height: 14px;
+  border-radius: 20px;
+  background-color: #7FB8CA;
+  background-color: rgba(127,184,202, 0.5);
+  &:before {
+    content: "";
+    display: block;
+    width: 20px;
+    margin: -3px;
+    background: #02ADEF;
+    position: absolute;
+    top: 1px;
+    bottom: 7px;
+    right: 18px;
+    border-radius: 20px;
+  }
+}
+
+.onoffswitch-checkbox {
+  display: none;
+  &:checked + .onoffswitch-label:before {
+    right: 0;
+  }
 }
 
 // Table of contents
@@ -1671,13 +1820,16 @@ body.page form,
 .new_message {
 	display: inline-block;
 	max-width: 100%;
-	background-color: $blackLight;
-	padding: 1em 1em 1em 1em;
-	margin: 1.35em 0;
-  .field--button {
-    color: $white;
-    border-color: $white;
+	background-color: $grayLight;
+  &.new_message {
+    background-color: $blackLight;
+    .field--button {
+      color: $white;
+      border-color: $white;
+    }
   }
+  padding: 1em 1em 1em 1em;
+  margin: 1.35em 0;
 }
 
 .row {
