@@ -6,8 +6,8 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	template: JST["backbone/templates/frontend/feedback"]
 
 	events:
-		"click .js-content-nav--open-toggle"		: "toggleOpen"
-		"click .js-content-nav--visible-toggle"		: "toggleVisibility"
+		# "click .js-content-nav--open-toggle"		: "toggleOpen"
+		"click .js-content-feedback--visible-toggle"		: "toggleVisibility"
 		"click #feedback-view-interesting" 			: "updateVisualizationType"
 		"click #feedback-view-interesting-stacked" 	: "updateVisualizationType"
 		"click #feedback-view-interesting-opacity" 	: "updateVisualizationType"
@@ -64,7 +64,6 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 				$stackedParent.addClass('active')
 			when 'opacity'
 				$opacityParent.addClass('active')
-
 
 	normalizePaneHeight: () ->
 		@.$el.find('.part').each( (i, part) =>

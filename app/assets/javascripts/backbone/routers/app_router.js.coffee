@@ -28,7 +28,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
     @hudView = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView"), texts: @texts, router: @ )
     @hudViewSidebar = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView-sidebar"), texts: @texts, router: @ )
     @tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), parts: @parts, texts: @texts, router: @ )
-    @feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), linkedPane: @tocView, texts: @texts, isStatic: @isStatic)
+    @feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), texts: @texts, isStatic: @isStatic)
     @commentsView = new Didh.Views.Frontend.CommentsView(el: $('#backbone-commentsView'), texts: @texts, router: @)
 
   setupCollections: (options) ->

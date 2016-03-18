@@ -29,11 +29,12 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 
   toggleOpen: (e) ->
     if e then e.stopPropagation()
-    switch @currentPosition
-      when 2 then @goToPosition 1
-      when 1 then @goToPosition 0
-      when 0 then @goToPosition 1
-    false
+    else
+      switch @currentPosition
+        when 2 then @goToPosition 1
+        when 1 then @goToPosition 0
+        when 0 then @goToPosition 1
+      false
 
   toggleVisibility: (e) ->
     if e then e.stopPropagation()

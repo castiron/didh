@@ -302,10 +302,10 @@
 
 .home-header {
   position: absolute;
+  z-index: 11;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 20;
   background-color: $blackLight;
   .light & {
     background-color: $white;
@@ -314,6 +314,8 @@
     display: inline-block;
     font-size: 1em;
     li {
+      position: relative;
+      z-index: 31;
       a {
         color: $blueDark;
       }
@@ -560,6 +562,7 @@
   //one hud in the header
   .home-header & {
     position: absolute !important;
+    z-index: 10 !important;
     display: inline-block;
     .nav-open & {
       display: none;
@@ -1184,11 +1187,13 @@ body.static-true span.sentence:hover {
 
 // <a>
 .content-nav--toggle {
-	// @extend %circle-arrow;
 	position: absolute;
 	top: 13px;
 	left: 6px;
   color: $blueDark;
+  &:before {
+    cursor: pointer !important;
+  }
 }
 
 .content-nav--toggle-pos2 {
@@ -1262,7 +1267,7 @@ body.static-true span.sentence:hover {
 // --------------------------
 .feedback-options {
 	position: absolute;
-  z-index: 200;
+  z-index: 10;
   right: 0;
   left: 0;
 	bottom: 0;
@@ -1378,6 +1383,208 @@ body.static-true span.sentence:hover {
 // Table of contents
 // --------------------------
 // <ul>
+.toc-container {
+  position: absolute;
+  z-index: 40;
+  display: none;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100%;
+  margin-top: 40px;
+  background-color: $blueDark;
+  overflow: hidden;
+  .toc-col-frame {
+    position: absolute;
+    height: 100vh;
+    width: 55%;
+    right: 0;
+    z-index: 60;
+    background-color: $blueDark;
+  }
+  &.open {
+    display: block;
+  }
+}
+.toc-editions {
+  position: absolute;
+  z-index: 60;
+  top: 40px;
+  left: 0px;
+  display: inline-block;
+  width: 153px;
+  height: 96vh;
+  vertical-align: top;
+  // padding-top: 104px;
+  padding-left: 26px;
+  padding-right: 26px;
+  background-color: $blueDark;
+  * {
+    display: inline-block;
+    width: 100%;
+  }
+  li {
+
+  }
+  img {
+    opacity: 0.38;
+    cursor: pointer;
+    &.active {
+      opacity: 1;
+    }
+  }
+  a {
+    display: inline-block;
+    text-align: center;
+    color: $blue;
+  }
+}
+.nav-item-part.active {
+  visibility: visible;
+  color: $black !important;
+  a {
+    color: $black !important;
+  }
+}
+.nav-toc {
+  position: relative;
+  background-color: transparent;
+  .nav-pane {
+    position: absolute;
+    z-index: 50;
+    top: 42px;
+    left: 0px;
+    right: inherit;
+    width: 100vw;
+    height: 96vh;
+    padding: 0px 34px 50px 100px;
+    background-color: $blueDark;
+    &.pane-bottom {
+      height: auto;
+    }
+    .level-0, .level-1 {
+      position: relative;
+      display: inline-block;
+      width: 42%;
+      vertical-align: top;
+      box-shadow: none;
+      background-color: transparent;
+      h2 {
+        cursor: pointer;
+        &.icon-chevron-left {
+          font-family: "museo", serif;
+          &:before {
+            font-family: FontAwesome;
+            color: $blue;
+            padding-right: 10px;
+            margin-left: -21px;
+          }
+        }
+      }
+      .pane-bottom--title {
+        padding-bottom: 12px;
+        padding-left: 40px;
+        font-weight: $bold;
+      }
+      li {
+        margin-left: 0;
+        border-bottom: 1px solid $white;
+        border-bottom: 1px solid rgba(255,255,255, 0.46);
+        padding-bottom: 14px;
+        &.icon-chevron-right-after {
+          font-family: "museo", serif;
+          &:after {
+            font-family: FontAwesome;
+            float: right;
+            color: $blue;
+          }
+        }
+      }
+    }
+    .level-0 {
+      left: 0;
+      max-width: 470px;
+      margin-left: 53px;
+      .pane-bottom--title {
+        font-size: 19px;
+      }
+      .pane--content {
+        padding: 0px 0px 0px 40px;
+        border-top: 1px solid $white;
+        border-top: 1px solid rgba(255,255,255, 0.46);
+      }
+      li {
+        display: block;
+        margin-left: 0;
+        border-bottom: 1px solid $white;
+        border-bottom: 1px solid rgba(255,255,255, 0.46);
+        padding-bottom: 14px;
+        font-size: 19px;
+        font-weight: $bold;
+        a {
+          display: inline-block;
+          width: 75%;
+          text-decoration: none !important;
+          &:hover {
+          }
+        }
+      }
+    }
+    .level-1 {
+      top: 4px;
+      max-width: 500px;
+      border: none;
+      overflow: hidden;
+      .pane--content {
+        padding: 33px 20px 30px 0px;
+      }
+      .pane-bottom--title {
+        font-size: 19px;
+        font-weight: $regular;
+      }
+      .part-wrapper {
+        display: inline-block;
+        width: 100%;
+        @include transition(0.05s visibility linear);
+        &, * {
+          visibility: hidden;
+        }
+        &.active {
+          &, * {
+            visibility: visible;
+          }
+        }
+      }
+      .part {
+        height: 100vh !important;
+        overflow: hidden;
+        overflow-y: scroll;
+        padding: 0px 0px 0px 60px;
+        border-top: 1px solid $white;
+        border-top: 1px solid rgba(255,255,255, 0.46);
+      }
+    }
+    .nav-index {
+      li {
+        margin-top: 0px;
+        padding-top: 17px;
+      }
+      a {
+        color: $white;
+      }
+    }
+  }
+  &.open {
+    background-color: $blueDark;
+    > a { 
+      color: $white !important;
+    }
+    // > .nav-pane {
+    //   display: block;
+    // }
+  }
+}
+
 .nav-index {
 	@extend %unstyled-list;
 	@extend %delta;
@@ -1388,19 +1595,22 @@ body.static-true span.sentence:hover {
 	a {
 		line-height: $tightLineHeight;
 		color: $grayDark;
-		&:hover,
-		&.active {
-			color: $black;
-		}
-		&:focus {
-			outline: 0;
-		}
-		span {
-			display: block
-		}
-	}
-	span.author {
-		font-weight: 600;
+    font-size: 16px;
+    font-weight: $bold;
+    &:hover,
+    &.active {
+      color: $black;
+    }
+    &:focus {
+      outline: 0;
+    }
+    span {
+      display: block
+    }
+  }
+  span.author {
+    margin-top: 5px;
+		color: $yellow;
 	}
 	ul {
 		&.closed {
@@ -1410,13 +1620,13 @@ body.static-true span.sentence:hover {
 		padding-left: 15px;
 	}
 }
-.nav-index-col {
-	&:last-child {
-		margin-left: 50px;
-	}
-	width: $navOpenWidth - 62;
-	float: left;
-}
+// .nav-index-col {
+// 	&:last-child {
+// 		margin-left: 50px;
+// 	}
+// 	width: 100%;
+// 	float: left;
+// }
 
 // Reduce TOC font size on short screens
 .nav-index,

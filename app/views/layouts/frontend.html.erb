@@ -57,12 +57,17 @@
 		<div class="light">
 			<%= render "shared/home_menu" %>
 		</div>
+		<div class="toc-container" data-tab-toggle>
+			<header class="toc-editions">
+				<img src="/assets/2016bookcover-low.png" alt="2016 book cover" class="active">
+				<a href="/book">Details</a>
 
+				<img src="/assets/2012bookcover-low.png" alt="2012 book cover" class="">
+				<a href="/book">Details</a>
+			</header>
+			<nav id="backbone-tocView" class="nav-toc"></nav>
+		</div>
 		<!-- <aside id="backbone-bannerView" class="page-banner"></aside> -->
-
-		<!-- HUD -->
-<!-- 		<nav id="backbone-hudView" class="nav-hud">
-		</nav> -->
 
 		<!-- Instructional banner -->
 		<aside id="backbone-bannerView" data-hide-instructions="<%= @hide_instructions %>" class="page-banner">
@@ -78,7 +83,6 @@
 			<div class="nav-panes--toggle js-nav-toggle"></div>
 			<ul id="backbone-feedbackView" class="nav-pane pane-top">
 			</ul>
-<!-- 			<ul id="backbone-tocView" class="nav-pane pane-bottom reveal-level-0"></ul> -->
 			<div id="backbone-commentsView" class="comment-drawer"></div>
 		</nav>
 
