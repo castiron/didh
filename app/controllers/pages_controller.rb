@@ -17,12 +17,13 @@ class PagesController < ApplicationController
 	end
 
 	def book
-		# this variable eventually defined by param?
-		@edition = '2016'
+		# placeholder until there is a second edition in database?
+		@edition = Edition.find(params[:id])
 	end
 
 	def about
 		@message = Message.new
+		@editions = Edition.all
 	end
 
 	def sendMessage

@@ -15,13 +15,22 @@ namespace :texts do
 		args.with_defaults(:files => './texts')
 		if File.directory?(args[:files])
 			puts "[info] found directory: #{args[:files]}"
-			Dir["#{args[:files]}/*.html"].each do |file|
-				importOneText(file)
+			Dir["#{args[:files]}/*"].each.with_index(1) do |file, index|
+				if File.directory?(file)
+					puts "[info] found directory: #{file}"
+					Dir["#{file}/*.html"].each do |textFile|
+						puts "[info] found file: #{textFile}"
+						importOneText(textFile, index)
+					end
+				elsif File.file?(file)
+					puts "[info] found file: #{file}"
+					importOneText(file, index)
+				end
 			end
 		elsif File.file?(args[:files])
 			puts "[info] found file: #{args[:files]}"
 			file = File.open(args[:files])
-			importOneText(file)
+			importOneText(file, null)
 		else
 			puts "[error] file not found: #{args[:files]}"
 		end
@@ -34,7 +43,7 @@ namespace :texts do
 	# and if the Stanford Natural Language Processor (SNLP) would be sufficient
 	# for chunking the texts into sentences. The POC became the engine, and
 	# there hasn't yet been time to revisit it --ZD
-	def importOneText(file)
+	def importOneText(file, dirIndex)
 		puts "[#{file}] [info] importing #{file}"
 		fileBasename = File.basename(file)
 		htmlDoc = Nokogiri::HTML(File.open(file))
@@ -70,9 +79,13 @@ namespace :texts do
 		end
 		part = Part::where(:sorting => part_num).first
 
-		# assign texts to the correct edition
+		#use the index of the dir holding the text to assign the edition; 
+		#defaults to first edition it can find it not dirIndex was passed in (i.e. assumes edition dirs are in sequential order)
 		edition = Edition.first
-
+		if dirIndex then 
+			edition = Edition.find_by id: dirIndex
+		end
+		puts "[#{file}] [info] found edition #{edition.label}"
 
 		# Handle the authors string
 		authorString = htmlDoc.css("p.au span").inner_html
@@ -175,6 +188,7 @@ namespace :texts do
 
 		# Set the text object's attributes.
 		text.attributes = {
+				:edition => edition,
 				:title => title,
 				:sorting => sorting,
 				:body => body,

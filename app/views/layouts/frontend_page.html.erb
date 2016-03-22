@@ -39,11 +39,11 @@
 					<li class="back-link">
 						<%= link_to 'Return to About', {controller: '/pages', action: 'about'}, class: 'icon-chevron-left' %>
 					</li>
-					<li class="<%= 'active' if @edition == '2012' %>">
-						<%= link_to '2013 Edition', :controller => '/pages', :action => 'book' %>
+					<li class="<%= 'active' if @edition.id == '1' %>">
+						<%= link_to '2013 Edition', :controller => '/debates', :action => 'index' %>
 					</li>
-					<li class="<%= 'active' if @edition == '2016' %>">
-						<%= link_to '2016 Edition', :controller => '/pages', :action => 'book' %>
+					<li class="<%= 'active' if @edition.id == '2' %>">
+						<%= link_to '2016 Edition', :controller => '/debates', :action => 'index' %>
 					</li>
 				</ul>
 			</header>

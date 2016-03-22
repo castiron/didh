@@ -4,9 +4,9 @@
 		<li class="active bold">
 			<%= link_to 'Debates in the Digital Humanities', {controller: '/pages', action: 'index'}%>
 		</li>
-		<li class="">
+		<li class="toc-tab-trigger">
 			<% if params[:controller] == 'debates' %>
-				<a href="#" class="js-content-nav--open-toggle" data-tab-toggle-trigger>Contents</a>
+				<a href="#" data-tab-toggle-trigger>Contents</a>
 			<% else %>
 				<a href="/debates" data-tab-toggle-trigger>Contents</a>
 			<% end %>

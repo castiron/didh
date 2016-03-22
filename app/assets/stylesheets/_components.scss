@@ -327,6 +327,12 @@
           }
         }
       }
+      &.open {
+        background-color: $blueDark;
+        a {
+          color: $white;
+        }
+      }
     }
     li:first-child {
       padding-left: 0px;
@@ -1382,7 +1388,7 @@ body.static-true span.sentence:hover {
 
 // Table of contents
 // --------------------------
-// <ul>
+
 .toc-container {
   position: absolute;
   z-index: 40;
@@ -1394,14 +1400,6 @@ body.static-true span.sentence:hover {
   margin-top: 40px;
   background-color: $blueDark;
   overflow: hidden;
-  .toc-col-frame {
-    position: absolute;
-    height: 100vh;
-    width: 55%;
-    right: 0;
-    z-index: 60;
-    background-color: $blueDark;
-  }
   &.open {
     display: block;
   }
@@ -1415,16 +1413,15 @@ body.static-true span.sentence:hover {
   width: 153px;
   height: 96vh;
   vertical-align: top;
-  // padding-top: 104px;
   padding-left: 26px;
   padding-right: 26px;
   background-color: $blueDark;
+  li {
+    margin-bottom: 30px;
+  }
   * {
     display: inline-block;
     width: 100%;
-  }
-  li {
-
   }
   img {
     opacity: 0.38;
@@ -1459,6 +1456,13 @@ body.static-true span.sentence:hover {
     height: 96vh;
     padding: 0px 34px 50px 100px;
     background-color: $blueDark;
+    //edition tabs
+    &.edition {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
     &.pane-bottom {
       height: auto;
     }
@@ -1579,9 +1583,6 @@ body.static-true span.sentence:hover {
     > a { 
       color: $white !important;
     }
-    // > .nav-pane {
-    //   display: block;
-    // }
   }
 }
 

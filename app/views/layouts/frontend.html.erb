@@ -46,7 +46,7 @@
         <% else %>
         window.currentUser = null
         <% end %>
-		    window.router = new Didh.Routers.AppRouter({static: <%= @static %>, parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
+		    window.router = new Didh.Routers.AppRouter({static: <%= @static %>, editions: <%= @editions.to_json.html_safe -%>, parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
 	  	    Backbone.history.start({pushState: true, root: "/debates/"})
 		  });
 		</script>
@@ -58,13 +58,16 @@
 			<%= render "shared/home_menu" %>
 		</div>
 		<div class="toc-container" data-tab-toggle>
-			<header class="toc-editions">
-				<img src="/assets/2016bookcover-low.png" alt="2016 book cover" class="active">
-				<a href="/book">Details</a>
-
-				<img src="/assets/2012bookcover-low.png" alt="2012 book cover" class="">
-				<a href="/book">Details</a>
-			</header>
+			<ul class="toc-editions">
+				<li>
+					<img src="/assets/2016bookcover-low.png" alt="2016 book cover" class="" data-edition-toggle="<%= @editions.last.id %>" >
+					<a href="/book">Details</a>
+				</li>
+				<li>
+					<img src="/assets/2012bookcover-low.png" alt="2012 book cover" class="" data-edition-toggle="<%= @editions.first.id %>" >
+					<a href="/book">Details</a>
+				</li>
+			</ul>
 			<nav id="backbone-tocView" class="nav-toc"></nav>
 		</div>
 		<!-- <aside id="backbone-bannerView" class="page-banner"></aside> -->

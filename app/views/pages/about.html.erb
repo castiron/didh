@@ -104,21 +104,24 @@
   <section class="column-six-fifths padded gray-lighter">
     <div class="bold mobile-only">Print Editions</div>
     <div class="callout-wrapper">
-      <%= image_tag("2016book3d-low.png", :class => "narrow-image") %>
-      <p class="narrow-paragraph copy-delta">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <div class="callout">
+      <%= link_to image_tag("2016book3d-low.png", :class => "narrow-image"), {controller: '/pages', action: 'book', id: 2} %>
+      <p class="narrow-paragraph copy-delta">Pairing full-length scholarly essays with shorter pieces drawn from scholarly blogs and conference presentations, as well as commissioned interviews and position statements, Debates in the Digital Humanities 2016 reveals a dynamic view of a field in negotiation with its identity, methods, and reach.
+</p>      <div class="callout">
         <ul class="details-list">
-          <li class="highlighted"><a href="http://www.upress.umn.edu/book-division/books/debates-in-the-digital-humanities">Read more and purchase</a>
+          <li class="highlighted">
+            <%= link_to 'Read more and purchase', {controller: '/pages', action: 'book', id: 2} %>
           </li>
         </ul>
       </div>
     </div>
     <div class="callout-wrapper">
-      <%= image_tag("2012book3d-low.png", :class => "narrow-image") %>
-      <p class="narrow-paragraph copy-delta">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <%= link_to image_tag("2012book3d-low.png", :class => "narrow-image"), {controller: '/pages', action: 'book', id: @editions[0].id} %>
+      
+      <p class="narrow-paragraph copy-delta">Debates in the Digital Humanities brings together leading figures in the field to explore its theories, methods, and practices and to clarify its multiple possibilities and tensions. Together, the essays suggest that the digital humanities is uniquely positioned to contribute to the revival of the humanities and academic life.</p>
       <div class="callout">
         <ul class="details-list">
-          <li class="highlighted"><a href="http://www.upress.umn.edu/book-division/books/debates-in-the-digital-humanities">Read more and purchase</a>
+          <li class="highlighted">
+            <%= link_to 'Read more and purchase', {controller: '/pages', action: 'book', id: @editions[0].id} %>
           </li>
         </ul>
       </div>

@@ -4,6 +4,7 @@ class DebatesController < ApplicationController
 
 	def index
 		@static = false
+		@editions = Edition.all
 		@text = Text::find(1)
 		@texts = Text.order('sorting ASC').all
 		@parts = Part.all

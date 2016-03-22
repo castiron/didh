@@ -4,6 +4,7 @@ Didh::Application.routes.draw do
   devise_for :admins
 
   get 'debates/' => 'debates#index'
+  get 'debates/:id' => 'debates#index'
   get 'debates/part/:id' => 'debates#index'
   get 'debates/text/:id' => 'debates#index'
   get 'debates/text/:id/auth' => 'debates#index'
@@ -14,6 +15,7 @@ Didh::Application.routes.draw do
   get 'debates/show_instructions' => 'debates#show_instructions'
 
   get 'book/' => 'pages#book'
+  get 'book/:id' => 'pages#book'
   get 'apis/' => 'pages#apis'
   post 'about/' => 'pages#sendMessage', :as => 'about'
   get 'about/' => 'pages#about'

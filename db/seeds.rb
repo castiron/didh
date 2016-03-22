@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 editions = Edition.create([
-  { label: '2012 Print Edition'}
+  { label: '2012 Print Edition'},
+  { label: '2016 Print Edition'}
 ])
 
 parts = Part.create([

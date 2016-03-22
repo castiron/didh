@@ -1,51 +1,55 @@
-<!-- <a class="js-content-nav--open-toggle" data-tab-toggle>Contents</a> -->
-<ul class="nav-pane">
-	<li class="level-0">
-		<h2 class="js-content-toc--open-toggle pane-bottom--title">Edition</h2>
+<% editions.each( function(edition) { %>
+	<ul id="toc-edition-<%= edition.get('id') %>" class="nav-pane edition">
+		<li class="level-0">
+			<h2 class="pane-bottom--title"><%= edition.get('label') %></h2>
 
-		<section class="pane--content">
-			<ul class="nav-index">
-				<% parts.each( function(part) { %>
-					<a href="/debates/part/<%= part.get('id') %>" class="nav-item-part nav-item-part-<%= part.get('id') %>"><li class="js-content-toc--open-toggle icon-chevron-right-after">
-						
-						<%= part.get('label') %>
-					</li></a>
-				<% }); %>
-			</ul>
-		</section>
-	</li>
-	<li class="level-1">
-		<section class="pane--content pane--vertical-stage">
-			<div class="parts">
-				<% parts.each( function(part) { %>
-					<div class="part-wrapper">
-					<h2 class="js-content-toc--open-toggle pane-bottom--title icon-chevron-left"><%= part.get('label') %></h2>
-					<div id="toc-part-<%= part.get('id') %>" class="part">
-						<% cols = 0; %>
-						<% _.each(texts.byPartGrouped(part.get('id'), 5), function(textGroup) { %>
-							<% cols++ %>
-							<ul class="nav-index nav-index-col">
-								<% _.each(textGroup, function(text) { %>
-									<li class="nav-item-part nav-item-part-<%= text.get('id') %>" data-tab-close-trigger>
-										<% if(text.get('is_static') == true) { %>
-										<a class="" href="/static/debates/text/<%= text.get('id') %>">
-										<% } else { %>
-										<a class="" href="/debates/text/<%= text.get('id') %>">
-										<% } %>
-										<span class="title"><%= text.get('title') %></span>
-										<span class="author"><%= text.getAuthorsList() %></span>
-										</a>
-									</li>
-								<% }); %>
-							</ul>
-						<% }); %>
-						<% if(cols == 1) { %>
-							<ul class="nav-index nav-index-col"></ul>
+			<section class="pane--content">
+				<ul class="nav-index">
+					<% parts.each( function(part) { %>
+						<% if (texts.partEditionChecker(part.get('id'), edition.get('id'))) { %>
+							<a href="/debates/part/<%= part.get('id') %>" class="nav-item-part nav-item-part-<%= part.get('id') %>">
+								<li class="js-content-toc--open-toggle icon-chevron-right-after">
+									<%= part.get('label') %>
+								</li>
+							</a>
 						<% } %>
+					<% }); %>
+				</ul>
+			</section>
+		</li>
+		<li class="level-1">
+			<section class="pane--content pane--vertical-stage">
+				<div class="parts">
+					<% parts.each( function(part) { %>
+						<div class="part-wrapper">
+						<h2 class="js-content-toc--open-toggle pane-bottom--title icon-chevron-left"><%= part.get('label') %></h2>
+						<div class="part toc-part-<%= part.get('id') %>">
+							<% cols = 0; %>
+							<% _.each(texts.byPartEditionGrouped(edition.get('id'), part.get('id'), 5), function(textGroup) { %>
+								<% cols++ %>
+								<ul class="nav-index nav-index-col">
+									<% _.each(textGroup, function(text) { %>
+										<li class="nav-item-part nav-item-part-<%= text.get('id') %>" data-tab-close-trigger>
+											<% if(text.get('is_static') == true) { %>
+											<a class="" href="/static/debates/text/<%= text.get('id') %>">
+											<% } else { %>
+											<a class="" href="/debates/text/<%= text.get('id') %>">
+											<% } %>
+											<span class="title"><%= text.get('title') %></span>
+											<span class="author"><%= text.getAuthorsList() %></span>
+											</a>
+										</li>
+									<% }); %>
+								</ul>
+							<% }); %>
+							<% if(cols == 1) { %>
+								<ul class="nav-index nav-index-col"></ul>
+							<% } %>
+						</div>
 					</div>
-				</div>
-				<% }); %>
-			<div class="parts">
-		</section>
-	</li>
-</ul>
+					<% }); %>
+				<div class="parts">
+			</section>
+		</li>
+	</ul>
+<% }); %>

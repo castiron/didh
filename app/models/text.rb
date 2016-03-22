@@ -23,8 +23,8 @@ class Text < ActiveRecord::Base
 				:title => title,
 				:part => part_id,
 				:is_static => is_static,
-				:authors => authors
-
+				:authors => authors,
+				:edition_id => edition_id
 			}
 		else
 			{
