@@ -18,15 +18,14 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     @texts = @options.texts
     @router = @options.router
     @paneHeight = @.$el.height()
-    console.log()
     @parts.bind('change:active', @highlightActivePart, @)
     @texts.bind('change:active', @closeToc, @)
     @setupSubscriptions()
-    setTimeout((() ->
-      $('#backbone-tocView').find('.part-wrapper').each( ->
-        $(@).removeClass('active')
-      )), 500
-    )
+    unless @.$el.hasClass('open')
+      setTimeout((() ->
+        $('#backbone-tocView').find('.part-wrapper').each( ->
+          $(@).removeClass('active')
+        )), 500)
 
   normalizePaneHeight: () ->
     @.$el.find('.part-wrapper').each( (i, part) =>
@@ -49,6 +48,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     if activeText
       $activeTextPartEl = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .toc-part-' + activePart.get('id')).first()
       $activeTextPartEl.parent('.part-wrapper').addClass('active')
+      console.log($activeTextPartEl.parent('.part-wrapper'))
       $activeTextEl = $activeTextPartEl.find('.nav-item-part-' + activeText.get('id')).first()
       $activeTextEl.addClass('active')
 
@@ -70,13 +70,12 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     $('body').css('overflow', 'auto')
 
   toggleTocContents: () ->
-    @highlightActivePart()
     paneWidth = @$el.find('.level-0').first().width()
+    @$el.find('.part-wrapper').each( ->
+      $(@).removeClass('active')
+    )
     if @$el.hasClass('open')
       @$el.animate({left: 0})
-      @$el.find('.part-wrapper').each( ->
-        $(@).removeClass('active')
-      )
       @$el.removeClass('open')
     else
       @$el.addClass('open')
