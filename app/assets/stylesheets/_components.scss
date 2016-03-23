@@ -549,41 +549,26 @@
 // --------------------------
 .nav-hud {
 	@extend %smooth-resize;
-	// @extend %horizontal-bar-fixed;
- //  .touch & {
- //    position: absolute;
- //  }
-	// background-color: $white;
-	// // margin-left: 160px;
-	// top: 0;
-	// z-index: 20;
-	// @include respond-max(810px) {
-	// 	margin-left: 128px;
-	// }
-	// @include respond-max-height(700px) {
-	// 	margin-left: 128px;
-	// }
-  // display: none;
   margin-top: 3px;
   //one hud in the header
   .home-header & {
     position: absolute !important;
     z-index: 10 !important;
-    display: inline-block;
+    display: none;
     .nav-open & {
       display: none;
     }
   }
   //clone in the side-drawer
   .nav-content & {
-    display: none;
+    // display: none;
     position: absolute !important;
     z-index: 10;
     right: 0;
     padding: 8px 24px 8px 15px;
-    .nav-open & {
-      display: block;
-    }
+    // .nav-open & {
+    //   display: block;
+    // }
   }
 }
 
@@ -1272,6 +1257,7 @@ body.static-true span.sentence:hover {
 // Feedback options
 // --------------------------
 .feedback-options {
+  @include transition(0.8s visibility linear);
 	position: absolute;
   z-index: 10;
   right: 0;

@@ -48,7 +48,6 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     if activeText
       $activeTextPartEl = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .toc-part-' + activePart.get('id')).first()
       $activeTextPartEl.parent('.part-wrapper').addClass('active')
-      console.log($activeTextPartEl.parent('.part-wrapper'))
       $activeTextEl = $activeTextPartEl.find('.nav-item-part-' + activeText.get('id')).first()
       $activeTextEl.addClass('active')
 
