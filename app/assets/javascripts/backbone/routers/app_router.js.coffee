@@ -66,9 +66,10 @@ class Didh.Routers.AppRouter extends Backbone.Router
 
   setDefaultText: () ->
     edition = @editions.last()
-    part = _.first(@parts.where({label: "Introduction"}))
+    part = @parts.first()
     # text = _.first(@texts.where({part: part.id}))
     text = _.first(@texts.where({'part': part.id, 'edition_id': edition.id }))
+    @setActiveText(text.id)
 
   renderTextView: () ->
     @textView.render()

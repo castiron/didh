@@ -18,6 +18,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     @texts = @options.texts
     @router = @options.router
     @paneHeight = @.$el.height()
+    console.log()
     @parts.bind('change:active', @highlightActivePart, @)
     @texts.bind('change:active', @closeToc, @)
     @setupSubscriptions()
@@ -28,14 +29,13 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     )
 
   normalizePaneHeight: () ->
-    @.$el.find('.part').each( (i, part) =>
+    @.$el.find('.part-wrapper').each( (i, part) =>
       $(part).height(@.paneHeight)
     )
 
   highlightActivePart: () ->
     activePart = _.first(@parts.where({active: true}))
     activeText = _.first(@texts.where({active: true}))
-    console.log(@$el, activePart, activeText)
     @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .nav-item-part').each( ->
       $(@).removeClass('active')
     )
@@ -92,7 +92,11 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     @parts.setActivePart(part.id)
     @partsContainer = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .parts:first')
     target = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .toc-part-' + part.get('id'))
-    @partsContainer.animate({top: -1 * target.position().top})
+    twoLineBump = 0;
+    targetHeight = target.prev().height()
+    if targetHeight > 30 then twoLineBump = targetHeight - 22
+
+    @partsContainer.animate({top: (-1 * target.position().top) + twoLineBump})
 
   setOpenCloseHiddenPositions: () ->
     firstPaneWidth = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .level-0').first().width()

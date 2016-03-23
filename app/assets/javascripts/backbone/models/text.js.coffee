@@ -134,5 +134,4 @@ class Didh.Collections.TextsCollection extends Backbone.Collection
 
   partEditionChecker: (partId, editionId) ->
     if @where({'part': partId, 'edition_id': editionId }).length
-      console.log(@where({'part': partId, 'edition_id': editionId }).length)
       return true
