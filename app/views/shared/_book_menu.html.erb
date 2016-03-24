@@ -3,11 +3,19 @@
 		<li class="back-link">
 			<%= link_to 'Return to About', {controller: '/pages', action: 'about'}, class: 'icon-chevron-left' %>
 		</li>
-		<li class="<%= 'active' if @edition.id == '1' %>">
-			<%= link_to '2013 Edition', :controller => '/debates', :action => 'index' %>
+		<% if @edition.id == 1 %>
+			<li class="active">
+		<% else %>
+			<li>
+		<% end %>
+			<%= link_to '2012 Edition', {controller: '/pages', action: 'book', id: @editions[0].id} %>
 		</li>
-		<li class="<%= 'active' if @edition.id == '2' %>">
-			<%= link_to '2016 Edition', :controller => '/debates', :action => 'index' %>
+		<% if @edition.id == 2 %>
+			<li class="active">
+		<% else %>
+			<li>
+		<% end %>
+			<%= link_to '2016 Edition', {controller: '/pages', action: 'book', id: @editions[-1].id} %>
 		</li>
 	</ul>
 </header>

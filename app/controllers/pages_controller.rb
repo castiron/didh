@@ -18,6 +18,7 @@ class PagesController < ApplicationController
 
 	def book
 		# placeholder until there is a second edition in database?
+		@editions = Edition.all
 		@edition = Edition.find(params[:id])
 	end
 
