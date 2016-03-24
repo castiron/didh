@@ -34,44 +34,9 @@
 	</head>
 	<body class="interior page">
 		<% if params[:action] == 'book'%>
-			<header class="book-header">
-				<ul class="nav-interior">
-					<li class="back-link">
-						<%= link_to 'Return to About', {controller: '/pages', action: 'about'}, class: 'icon-chevron-left' %>
-					</li>
-					<li class="<%= 'active' if @edition.id == '1' %>">
-						<%= link_to '2013 Edition', :controller => '/debates', :action => 'index' %>
-					</li>
-					<li class="<%= 'active' if @edition.id == '2' %>">
-						<%= link_to '2016 Edition', :controller => '/debates', :action => 'index' %>
-					</li>
-				</ul>
-			</header>
-		<% elsif params[:action] == 'about' %>
-			<header class="about-header">
-			  <ul class="nav-interior">
-			    <li class="back-link">
-			      <a href="/">Debates in the Digital Humanities</a>
-			    </li>
-			    <li class="active">
-			      <%= link_to 'About', :controller => '/pages', :action => 'about' %>
-			    </li>
-			    <li>
-			      <%= link_to 'News', :controller => '/pages', :action => 'news' %>
-			    </li>
-			    <li>
-			      <%= link_to 'CFPs', :controller => '/pages', :action => 'cfps' %>
-			    </li>
-				<li class="column-six-fifths bold">Print Editions</li>
-			  </ul>
-			</header>
+			<%= render "shared/book_menu" %>
 		<% else %>
-			<header class="page-header">
-				<h1 class="interior-title"><a href="/">Debates in the Digital Humanities</a></h1>
-				<ul class="nav-interior">
-					<%= render "shared/menu" %>
-				</ul>
-			</header>
+			<%= render "shared/page_menu" %>
 		<% end %>
 
 		<% if params[:action] == 'book' or params[:action] == 'about'%>

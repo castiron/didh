@@ -1,0 +1,13 @@
+<header class="book-header">
+	<ul class="nav-interior">
+		<li class="back-link">
+			<%= link_to 'Return to About', {controller: '/pages', action: 'about'}, class: 'icon-chevron-left' %>
+		</li>
+		<li class="<%= 'active' if @edition.id == '1' %>">
+			<%= link_to '2013 Edition', :controller => '/debates', :action => 'index' %>
+		</li>
+		<li class="<%= 'active' if @edition.id == '2' %>">
+			<%= link_to '2016 Edition', :controller => '/debates', :action => 'index' %>
+		</li>
+	</ul>
+</header>

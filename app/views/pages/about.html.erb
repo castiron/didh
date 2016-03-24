@@ -4,13 +4,14 @@
     <h2 class="section-heading" id="whats-new">What's New</h2>
     <p>We are excited to announce a number of new features for the <em>Debates in the Digital Humanities</em> platform, among them commenting, user accounts, <a href="/apis#feeds">atom feeds</a>, and <a href="/apis">APIs</a>. Please read our announcement for more and stay tuned for new texts in August 2013!</p>
 
+    <%= render "shared/book_blurbs" %>
+
     <div>Editions</div>
     <ul class="indented-list">
       <li><a href="#2012-a">2012 Print Edition</a></li>
       <li><a href="#2013-a">2013 Open-Access Edition</a></li>
       <li><a href="#2013-b">2013 Expanded Open-Access Edition</a></li>
     </ul>
-
 
     <h3 class="section-heading caps" id="2012-a">2012 PRINT EDITION</h3>
     <p><em>Debates in the Digital Humanities</em>, an edited collection featuring contributions from over forty DH scholars and practitioners, straddles the line between print and digital publication. The first edition of the printed text, which was published by the University of Minnesota Press in January 2012, is composed predominately of essays but also incorporates a variety of web-based materials such as blog posts, tweets, and wiki pages. The printed book was, from the earliest stages of the publication process, intertwined with digital platforms: following the model of peer-to-peer review described by Kathleen Fitzpatrick in <em>Planned Obsolescence</em>, all essays in the book were part of a semi-public, web-based review process that mixed new forms of peer-to-peer review with more traditional models of publisher-based blind peer review. </p>
@@ -101,30 +102,5 @@
 
     <% end %>
   </section>
-  <section class="column-six-fifths padded gray-lighter">
-    <div class="bold mobile-only">Print Editions</div>
-    <div class="callout-wrapper">
-      <%= link_to image_tag("2016book3d-low.png", :class => "narrow-image"), {controller: '/pages', action: 'book', id: 2} %>
-      <p class="narrow-paragraph copy-delta">Pairing full-length scholarly essays with shorter pieces drawn from scholarly blogs and conference presentations, as well as commissioned interviews and position statements, Debates in the Digital Humanities 2016 reveals a dynamic view of a field in negotiation with its identity, methods, and reach.
-</p>      <div class="callout">
-        <ul class="details-list">
-          <li class="highlighted">
-            <%= link_to 'Read more and purchase', {controller: '/pages', action: 'book', id: 2} %>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout-wrapper">
-      <%= link_to image_tag("2012book3d-low.png", :class => "narrow-image"), {controller: '/pages', action: 'book', id: @editions[0].id} %>
-      
-      <p class="narrow-paragraph copy-delta">Debates in the Digital Humanities brings together leading figures in the field to explore its theories, methods, and practices and to clarify its multiple possibilities and tensions. Together, the essays suggest that the digital humanities is uniquely positioned to contribute to the revival of the humanities and academic life.</p>
-      <div class="callout">
-        <ul class="details-list">
-          <li class="highlighted">
-            <%= link_to 'Read more and purchase', {controller: '/pages', action: 'book', id: @editions[0].id} %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <%= render "shared/book_blurbs" %>
 </div>

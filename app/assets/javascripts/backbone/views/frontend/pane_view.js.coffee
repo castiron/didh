@@ -37,7 +37,6 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
       false
 
   toggleVisibility: (e) ->
-    # console.log(e.target)
     if e then e.stopPropagation()
     switch @currentPosition
       when 0 then @goToPosition 2
@@ -72,5 +71,4 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
 
       @currentPosition = position
       Backbone.Mediator.publish('pane:change', position);
-      console.log(@$el)
       $('#backbone-feedbackView.nav-pane.pane-top').animate({left: @positions[position]})

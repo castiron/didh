@@ -343,17 +343,19 @@
     vertical-align: middle;
   }
   @include respond-max(875px) {
-    .logo-didh {
-      display: block;
-    }
-    .nav-interior {
-      li:first-child {
-        padding-left: 8px;
+    .interior & {
+      .logo-didh {
+        display: block;
       }
-      li {
-        padding: 8px 0px 0px 8px;
-        &.nav-hud {
-          padding: 8px 12px 8px 8px;
+      .nav-interior {
+        li:first-child {
+          padding-left: 8px;
+        }
+        li {
+          padding: 8px 0px 0px 8px;
+          &.nav-hud {
+            padding: 8px 12px 8px 8px;
+          }
         }
       }
     }
@@ -425,16 +427,14 @@
 
 // Content wrapper for frontend_page layout
 .interior-content-page {
-	@extend %smooth-resize;
-	width: 1070px;
-	background-color: $white;
-  padding: ($space * 2) 80px ($space * 2) 240px;
-  @include respond-max(1070px) {
-    width: 100%;
+  padding: 60px 188px 0px 64px;
+  background-color: $black;
+  color: $white;
+  a {
+    color: $white;
   }
-  @include respond-max(776px) {
-    padding-right: 40px;
-    padding-left: 200px;
+  @include respond-max(885px) {
+    padding: 60px 7.49% 0px 7.49%;
   }
 }
 
@@ -756,6 +756,64 @@
 
 // Content components
 // --------------------------
+.book-blurbs {
+  .column-main & {
+    background-color: transparent !important;
+    .callout-wrapper {
+      width: 100%;
+      .narrow-image {
+        width: 50%;
+      }
+    }
+  }
+  @include respond-min(600px) {
+    display: none;
+    .column-main & {
+      display: inline-block;
+      padding: 25px 0 !important;
+      text-align: center;
+      .callout-wrapper {
+        display: inline-block;
+        width: 50%;
+        margin: 0 -1.1%;
+        padding: 0 6%;
+        vertical-align: top;
+        .narrow-paragraph {
+          text-align: left;
+        }
+      }
+    }
+  }
+  @include respond-min(885px) {
+    display: block;
+    .column-main & {
+      display: none;
+    }
+  }
+    // .column-main & {
+    //   display: inline-block;
+    //   padding: 25px 0 !important;
+    //   text-align: center;
+    //   background-color: transparent !important;
+    //   .callout-wrapper {
+    //     display: block;
+    //     .narrow-image, .narrow-paragraph {
+    //       display: inline-block;
+    //       vertical-align: middle;
+    //     }
+    //     .narrow-image {
+    //       width: 30%;
+    //     }
+    //     .narrow-paragraph {
+    //       width: 65%;
+    //     }
+    //     .callout {
+    //       display: block;
+    //     }
+    //   }
+    // }
+}
+
 .callout-wrapper + .callout-wrapper {
   margin-top: 14px;
 }
@@ -2331,15 +2389,21 @@ label {
 
 .post--dateline {
 	@extend %delta;
-	@extend %with-gray-dark;
+	// @extend %with-gray-dark;
 	display: block;
+  color: $white;
 	margin-bottom: 0.25em;
+  font-size: 1em;
+  font-weight: $bold;
 }
 
 .post--byline {
 	@extend %gamma;
-	@extend %with-gray-dark;
+	// @extend %with-gray-dark;
+  color: $white;
 	text-transform: uppercase;
+  font-size: 1em;
+  font-weight: $bold;
 }
 
 // Generic utilities
