@@ -46,6 +46,7 @@ class Didh.Views.Frontend.HudView extends Backbone.View
       $el.css({bottom: height * -1 - 15})
 
     @router.navigate 'text/' + @texts.getActiveTextId() + '/auth'
+    Backbone.Mediator.publish('toc:closeToc');
 
   requestScroll: () ->
     Backbone.Mediator.publish('text:request_scroll');

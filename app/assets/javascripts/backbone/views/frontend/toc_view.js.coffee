@@ -6,11 +6,17 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
 
   events:
     "click .js-content-toc--open-toggle"    : "toggleTocContents"
-    "editionSelect .nav-pane.edition"           : "toggleEdition"
-    # "click .js-content-nav--visible-toggle"   : "toggleVisibility"
-    # "click [data-tab-toggle]"   : "toggleVisibility"
+    "editionSelect .nav-pane.edition"       : "toggleEdition"
 
   initialize: () ->
+    Backbone.Mediator.subscribe('pane:change', () =>
+      @closeToc()
+    )
+
+    Backbone.Mediator.subscribe('toc:closeToc', () =>
+      @closeToc()
+    )
+
     @currentPosition = 1
     @editions = @options.editions
     @editions.setActiveEdition(2)
@@ -66,6 +72,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
   closeToc: () ->
     @highlightActivePart(@)
     @$el.parent('[data-tab-toggle]').removeClass('open')
+    $('[data-tab-toggle-trigger]').parent('.toc-tab-trigger').removeClass('open')
     $('body').css('overflow', 'auto')
 
   toggleTocContents: () ->
@@ -78,7 +85,8 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
       @$el.removeClass('open')
     else
       @$el.addClass('open')
-      @$el.animate({left: '-40%'})
+      # console.log @$el.width()
+      @$el.animate({left: -1 * paneWidth})
 
   initEditionTab: (editionId) ->
     $('[data-edition-toggle='+editionId+']').addClass('active')

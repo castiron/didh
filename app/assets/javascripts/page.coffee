@@ -22,7 +22,6 @@ $ ->
     $(@).parent('.comment-drawer--comment').addClass('active')
     event.preventDefault()
   )
-
 # for the TOC tab
   $body = $('body')
   $tocTab = $('[data-tab-toggle]');
@@ -44,6 +43,4 @@ $ ->
     $(@).addClass('active')
     editionSelector = '#toc-edition-'+$(@).data('editionToggle')
     $(editionSelector).trigger('editionSelect', [$(@).data('editionToggle')])
-    )
-
-
+  )

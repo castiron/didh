@@ -1,7 +1,7 @@
 <header class="home-header">
-	<%= image_tag("logo-didh-small.png", :class => "logo-didh") %>
+	<%= link_to image_tag("logo-didh-small.png", :class => "logo-didh"), {controller: '/pages', action: 'index'} %>
 	<ul class="nav-interior">
-		<li class="active bold">
+		<li class="active bold home-link">
 			<%= link_to 'Debates in the Digital Humanities', {controller: '/pages', action: 'index'}%>
 		</li>
 		<li class="toc-tab-trigger">

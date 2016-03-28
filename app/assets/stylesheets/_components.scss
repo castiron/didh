@@ -339,6 +339,11 @@
           color: $white;
         }
       }
+      &.home-link {
+        @include respond-max(600px) {
+          display: none;
+        }
+      }
     }
     li:first-child {
       padding-left: 0px;
@@ -350,15 +355,12 @@
   }
   @include respond-max(875px) {
     .interior & {
-      .logo-didh {
-        display: block;
-      }
       .nav-interior {
         li:first-child {
           padding-left: 8px;
         }
         li {
-          padding: 8px 0px 0px 8px;
+          padding: 8px 8px 4px 8px;
           &.nav-hud {
             padding: 8px 12px 8px 8px;
           }
@@ -429,6 +431,11 @@
 	padding-bottom	: ($space * 4);
 	position: relative;
 	z-index: 10;
+  @include respond-max(810px) {
+    width: 71.6%;
+    margin-left: 60px !important;
+    padding-right: 2em;
+  }
 }
 
 // Content wrapper for frontend_page layout
@@ -585,9 +592,12 @@
     z-index: 10;
     right: 0;
     padding: 8px 24px 8px 15px;
-    // .nav-open & {
-    //   display: block;
-    // }
+    @include respond-max(875px) {
+      display: none;
+      .nav-open & {
+        display: block;
+      }
+    }
   }
 }
 
@@ -1225,6 +1235,14 @@ body.static-true span.sentence:hover {
   }
 }
 
+//feedback sidebar
+.nav-pane.pane-top {
+    left: 266px;
+  .nav-open & {
+    left: 0;
+  }
+}
+
 // <li>
 // Lives inside nav-panes
 .pane--content {
@@ -1561,7 +1579,13 @@ body.static-true span.sentence:hover {
     text-align: center;
     color: $blue;
   }
+  @include respond-max(500px) {
+    width: 105px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
+
 .nav-item-part.active {
   visibility: visible;
   color: $black !important;
@@ -1569,6 +1593,15 @@ body.static-true span.sentence:hover {
     color: $black !important;
   }
 }
+
+// .nav-item-part .icon-chevron-right-after {
+//   &:after {
+//     @include respond-max(550px) {
+//       float: none !important;
+//     }
+//   }
+// }
+
 .nav-toc {
   position: relative;
   background-color: transparent;
@@ -1578,7 +1611,7 @@ body.static-true span.sentence:hover {
     top: 42px;
     left: 0px;
     right: inherit;
-    width: 100vw;
+    width: 200vw;
     height: 96vh;
     padding: 0px 34px 50px 100px;
     background-color: $blueDark;
@@ -1595,7 +1628,7 @@ body.static-true span.sentence:hover {
     .level-0, .level-1 {
       position: relative;
       display: inline-block;
-      width: 42%;
+      width: 500px;
       vertical-align: top;
       box-shadow: none;
       background-color: transparent;
@@ -1633,7 +1666,7 @@ body.static-true span.sentence:hover {
     }
     .level-0 {
       left: 0;
-      max-width: 470px;
+      // width: 500px;
       margin-left: 53px;
       .pane-bottom--title {
         font-size: 19px;
@@ -1659,10 +1692,16 @@ body.static-true span.sentence:hover {
           }
         }
       }
+      @include respond-max(500px) {
+        margin-left: 6px;
+        .pane--content {
+          padding: 0px 0px 0px 20px;
+        }
+      }
     }
     .level-1 {
       top: 4px;
-      max-width: 500px;
+      // width: 500px;
       border: none;
       overflow: hidden;
       .pane--content {
@@ -1689,9 +1728,38 @@ body.static-true span.sentence:hover {
         height: 102vh !important;
         overflow: hidden;
         overflow-y: scroll;
-        padding: 0px 0px 0px 60px;
+        padding: 0px 0px 0px 40px;
         border-top: 1px solid $white;
         border-top: 1px solid rgba(255,255,255, 0.46);
+      }
+
+    }
+    @include respond-max(680px) {
+      .level-0, .level-1 {
+        width: 323px;
+        li {
+          font-size: 16px;
+          font-weight: $regular;
+        }
+      }
+    }
+    @include respond-max(500px) {
+      .level-0, .level-1 {
+        width: 200px;
+        .pane-bottom--title {
+          font-size: 16px;
+          padding-left: 20px;
+        }
+        .part {
+          padding: 0px 0px 0px 20px;
+        }
+        li {
+          font-size: 16px;
+          font-weight: $regular;
+        }
+      }
+      .level-1 {
+        left: 10px;
       }
     }
     .nav-index {
@@ -1792,6 +1860,13 @@ parts {
 			left: $navClosedWidth - $width;
 		}
 	}
+  @include respond-max(1000px) {
+    $width: 320px;
+    width: $width;
+    &.open {
+      left: $navClosedWidth - $width;
+    }
+  }
 }
 
 .comment-drawer--scroll {
@@ -1827,6 +1902,9 @@ parts {
 	right: 40px;
 	bottom: 0;
 	left: 40px;
+  @include respond-max(1000px) {
+    padding: 26px 14px;
+  }
 }
 
 .comment-drawer--heading {
@@ -2078,15 +2156,16 @@ parts {
 	display: block;
 	width: 5px;
 	height: 10px;
-	background: $blueDark;
-	position: absolute;
-	left: -100px;
-	overflow: visible;
-	@include respond-max(1360px) {
-		left: -80px;
-	}
-	@include respond-max(810px) {
-		left: -45px;
+  background: $blueDark;
+  position: absolute;
+  left: -100px;
+  overflow: visible;
+  @include respond-max(1360px) {
+    left: -80px;
+  }
+  @include respond-max(810px) {
+    left: -45px;
+    max-height: 200px;
 	}
 }
 

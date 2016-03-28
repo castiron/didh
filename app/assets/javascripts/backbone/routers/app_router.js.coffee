@@ -25,7 +25,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
   setupViews: (options) ->
     @banner= new Didh.Views.Frontend.BannerView(el: $("#backbone-bannerView"))
     @annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), keywords: @keywords, router: @, annotations: @annotations, parts: @parts, texts: @texts)
-    @hudView = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView"), texts: @texts, router: @ )
+    # @hudView = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView"), texts: @texts, router: @ )
     @hudViewSidebar = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView-sidebar"), texts: @texts, router: @ )
     @tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), editions: @editions, parts: @parts, texts: @texts, router: @ )
     @feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), texts: @texts, isStatic: @isStatic)
@@ -84,12 +84,12 @@ class Didh.Routers.AppRouter extends Backbone.Router
 
   showTextAndAuth: (textId) ->
     @showText(textId)
-    @hudView.showAuthentication()
+    # @hudView.showAuthentication()
     @hudViewSidebar.showAuthentication()
 
   showText: (textId) ->
     if @static == true then window.location.reload()
-    @tocView.goToPosition(1)
+    # @tocView.goToPosition(1)
     @feedbackView.goToPosition(1)
     @setActiveText(textId)
 
