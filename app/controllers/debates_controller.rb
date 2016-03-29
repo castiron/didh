@@ -4,7 +4,13 @@ class DebatesController < ApplicationController
 
 	def index
 		@static = false
+		@toc = params[:data]
+		@toc = false
+		if params[:data] == 'toc-open'
+			@toc = true
+		end
 		@editions = Edition.all
+		@editionId = params[:id]
 		@text = Text::find(1)
 		@texts = Text.order('sorting ASC').all
 		@parts = Part.all

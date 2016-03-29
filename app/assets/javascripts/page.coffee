@@ -22,6 +22,7 @@ $ ->
     $(@).parent('.comment-drawer--comment').addClass('active')
     event.preventDefault()
   )
+  
 # for the TOC tab
   $body = $('body')
   $tocTab = $('[data-tab-toggle]');

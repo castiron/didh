@@ -60,6 +60,9 @@
 	@include respond-max(1120px) {
 		margin-left: 30%;
 	}
+  @include respond-max(768px) {
+    margin-left: 0;
+  }
 }
 
 .home-title,
@@ -82,9 +85,12 @@
   @include respond-max(1280px) {
     width: 40%;
   }
-	@include respond-max(1120px) {
-		width: 30%;
+  @include respond-max(1120px) {
+    width: 30%;
     background-position: 0px 60%;
+  }
+	@include respond-max(768px) {
+    display: none;
 	}
   @include respond-max-height(650px) {
     background-size: auto 100%;
@@ -108,6 +114,12 @@
 		font-size: 0.9em;
 		padding-right: 10px;
 	}
+  @include respond-max(768px) {
+    bottom: 15%;
+    width: auto;
+    padding-right: 0;
+    margin-right: calc(4% - 9px);
+  }
 	@include respond-max(740px) {
 		font-size: 0.88em;
 		padding-bottom: 0;
@@ -117,7 +129,7 @@
 		position: relative;
 	}
 	@include respond-max-height(650px) {
-		padding-top: $space;
+		padding-top: $space * 2;
 		position: relative;
 	}
 }
@@ -819,36 +831,8 @@
       display: none;
     }
   }
-    // .column-main & {
-    //   display: inline-block;
-    //   padding: 25px 0 !important;
-    //   text-align: center;
-    //   background-color: transparent !important;
-    //   .callout-wrapper {
-    //     display: block;
-    //     .narrow-image, .narrow-paragraph {
-    //       display: inline-block;
-    //       vertical-align: middle;
-    //     }
-    //     .narrow-image {
-    //       width: 30%;
-    //     }
-    //     .narrow-paragraph {
-    //       width: 65%;
-    //     }
-    //     .callout {
-    //       display: block;
-    //     }
-    //   }
-    // }
 }
-// .callout-wrapper {
-//   @include respond-max(885px) {
-//     &.column-fifth {
-//       display: none;
-//     }
-//   }
-// }
+
 .callout-wrapper + .callout-wrapper {
   margin-top: 14px;
 }
@@ -860,6 +844,7 @@
       padding: 15px 18px;
       &.highlighted {
         background-color: $blueDark;
+        border: 1px solid $blueDark;
         a {
           color: $white;
           font-weight: $regular;

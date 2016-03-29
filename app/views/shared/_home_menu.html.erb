@@ -8,14 +8,12 @@
 			<% if params[:controller] == 'debates' %>
 				<a href="#" data-tab-toggle-trigger>Contents</a>
 			<% else %>
-				<a href="/debates" data-tab-toggle-trigger>Contents</a>
+				<%= link_to 'Contents', {controller: '/debates', action: 'index', data: 'toc-open'}%>
 			<% end %>
 		</li>
 		<li class="">
 			<%= link_to 'About the Series', :controller => '/pages', :action => 'about' %>
 		</li>
-<!-- 		<% if params[:controller] == 'debates' %>
-			<li id="backbone-hudView" class="nav-hud nav-pane pane-bottom reveal-level-0"></li>
-		<% end %> -->
 	</ul>
+	<%= params[:data] %>
 </header>

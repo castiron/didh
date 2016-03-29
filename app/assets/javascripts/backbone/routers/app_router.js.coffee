@@ -27,11 +27,12 @@ class Didh.Routers.AppRouter extends Backbone.Router
     @annotator = new Didh.Views.Frontend.AnnotatorView(el: $("#backbone-annotatorView"), keywords: @keywords, router: @, annotations: @annotations, parts: @parts, texts: @texts)
     # @hudView = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView"), texts: @texts, router: @ )
     @hudViewSidebar = new Didh.Views.Frontend.HudView(el: $("#backbone-hudView-sidebar"), texts: @texts, router: @ )
-    @tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), editions: @editions, parts: @parts, texts: @texts, router: @ )
+    @tocView = new Didh.Views.Frontend.TocView(el: $("#backbone-tocView"), toc: options.toc, editions: @editions, parts: @parts, texts: @texts, router: @ )
     @feedbackView = new Didh.Views.Frontend.FeedbackView(el: $("#backbone-feedbackView"), texts: @texts, isStatic: @isStatic)
     @commentsView = new Didh.Views.Frontend.CommentsView(el: $('#backbone-commentsView'), texts: @texts, router: @)
 
   setupCollections: (options) ->
+    @editionId = options.editionId
     @editions = new Didh.Collections.EditionsCollection()
     @editions.reset options.editions
     @parts = new Didh.Collections.PartsCollection()
@@ -65,10 +66,13 @@ class Didh.Routers.AppRouter extends Backbone.Router
         return false
 
   setDefaultText: () ->
-    edition = @editions.last()
-    part = @parts.first()
+    edition = @editions.last().id
+    if @editionId then edition = @editionId
+    # part = @parts.first()
     # text = _.first(@texts.where({part: part.id}))
-    text = _.first(@texts.where({'part': part.id, 'edition_id': edition.id }))
+    text = _.first(@texts.where({'edition_id': edition }))
+    @editions.setActiveEdition(edition)
+    @tocView.initEditionTab(edition)
     @setActiveText(text.id)
 
   renderTextView: () ->

@@ -16,7 +16,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     Backbone.Mediator.subscribe('toc:closeToc', () =>
       @closeToc()
     )
-
+    @tocInitOpen = @options.toc
     @currentPosition = 1
     @editions = @options.editions
     @editions.setActiveEdition(2)
@@ -27,6 +27,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     @parts.bind('change:active', @highlightActivePart, @)
     @texts.bind('change:active', @closeToc, @)
     @setupSubscriptions()
+      
     unless @.$el.hasClass('open')
       setTimeout((() ->
         $('#backbone-tocView').find('.part-wrapper').each( ->
@@ -69,6 +70,12 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
       $editionTab.siblings().removeClass('active')
       $editionTab.addClass('active')
 
+  openToc: () ->
+    @highlightActivePart(@)
+    @$el.parent('[data-tab-toggle]').addClass('open')
+    $('[data-tab-toggle-trigger]').parent('.toc-tab-trigger').addClass('open')
+    $('body').css('overflow', 'hidden')
+
   closeToc: () ->
     @highlightActivePart(@)
     @$el.parent('[data-tab-toggle]').removeClass('open')
@@ -85,7 +92,6 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
       @$el.removeClass('open')
     else
       @$el.addClass('open')
-      # console.log @$el.width()
       @$el.animate({left: -1 * paneWidth})
 
   initEditionTab: (editionId) ->
@@ -117,7 +123,10 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
   render: =>
     $(@el).html(@template(editions: @editions, parts: @parts, texts: @texts, activeText: @router.getRequestedText()))
     @setOpenCloseHiddenPositions()
-    @initEditionTab(@editions.getActiveEditionId())
-    # @toggleTocContents();
-    # @normalizePaneHeight()
+    if @tocInitOpen
+      setTimeout((() ->
+       $('[data-tab-toggle]').addClass('open')
+       $('[data-tab-toggle-trigger]').parent('.toc-tab-trigger').addClass('open')
+       $('body').css('overflow', 'hidden')
+      ), 500)
 

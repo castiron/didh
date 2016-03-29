@@ -14,6 +14,7 @@ class PagesController < ApplicationController
 	end
 
 	def index
+		@editions = Edition.all
 	end
 
 	def book

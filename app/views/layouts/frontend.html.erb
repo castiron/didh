@@ -46,7 +46,7 @@
         <% else %>
         window.currentUser = null
         <% end %>
-		    window.router = new Didh.Routers.AppRouter({static: <%= @static %>, editions: <%= @editions.to_json.html_safe -%>, parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
+		    window.router = new Didh.Routers.AppRouter({static: <%= @static %>, toc: <%= @toc %>, editions: <%= @editions.to_json.html_safe -%>, editionId: <%= @editionId %>, parts: <%= @parts.to_json.html_safe -%>, texts: <%= @texts.to_json({bootstrap: true}).html_safe -%>});
 	  	    Backbone.history.start({pushState: true, root: "/debates/"})
 		  });
 		</script>
@@ -57,6 +57,7 @@
 		<div class="light">
 			<%= render "shared/home_menu" %>
 		</div>
+		<%= params[:data] %>
 		<div class="toc-container" data-tab-toggle>
 			<ul class="toc-editions">
 				<li>
