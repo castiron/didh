@@ -39,15 +39,15 @@
 			<%= render "shared/page_menu" %>
 		<% end %>
 
-		<% if params[:action] == 'book' or params[:action] == 'about'%>
+		<% if params[:action] == 'book' %>
+			<section class="interior-content-bare js-content">
+		<% elsif params[:action] == 'about' or ( params[:controller] == 'pages' and params[:action] == 'sendMessage' ) %>
 			<section class="interior-content-bare js-content gray-lighter">
-				<%= yield %>
-			</section>
 		<% else %>
 			<section class="interior-content-page js-content">
+		<% end %>
 				<%= yield %>
 			</section>
-		<% end %>
 		<nav class="nav-content">
 		</nav>
 

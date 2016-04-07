@@ -24,11 +24,12 @@ class PagesController < ApplicationController
 	end
 
 	def about
-		@message = Message.new
 		@editions = Edition.all
+		@message = Message.new
 	end
 
 	def sendMessage
+		@editions = Edition.all
 		@message = Message.new(params[:message])
 
 		if @message.valid?

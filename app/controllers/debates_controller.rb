@@ -11,6 +11,9 @@ class DebatesController < ApplicationController
 		end
 		@editions = Edition.all
 		@editionId = params[:id]
+		if !@editionId 
+			@editionId = @editions.last.id
+		end
 		@text = Text::find(1)
 		@texts = Text.order('sorting ASC').all
 		@parts = Part.all

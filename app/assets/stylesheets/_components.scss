@@ -707,10 +707,9 @@
 	// This !important overrides the default %floated list styles
 	float: right !important;
 	position: relative;
-	// strong {
-	// 	font-weight: $thin;
-	// 	color: $black;
-	// }
+  &:hover {
+    text-decoration: underline;
+  }
 	@include respond-max(810px) {
 		em {
 			display: none;
@@ -729,7 +728,7 @@
 	right: $navClosedWidth;
   left: -63px;
 	z-index: -1;
-  height: 244px;
+  height: 259px;
 	.nav-open & {
 		right: $navOpenWidth;
 	}
@@ -749,7 +748,7 @@
 	form {
 		@extend %clearfix;
     a {
-      color: $black !important;
+      color: $black;
     }
 		.right,
 		.left {
@@ -841,7 +840,21 @@
   .details-list {
     li {
       text-align: center;
-      padding: 15px 18px;
+      max-width: 300px;
+      margin: 0 auto;
+      a {
+        @include transition(0.05s color ease-out);
+        display: block;
+        padding: 15px 18px;
+        color: $blueDark;
+        font-weight: $regular;
+        text-decoration: none;
+      }
+      &:hover {
+        a {
+          text-decoration: underline;
+        }
+      }
       &.highlighted {
         background-color: $blueDark;
         border: 1px solid $blueDark;
@@ -855,17 +868,6 @@
           a {
             color: $blueDark;
           }
-        }
-      }
-      a {
-        @include transition(0.05s color ease-out);
-        color: $blueDark;
-        font-weight: $regular;
-        text-decoration: none;
-      }
-      &:hover {
-        a {
-          text-decoration: underline;
         }
       }
     }
@@ -2131,6 +2133,11 @@ parts {
 
 .annotator--button {
 	@extend %button-input;
+  &:hover {
+    background-color: $blueDark;
+    border-color: $blueDark;
+    color: $white;
+  }
 }
 
 // Annotation flag
@@ -2227,6 +2234,10 @@ body.page form,
     .field--button {
       color: $white;
       border-color: $white;
+      &:hover {
+        background-color: $blueDark;
+        border-color: $blueDark;
+      }
     }
   }
   padding: 1em 1em 1em 1em;
