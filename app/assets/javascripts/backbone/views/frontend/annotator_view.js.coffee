@@ -43,9 +43,7 @@ class Didh.Views.Frontend.AnnotatorView extends Backbone.View
     minWindowWidth = 1063
     windowWidth = $(window).width()
     windowOffsetX = 0
-    console.log()
     if windowWidth < minWindowWidth then windowOffsetX = minWindowWidth - windowWidth
-    console.log windowOffsetX
     if clickX - 43 - windowOffsetX < 0
       windowOffsetX = 43
     else

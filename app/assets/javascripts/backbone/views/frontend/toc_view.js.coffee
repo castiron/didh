@@ -50,11 +50,9 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     )
 
     if activePart
-      console.log('active Part!', activePart)
       $activePartEl = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .nav-item-part-' + activePart.get('id')).first()
       $activePartEl.addClass('active')
     if activeText
-      console.log('active Text!', activeText)
       $activeTextPartEl = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .toc-part-' + activePart.get('id')).first()
       $activeTextPartEl.parent('.part-wrapper').addClass('active')
       $activeTextEl = $activeTextPartEl.find('.nav-item-part-' + activeText.get('id')).first()
@@ -104,7 +102,6 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     $editionTab.addClass('active')
 
   showPart: (part) ->
-    console.log('showing the part!', part)
     @parts.setActivePart(part.id)
     @partsContainer = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .parts:first')
     target = @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .toc-part-' + part.get('id'))
