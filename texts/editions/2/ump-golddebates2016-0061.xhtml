@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Debates in the Digital Humanities 2016</title>
+    <link rel="stylesheet" type="text/css" href="ump6.css"/>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8"/>
+  </head>
+  <body>
+    <div id="ch49" class="chapter">
+      <h1 class="cn"><a id="p556" class="page"></a><a class="xref" href="ump-golddebates2016-0005.xhtml#toc">49</a></h1>
+      <h1 class="ct"><a class="page"></a>Messy Data and Faulty Tools</h1>
+      <p class="au">Joanna Swafford</p>
+      <p class="pf"><span class="dropcap">W</span>ith our newfound access to unprecedented levels of data, we can ask questions we could not have dreamed of twenty years ago and better answer questions that would previously have taken scholars a lifetime to address: by examining thousands or millions of texts, we can learn about the Great Unread (Cohen, 23), look for changes in periodicals through topic modeling (Nelson), and examine changes in poetic meter over the centuries (Algee-Hewitt et al.). However, unless we focus more on creating quality-control systems for our work, we run the risk of drawing erroneous conclusions based on messy data and faulty tools.</p>
+      <p>Humanities scholars are used to knowing the details about their data: in literature, for example, we work with poems, essays, plays, and periodicals as well as publishing records, census data, and other number-driven documents. We often gather the information ourselves, so we usually know the origin and quality of our materials. This is not always true for large-scale text analysis projects: HathiTrust, Project Gutenberg, and the Internet Archive have a plethora of works in plain-text format, but the quality of the optical character recognition (OCR) can be unreliable.<a id="en571r" class="enref" href="ump-golddebates2016-0061.xhtml#en571">1</a> No individual scholar can read and proofread each text, so the texts we use will have errors, from small typos to missing chapters, which may cause problems in the aggregate.<a id="en572r" class="enref" href="ump-golddebates2016-0061.xhtml#en572">2</a> Ideally, to address this issue, scholars could create a large, collaboratively edited collection of plain-text versions of literary works that would be open access. <a href="http://www.textcreationpartnership.org/tcp-ecco" class="url">The Eighteenth-Century Collections Online Text Creation Partnership</a>,<a id="en573r" class="enref" href="ump-golddebates2016-0061.xhtml#en573">3</a> the <a href="http://emop.tamu.edu" class="url">Early Modern OCR Project</a>,<a id="en574r" class="enref" href="ump-golddebates2016-0061.xhtml#en574">4</a> and <a href="http://corpus.byu.edu/coha" class="url">the Corpus of Historical American English</a><a id="en575r" class="enref" href="ump-golddebates2016-0061.xhtml#en575">5</a> have helpfully created repositories of texts, through both manual entry and automated OCR correction, but they still represent a comparatively small portion of all texts online.</p>
+      <p>In addition to clean data, we also need robust, well-tested tools. Traditional scholarship relies on peer review as a means of quality control, and groups like the <a href="http://idhmc.tamu.edu/arcgrant/nodes" class="url">Advanced Research Consortium</a><a id="en576r" class="enref" href="ump-golddebates2016-0061.xhtml#en576">6</a> do peer-review digital archives. Unfortunately, digital humanities does not currently have a system for peer-reviewing tools. Although digital humanities scholars occasionally post their code online, members <a id="p557" class="page"></a>of our field are still learning to embrace the open-source philosophy of reviewing each other’s code and making suggestions for improvement.<a id="en577r" class="enref" href="ump-golddebates2016-0061.xhtml#en577">7</a> As a result, scholars either consult the <a href="http://dirtdirectory.org" class="url">DiRT directory</a><a id="en578r" class="enref" href="ump-golddebates2016-0061.xhtml#en578">8</a> or informally recommend tools on Twitter.<a id="en579r" class="enref" href="ump-golddebates2016-0061.xhtml#en579">9</a> As useful as these systems are, they do not have the rigor that peer review should provide. Certainly a peer-review system for tools presents serious challenges: we may not have enough scholars with programming expertise in the field that the tool supports to comprise a peer-review board; the variety of programming languages and documentation styles people use may also present a problem; and we lack a model for peer-reviewing projects that change. Nevertheless, we need to address these challenges if our data and tools are to meet the quality standards necessary to ensure the continued strength of digital humanities research.<a id="en580r" class="enref" href="ump-golddebates2016-0061.xhtml#en580">10</a></p>
+      <p>The software package Syuzhet demonstrates this necessity. Syuzhet uses sentiment analysis to graph the emotional trajectory of novels. It was released on GitHub to instant acclaim, both in digital humanities circles and the popular press (Clancy). Unfortunately, the package incorporated an overly simplified version of sentiment analysis and a poorly chosen signal processing filter; the latter problem in particular led to distortions that, in extreme cases, could actually invert the results such that the tool reported emotional highs at the novel’s emotional lows (Swafford). These errors initially escaped the notice of those doing a more informal peer-review process over Twitter, as they accepted the maker’s claims without interrogating the tool’s methodology or code, and the errors were only acknowledged after a drawn-out blog exchange, the public nature of which encouraged the tool’s supporters to double-down on their claims. If the tool had been peer-reviewed by experts in the field of sentiment analysis, signal processing, and English literature, it would have been altered at an earlier stage, producing a more reliable tool and, ultimately, better scholarship.</p>
+      <p>In the interim, we can make our tools for large-scale text analysis more accurate by collaborating with programmers and experts in other fields. For example, when using sentiment analysis, we could work with specialists in natural language processing and in marketing to create a human-annotated corpora of texts, from which we could estimate how an “average” reader evaluates documents and measure how well their algorithms approximate that “average” reader to make sure our tools work. Ultimately, then, while conceptions of words and analytical goals may differ between programmers, humanists, and marketing executives, our scholarship would benefit from a closer partnership.</p>
+      <h3 id="bh4901" class="bh">Notes</h3>
+      <div class="notes">
+        <div class="endnote">
+          <p class="en"><a id="en571" class="ennum" href="ump-golddebates2016-0061.xhtml#en571r">1</a>. For information on the challenges of using OCR to study nineteenth-century newspapers, see Strange et al.</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="en572" class="ennum" href="ump-golddebates2016-0061.xhtml#en572r">2</a>. <a class="url" href="http://www.Tesseract">Tesseract</a> is the most prominent open-source OCR option, and Ted Underwood has written some <a href="https://github.com/tedunderwood/DataMunging" class="url">enhancements</a> to improve OCR quality of eighteenth-century texts in HathiTrust, but both of these projects, by their own admission, still require human corrections.</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="p558" class="page"></a><a id="en573" class="ennum" href="ump-golddebates2016-0061.xhtml#en573r">3</a>. <a class="url" href="http://www.textcreationpartnership.org/tcp-ecco">http://www.textcreationpartnership.org/tcp-ecco</a>.</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="en574" class="ennum" href="ump-golddebates2016-0061.xhtml#en574r">4</a>. <a class="url" href="http://emop.tamu.edu">http://emop.tamu.edu</a>.</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="en575" class="ennum" href="ump-golddebates2016-0061.xhtml#en575r">5</a>. <a class="url" href="http://corpus.byu.edu/coha">http://corpus.byu.edu/coha</a>.</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="en576" class="ennum" href="ump-golddebates2016-0061.xhtml#en576r">6</a>. <a class="url" href="http://idhmc.tamu.edu/arcgrant/nodes">http://idhmc.tamu.edu/arcgrant/nodes</a>.</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="en577" class="ennum" href="ump-golddebates2016-0061.xhtml#en577r">7</a>. According to Peter Rigby, peer-reviewing open-source software “involves . . . early, frequent reviews . . . of small, independent, complete contributions . . . that are broadcast to a large group of stakeholders, but only reviewed by a small set of self-selected experts” (26).</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="en578" class="ennum" href="ump-golddebates2016-0061.xhtml#en578r">8</a>. <a class="url" href="http://dirtdirectory.org">http://dirtdirectory.org</a>.</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="en579" class="ennum" href="ump-golddebates2016-0061.xhtml#en579r">9</a>. The <i>Journal of Digital Humanities</i> has a handful of tool reviews, but these reviews, although helpful, do not actually address the code itself.</p>
+        </div>
+        <div class="endnote">
+          <p class="en"><a id="en580" class="ennum" href="ump-golddebates2016-0061.xhtml#en580r">10</a>. As an added bonus, having a tool peer-reviewed would help programmer-scholars count their project as scholarship rather than service for tenure and promotion.</p>
+        </div>
+      </div>
+      <h3 id="bh4902" class="bh">Bibliography</h3>
+      <div class="references">
+        <p class="rf">Algee-Hewitt, Mark, Ryan Heuser, Maria Kraxenberger, J. D. Porter, Jonny Sensenbaugh, and Justin Tackett. “The Stanford Literary Lab Transhistorical Poetry Project Phase II: Metrical Form.” Paper prepared for the Digital Humanities Conference, Lausanne, Switzerland, July 11, 2014. <a class="url" href="http://dharchive.org/paper/DH2014/Paper-788.xml">http://dharchive.org/paper/DH2014/Paper-788.xml</a>.</p>
+        <p class="rf">Clancy, Eileen. “A Fabula of Syuzhet: A Contretemps of Digital Humanities (with Tweets).” <i>Storify.</i> Accessed July 17, 2015. <a class="url" href="https://storify.com/clancynewyork/contretemps-a-syuzhet">https://storify.com/clancynewyork/contretemps-a-syuzhet</a>.</p>
+        <p class="rf">Cohen, Margaret. <i>The Sentimental Education of the Novel.</i> Princeton, N.J.: Princeton University Press. 1999.</p>
+        <p class="rf">Nelson, Robert K. “Mining the Dispatch.” Digital Scholarship Lab, University of Richmond. Accessed April 30, 2015. <a class="url" href="http://dsl.richmond.edu/dispatch/">http://dsl.richmond.edu/dispatch/</a>.</p>
+        <p class="rf">Rigby, Peter. “Peer Review on Open-Source Software Projects: Parameters, Statistical Models, and Theory.” <i>ACM Transactions on Software Engineering and Methodology</i> 23, no. 4 (August 2014): 1–33.</p>
+        <p class="rf">Strange, Carolyn, Daniel McNamara, Josh Wodak, and Ian Wood. “Mining for the Meanings of a Murder: The Impact of OCR Quality on the Use of Digitized Historical Newspapers.” <i>Digital Humanities Quarterly</i> 8, no.1 (2014). <a class="url" href="http://www.digitalhumanities.org/dhq/vol/8/1/000168/000168.html">http://www.digitalhumanities.org/dhq/vol/8/1/000168/000168.html</a>.</p>
+        <p class="rf">Swafford, Joanna. “Problems with the Syuzhet Package.” <i>Anglophile in Academia: Annie Swafford’s Blog,</i> March 2, 2015. <a class="url" href="https://annieswafford.wordpress.com/2015/03/02/syuzhet/">https://annieswafford.wordpress.com/2015/03/02/syuzhet/</a>.</p>
+      </div>
+    </div>
+  </body>
+</html>

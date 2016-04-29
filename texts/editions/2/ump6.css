@@ -1,0 +1,937 @@
+/*HTML Classes*/
+a {color: #23a3eb; text-decoration:none;}
+body {font-size: medium; margin-top: 1em; margin-left: 1em; margin-right: 1em;}
+code {}
+del {}
+img {text-align:center; text-indent:0; max-height: 85%;}
+p {text-indent: 1em; text-align:justify; margin-top: 0; line-height: 145%; margin-bottom: 0}
+li { }
+ol {margin-top: 1em; margin-bottom: 1em;}
+ul {margin-top: 1em; margin-bottom: 1em;}
+sub {font-size: x-small;}
+sup {font-size: x-small; vertical-align: baseline; position: relative; bottom: 0.3em;}
+table {width:100%; margin-top: 1.25em; margin-bottom: 1.25em;}
+td {}
+
+/*Amazon Media Queries*/
+@media amzn-kf8
+{
+body {margin-left: 0; margin-right: 0;}
+}
+
+@media amzn-mobi
+{
+body {margin-left: 0; margin-right: 0;}
+}
+
+/*Structure Elements*/
+.blockquote {margin-top: 1.5em; margin-bottom: 1.5em; margin-right: 2em; margin-left:2em;}
+.box {border-width: 2px; border-color: black; border-style: solid; margin-top: 1.5em; margin-bottom: 1.5em; margin-left: 2em; margin-right: 2em; padding: 1%;}
+.chap {}
+.codeline {margin-top: 1.5em; margin-bottom: 1.5em; margin-right: 2em; margin-left:2em;}
+.cover {margin-top:-.75em; margin-bottom:0;}
+.dialogue {margin-top: 1.5em; margin-bottom: 1.5em; margin-right: 1.5em; margin-left:1.5em;}
+.endnote {}
+.epigraph {margin-top: 2em; margin-bottom: 2em; margin-left: 3em; margin-right: 3em; border-top-color: gray; border-top-style: solid; border-top-width: 1px; border-bottom-color: gray; border-bottom-style: solid; border-bottom-width: 1px;}
+.equation {margin-top: 1.5em; margin-bottom: 1.5em; margin-right: 2em; margin-left:2em;}
+.exercise { margin-top: 1.25em; margin-bottom: 1.25em;}
+.figure {margin-top:1.5em; margin-left: 1em; margin-right: 1em; text-align:center; margin-bottom:1.25em; text-indent: 0;}
+.footnote {}
+.glossary {margin-left:2em;}
+.hanging {margin-left: 2em;}
+.index {margin-left: 2em;}
+.letter {padding-right:2em; padding-left:2em; margin-top: 1.5em; margin-bottom: 1.5em;}
+.list {margin-right: 2.5em; margin-left:2.5em; margin-top: 1.5em; margin-bottom: 1.5em;}
+.notes {}
+.plate {page-break-before: always; margin-top:3.5em; margin-left: 1em; margin-right: 1em; text-align:center; margin-bottom:1.25em; text-indent: 0;}
+.pub {}
+.pullquote {margin-top: 1.5em; margin-bottom: 1.5em; margin-right: 2em; margin-left:2em;}
+.question  {margin-bottom:1.5em; margin-top:1.5em;}
+.recipe {margin-right: 2.5em; margin-left:2.5em; margin-top: 2em; margin-bottom: 2em;}
+.references {}
+.senseline {margin-top: 1.5em; margin-bottom: 1.5em; margin-left: 2em; margin-right: 2em;}
+.sidebar {margin-top: 1.5em; margin-bottom: 1.5em; margin-left: 2em; margin-right: 2em;}
+.table {margin-top: 1em; margin-bottom: 1em;}
+.vol {}
+.written {margin-bottom:1.25em; margin-top:1.25em; margin-left: 2em; margin-right: 2em;}
+
+/*Book*/
+.bk {margin-top:3em; text-align:center; font-size:xx-large; text-indent: 0; font-weight: normal;}
+.bk-alt {text-align:center; font-size:small; margin-top:.5em; font-weight:bold; text-indent: 0;}
+.bk1 {text-align:center; font-size:large; margin-bottom:1em; text-indent: 0;}
+.bk2 {text-align:center; font-size:medium; margin-top:.5em; margin-bottom:.5em; font-weight: bold; text-indent: 0;}
+.bkau {text-align:center; font-size:large; font-weight:bold; margin-top:5em; margin-bottom:5em; text-indent: 0;}
+.bkau1 {text-align:center; font-size:small; margin-bottom:3%; font-weight:normal; text-indent: 0;}
+.bkht {margin-top:1em; text-align:center; font-size:x-large; font-weight:normal; text-indent: 0;}
+.bkpub {text-align:center; font-style:italic; font-size:medium; margin-bottom: 0; margin-top: 1em; text-indent: 0;}
+.bkpub1 {text-align:center; font-style:italic; font-size:small; margin-top:0; margin-bottom: 0; text-indent: 0;}
+.bksect {}
+.cip {font-size:x-small; text-align:left; text-indent: 0; margin-bottom:0; margin-top:0;}
+.cip1 {font-size:x-small; text-align:left; margin-top:0; margin-bottom:0; margin-left:2em;}
+.cip2 {font-size:x-small; margin-left:3em; text-align:left; margin-bottom:0; margin-top:0; text-indent: 0;}
+.cipf {font-size:x-small; text-align:left; text-indent: 0; margin-bottom:0; margin-top:1.5em;}
+.cipf1 {font-size:x-small; text-align:left; margin-bottom:0; margin-left:2em; margin-top:1.5em;} 
+.cipl {font-size:x-small; text-align:left; text-indent: 0; margin-bottom:0; margin-top:0;}
+.crt {font-size:x-small; text-align:left; text-indent: 0; margin-bottom:0; margin-top:0;}
+.crt1 {font-size:x-small; text-align:left; margin-top:0; margin-bottom:0; margin-left:2em;}
+.crt1f {font-size:x-small; text-align:left; margin-top:1em; margin-bottom:0; margin-left:2em;}
+.crt2 {font-size:x-small; margin-left:3em; text-align:left; margin-bottom:0; margin-top:0; text-indent: 0;}
+.crt3 {font-size:x-small; margin-left:4em; text-align:left; margin-bottom:0; margin-top:0; text-indent: 0;}
+.crtf {font-size:x-small; text-align:left; text-indent: 0; margin-bottom:0; margin-top:1.5em;}
+.ded {font-size:85%; font-style:italic; margin-top:.5em; text-indent:0; text-align:center;}
+.dedf {font-size:85%; font-style:italic; margin-top:5em; text-indent:0; text-align:center;}
+.ded1 {font-size:85%; font-style:italic; text-indent:0; text-align:center;}
+.ded1f {font-size:85%; font-style:italic; text-indent:0; text-align:center; margin-top: .5em;}
+
+.bkau2 {text-align:center; font-size:x-small; margin-bottom:5%; font-weight:normal; text-indent: 0;} /*This is not an ScML tag*/
+.cip-i {font-size:x-small; text-align:left; text-indent: 0; margin-bottom:0; margin-top:0; font-style: italic;} /*This is not an ScML tag*/
+.crtf1 {font-size:x-small; text-align:center; text-indent: 0; margin-bottom:0; margin-top:2em;} /*This is not an ScML tag*/
+.crtl {font-size:x-small; text-align:left; text-indent: 0; margin-bottom:0; margin-top:0;} /*This is not an ScML tag*/
+
+/*Series*/
+.sert {font-size: large; margin-top: 3em; margin-bottom: 1em; text-align:center; text-indent: 0;}
+.sers {margin-top: .75em; margin-bottom: .75em; text-align:center; text-indent: 0; font-weight: bold;}
+.serah {margin-top: .75em; margin-bottom: .5em; text-align:justify; text-indent: 0; font-weight: bold;}
+.serahaft {margin-top: 0; margin-bottom: .75em; text-align:justify; text-indent: 0; font-weight: bold;}
+.serbh {font-size: 90%; margin-top: .75em; margin-bottom: .75em; text-align:justify; text-indent: 0; font-weight: bold;}
+.ser {font-size: 90%; text-align:left; margin-left:.5em; text-indent: -.5em;}
+.seraft {font-size: 90%; margin-top: 0; text-align:justify; text-indent: 0;}
+.serau {font-size: 90%; margin-top: 0; margin-bottom: .5em; margin-left: 2em; text-align:justify; text-indent: 0;}
+.serf {font-size: 90%; margin-top: 1em; text-align:left; text-indent: 0;}
+.serp {font-size: 90%; margin-top: 1em; text-align:justify; text-indent: 1em;}
+.serpf {font-size: 90%; margin-top: 1em; text-align:justify; text-indent: 0;}
+.ser1 {font-size: 90%; margin-top: 0; margin-bottom: 0; text-align:justify; text-indent: 1em;}
+.ser2 {font-size: 90%; margin-top: 0; margin-bottom: 0; text-align:justify; text-indent: 2em;}
+.rvh {}
+.rv {text-indent: 0; text-align:justify; font-size: 85%; margin-top: 1em;}
+.rvd {text-indent: 1em; text-align:justify; font-size: 85%; margin-top: .5em;}
+.rvt {text-indent: 0; text-align:center; margin-left: 3em; font-size:85%;}
+
+.sert1 {font-size: medium; margin-top: 2em; margin-bottom: 1em; text-align:center; text-indent: 0; font-weight: bold;} /*This is not an ScML tag*/
+
+/*Contents*/
+.toc {text-align:left; font-size:95%; text-indent: 0; margin-top:.75em; margin-bottom: 0; margin-left: .25em;}
+.toc1 {text-align:left; font-size:85%; margin-left: 2em; text-indent: 0;}
+.toc2 {text-align:left; font-size: small; margin-left: 2.5em; text-indent: 0;}
+.toc3 {font-size: x-small; margin-left: 3.75em; text-indent: 0; text-align:left;}
+.toc4 {font-size: x-small; margin-left: 5em; text-indent: 0; text-align:left;}
+.toc5 {font-size: xx-small; margin-left: 6.25em; text-indent: 0; text-align:justify;}
+.tocau {text-align:left; margin-left: 1em; margin-bottom: .5em; font-style:italic; font-size:small; text-indent: 0;}
+.tocbm {text-align:left; font-size:85%; font-style:italic; text-indent: 0; margin-bottom:1em; margin-left: .25em;}
+.tocbmf {text-align:left; font-size:85%; font-style:italic; text-indent: 0; margin-top:1em; margin-bottom:0; margin-left: .25em;}
+.tocf {}
+.tocfm {text-align:left; font-size:85%; font-style:italic; text-indent: 0; margin-bottom:0em; margin-left: .25em;}
+.tocfmf {}
+.tocpt {text-align:left; text-indent: 0; font-size:medium; font-weight: bold; margin-top: 2em; margin-bottom: 1em;}
+.tocut {text-align:left; text-indent: 0; font-size:small; font-weight: bold; text-transform: uppercase; margin-top: 2em; margin-bottom: 0; margin-left: .25em;}
+
+/*Part and Chapters*/
+.cn {text-align:center; text-indent:0; font-size:medium; font-weight: bold; margin-top:1%;}
+.ct {text-align:center; text-indent:0; font-size:x-large; margin-top:1%; margin-bottom: 1%;}
+.cs {text-align:center; text-indent:0; font-size:large; font-weight: bold; margin-bottom:1%;}
+.ctbm {text-align:center; text-indent:0; font-size:x-large; margin-top:1%; margin-bottom:1em;}
+.ctfm {text-align:center; text-indent:0; font-size:x-large; margin-top:1%; margin-bottom:1em;}
+.au {text-align:center; font-size:medium; margin-top:1.5em; text-indent: 0;}
+.au1 {text-align:center; font-size:90%; text-indent: 0;}
+.pn {font-style:italic; font-size:xx-large; text-align:center; text-indent:0; margin-top:14%;}
+.pt {font-size:x-large; text-align:center; font-weight:bold; text-indent:0; margin-top:2.5%;}
+.ps {font-style:italic; font-size:medium; text-align:center; text-indent:0; margin-top:2.5%; margin-bottom: 2.5%;}
+.un {}
+.ut {}
+.us {}
+
+.cta {text-align:center; text-indent:0; font-size:large; font-weight: bold; margin-bottom:1%;} /*This is not an ScML tag*/
+
+/*Chapter Contents*/
+.ctoch {font-weight: bold; text-align:left; font-size:95%; text-indent: 0; margin-top:.75em; margin-bottom: 1em; margin-left: .25em;}
+.ctoc {text-align:left; font-size:95%; text-indent: 0; margin-left: .25em;}
+.ctoc1 {text-align:left; font-size:90%; text-indent: 0; margin-top: 0; margin-left: .25em;}
+
+/*Epigraph*/
+.ep {text-indent: 0; margin-top: 1em; text-align:left; font-size:small;} 
+.epaft {text-indent: 0; margin-top: .75em; text-align:left; font-size:small;}
+.epf {text-indent: 0; text-align:left; margin-top: .75em; font-size:small;}
+.epl {text-align:left; text-indent: 0; font-size:small;}
+.eps {text-indent: 0; text-align:left; margin-top: .75em; margin-bottom: .75em; font-size:small;}
+.ept {text-align:right; margin-right: .5em; margin-top:.3em; margin-bottom:.5em; font-size:small; text-indent: 0;}
+.epsl {text-align:left; font-size:small; text-indent: 0; margin-bottom: 0;}
+.epsl1 {text-align:left; font-size:small; text-indent: 0;}
+.epslf {text-align:left; margin-top: .75em; font-size:small; text-indent: 0;}
+.ep1 {margin-left: 1em; text-indent: 1em; text-align:left; font-size:small;}
+.ep2 {margin-left: 1.5em; text-indent: 1em; text-align:left; font-size:small;}
+.ept1 {text-align:right; margin-right: .5em; margin-top:.3em; margin-bottom:.5em; font-size:small; text-indent: 0;}
+
+.epsll  {text-align:left; font-size:small; text-indent: 0;} /*This is not an ScML tag*/
+.epsls {text-align:left; font-size:small; text-indent: 0;} /*This is not an ScML tag*/
+
+/*Heads*/
+.ah {font-weight:bold; font-size:large; margin-top:3%; margin-bottom:1%; text-indent:0; text-align:left;}
+.ahaft {font-weight:bold; font-size:large; margin-top:3em; margin-bottom:0; text-indent:0; text-align:left;}
+.bh {font-size:medium; font-weight: bold; margin-top:3%; margin-bottom:1%; text-indent:0; text-align:left;}
+.bhaft {font-size:medium; font-weight: bold; margin-bottom:1%; text-indent:0; text-align:left;}
+.ch { font-weight:bold; font-style: italic; margin-top:4%; margin-bottom:2%; text-indent: 0; text-align:left;}
+.chaft {font-size:small; margin-bottom:2%; font-weight: bold; text-align:left; text-indent: 0;}
+.dh {font-weight:bold; font-size:small; margin-top:4%; margin-bottom:2%; text-indent: 0; text-align:left;}
+.dhaft {font-size:small; font-style: italic; margin-bottom:2%; text-indent:0; text-align:left;}
+.eh {font-size:x-small; margin-top:6%; margin-bottom:2%; text-align:justify; text-indent: 0; font-weight: bold;}
+.ehaft {font-size:x-small; margin-bottom:2%; text-align:justify; text-indent: 0; font-weight: bold;}
+.chsect {text-align:center; margin-top: 2em; margin-bottom: .25em; font-size: small; text-indent: 0;}
+.chsubsect {}
+.dl {}
+.dl1 {}
+.dt {}
+.dtsub {}
+.sh {}
+.hd {}
+.hdn {}
+
+/*Body*/
+.paft {text-indent: 0; margin-top: .5em; margin-bottom: 0; text-align:justify;}
+.pcon {margin-top: 1em; margin-bottom: 0; text-indent: 0; text-align:justify;}
+.patr {text-align:right; margin-top:0;}
+.patr1 {text-align:right; margin-top:.25em; font-size:small;}
+.pf {margin-top: 3em; margin-bottom: 0; text-align:justify; text-indent: 0;}
+.psec {margin-top: 2em; text-indent: 0; text-align:justify;}
+.psec1 {margin-top: 1em; text-indent: 0; text-align:justify;}
+.sec {text-align:center; margin-top: 1em; margin-bottom: 1em; text-indent: 0;}
+.secbot {}
+.sectop {}
+.hb {text-align:center; margin-top: 1em; margin-bottom: 1em; text-indent: 0;}
+.aubio	{margin-bottom:.75em; margin-top: 1em; text-align:justify; text-indent:0;}
+.aubiof	{margin-bottom:.75em; margin-top: 5em; text-align:justify; text-indent:0;}
+.pcust1 {}
+.pcust2 {}
+.pcust3 {}
+.tsecbot {}
+.tsectop {}
+
+/*Dialog*/
+.dia {margin-left:2em; text-indent: -1em; font-size: 90%; text-align:justify;}
+.diaf {margin-left:2em; margin-top: 1em; text-indent: -1em; font-size: 90%; text-align:justify;}
+.dial {margin-left:2em; margin-bottom: 1em; text-indent: -1em; font-size: 90%; text-align:justify;}
+.diap {margin-left:3em; text-indent: 0; font-size: 90%; text-align:justify;}
+.diapl {margin-left:3em; text-indent: 0; font-size: 90%; text-align:justify;}
+.dias {margin-left:2em; text-indent: -1em; font-size: 90%; text-align:justify;}
+
+/*Curriculum*/
+.exh {font-weight:bold; margin-top:.5em; text-align:left; text-indent:0;}
+.exah {}
+.exbh {}
+.ex {}
+.exaft {}
+.exf {}
+.exl {}
+.exs {}
+.exnl {}
+.exnl1 {}
+.exnl1f {}
+.exnl1l {}
+.exnl1p {}
+.exnl1s {}
+.exnlf {}
+.exnll {}
+.exnlp {}
+.exnls {}
+.exul {}
+.exul1 {}
+.exul1f {}
+.exul1l {}
+.exul1p {}
+.exul1s {}
+.exulf {}
+.exull {}
+.exulp {}
+.exuls {}
+.glo {text-indent: -1.25em; margin-top: .5em; font-size: 90%;}
+.glof {text-indent: -1.25em; margin-top: 1em; font-size: 90%;}
+.end {text-indent: 0; text-align: center; margin-top: .75em;}
+.lo {}
+.fs {}
+.wsh {}
+.ard {}
+
+/*Block Quotation*/
+.bqh {font-weight: bold; text-indent:0; margin-right:2em; margin-left:2em; text-align:justify; font-style: italic; margin-bottom: 1em;}
+.bq {margin-right: 2em; margin-left:2em; text-indent: .5em; text-align:justify;}
+.bqaft {margin-right: 2em; margin-left:2em; text-indent:0; text-align:justify;}
+.bqf {margin-right: 2em; margin-left:2em; text-indent:0; text-align:justify; margin-top: 1em;}
+.bql {margin-right: 2em; margin-left:2em; text-align:justify; margin-bottom: 1em; text-indent:0.5em;}
+.bqo {margin-right: 2em; margin-left:2em; text-align:justify; text-indent: 0; margin-bottom: 1em; margin-top: 1em;}
+.bqs {margin-right: 2em; margin-left:2em; text-align:justify; text-indent: 0; margin-bottom: 1em; margin-top: 1em;}
+.bqt {text-align:right; font-style:italic; margin-right: .5em; margin-top:.5em; margin-bottom:.5em; font-size:small; text-indent: 0;}
+.bqnl {font-size: 85%; text-indent:0; margin-right:1em; margin-left:1em; text-align:justify;}
+.bqnlf {font-size: 85%; text-indent:0; margin-top: .75em; margin-right:1em; margin-left:1em; text-align:justify;}
+.bqnll {font-size: 85%; text-indent:0; margin-right:1em; margin-bottom: .75em; margin-left:1em; text-align:justify;}
+.bqnls {font-size: 85%; text-indent:0; margin-top: .75em; margin-right:1em; margin-left:1em; text-align:justify;}
+.bqul {font-size: 85%; margin-left: 3.5em; text-indent: -1em; text-align:justify;}
+.bqulf {font-size: 85%; margin-left: 3.5em; text-indent: -1em; text-align:justify; margin-top: .5em;}
+.bqull {font-size: 85%; margin-left: 3.5em; text-indent: -1em; text-align:justify; margin-bottom: 1em;}
+.bquls {font-size: 85%; margin-left: 3.5em; text-indent: -1em; text-align:justify; margin-top: 1em; margin-bottom: 1em;}
+.bq1 {margin-right: 2em; margin-left:2em; text-indent: 1em; text-align:justify;}
+.bq1f {font-size: 85%; text-indent: -1em; margin-left: 10%; margin-top: .3em; margin-bottom: -0.1em; text-align:justify;}
+.bq1l {font-size: 85%; text-indent: -1em; margin-left: 10%; margin-top: -0.1em; margin-bottom: .3em; text-align:justify;}
+.bq1s {font-size: 85%; text-indent: -1em; margin-left: 10%; margin-top: .5em; margin-bottom: -0.1em; text-align:justify;}
+
+.bqul1 {font-size: 85%; margin-left: 3.5em; text-indent: -1em; text-align:justify;} /*This is not an ScML tag*/
+
+/*Senseline*/
+.slh {text-indent: -1em; font-style:italic; font-size: 85%; margin-top: 1em; margin-bottom: 0.5em; font-weight: bold;}
+.sl {text-align:left; text-indent: -1em; margin-top: 0; margin-bottom: 0;}
+.slf {margin-top: 1em; text-align:left; text-indent: -1em;}
+.sll {text-align:left; text-indent: -1em; margin-top: 0; margin-bottom: 1em}
+.sls {font-size: 85%; text-align:justify; text-indent: -1em;}
+.slt {text-indent: 0; text-align: center; font-size: 85%; font-style:italic; margin-top: -0.1em; margin-bottom: 1em;}
+.sli {}
+.slif {}
+.slil {}
+.sl1 {text-indent: 0%; margin-top: 0; margin-bottom: 0;}
+.sl1f {text-indent: 5%; margin-top: -0.1em; margin-bottom: -0.1em;}
+.sl1l {text-indent: 5%; margin-top: -0.1em; margin-bottom: 1em;}
+.sl2 {text-indent: 5%; margin-top: 0; margin-bottom: 0;}
+.sl2f {text-indent: 5%; margin-top: -0.1em; margin-bottom: -0.1em;}
+.sl2l {text-indent: 9%; margin-top: -0.1em; margin-bottom: 1em;}
+.sl3 {text-indent: 0%; margin-top: 0; margin-bottom: 0;}
+.sl3f {text-indent: 13%; margin-top: -0.1em; margin-bottom: -0.1em;}
+.sl3l {text-indent: 13%; margin-top: -0.1em; margin-bottom: 1em;}
+.sl4 {text-indent: 15%; margin-top: 0; margin-bottom: 0;}
+.sl4f {margin-left:5%; text-indent: 7%; margin-top: -0.1em; margin-bottom: -0.1em;}
+.sl4l {margin-left:5%; text-indent: 7%; margin-top: -0.1em; margin-bottom: -0.1em;}
+.sl5 {}
+.sl5f {}
+.sl5l {}
+.sl6 {}
+.sl6f {}
+.sl6l {}
+.sl7 {}
+.sl7f {}
+.sl7l {}
+.sl8 {}
+.sl8f {}
+.sl8l {}
+.sl9 {}
+.sl9f {}
+.sl9l {}
+
+.sl1s {text-indent: 5%; margin-top: -0.1em; margin-bottom: -0.1em;} /*This is not an ScML tag*/
+.sl2s {text-indent: 9%; margin-top: -0.1em; margin-bottom: -0.1em;} /*This is not an ScML tag*/
+.sl3s {text-indent: 13%; margin-top: -0.1em; margin-bottom: -0.1em;} /*This is not an ScML tag*/
+.sl4s {margin-left:5%; text-indent: 7%; margin-top: -0.1em; margin-bottom: -0.1em;} /*This is not an ScML tag*/
+
+/*Notes*/
+.en {font-size:90%; margin-left: 1em; text-indent: -1em; text-align:left;}
+.enhn {}
+.enp {font-size:90%; margin-left: 1em; text-indent: 1em; text-align:justify;}
+.fn {font-size:x-small; text-indent: -1em; text-align:left;}
+.fnp {font-size:x-small; text-indent: 1em; text-align:justify;}
+.ntbq {}
+.ntbqf {}
+.ntbql {}
+.ntbqs {}
+.ntcon {}
+.nteq {}
+.ntnl {font-size:x-small; text-indent: -1.25em; text-align:justify;}
+.ntnl1 {}
+.ntnl1f {}
+.ntnl1l {}
+.ntnl1s {}
+.ntnlf {font-size:x-small; text-indent: -1.25em; text-align:justify;}
+.ntnll {font-size:x-small; text-indent: -1.25em; text-align:justify;}
+.ntnls {}
+.ntsl {}
+.ntsl1 {}
+.ntsl1f {}
+.ntsl1l {}
+.ntsl1s {}
+.ntslf {}
+.ntsll {}
+.ntsls {}
+.nttd {}
+.ntul {font-size:x-small; text-indent: -1.25em; text-align:justify;}
+.ntul1 {}
+.ntul1f {}
+.ntul1l {}
+.ntul1s {}
+.ntulf {font-size:x-small; text-indent: -1.25em; text-align:justify;}
+.ntull {font-size:x-small; text-indent: -1.25em; text-align:justify;}
+.ntuls {}
+.rf {font-size:90%; margin-left: 1em; text-indent: -1em; text-align:justify;}
+.rf1 {text-indent: -1.25em; margin-left: 1.25em; text-align:justify; margin-top: 1em;}
+.rf2 {}
+.rff {}
+.eds {text-indent: 0; text-align:left; font-size: 90%; margin-top: .5em; margin-bottom: .5em;}
+
+/*Figure*/
+.figh {font-size:85%; text-align:center; text-indent: 0; font-weight:bold; margin-left:2.5em; margin-right:2.5em;}
+.figh1 {font-size:80%; text-align:center; text-indent: 0; font-weight:bold;}
+.fig {text-align:center; text-indent:0; margin-left: 1em; margin-right: 1em; margin-top: 1em; margin-bottom: .75em}
+.figatr {font-size:80%; text-align:center; text-indent: 0;}
+.figcap {font-size:80%; text-align:center; text-indent:0; margin-left: 2em; margin-right: 2em; margin-bottom: .75em;}
+.figcap1 {font-size:80%; margin-left:10%; margin-right:10%; text-align:center; text-indent:0; margin-top: .75em;}
+.fign {}
+.eq {}
+.eqaft {}
+
+.exe {font-weight:bold; text-indent:0;} /*This is not an ScML tag*/
+
+/*Index*/
+.inh {text-indent: -1em; font-size: medium; font-weight: bold; margin-top: 1.5em;}
+.inh1 {text-indent: -1em; font-size: small; font-weight: bold; margin-top: 1.25em;}
+.in {text-indent: -1em; font-size: 90%;}
+.inf {margin-top: 1em; text-indent: -1em; font-size: 90%;}
+.in1 {margin-left: 1em; text-indent: -1em; font-size: 90%;}
+.in2 {margin-left: 2em; text-indent: -1em; font-size: 90%;}
+.in3 {margin-left: 3em; text-indent: -1em; font-size: 90%;}
+.inhn {text-indent: 0; font-size: small; margin-top: 1em;}
+
+/*Numbered List*/
+.nlh {font-style:italic; margin-top:2%; margin-bottom:1%; text-align:justify; text-indent: 0;}
+.nl {text-indent: -1em; font-size: small; text-align:justify;}
+.nlf {text-indent: -1em; font-size: small; text-align:justify; margin-top: 1em;}
+.nll {text-indent: -1em; font-size: small; text-align:justify; margin-bottom: 1em;}
+.nlp {text-indent: 1em; font-size: small; text-align:justify;}
+.nlpl {}
+.nls {text-indent: -1em; font-size: small; text-align:justify; margin-top: 1em; margin-bottom: 1em;}
+.nl1 {text-align:justify; margin-left: 1em; font-size: small; text-indent: -1em;}
+.nl1f {text-align:justify; margin-left: 1em; font-size: small; text-indent: -1em;}
+.nl1l {text-align:justify; margin-left: 1em; font-size: small; text-indent: -1em;}
+.nl1p {}
+.nl1pl {}
+.nl1s {text-align:justify; margin-left: 1em; font-size: small; text-indent: -1em;}
+.nl2 {text-align:justify; margin-left: 2em; font-size: small; text-indent: -1em;}
+.nl2f {text-align:justify; margin-left: 2em; font-size: small; text-indent: -1em;}
+.nl2l {text-align:justify; margin-left: 2em; font-size: small; text-indent: -1em;}
+.nl2p {}
+.nl2s {text-align:justify; margin-left: 2em; font-size: small; text-indent: -1em;}
+.nl3 {text-align:justify; margin-left: 4em; font-size: small; text-indent: -1em;}
+.nl3f {text-align:justify; margin-left: 4em; font-size: small; text-indent: -1em;}
+.nl3l {text-align:justify; margin-left: 4em; font-size: small; text-indent: -1em;}
+.nl3p {}
+.nl3s {text-align:justify; margin-left: 4em; font-size: small; text-indent: -1em;}
+.nl4 {text-align:justify; margin-left: 5em; font-size: small; text-indent: -1em;}
+.nl4f {text-align:justify; margin-left: 5em; font-size: small; text-indent: -1em;}
+.nl4l {text-align:justify; margin-left: 5em; font-size: small; text-indent: -1em;}
+.nl4p {}
+.nl4s {text-align:justify; margin-left: 5em; font-size: small; text-indent: -1em;}
+.nl5 {}
+.nl5f {}
+.nl5l {}
+.nl5p {}
+.nl5s {}
+
+/*Unnumbered List*/
+.ulh {font-weight: bold; font-size: 90%; margin-top:2%; margin-bottom:1%; text-align:justify; text-indent: -1em;}
+.ul {font-size: 90%; text-indent: -1em; text-align:justify;}
+.ulf {font-size: 90%; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.ull {font-size: 90%; margin-bottom: 1em; text-indent: -1em; text-align:justify;}
+.ulp {}
+.ulpl {}
+.uls {font-size: 90%; text-indent: -1em; text-align:justify; margin-top: .5em; margin-bottom: .5em;}
+.ul1 {text-indent: -1em; margin-left: 1em; font-size: small; text-align:justify;}
+.ul1f {text-indent: -1em; margin-left: 1em; font-size: small; text-align:justify;}
+.ul1l {text-indent: -1em; margin-left: 1em; font-size: small; text-align:justify;}
+.ul1p {}
+.ul1pl {}
+.ul1s {text-indent: -1em; margin-left: 1em; font-size: small; text-align:justify;}
+.ul2 {text-indent: 0; font-size: small; text-align:center;}
+.ul2f {text-indent: 0; font-size: small; text-align:center;}
+.ul2l {text-indent: 0; font-size: small; text-align:center;}
+.ul2p {}
+.ul2s {text-indent: 0; font-size: small; text-align:center;}
+.ul3 {}
+.ul3f {}
+.ul3l {}
+.ul3p {}
+.ul3s {}
+.ul4 {}
+.ul4f {}
+.ul4l {}
+.ul4p {}
+.ul4s {}
+.ul5 {}
+.ul5f {}
+.ul5l {}
+.ul5p {}
+.ul5s {}
+
+/*Bulleted List*/
+.blh {text-indent: -1em; text-align:justify; margin-top: .75em; font-weight: bold;}
+.bl {text-indent: -.5em; text-align:justify;}
+.blf {text-indent: -.5em; text-align:justify; margin-top: .75em;}
+.bll {text-indent: -.5em; text-align:justify; margin-bottom: .75em;}
+.blp {text-indent: 0; text-align:justify;}
+.blpl {text-indent: 0; text-align:justify; margin-bottom: .5em;}
+.bls {text-indent: -1em; text-align:justify; margin-top: .75em; margin-bottom: .75em;}
+.bl1 {text-align:justify; margin-left: 2em; text-indent: -1em;}
+.bl1f {text-align:justify; margin-left: 2em; text-indent: -1em; margin-top: 1em;}
+.bl1l {text-align:justify; margin-left: 2em; text-indent: -1em; margin-bottom: .75em;}
+.bl1p {text-align:justify; margin-left: 2em; text-indent: 0;}
+.bl1pl {text-align:justify; margin-left: 2em; text-indent: 0; margin-bottom: .5em;}
+.bl1s {text-align:justify; margin-left: 2em; text-indent: -1em; margin-top: .75em; margin-bottom: .75em;}
+
+/*Sidebar*/
+.sbh {font-weight:bold; font-size:large; margin-top:4%; margin-bottom:2%; text-indent:0; text-align:left;}
+.sbt {}
+.sbah {font-weight:bold; font-size:large; margin-top:6%; margin-bottom:2%; text-indent:0; text-align:center;}
+.sbahaft {}
+.sbbh {font-weight:bold; margin-top:2%; margin-bottom:2%; text-indent:0; text-align:center;}
+.sbbhaft {}
+.sb {text-align:justify; font-size: 90%;}
+.sbaft {}
+.sbcon {}
+.sbf {margin-top: .75em; text-align:justify; text-indent: 0; font-size: 90%;}
+.sbl {text-align:justify; font-size: 90%; margin-bottom: .75em;}
+.sbo {}
+.sbs {text-align:justify; text-indent: 0; font-size: 90%;}
+.sbbl {}
+.sbbl1 {}
+.sbbl1f {}
+.sbbl1l {}
+.sbbl1s {}
+.sbblf {}
+.sbbll {}
+.sbbls {}
+.sbbq {margin-left:8%; margin-right:2%; margin-top:4%; font-style:italic; font-size:small; text-align:justify;}
+.sbbqaft {}
+.sbbqf {margin-left:8%; margin-right:2%; margin-top:4%; font-style:italic; font-size:small; text-align:justify;}
+.sbbql {margin-left:8%; margin-right:2%; margin-top:4%; font-style:italic; font-size:small; text-align:justify;}
+.sbbqs {}
+.sbnl {margin-left:6%; margin-right:4%; text-indent: -1.25em;}
+.sbnl1 {margin-left:6%; margin-right:4%;}
+.sbnl1f {margin-left:6%; margin-right:4%;}
+.sbnl1l {margin-left:6%; margin-right:4%;}
+.sbnl1p {}
+.sbnl1s {}
+.sbnl2 {margin-left:6%; margin-right:4%;}
+.sbnl2f {margin-left:6%; margin-right:4%;}
+.sbnl2l {margin-left:6%; margin-right:4%;}
+.sbnl2p {}
+.sbnl2s {}
+.sbnl3 {}
+.sbnl3f {}
+.sbnl3l {}
+.sbnl4 {}
+.sbnl4f {}
+.sbnl4l {}
+.sbnl5 {}
+.sbnl5f {}
+.sbnl5l {}
+.sbnlf {margin-left:6%; margin-right:4%; text-indent: -1.25em;}
+.sbnll {margin-left:6%; margin-right:4%; text-indent: -1.25em;}
+.sbnlp {}
+.sbnls {}
+.sbsl {}
+.sbsl1 {margin-left:2%; margin-right:1%; text-indent: 2%; margin-top: -0.1em; margin-bottom: -0.1em; text-align:justify;}
+.sbsl1f {margin-left:2%; margin-right:1%; text-indent: 2%; margin-top: -0.1em; margin-bottom: -0.1em; text-align:justify;}
+.sbsl1l {margin-left:2%; margin-right:1%; text-indent: 2%; margin-top: -0.1em; margin-bottom: -0.1em; text-align:justify;}
+.sbsl1s {}
+.sbsl2 {margin-left:2%; margin-right:1%; text-indent: 4%; margin-top: -0.1em; margin-bottom: -0.1em;  text-align:justify;}
+.sbsl2f {margin-left:2%; margin-right:1%; text-indent: 4%; margin-top: -0.1em; margin-bottom: -0.1em;  text-align:justify;}
+.sbsl2l {margin-left:2%; margin-right:1%; text-indent: 4%; margin-top: -0.1em; margin-bottom: -0.1em;  text-align:justify;}
+.sbsl2s {}
+.sbsl3 {}
+.sbsl3f {}
+.sbsl3l {}
+.sbsl3s {}
+.sbslf {}
+.sbsli {}
+.sbslif {}
+.sbslil {}
+.sbsll {}
+.sbsls {}
+.sbslt {}
+.sbul {text-indent: -1em; margin-left: 3em; margin-right: 2%; font-size:small;}
+.sbul1 {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul1f {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul1l {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul1p {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul1s {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul2 {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul2f {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul2l {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul2p {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbul2s {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;}
+.sbulf {text-indent: -1.25em; margin-left: 6.5%; margin-right: 2%; margin-top: 2%; font-size:small;}
+.sbull {text-indent: -1.25em; margin-left: 6.5%; margin-right: 2%; margin-bottom: 2%; font-size:small;}
+.sbulp {text-indent: -1em; margin-left: 3em; margin-right: 2%; font-size:small;}
+.sbuls {text-indent: -1em; margin-left: 3em; margin-right: 2%; font-size:small;}
+.sb1h {}
+.sb1t {}
+.sb1 {margin-left:2%; font-weight: bold; font-size: small; text-align: left; text-align:justify;}
+.sb1f {}
+.sb1l {}
+
+.sbr {margin-left:1%; margin-right:1%; text-align:right; margin-bottom:4%;} /*This is not an ScML tag*/
+.sbul3 {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;} /*This is not an ScML tag*/
+.sbul3f {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;} /*This is not an ScML tag*/
+.sbul3l {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;} /*This is not an ScML tag*/
+.sbul3p {margin-left:8%; margin-right:2%; font-style:italic; font-size:small;} /*This is not an ScML tag*/
+
+/*Box*/
+.bxh {font-size: medium; font-weight:bold; margin-top:.5em; margin-bottom:.5em; text-align:center; text-indent:0;}
+.bxt {font-weight: bold; font-size: medium; text-align: left;}
+.bxah {font-weight:bold; font-size:medium; margin-bottom:1%; margin-top: 2%; text-indent:0; text-align:left;}
+.bxbh {font-size:small; font-weight: bold; margin-bottom:1%; margin-top:2%; text-indent:0; text-align:left;}
+.bx {text-align:justify;}
+.bxaft {margin-top: .5em; text-align:justify; text-indent: 0;}
+.bxf {margin-top: 1em; text-align:justify; text-indent: 0;}
+.bxl {text-align:justify; margin-bottom: 1em;}
+.bxo {text-align:justify; text-indent: 0;}
+.bxs { text-align:justify; text-indent:0;}
+.bxau {font-weight: bold; text-align:justify;}
+.bxau1 {font-weight: bold; text-align:justify;}
+.bxbq {margin-right:2em; margin-left:2em; font-size:small; text-indent:0.7em; text-align:justify;}
+.bxbqf {margin-top:1em; margin-right:2em; margin-left:2em; text-align:justify; font-size:small;}
+.bxbql {margin-right:2em; margin-left:2em; margin-bottom:1em; font-size:small; text-indent:0.7em; text-align:justify;}
+.bxbqs {margin-right:2em; margin-left:2em; margin-top:1em; text-align:justify; font-size:small; margin-bottom:1em;}
+.bxcon {text-align:justify; text-indent: 0;}
+.bxnl {text-indent: -1em; font-size: 85%; text-align:left;}
+.bxnlf {text-indent: -1em; font-size: 85%; text-align:left;}
+.bxnll {text-indent: -1em; font-size: 85%; text-align:left;}
+.bxnlp {text-indent: 1em; font-size: 85%; text-align:left;}
+.bxnls {text-indent: -1em; font-size: 85%; text-align:left; margin-top: .5em; margin-bottom: .5em;}
+.bxsl {text-align:center; margin-top:.5em; margin-bottom: 1em; font-size:85%; text-indent: 0;}
+.bxslf {text-align:center; margin-top:.5em; margin-bottom: 1em; font-size:85%; text-indent: 0;}
+.bxsll {text-align:center; margin-top:.5em; margin-bottom: 1em; font-size:85%; text-indent: 0;}
+.bxul {text-indent: -1em; font-size: 85%; text-align:left;}
+.bxulf {text-indent: 0; font-size: 85%; text-align:left;}
+.bxull {text-indent: 0; font-size: 85%; text-align:left;}
+.bxulp {text-indent: 1em; font-size: 85%; text-align:left;}
+.bxuls {margin-top: .5em; margin-bottom: .5em; text-indent: 0; font-size: 85%; text-align:left;}
+.bx1h {}
+.bx1t {}
+.bx1ah {font-size:x-small; font-style:italic; text-align:justify;}
+.bx1bh {font-size:xx-small; margin-bottom:2em; font-style:italic; text-align:justify;}
+.bx1 {text-align:justify; margin-left: 1em;}
+.bx1aft {text-align:justify; text-indent: 0; margin-left: 1em;}
+.bx1con {}
+.bx1f {}
+.bx1l {}
+.bx1s {}
+.bx1bq {}
+.bx1bqf {}
+.bx1bql {}
+.bx1bqs {}
+.bx1nl {}
+.bx1nlf {}
+.bx1nll {}
+.bx1nlp {}
+.bx1sl {}
+.bx1slf {}
+.bx1sll {}
+.bx1ul {text-indent: -1em; margin-left:2em; font-size: 85%; text-align:left;}
+.bx1ulf {text-indent: -1em; margin-left:2em; font-size: 85%; text-align:left;}
+.bx1ull {text-indent: -1em; margin-left:2em; font-size: 85%; text-align:left;}
+.bx1ulp {text-indent: 0; margin-left:2em; font-size: 85%; text-align:left;}
+
+.bxbhaft {font-weight:bold; font-size:small; text-align:left;} /*This is not an ScML tag*/
+.bxul1 {margin-left: 1.25em; text-indent: -1em; font-size: 85%; text-align:left;} /*This is not an ScML tag*/
+.bx1ul1 {text-indent: -1em; margin-left:2em; font-size: 85%; text-align:left;} /*This is not an ScML tag*/
+.bx1uls {text-indent: -1em; margin-left:2em; font-size: 85%; text-align:left;} /*This is not an ScML tag*/
+
+/*Story*/
+.sth {}
+.sth1 {}
+.sth2 {}
+.st {}
+.staft {}
+.stf {}
+.stl {}
+.sto {}
+.sts {}
+
+/*Formal Letter*/
+.lt {font-size: 85%; margin-left: 3em; margin-right: 3em; text-align: justify;}
+.ltf {font-size: 85%; text-indent: 0; margin-top: 1.5em; margin-bottom: 1em; margin-left: 3em; margin-right: 3em; text-align: justify;}
+.ltl {font-size: 85%; margin-left: 3em; margin-right: 3em; margin-bottom: 1.5em; text-align: justify;}
+.lto {font-size: 85%; text-indent: 0; margin-left: 3em; margin-right: 3em; text-align: justify;}
+.lts {font-size: 85%; text-indent: 0; margin-top: 1.5em; margin-bottom: 1.5em; margin-left: 3em; margin-right: 3em; text-align: justify;}
+.lps {font-size: 85%; text-indent: 0; margin-top: 2em; margin-bottom: 1em; margin-left: 3em; margin-right: 3em; text-align: justify;}
+.lta {font-size: 85%; text-indent: 0; margin-bottom: 1em; margin-left: 3em; margin-right: 2em; text-align: justify;}
+.ltaf {font-size: 85%; text-indent: 0; margin-left: 3em; margin-right: 2em; text-align: justify;}
+.ltc {font-size: 85%; margin-left: 3em; margin-right: 3em; text-indent: 0; margin-top: 1em; text-align: justify;}
+.ltd {font-size: 85%; text-indent: 0; margin-bottom: 1em; margin-left: 3em; margin-right: 2em;}
+.ltdf {font-size: 85%; text-indent: 0; margin-top: 1em; margin-left: 3em; margin-right: 2em;}
+.ltg {font-size: 85%; text-indent: 0; margin-top: 1em; margin-bottom: 1em; margin-left: 3em; margin-right: 3em; text-align: justify;}
+.ltsig {font-size: 85%; margin-left: 3em; margin-right: 3em; text-indent: 0; text-align: justify;}
+.ltsigf {font-size: 85%; margin-left: 3em; margin-right: 3em; text-indent: 0; margin-top: 1em; text-align: justify;}
+.ltsigl {font-size: 85%; margin-left: 3em; margin-right: 3em; text-indent: 0; margin-bottom: 1em; text-align: justify;}
+.ltsigs {}
+
+/*Written Language*/
+.wlh {}
+.wlh1 {}
+.wl {}
+.wlf {}
+.wll {}
+.wls {}
+.wl1h {}
+.wl1h1 {}
+.wl2h {}
+.wl2h1 {}
+.wl3h {}
+.wl3h1 {}
+.wl1 {}
+.wl1f {}
+.wl1l {}
+.wl1s {}
+.wl2 {}
+.wl2f {}
+.wl2l {}
+.wl2s {}
+.wl3 {}
+.wl3f {}
+.wl3l {}
+.wl3s {}
+
+/*Codelines*/
+.cl {margin-right: 2em; margin-left:2.5em; text-indent: -.5em; text-align:left; font-family: sans-serif; font-size: 85%;}
+.clf {margin-top: 1em; margin-right: 2em; margin-left:2.5em; text-indent: -.5em; text-align:left; font-family: sans-serif; font-size: 85%;}
+.cll {margin-bottom: 1em; margin-right: 2em; margin-left:2.5em; text-indent: -.5em; text-align:left; font-family: sans-serif; font-size: 85%;}
+.cls {margin-top: 1em; margin-bottom: 1em; margin-right: 2em; margin-left:2.5em; text-indent: -.5em; text-align:left; font-family: sans-serif; font-size: 85%;}
+.cl1 {margin-right: 2em; margin-left:3.5em; text-indent: -.5em; text-align:left; font-family: sans-serif; font-size: 85%;}
+.cl1f {margin-top: 1em; margin-right: 3em; margin-left:2em; text-indent: 0;}
+.cl1l {margin-bottom: 1em; margin-right: 2em; margin-left:3em; text-indent: 0;}
+.cl1s {margin-top: 1em; margin-bottom: 1em; margin-right: 2em; margin-left:3em; text-indent: 0;}
+.cl2 {margin-right: 2em; margin-left:4.5em; text-indent: -.5em; text-align:left; font-family: sans-serif; font-size: 85%;}
+.cl2f {margin-top: 1em; margin-right: 4em; margin-left:2em; text-indent: 0;}
+.cl2l {margin-bottom: 1em; margin-right: 2em; margin-left:4em; text-indent: 0;}
+.cl2s {margin-top: 1em; margin-bottom: 1em; margin-right: 2em; margin-left:4em; text-indent: 0;}
+.cl3 {margin-right: 2em; margin-left:5em; text-indent: 0;}
+.cl3f {margin-top: 1em; margin-right: 5em; margin-left:2em; text-indent: 0;}
+.cl3l {margin-bottom: 1em; margin-right: 2em; margin-left:5em; text-indent: 0;}
+.cl3s {margin-top: 1em; margin-bottom: 1em; margin-right: 2em; margin-left:5em; text-indent: 0;}
+
+/*Question and Answer*/
+.quh {font-weight:bold; margin-top:.5em; margin-bottom:.5em; text-align:left; text-indent:0;}
+.ans {text-align:left; text-indent:0;}
+.ansf {text-align:left; margin-top:.5em; text-indent:0;}
+.qu {text-align:left; text-indent:0;}
+.quf {}
+
+/*Callouts*/
+.quot {text-indent:0;}
+.quotf {}
+.quotl {}
+.quots {}
+.quott {text-align:right; font-size:small; margin-right:2em;}
+.call {}
+
+/*Commentary*/
+.com {margin-top: 1em; margin-bottom: 0; text-indent: 0; text-align:justify;}
+.comp {}
+
+/*Table*/
+.tch {vertical-align:middle; text-align: center; padding: 3px; font-weight: bold; text-indent: 0; font-size: 90%; border-bottom: 1px solid black;}
+.tch1 {vertical-align:middle; padding: 3px; font-weight: bold; text-indent: 0; font-size: 90%;}
+.tch2 {vertical-align:middle; padding: 3px; font-weight: bold; text-indent: 0; font-size: 85%;}
+.th {padding: 2px; vertical-align:middle; font-weight:bold; font-size: large; text-indent: 0;}
+.th1 {padding: 2px; vertical-align:middle; font-weight:bold; font-size: 100%; text-indent: 0;}
+.th2 {padding: 2px; vertical-align:middle; font-weight:bold; font-size: 95%; text-indent: 0;}
+.tatr {font-size:x-small; text-align:justify; text-indent:-1.25em;}
+.td {text-indent: 0; vertical-align: middle; text-align: center; padding: 2px; font-size: 90%;}
+.tdf {vertical-align:middle; padding: 2px; text-indent: 0; font-size: 90%; margin-top: .75em;}
+.tdl {vertical-align:middle; padding: 2px; text-indent: 0; font-size: 90%; margin-bottom: .75em;}
+.tdnl {vertical-align:middle; font-size: 90%; text-indent: -1em; padding: 2px;}
+.tdp {vertical-align:middle; padding: 2px; text-indent: 0; font-size: 90%;}
+.tdul {vertical-align:middle; font-size: 90%; text-indent: -1em; padding: 2px;}
+.tn {text-align: center; padding: 2px; vertical-align:middle; font-weight:bold; font-size: large; text-indent: 0;}
+
+/*Rubric*/
+.rb {}
+.rbc {}
+.rbi {}
+.opt {}
+
+/*Recipes*/
+.rph {font-size: medium; margin-top: 1em; text-indent: -1em; text-align:justify; font-weight: bold;}
+.rph1 {}
+.rpt {font-size: medium; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.rpt1 {}
+.rpah {font-size: medium; margin-top: 1em; text-indent: -1em; text-align:justify; font-weight: bold;}
+.rpbh {font-size: 90%; margin-top: 1em; text-indent: -1em; text-align:justify; font-weight: bold;}
+.rpch {font-size: 80%; margin-top: 1em; text-indent: -1em; text-align:justify; font-weight: bold;}
+.rphn {}
+.rpvh {}
+.rp {font-size: medium; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.rpf {font-size: medium; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.rpl {font-size: medium; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.rpg {}
+.rpg1 {}
+.rpil {font-size: 90%; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.rpil1 {}
+.rpil1f {}
+.rpil1l {}
+.rpil1s {}
+.rpilf {font-size: 90%; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.rpill {font-size: 90%; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.rpils {font-size: 90%; margin-top: 1em; text-indent: -1em; text-align:justify;}
+.rpn {}
+.rpn1 {}
+.rpnut {}
+.rpnut1 {}
+.rpv {}
+.rpvf {}
+.rpvl {}
+.rpy {}
+.rpv1h {}
+.rp1 {}
+.rp1f {}
+.rp1l {}
+.rp1y {}
+.rpv1 {}
+.rpv1f {}
+.rpv1l {}
+
+/* ----- *** Character Styles *** ----- */
+
+/*Main Styles*/
+.b {font-weight: bold;}
+.bi {font-weight: bold; font-style: italic;}
+.bu {}
+.i {font-style: italic;}
+.iu {text-decoration: underline; font-style:italic;}
+.sm {font-size:85%;}
+.sm-i {}
+.sup-i {font-style: italic; font-size: x-small; vertical-align: text-top; position: relative; top: 0.5em;}
+.u {text-decoration: underline;}
+
+/*Reference/Cross-References*/
+.ennum {}
+a.enref {font-size: x-small; vertical-align: baseline; position: relative; bottom: 0.4em;}
+.fnnum {}
+a.fnref {vertical-align: super; font-size: xx-small;}
+.idx {}
+.pnum {}
+.tel {}
+.url {}
+.url-b {}
+.url-bi {}
+.url-i {font-style: italic;}
+.xbk {}
+.xref {}
+.xref-i {}
+
+/*Superscript and Subscript*/
+.sub {}
+.sub-b {}
+.sub-i {}
+.sup {}
+.sup-b {}
+.sup-i {}
+
+/*Paragraph/Character Style Pairs*/
+.bxhn {}
+.dispk	{font-weight:bold;}
+.exhn {}
+.fighn {font-weight:bold;}
+.gt	{font-size:large; font-weight:bold;}
+.gtref {}
+.hn {}
+.sbnh {}
+.thn {}
+.trh {}
+.trh-i {}
+
+/*Embedded Heads*/
+.hemb {font-weight: bold; font-size: 105%;}
+.chemb {font-weight: bold;}
+
+/*Symbols, Fractions, and Codes*/
+.code {}
+.code-b {}
+.code-bi {}
+.code-i {}
+.frac {}
+.symb {}
+
+/*Old Style Figures*/
+.osf {}
+.osf-b {}
+.osf-bi {}
+.osf-i {}
+
+/*Miscellaneous*/
+.abbr {}
+.ac {text-transform: uppercase; font-size: 90%;}
+.dropcap {font-weight:bold; font-size: 125%;}
+.first {font-weight:bold; text-transform: uppercase; font-size: 90%;}
+.first-i {}
+.strk {text-decoration: line-through;}
+
+/*Language*/
+.dcrit {}
+.dcrit-b {}
+.dcrit-bi {}
+.dcrit-i {}
+.grc {}
+.grc-b {}
+.grc-bi {}
+.grc-i {}
+.grc-u {}
+.heb {}
+.heb-b {}
+.heb-bi {}
+.heb-i {}
+.heb-u {}
+.lang {}
+.lang-b {}
+.lang-bi {}
+.lang-i {}
+.tgrc {}
+.tgrc-b {}
+.tgrc-bi {}
+.tgrc-i {}
+.theb {}
+.theb-i {}
+
+/*Taxonomy*/
+.taxclass {}
+.taxfamily {}
+.taxgenus {}
+.taxkingdom {}
+.taxorder {}
+.taxphylum {}
+.taxspecies {}
+
+/*Biblical and Religious Character Styles*/
+.red {color: red;}
+.tetr {}
+.tetr-b {}
+.tetr-bi {}
+.tetr-i {}
+.ver {}
+.ver-b {}
+
+/*Expanded List of Character Styles*/
+.ccust1 {font-weight:bold; font-size: 110%;}
+.ccust2 {}
+.ccust3 {}
+.fol {}
+.gt-i {}
+.gtref-i {}
+.page {}
+.red-b {color: red;}
+.red-bi {color:red;}
+.red-i {color: red;}
+.red-iu {color: red;}
+.red-strk {}
+.red-strk-b {}
+.red-strk-bi {}
+.red-strk-i {}
+.red-strk-iu {}
+.red-strk-u {}
+.red-u {}
+.rh-i {}
+.rhref {}
+.rhref1 {}
+.sm-b {}
+.sm-bi {}
+.strk-b {}
+.strk-bi {}
+.strk-i {}
+.sub-bi {}
+.sup-bi {}
+.symb-b {}
+.symb-i {}
+.tocnum {}
+.tso {}

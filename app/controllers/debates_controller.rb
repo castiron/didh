@@ -4,7 +4,6 @@ class DebatesController < ApplicationController
 
 	def index
 		@static = false
-		@toc = params[:data]
 		@toc = false
 		if params[:data] == 'toc-open'
 			@toc = true
@@ -14,7 +13,7 @@ class DebatesController < ApplicationController
 		if !@editionId 
 			@editionId = @editions.last.id
 		end
-		@text = Text::find(1)
+		@text = Text.where(edition_id: @editionId).order('id ASC').first # There's probably a better way
 		@texts = Text.order('sorting ASC').all
 		@parts = Part.all
 		@hide_instructions = check_hide_instructions()
