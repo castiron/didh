@@ -22,12 +22,15 @@ namespace :texts do
         if File.directory?(file)
           puts "[info] found directory: #{file}"
           /\/([1-9])$/.match(file)
-          edition = $1
-          raise "Can't figure out the edition based on the import file path" if edition.blank?
+          edition_id = $1
+          raise "Can't figure out the edition based on the import file path" if edition_id.blank?
 
-          Dir["#{file}/*.html", "#{file}/*.xhtml"].each do |textFile|
+          xml_files = Dir["#{file}/*.html", "#{file}/*.xhtml"]
+
+          # Order by filename-terminal number
+          xml_files.sort_by { |f| /(?<=[^0-9])[0-9]+(?=\.x?html)/.match(f).to_s.to_i }.each do |textFile|
             puts "[info] found file: #{textFile}"
-            importOneText(textFile, edition)
+            importOneText(textFile, edition_id)
           end
         end
       end
