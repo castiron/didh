@@ -1,4 +1,4 @@
-set :branch, "master"
+set :branch, "development"
 set :server_name, "dhdebates.cic-stg.com"
 
 set :stage, :production
