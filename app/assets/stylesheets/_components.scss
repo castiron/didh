@@ -236,7 +236,7 @@
 
 //Page components
 // --------------------------------------------------------
-.book-header, .about-header, .home-header {
+.book-header, .default-header {
   .nav-interior {
     font-size: 0.88em;
     font-weight: $regular;
@@ -292,33 +292,7 @@
   }
 }
 
-.about-header {
-  background-color: $blackLight;
-  .nav-interior {
-    li {
-      a {
-        color: $blueDark;
-      }
-      &.back-link {
-        background-color: $blueDark;
-      }
-      &.active {
-        a {
-          color: $white;
-        }
-      }
-    }
-    li.column-six-fifths {
-      float: right;
-      background-color: $white;
-      @include respond-max(885px) {
-        display: none;
-      }
-    }
-  }
-}
-
-.home-header {
+.default-header {
   position: absolute;
   z-index: 11;
   top: 0;
@@ -330,7 +304,7 @@
   }
   .nav-interior {
     display: inline-block;
-    font-size: 1em;
+    font-size: 16px;
     li {
       position: relative;
       z-index: 31;
@@ -352,7 +326,7 @@
         }
       }
       &.home-link {
-        @include respond-max(600px) {
+        @include respond-max(680px) {
           display: none;
         }
       }
@@ -364,7 +338,11 @@
   .logo-didh {
     display: inline-block;
     vertical-align: middle;
+    @include respond-max(400px) {
+      display: block;
+    }
   }
+
   @include respond-max(875px) {
     .interior & {
       .nav-interior {
@@ -383,6 +361,21 @@
   @include respond-max(875px) {
     li {
       font-size: 17px;
+    }
+  }
+  @include respond-max(400px) {
+    .interior & {
+      .nav-interior {
+        li:first-child {
+          padding-left: 4px;
+        }
+        li {
+          padding: 3px 3px 4px 3px;
+          &.nav-hud {
+            padding: 3px 12px 3px 3px;
+          }
+        }
+      }
     }
   }
 }
@@ -582,7 +575,7 @@
 	@extend %smooth-resize;
   margin-top: 3px;
   //one hud in the header
-  .home-header & {
+  .default-header & {
     position: absolute !important;
     z-index: 10 !important;
     display: none;
@@ -758,7 +751,7 @@
     left: -17px;
     width: 238px;
   }
-  .home-header & {
+  .default-header & {
     li {
       a {
         font-size: 1em;
@@ -1205,7 +1198,7 @@ body.static-true span.sentence:hover {
 	@extend %unstyled-list;
 	background-color: $white;
 	position: relative;
-  .home-header & {
+  .default-header & {
     background-color: transparent;
   }
 	.level-0,
