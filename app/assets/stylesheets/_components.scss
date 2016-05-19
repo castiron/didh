@@ -73,14 +73,14 @@
 .home-background {
 	@extend %vertical-bar-fixed;
 	width: 40%;
-	background: $black asset-url('2016bg-home.png') no-repeat left bottom;
+	background: $black asset-url('bg-home.jpg') no-repeat left bottom;
   background-position: left bottom;
   background-size: auto 100%;
   left: 0;
   @include respond-max(1391px) {
     background-size: 100% auto;
     background-position: 0px 70%;
-    background-color: $blackGreen;
+    // background-color: $blackGreen;
   }
   @include respond-max(1280px) {
     width: 40%;
@@ -96,7 +96,7 @@
     background-size: auto 100%;
   }
 	.no-backgroundsize & {
-		background-image: asset-url('2016bg-home.png');
+		background-image: asset-url('bg-home-half.png');
 	}
 }
 
@@ -168,11 +168,6 @@
   }
   .column-half + .column-half {
     margin-left: 2.5%;
-  }
-  @include respond-max(750px) {
-    .column-half span {
-      font-size: 1em;
-    }
   }
   @include respond-max(500px) {
     .column-half {
