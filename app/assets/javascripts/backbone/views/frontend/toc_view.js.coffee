@@ -23,21 +23,15 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     @parts = @options.parts
     @texts = @options.texts
     @router = @options.router
-    @paneHeight = @.$el.height()
     @parts.bind('change:active', @highlightActivePart, @)
     @texts.bind('change:active', @closeToc, @)
     @setupSubscriptions()
       
     unless @.$el.hasClass('open')
-      setTimeout((() ->
-        $('#backbone-tocView').find('.part-wrapper').each( ->
+      setTimeout((() =>
+        @.$el.find('.part-wrapper').each( ->
           $(@).removeClass('active')
         )), 500)
-
-  normalizePaneHeight: () ->
-    @.$el.find('.part-wrapper').each( (i, part) =>
-      $(part).height(@.paneHeight)
-    )
 
   highlightActivePart: () ->
     activePart = _.first(@parts.where({active: true}))
@@ -124,6 +118,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
   render: =>
     $(@el).html(@template(editions: @editions, parts: @parts, texts: @texts, activeText: @router.getRequestedText()))
     @setOpenCloseHiddenPositions()
+
     if @tocInitOpen
       setTimeout((() ->
        $('[data-tab-toggle]').addClass('open')
