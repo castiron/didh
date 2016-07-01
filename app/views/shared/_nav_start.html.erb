@@ -1,14 +1,20 @@
 <nav class="nav-start">
 	<div class="column-half">
 		<%= link_to({ controller: 'debates', action: 'index', id: @editions[1].id }) do %>
-			<%= image_tag("2016bookcover-low.png") %>
-			<span>2016 Edition</span>
+			<div class="cover-wrapper">
+				<div class="cover-overlay"></div>
+				<%= image_tag("2016bookcover-low.png") %>
+			</div>
+			<div class="cover-label">2016 Edition</div>
 		<% end %>
 	</div>
 	<div class="column-half">
 		<%= link_to({ controller: 'debates', action: 'index', id: @editions[0].id }) do %>
-			<%= image_tag("2012bookcover-low.png") %>
-			<span>2012 Edition</span>
+			<div class="cover-wrapper">
+				<div class="cover-overlay"></div>
+				<%= image_tag("2012bookcover-low.png") %>
+			</div>
+			<div class="cover-label">2012 Edition</div>
 		<% end %>
 	</div>
 </nav>

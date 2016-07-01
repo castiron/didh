@@ -51,17 +51,13 @@
 // Homepage components
 // --------------------------------------------------------
 .home-wrapper {
-	margin-left: 35%;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	@include respond-max(1120px) {
-		margin-left: 30%;
-	}
-  @include respond-max(768px) {
-    margin-left: 0;
+	margin-top: 170px;
+
+  @include respond-max(450px) {
+    margin-top: 31.35vw;
+  }
+  @include respond-max(1024px) {
+    margin-top: 15.75vw;
   }
 }
 
@@ -72,113 +68,147 @@
 
 .home-background {
 	@extend %vertical-bar-fixed;
-	width: 40%;
-	background: $black asset-url('bg-home.jpg') no-repeat left bottom;
-  background-position: left bottom;
-  background-size: auto 100%;
+  width: 100%;
+  max-height: 700px;
+  min-width: 1024px;
+	background: $black asset-url('2016_DH_Cover_Map.jpg') no-repeat;
+  background-size: cover;
+  background-position: 50% 0;
   left: 0;
-  @include respond-max(1391px) {
-    background-size: 100% auto;
-    background-position: 0px 70%;
-    // background-color: $blackGreen;
+}
+
+.home-header {
+  position: relative;
+  width: 76%;
+  max-width: 576px;
+  min-width: 300px;
+  margin: 0 auto;
+  background-color: $black;
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
   }
-  @include respond-max(1280px) {
-    width: 40%;
+
+  a {
+    display: block;
+    margin: 0 auto 15.75vw;
+    padding: 30px 40px;
+    border: 5px solid $chartreuse;
+    text-align: center;
+
+    span {
+      display: inline-block;
+      padding-top: 28px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    &:hover {
+      span {
+        color: $chartreuse;
+      }
+    }
   }
-  @include respond-max(1120px) {
-    width: 30%;
-    background-position: 0px 60%;
+}
+
+.home-welcome {
+  p {
+    font-size: 1.16em;
+    text-align: center;
+    line-height: 26px;
   }
-	@include respond-max(768px) {
-    display: none;
-	}
-  @include respond-max-height(650px) {
-    background-size: auto 100%;
-  }
-	.no-backgroundsize & {
-		background-image: asset-url('bg-home-half.png');
-	}
 }
 
 .home-content {
-	width: 40em;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 0 0 $space 12%;
-  @include respond-max(1120px) {
-    margin: 0 0 $space 4%;
-  }
-	@include respond-max(1040px) {
-		width: 90%;
-		font-size: 0.9em;
-		padding-right: 10px;
-	}
-  @include respond-max(768px) {
-    bottom: 15%;
-    width: auto;
-    padding-right: 0;
-    margin-right: calc(4% - 9px);
-  }
-	@include respond-max(740px) {
-		font-size: 0.88em;
-		padding-bottom: 0;
-	}
-	@include respond-max(500px) {
-		padding-top: $space;
-		position: relative;
-	}
-	@include respond-max-height(650px) {
-		padding-top: $space * 2;
-		position: relative;
-	}
+  position: relative;
+  max-width: 800px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 .nav-start {
   @extend %clearfix;
 	@extend %alpha;
-	@extend %loose-top-space;
+	margin-top: 2.4em;
+
 	a {
 		@extend %home-link;
 	}
+
   > .column-half {
-    width: 48%;
-    padding: 9px;
-    background-color: $blackLighter;
+    float: right;
+    width: 50%;
+    text-align: center;
+
+    img {
+      height: 100%;
+      width: auto;
+      vertical-align: bottom;
+      border: 1px solid $chartreuse;
+    }
+
+    .cover-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .cover-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $chartreuse;
+      opacity: 0;
+      @include transition(0.05s opacity ease-out);
+    }
+
     a {
-      display: block;
+      display: inline-block;
+      margin-left: -15%;
       color: $white;
       &:hover {
-        color: $yellow;
+        color: $chartreuse;
+
+        .cover-overlay {
+          opacity: 0.5;
+        }
       }
     }
-    img, span {
-      display: inline-block;
-      width: 40%;
-    }
-    img {
-      vertical-align: bottom;
-    }
-    span {
-      padding: 0 0 7.9% 4.4%;
-      font-size: 1.5em;
-      font-weight: $thin;
+
+    .cover-label {
+      padding-top: 20px;
+      font-size: 0.75em;
       line-height: 1.2;
     }
   }
-  .column-half + .column-half {
-    margin-left: 2.5%;
+
+  > .column-half + .column-half {
+    a {
+      margin-left: 0;
+      margin-right: -15%;
+    }
   }
+
   @include respond-max(500px) {
-    .column-half {
+    > .column-half {
+      float: none;
       width: 100%;
-      img {
-        width: 33%;
+
+      a {
+        margin: 0;
       }
     }
-    .column-half + .column-half {
-      margin-top: 2.5%;
-      margin-left: 0%;
+
+    > .column-half + .column-half {
+      margin-top: 44px;
+      padding: 0;
+
+      a {
+        margin: 0;
+      }
     }
   }
 }
@@ -196,18 +226,22 @@
 
 // <ul>
 .home-footer {
-  margin: 0 auto;
+  margin: 106px auto 0;
   text-align: center;
 }
+
 .nav-footer {
 	@extend %loose-floated-list;
-	margin: 80px auto 10px auto;
+	margin: 80px auto 60px auto;
   li {
     float: none;
     display: inline-block;
   }
   a {
     height: 5em;
+    &:hover {
+      opacity: 0.6;
+    }
     @include respond-max(860px) {
       height: 4em;
     }
@@ -237,11 +271,11 @@
     font-weight: $regular;
     > li {
       display: inline-block;
-      padding: 8px 24px 8px 15px;
+      padding: 8px 0px 8px 34px;
       a {
         text-decoration: none;
         &:hover {
-          text-decoration: underline;
+          color: $white;
           &:before {
             text-decoration: none;
           }
@@ -293,10 +327,12 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: $blackLight;
+  background-color: $black;
+
   .light & {
-    background-color: $white;
+    background-color: $blackLight;
   }
+
   .nav-interior {
     display: inline-block;
     font-size: 16px;
@@ -304,75 +340,79 @@
       position: relative;
       z-index: 31;
       a {
-        color: $blueDark;
+        color: $chartreuse;
       }
       &.active {
         a {
           color: $white;
           .light & {
-            color: $black;
+            color: $chartreuse;
           }
         }
       }
-      &.open {
-        background-color: $blueDark;
-        a {
-          color: $white;
-        }
-      }
-      &.home-link {
-        @include respond-max(680px) {
-          display: none;
-        }
-      }
-    }
-    li:first-child {
-      padding-left: 0px;
+      // &.open {
+      //   // background-color: $blueDark;
+      //   a {
+      //     color: $white;
+      //   }
+      // }
+      // &.home-link {
+      //   @include respond-max(680px) {
+      //     display: none;
+      //   }
+      // }
     }
   }
+
   .logo-didh {
     display: inline-block;
     vertical-align: middle;
+  	background: asset-url('logo-didh-small.png') no-repeat;
+    background-size: contain;
+    width: 52px;
+    height: 42px;
+
+    &:hover {
+      background: $black asset-url('logo-didh-small-active.png') no-repeat;
+    }
+
     @include respond-max(400px) {
       display: block;
     }
   }
 
-  @include respond-max(875px) {
-    .interior & {
-      .nav-interior {
-        li:first-child {
-          padding-left: 8px;
-        }
-        li {
-          padding: 8px 8px 4px 8px;
-          &.nav-hud {
-            padding: 8px 12px 8px 8px;
-          }
-        }
-      }
-    }
-  }
-  @include respond-max(875px) {
-    li {
-      font-size: 17px;
-    }
-  }
-  @include respond-max(400px) {
-    .interior & {
-      .nav-interior {
-        li:first-child {
-          padding-left: 4px;
-        }
-        li {
-          padding: 3px 3px 4px 3px;
-          &.nav-hud {
-            padding: 3px 12px 3px 3px;
-          }
-        }
-      }
-    }
-  }
+  // @include respond-max(875px) {
+  //   .interior & {
+  //     .nav-interior {
+  //       li {
+  //         padding: 8px 8px 4px 8px;
+  //         &.nav-hud {
+  //           padding: 8px 12px 8px 8px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // @include respond-max(875px) {
+  //   li {
+  //     font-size: 17px;
+  //   }
+  // }
+  // @include respond-max(400px) {
+  //   .interior & {
+  //     .nav-interior {
+  //       li:first-child {
+  //         padding-left: 4px;
+  //       }
+  //       li {
+  //         padding: 3px 3px 4px 3px;
+  //         &.nav-hud {
+  //           padding: 3px 12px 3px 3px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
 // Interior page components
 // --------------------------------------------------------
@@ -1492,7 +1532,7 @@ body.static-true span.sentence:hover {
   span {
     display: inline-block;
     color: $white;
-  } 
+  }
 }
 
 .onoffswitch-label {
@@ -1763,7 +1803,7 @@ body.static-true span.sentence:hover {
   }
   &.open {
     background-color: $blueDark;
-    > a { 
+    > a {
       color: $white !important;
     }
   }

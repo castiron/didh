@@ -1,5 +1,13 @@
-<p>Welcome to the open-access edition of <em>Debates in the Digital Humanities</em>, a hybrid print/digital publication stream that explores debates in the field as they emerge. Begin reading <%= link_to({ controller: 'debates', action: 'index', id: @editions[-1].id }) do %>
-		here.
-	<% end %></p>
+<header class="home-header">
+	<%= link_to({ controller: 'debates', action: 'index', id: @editions[-1].id }) do %>
+		<%= image_tag("title-image.png") %>
+		<span>begin reading now</span>
+	<% end %>
+</header>
+
+<div class="home-welcome">
+	<p>Welcome to the open-access edition of Debates in the Digital Humanities,a hybrid print/digital publication stream that explores debates in the field as they emerge.</p>
+	<p>Choose an edition below.</p>
+</div>
 
 <%= render "shared/nav_start" %>
