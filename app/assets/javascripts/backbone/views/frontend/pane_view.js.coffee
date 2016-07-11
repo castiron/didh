@@ -60,7 +60,7 @@ class Didh.Views.Frontend.PaneView extends Backbone.View
           $('#backbone-feedbackView.nav-pane.pane-top').animate({left: 0})
         when 2
           $('body').removeClass('nav-open')
-          $('#backbone-feedbackView.nav-pane.pane-top').animate({left: 266})
+          $('#backbone-feedbackView.nav-pane.pane-top').animate({left: 254})
 
       @currentPosition = position
       Backbone.Mediator.publish('pane:change', position);

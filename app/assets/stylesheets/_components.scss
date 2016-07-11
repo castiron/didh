@@ -306,7 +306,7 @@
       &.back-link {
         background-color: $grayMedium;
         .icon-chevron-left {
-          font-family: "museo", serif;
+          font-family: "museo-slab", serif;
           &:before {
             font-family: FontAwesome;
           }
@@ -322,7 +322,7 @@
 }
 
 .default-header {
-  position: absolute;
+  position: fixed;
   z-index: 11;
   top: 0;
   left: 0;
@@ -330,7 +330,7 @@
   background-color: $black;
 
   .light & {
-    background-color: $blackLight;
+    background-color: $blackLighter;
   }
 
   .nav-interior {
@@ -367,7 +367,7 @@
   .logo-didh {
     display: inline-block;
     vertical-align: middle;
-  	background: asset-url('logo-didh-small.png') no-repeat;
+  	background: $black asset-url('logo-didh-small.png') no-repeat;
     background-size: contain;
     width: 52px;
     height: 42px;
@@ -380,40 +380,9 @@
       display: block;
     }
   }
-
-  // @include respond-max(875px) {
-  //   .interior & {
-  //     .nav-interior {
-  //       li {
-  //         padding: 8px 8px 4px 8px;
-  //         &.nav-hud {
-  //           padding: 8px 12px 8px 8px;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  // @include respond-max(875px) {
-  //   li {
-  //     font-size: 17px;
-  //   }
-  // }
-  // @include respond-max(400px) {
-  //   .interior & {
-  //     .nav-interior {
-  //       li:first-child {
-  //         padding-left: 4px;
-  //       }
-  //       li {
-  //         padding: 3px 3px 4px 3px;
-  //         &.nav-hud {
-  //           padding: 3px 12px 3px 3px;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }
+
+
 // Interior page components
 // --------------------------------------------------------
 .page-header {
@@ -608,8 +577,8 @@
 // --------------------------
 .nav-hud {
 	@extend %smooth-resize;
-  margin-top: 3px;
   //one hud in the header
+  // background-color: $black;
   .default-header & {
     position: absolute !important;
     z-index: 10 !important;
@@ -624,12 +593,31 @@
     position: absolute !important;
     z-index: 10;
     right: 0;
-    padding: 8px 24px 8px 15px;
+    padding: 10px 24px 9px 15px;
     @include respond-max(875px) {
       display: none;
       .nav-open & {
         display: block;
       }
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2000px;
+    max-width: 46px;
+    height: 42px;
+    background-color: $black;
+    z-index: -1;
+    @include transition(0.4s max-width linear);
+  }
+
+  .nav-open & {
+    &:after {
+      max-width: 300px;
     }
   }
 }
@@ -639,73 +627,35 @@
 	@extend %floated-list;
 	@extend %smooth-resize;
 	color: lighten($black, 40%);
-	// background-color: $white;
-	// padding: 0.69em 1.25em;
-	// border-bottom: 1px solid lighten($black, 70%);
-	margin-right: $navClosedWidth;
+	margin-right: 41px;
 	cursor: pointer;
 	&:hover {
 		color: $black;
 		border-bottom-color: $black;
 	}
-	// .nav-open & {
-	// 	margin-right: $navOpenWidth;
-	// }
+
 	li {
-		// width: 22%;
 		max-width: 20em;
 		line-height: 22px;
 		padding-left: $space;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+
 		&.hud--title {
 			width: 34%;
 			max-width: 20em;
 		}
+
 		&:first-child {
 			padding-left: 0;
 		}
+
 		&:last-child {
 			padding-left: 0;
 		}
 	}
-	// @include respond-max(1100px) {
-	// 	padding: 0.69em 0.625em;
-	// 	li {
-	// 		padding-left: $space / 2;
-	// 		&:first-child {
-	// 			padding-left: 0;
-	// 		}
-	// 		&:last-child {
-	// 			padding-left: 0;
-	// 		}
-	// 	}
-	// }
-	// @include respond-max(810px) {
-	// 	.nav-open & {
-	// 		li {
-	// 			display: none;
-	// 			width: 25%;
-	// 			&.hud--title,
-	// 			&.hud--user {
-	// 				display: block;
-	// 			}
-	// 			&.hud--title {
-	// 				width: 75%;
-	// 			}
-	// 		}
-	// 	}
-	// }
 }
-
-// <li>
-// .hud--title {
-// 	max-width: 25.25em;
-// 	@include respond-max(1024px) {
-// 		max-width: 50% !important;
-// 	}
-// }
 
 // <span>
 .hud--author {
@@ -721,15 +671,16 @@
 // <li>
 .hud--user {
 	// width: 160px;
-	color: $blueDark;
-  font-size: 18px;
+	color: $chartreuse;
+  font-size: 14px;
   font-weight: $regular;
 	text-align: right;
 	// This !important overrides the default %floated list styles
 	float: right !important;
 	position: relative;
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: $white;
   }
 	@include respond-max(810px) {
 		em {
@@ -794,8 +745,8 @@
     }
   }
   .nav-content & {
-    right: 30px;
-    left: -57px;
+    right: 46px;
+    left: -73px;
     &.logged-in {
       top: 42px;
       left: -11px;
@@ -1260,7 +1211,7 @@ body.static-true span.sentence:hover {
 .pane-top {
 	.level-0,
 	.level-1 {
-    background-color: $black;
+    background-color: $blackLighter;
 		border-bottom: none;
     border-left: none;
     box-shadow: none;
@@ -1273,10 +1224,7 @@ body.static-true span.sentence:hover {
 
 //feedback sidebar
 .nav-pane.pane-top {
-    left: 266px;
-  .nav-open & {
-    left: 0;
-  }
+  left: 254px;
 }
 
 // <li>
@@ -1297,6 +1245,37 @@ body.static-true span.sentence:hover {
 	.parts {
 		position: relative;
 	}
+
+  .edition-info {
+    @extend %unstyled-list;
+    position: absolute;
+    top: 7.3%;
+    left: 25px;
+    font-size: 14px;
+    visibility: hidden;
+    // @include transition(0.2s visibility linear);
+
+    .nav-open & {
+      visibility: visible;
+    }
+
+    .title {
+      color: $white;
+      font-weight: 300;
+    }
+
+    .author, .edition {
+      color: $grayMedium;
+    }
+
+    .author {
+      padding-top: 11px;
+    }
+
+    .edition {
+      padding-top: 8px;
+    }
+  }
 }
 
 .pane--vertical-stage {
@@ -1328,9 +1307,29 @@ body.static-true span.sentence:hover {
 .pane--header {
 	.pane-top & {
     left: 4px;
-    background-color: $black;
+    // background-color: $blackLighter;
+
+    .pane--header-label {
+      position: absolute;
+      top: 75px;
+      left: -7px;
+      color: $grayMedium;
+      font-size: 14px;
+      transform: rotate(90deg);
+      visibility: visible;
+      @include transition(0.2s visibility linear);
+
+      .nav-open & {
+        visibility: hidden;
+      }
+    }
+
     &:hover {
       cursor: pointer;
+
+      .pane--header-label {
+        color: $white;
+      }
     }
 	}
 	cursor: pointer;
@@ -1339,6 +1338,8 @@ body.static-true span.sentence:hover {
 	left: 0;
 	white-space: nowrap;
 	z-index: 10;
+
+
 }
 
 // Width set to height of parent (pane--header)
@@ -1373,11 +1374,26 @@ body.static-true span.sentence:hover {
 // <a>
 .content-nav--toggle {
 	position: absolute;
-	top: 13px;
-	left: 6px;
-  color: $blueDark;
+  top: 4px;
+  left: 13px;
+  color: $chartreuse;
+  font-size: 32px;
+  line-height: 32px;
+
   &:before {
     cursor: pointer !important;
+  }
+
+  &:hover {
+    color: $white;
+  }
+
+  &.icon-chevron-right:before {
+    content: "\f104";
+  }
+
+  .nav-open &.icon-chevron-right:before {
+    content: "\f105";
   }
 }
 
@@ -1416,8 +1432,15 @@ body.static-true span.sentence:hover {
 .count-box-list {
 	@extend %tight-floated-list;
 	position: absolute;
-	bottom: 40%;
+	bottom: 12.6%;
   left: 0;
+  padding-left: 11px;
+  visibility: hidden;
+  @include transition(0.2s visibility linear);
+
+  .nav-open & {
+    visibility: visible;
+  }
 }
 
 // <li>
@@ -1430,35 +1453,35 @@ body.static-true span.sentence:hover {
 }
 
 .count-box--title {
-  font-size: 0.884em;
-  font-weight: $thin;
+  font-size: 13px;
+  line-height: 15.6px;
+  font-weight: $regular;
   display: inline-block;
   width: 49%;
   margin: 0;
-  color: $white;
+  padding-left: 3px;
+  color: $grayMedium;
   text-align: left;
 }
 
 .count-box--number {
   @extend %deca;
-  display: inline-block;
   width: 49%;
-  padding-right: 12px;
+  line-height: 54px;
   color: $chartreuse;
-  text-align: right;
 }
 
 // Feedback options
 // --------------------------
 .feedback-options {
-  @include transition(0.8s visibility linear);
+  @include transition(0.2s visibility linear);
 	position: absolute;
   z-index: 10;
   right: 0;
   left: 0;
 	bottom: 0;
   padding-top: 18px;
-  background-color: $blackLight;
+  background-color: $black;
   visibility: hidden;
   .nav-open & {
     visibility: visible;
@@ -1474,6 +1497,7 @@ body.static-true span.sentence:hover {
 
 .feedback-options--list {
 	@extend %unstyled-list;
+  font-weight: $regular;
 	& > li + li {
 		margin-top: $shim;
 	}
@@ -1484,8 +1508,9 @@ body.static-true span.sentence:hover {
   li {
     width: 50%;
   	padding: 18px 0px 15px 1.3em;
+    background-color: $black;
     &.active {
-      background-color: $black;
+      background-color: $chartreuse;
     }
   }
 	// li + li {
@@ -1500,13 +1525,47 @@ body.static-true span.sentence:hover {
 	position: relative;
 	cursor: pointer;
   color: $white;
-  .stacked-label, .opacity-label {
+  &.stacked, &.opacity {
+    color: $chartreuse;
+    &:hover {
+      color: $grayMedium;
+    }
+    .active & {
+      color: $black;
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  &.opacity {
+    &:hover {
+      b {
+        background: transparent asset-url('icon-opacity-hover.png') no-repeat left top;
+      }
+    }
+    .active &:hover {
+      b {
+        background: transparent asset-url('icon-opacity-active.png') no-repeat left top;
+      }
+    }
+  }
+  &.stacked {
+    &:hover {
+      b {
+        background: transparent asset-url('icon-stacked-hover.png') no-repeat left top;
+      }
+    }
+    .active &:hover {
+      b {
+        background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
+      }
+    }
+  }
+
+  .opacity-label, .stacked-label {
     background-size: auto 100%;
     margin-left: 2px;
-    color: $grayAlt;
-    .active & {
-      color: $chartreuse;
-    }
   }
   .opacity-label {
     padding: 2px 0 2px 4px;
@@ -1527,11 +1586,11 @@ body.static-true span.sentence:hover {
   width: 34px;
 }
 .feedback-options--wrapper {
-  padding-left: 24px;
   margin-bottom: 12px;
+  padding-left: 25px;
+  
   span {
     display: inline-block;
-    color: $white;
   }
 }
 
@@ -1543,19 +1602,23 @@ body.static-true span.sentence:hover {
   padding: 0;
   line-height: 14px;
   border-radius: 20px;
-  background-color: #7FB8CA;
-  background-color: rgba(127,184,202, 0.5);
+  background-color: $blackLighter;
   &:before {
     content: "";
     display: block;
     width: 20px;
     margin: -3px;
-    background: #02ADEF;
+    background-color: $chartreuse;
     position: absolute;
     top: 1px;
     bottom: 7px;
     right: 18px;
     border-radius: 20px;
+  }
+  &:hover {
+    &:before {
+      background-color: $grayMedium;
+    }
   }
 }
 
@@ -1563,6 +1626,18 @@ body.static-true span.sentence:hover {
   display: none;
   &:checked + .onoffswitch-label:before {
     right: 0;
+  }
+  &.off + .onoffswitch-label {
+    &:before {
+      background-color: $grayMedium;
+    }
+  }
+}
+
+.onoffswitch-text-label {
+  color: $chartreuse;
+  &.off {
+    color: $grayMedium;
   }
 }
 
@@ -1633,6 +1708,7 @@ body.static-true span.sentence:hover {
 .nav-toc {
   position: relative;
   background-color: transparent;
+
   .nav-pane {
     position: absolute;
     z-index: 50;
@@ -1663,7 +1739,7 @@ body.static-true span.sentence:hover {
       h2 {
         cursor: pointer;
         &.icon-chevron-left {
-          font-family: "museo", serif;
+          font-family: "museo-slab", serif;
           &:before {
             font-family: FontAwesome;
             color: $blue;
@@ -1683,7 +1759,7 @@ body.static-true span.sentence:hover {
         border-bottom: 1px solid rgba(255,255,255, 0.46);
         padding-bottom: 14px;
         &.icon-chevron-right-after {
-          font-family: "museo", serif;
+          font-family: "museo-slab", serif;
           &:after {
             font-family: FontAwesome;
             float: right;
@@ -2190,7 +2266,7 @@ parts {
 	display: block;
 	width: 5px;
 	height: 10px;
-  background: $blueDark;
+  background: $chartreuse;
   position: absolute;
   left: -100px;
   overflow: visible;

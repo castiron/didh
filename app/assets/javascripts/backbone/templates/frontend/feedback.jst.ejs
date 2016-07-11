@@ -1,21 +1,28 @@
 <li class="level-0">
 	<header class="js-content-feedback--visible-toggle pane--header">
-		<a class="icon-chevron-right content-nav--toggle js-content-nav--pos0-show js-content-nav--pos1-show js-content-feedback--visible-toggle" href=""></a>
+		<a class="icon-chevron-right content-nav--toggle js-content-nav--pos0-show js-content-nav--pos1-show js-content-feedback--visible-toggle" href="">
+		</a>
 		<a style="display: none;" class="icon-chevron-left content-nav--toggle content-nav--toggle-pos2 js-content-nav--pos2-show js-content-feedback--visible-toggle" href=""></a>
+		<span class="pane--header-label">Options</span>
 	</header>
  	<section class="pane--content">
 	<% if(text != null && isStatic != true) { %>
+		<ul class="edition-info">
+			<li class="title"><div><%= text.get('title') %></li>
+			<li class="author"><%= text.getAuthorsList() %></li>
+			<li class="edition"><%= text.get('edition') %></li>
+		</ul>
  		<ul class="count-box-list">
  			<li class="count-box">
-				<span class="count-box--number"><%= text.getAnnotatedSentenceCount() %></span>
+				<div class="count-box--number"><%= text.getAnnotatedSentenceCount() %></div>
  				<h6 class="count-box--title">sentences marked<br>as interesting</h6>
  			</li>
  			<li class="count-box">
-				<span class="count-box--number"><%= text.getIndexedSentencesCount() %></span>
+				<div class="count-box--number"><%= text.getIndexedSentencesCount() %></div>
  				<h6 class="count-box--title">sentences<br>indexed</h6>
  			</li>
  			<li class="count-box">
-				<span class="count-box--number"><%= text.getTotalMarkedAndIndexed() %></span>
+				<div class="count-box--number"><%= text.getTotalMarkedAndIndexed() %></div>
  				<h6 class="count-box--title">total times<br>marked or indexed</h6>
  			</li>
  		</ul>
@@ -23,7 +30,7 @@
 			<ul class="feedback-options--list">
 				<li>
 					<div class="feedback-options--wrapper">
-						<span>View social annotations</span>
+						<span class="onoffswitch-text-label" id="feedback-view-interesting-label">View social annotations</span>
 						<div class="feedback-options--checkbox">
 						    <input type="checkbox" <% if(visualization != 'none') { %> checked="checked" <% } %> name="onoffswitch" class="onoffswitch-checkbox" id="feedback-view-interesting">
 						    <label class="onoffswitch-label" for="feedback-view-interesting"></label>
@@ -31,14 +38,14 @@
 					</div>
 					<ul class="feedback-options--sublist">
 						<li>
-							<label class="feedback-options--label">
+							<label class="feedback-options--label opacity">
 								<input class="feedback-options--radio  opacity-input" type="radio" <% if(visualization == 'opacity') { %> checked="checked" <% } %> name="feedback-type" id="feedback-view-interesting-opacity" />
 								<b></b>
 								<span class="opacity-label">Opacity</span>
 							</label>
 						</li>
 						<li>
-							<label class="feedback-options--label">
+							<label class="feedback-options--label stacked">
 								<input class="feedback-options--radio stacked-input" type="radio" <% if(visualization == 'stacked') { %> checked="checked" <% } %> name="feedback-type" id="feedback-view-interesting-stacked" />
 								<b></b>
 								<span class="stacked-label">Stacks</span>

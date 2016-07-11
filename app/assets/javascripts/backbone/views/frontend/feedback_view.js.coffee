@@ -37,6 +37,10 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 			return 'stacked'
 
 		if @$el.find('#feedback-view-interesting').attr('checked') == 'checked'
+			@$el.find('#feedback-view-interesting-label').removeClass('off')
+			@$el.find('#feedback-view-interesting').removeClass('off')
+			@$el.find("#feedback-view-interesting-stacked").removeClass('off')
+			@$el.find("#feedback-view-interesting-opacity").removeClass('off')
 			type = 'stacked'
 			if @$el.find("#feedback-view-interesting-stacked").attr('checked') == 'checked'
 				type = 'stacked'
@@ -44,6 +48,10 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 				type = 'opacity'
 		else
 			type = 'none'
+			@$el.find('#feedback-view-interesting-label').addClass('off')
+			@$el.find('#feedback-view-interesting').addClass('off')
+			@$el.find("#feedback-view-interesting-stacked").addClass('off')
+			@$el.find("#feedback-view-interesting-opacity").addClass('off')
 		type
 
 	updateVisualizationType: () ->

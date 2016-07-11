@@ -192,6 +192,7 @@
 	@extend %white-button;
 	padding-right: 0.6em;
 	padding-left: 0.4em;
+	padding-bottom: 0.45em;
 	&:before {
 		content: "";
 		display: inline-block;
@@ -363,27 +364,50 @@
 		}
 	}
 	&.opacity-input + b {
-		left: -2px;
-		background: transparent asset-url('icon-opacity-inactive.png') no-repeat left top;	}
-		.no-backgroundsize & {
-			background-image: asset-url('icon-opacity-inactive-half.png');
-		}
-	&.stacked-input + b {
-		left: -2px;
-		background: transparent asset-url('icon-stacked-inactive.png') no-repeat left top;
-		.no-backgroundsize & {
-			background-image: asset-url('icon-stacked-inactive-half.png');
-		}
+		left: 3px;
+		bottom: -10px;
+		background: transparent asset-url('icon-opacity-inactive.png') no-repeat left top;	
+		// .no-backgroundsize & {
+		// 	background-image: asset-url('icon-opacity-inactive-half.png');
+		// }
 	}
 	.active &.opacity-input + b {
-		background: transparent asset-url('icon-opacity-active.png') no-repeat left top;	}
-		.no-backgroundsize & {
-			background-image: asset-url('icon-opacity-active-half.png');
+		background: transparent asset-url('icon-opacity-active.png') no-repeat left top;	
+		// .no-backgroundsize & {
+		// 	background-image: asset-url('icon-opacity-active-half.png');
+		// }
+	}
+	&.opacity-input.off {
+		& ~ .opacity-label {
+			color: $grayMedium;
 		}
+
+		& + b {
+			background: transparent asset-url('icon-opacity-off.png') no-repeat left top !important;
+		}
+	}
+
+	&.stacked-input + b {
+		top: -6px;
+		left: -2px;
+		background: transparent asset-url('icon-stacked-inactive.png') no-repeat left top;
+		// .no-backgroundsize & {
+		// 	background-image: asset-url('icon-stacked-inactive-half.png');
+		// }
+	}
 	.active &.stacked-input + b {
 		background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
-		.no-backgroundsize & {
-			background-image: asset-url('icon-stacked-active-half.png');
+		// .no-backgroundsize & {
+		// 	background-image: asset-url('icon-stacked-active-half.png');
+		// }
+	}
+	&.stacked-input.off {
+		& ~ .stacked-label {
+			color: $grayMedium;
+		}
+
+		& + b {
+			background: transparent asset-url('icon-stacked-off.png') no-repeat left top !important;
 		}
 	}
 }
