@@ -26,6 +26,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     @parts.bind('change:active', @highlightActivePart, @)
     @texts.bind('change:active', @closeToc, @)
     @setupSubscriptions()
+    console.log(@editions);
       
     unless @.$el.hasClass('open')
       setTimeout((() =>

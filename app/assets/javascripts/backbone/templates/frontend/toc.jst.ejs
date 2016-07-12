@@ -22,8 +22,9 @@
 				<div class="parts">
 					<% parts.each( function(part) { %>
 						<div class="part-wrapper">
-						<h2 class="js-content-toc--open-toggle pane-bottom--title icon-chevron-left"><%= part.get('label') %></h2>
+						<h2 class="js-content-toc--open-toggle pane-bottom--title icon-chevron-left">Back</h2>
 						<div class="part toc-part-<%= part.get('id') %>">
+							<div class="js-content-toc--open-toggle pane-bottom--subtitle"><%= part.get('label') %></div>
 							<% cols = 0; %>
 							<% _.each(texts.byPartEditionGrouped(edition.get('id'), part.get('id'), 5), function(textGroup) { %>
 								<% cols++ %>

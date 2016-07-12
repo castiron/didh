@@ -293,33 +293,41 @@
     li + li {
       margin-left: 3px;
     }
-  }
-}
 
-.book-header {
-  background-color: $gray;
-  .nav-interior {
-    li {
-      a {
-        color: $grayDarker;
-      }
-      &.back-link {
-        background-color: $grayMedium;
-        .icon-chevron-left {
-          font-family: "museo-slab", serif;
-          &:before {
-            font-family: FontAwesome;
-          }
-        }
-      }
-      &.active {
-        a {
-          color: $blueDark;
-        }
+    @include respond-max(500px) {
+      > li {
+        padding: 8px 0px 8px 10px;
       }
     }
   }
 }
+
+// .book-header {
+//   background-color: $gray;
+//   .nav-interior {
+//     li {
+//       a {
+//         color: $grayDarker;
+//       }
+//       &.back-link {
+//         background-color: $grayMedium;
+
+//         .icon-chevron-left {
+//           font-family: "museo-slab", serif;
+
+//           &:before {
+//             font-family: FontAwesome;
+//           }
+//         }
+//       }
+//       &.active {
+//         a {
+//           color: $white;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .default-header {
   position: fixed;
@@ -350,17 +358,6 @@
           }
         }
       }
-      // &.open {
-      //   // background-color: $blueDark;
-      //   a {
-      //     color: $white;
-      //   }
-      // }
-      // &.home-link {
-      //   @include respond-max(680px) {
-      //     display: none;
-      //   }
-      // }
     }
   }
 
@@ -375,9 +372,10 @@
     &:hover {
       background: $black asset-url('logo-didh-small-active.png') no-repeat;
     }
-
-    @include respond-max(400px) {
-      display: block;
+    .book-header & {
+      @include respond-max(400px) {
+        display: block;
+      }
     }
   }
 }
@@ -769,9 +767,6 @@
 // Content components
 // --------------------------
 .book-blurbs {
-  position: relative;
-  z-index: 12;
-
   .column-main & {
     background-color: transparent !important;
 
@@ -801,8 +796,11 @@
       }
     }
   }
+
   @include respond-min(885px) {
     display: block;
+    position: relative;
+    z-index: 12;
     .column-main & {
       display: none;
     }
@@ -931,7 +929,7 @@
 
 .callout-wrapper.column-fifth.padded.invisible-mobile {
   padding: 56px 20px 46px 40px;
-  
+
   @include respond-max(730px) {
     margin-bottom: -40px;
     img {
@@ -1242,13 +1240,16 @@ body.static-true span.sentence:hover {
 	line-height: $tightLineHeight;
 	padding: 40px 20px 30px 50px;
 	position: relative;
+
 	.pane-top & {
 		padding: 0 0 0 40px;
 	}
+
 	.part {
 		@extend %clearfix;
 		margin-bottom: 50px;
 	}
+
 	.parts {
 		position: relative;
 	}
@@ -1260,6 +1261,7 @@ body.static-true span.sentence:hover {
     left: 25px;
     font-size: 14px;
     visibility: hidden;
+    max-width: 250px;
     // @include transition(0.2s visibility linear);
 
     .nav-open & {
@@ -1335,6 +1337,10 @@ body.static-true span.sentence:hover {
       cursor: pointer;
 
       .pane--header-label {
+        color: $white;
+      }
+
+      .icon-chevron-right:before {
         color: $white;
       }
     }
@@ -1657,58 +1663,112 @@ body.static-true span.sentence:hover {
   display: none;
   left: 0px;
   top: 0px;
-  width: 100vw;
+  width: 720px;
   height: 100%;
   margin-top: 40px;
-  background-color: $blueDark;
+  background-color: $black;
   overflow: hidden;
+
   &.open {
     display: block;
   }
+
+  @include respond-max(400px) {
+    margin-top: 84px;
+  }
 }
+
 .toc-editions {
   position: absolute;
   z-index: 60;
   top: 40px;
   left: 0px;
   display: inline-block;
-  width: 153px;
+  width: 232px;
   height: 96vh;
   vertical-align: top;
-  padding-left: 26px;
-  padding-right: 26px;
-  background-color: $blueDark;
+  padding-left: 80px;
+  padding-right: 52px;
+  background-color: $black;
+
   li {
     margin-bottom: 30px;
+    &:hover {
+
+      .cover-overlay {
+        opacity: 0.5;
+      }
+
+      .cover-label {
+        color: $chartreuse;
+      }
+    }
   }
+
   * {
     display: inline-block;
     width: 100%;
   }
+
   img {
     opacity: 0.38;
     cursor: pointer;
+    border: 1px solid $chartreuse;
+
     &.active {
       opacity: 1;
     }
   }
-  a {
+
+  .cover-wrapper {
+    position: relative;
     display: inline-block;
-    text-align: center;
-    color: $blue;
+  
+    .cover-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 6px;
+      left: 0;
+      right: 0;
+      background-color: $chartreuse;
+      opacity: 0;
+      @include transition(0.05s opacity ease-out);
+    }
+
   }
-  @include respond-max(500px) {
+
+  .cover-label {
+    font-size: 14px;
+    line-height: 1.2;
+    color: $white;
+  }
+
+
+  @include respond-max(570px) {
+    width: 150px;
+    padding-left: 16px;
+    padding-right: 33px;
+  }
+
+  @include respond-max(400px) {
     width: 105px;
     padding-left: 16px;
     padding-right: 16px;
   }
 }
 
-.nav-item-part.active {
+.nav-item-part {
+  &.active {
   visibility: visible;
-  color: $black !important;
-  a {
-    color: $black !important;
+    a {
+      color: $chartreuse;
+    }
+  }
+
+  &:hover {
+    a {
+      color: $chartreuse;
+    }
   }
 }
 
@@ -1724,84 +1784,123 @@ body.static-true span.sentence:hover {
     right: inherit;
     width: 200vw;
     height: 96vh;
-    padding: 0px 34px 50px 100px;
-    background-color: $blueDark;
+    padding: 0px 34px 50px 178px;
+    background-color: $black;
+
     //edition tabs
     &.edition {
       display: none;
+
       &.active {
         display: block;
       }
     }
+
     &.pane-bottom {
       height: auto;
     }
+
     .level-0, .level-1 {
       position: relative;
       display: inline-block;
-      width: 500px;
+      width: 400px;
       vertical-align: top;
       box-shadow: none;
       background-color: transparent;
+
       h2 {
         cursor: pointer;
+
         &.icon-chevron-left {
           font-family: "museo-slab", serif;
+
           &:before {
+            position: relative;
+            bottom: -3px;
             font-family: FontAwesome;
-            color: $blue;
+            font-size: 32px;
+            line-height: 0;
+            font-weight: $regular;
             padding-right: 10px;
             margin-left: -21px;
           }
         }
       }
+
       .pane-bottom--title {
         padding-bottom: 12px;
         padding-left: 40px;
         font-weight: $bold;
+        color: $white;
       }
+
       li {
         margin-left: 0;
         border-bottom: 1px solid $white;
         border-bottom: 1px solid rgba(255,255,255, 0.46);
         padding-bottom: 14px;
+
         &.icon-chevron-right-after {
           font-family: "museo-slab", serif;
+
           &:after {
             font-family: FontAwesome;
+            font-size: 32px;
+            line-height: 0;
+            font-weight: $regular;
+            padding-top: 6px;
             float: right;
-            color: $blue;
+            color: $white;
           }
         }
       }
     }
+
     .level-0 {
       left: 0;
       max-height: calc(100vh - 120px);
       overflow: hidden;
       overflow-y: scroll;
       margin-left: 53px;
+
       .pane-bottom--title {
-        font-size: 19px;
+        font-size: 16px;
+        font-weight: $bold;
+        color: $white;
+        padding-left: 0;
+        &:before {
+          color: $white;
+        }
+        &:hover {
+          color: $chartreuse;
+
+          &:before {
+            color: $chartreuse;
+          }
+        }
       }
+
       .pane--content {
-        padding: 0px 0px 0px 40px;
-        border-top: 1px solid $white;
-        border-top: 1px solid rgba(255,255,255, 0.46);
+        padding: 0px 0px 0px 27px;
+        border-top: 3px solid $white;
       }
+
       li {
         display: block;
         margin-left: 0;
         border-bottom: 1px solid $white;
         border-bottom: 1px solid rgba(255,255,255, 0.46);
         padding-bottom: 14px;
-        font-size: 19px;
+        font-size: 14px;
         font-weight: $bold;
+
         a {
           display: inline-block;
           width: 75%;
           text-decoration: none !important;
+
           &:hover {
+            color: $chartreuse;
           }
         }
       }
@@ -1812,75 +1911,142 @@ body.static-true span.sentence:hover {
         }
       }
     }
+
     .level-1 {
       top: 4px;
+      left: -2px;
       border: none;
       overflow: hidden;
+
       .pane--content {
-        padding: 33px 20px 30px 0px;
+        padding: 48px 20px 30px 0px;
       }
+
       .pane-bottom--title {
-        font-size: 19px;
-        font-weight: $regular;
+        padding-left: 0;
+        padding-bottom: 26px;
+        margin-left: 20px;
+        font-size: 16px;
+        font-weight: $bold;
+        color: $chartreuse;
+
+        &:before {
+          color: $chartreuse;
+        }
+
+        &:hover {
+          color: $white;
+
+          &:before {
+            color: $white;
+          }
+        }
       }
+
+      .pane-bottom--subtitle {
+        padding: 13px 0 25px;
+        margin-left: -40px;
+        font-size: 14px;
+        font-weight: $bold;
+        color: $white;
+
+        &:hover {
+          cursor: pointer;
+          color: $chartreuse;
+        }
+
+        @include respond-max(570px) {
+          margin-left: 0; 
+        }
+      }
+
       .part-wrapper {
         display: inline-block;
         width: 100%;
         @include transition(0.05s visibility linear);
+
         &, * {
           visibility: hidden;
         }
+
         &.active {
           &, * {
             visibility: visible;
           }
         }
       }
+
       .part {
         height: calc(100vh - 120px);
         overflow: hidden;
         overflow-y: scroll;
         padding: 0px 0px 0px 40px;
-        border-top: 1px solid $white;
-        border-top: 1px solid rgba(255,255,255, 0.46);
+        border-top: 3px solid $white;
       }
 
     }
+
     @include respond-max(680px) {
       .level-0, .level-1 {
         width: 323px;
-        li {
-          font-size: 16px;
-          font-weight: $regular;
-        }
       }
     }
+
+    @include respond-max(570px) {
+      padding: 0px 34px 50px 97px;
+    }
+
     @include respond-max(500px) {
+      padding: 0px 34px 50px 144px;
+
       .level-0, .level-1 {
         width: 200px;
         .pane-bottom--title {
-          font-size: 16px;
           padding-left: 20px;
         }
         .part {
           padding: 0px 0px 0px 20px;
         }
-        li {
-          font-size: 16px;
-          font-weight: $regular;
-        }
       }
+
       .level-1 {
         left: 10px;
       }
     }
+
+    @include respond-max(400px) {
+      padding: 0px 34px 50px 97px;
+    }
+
     .nav-index {
+      border-top: 1px solid $white;
+      border-top: 1px solid rgba(255,255,255, 0.46);
+
+      a {
+        cursor: pointer;
+        color: $white;
+        
+        .title, .author {
+          font-size: 14px;
+          font-weight: $regular;
+        }
+
+        &:hover {
+          color: $chartreuse;
+
+          li:after {
+            color: $chartreuse;
+          }
+
+          .title, .author {
+            color: $chartreuse;
+          }
+        }
+      }
+
       li {
         margin-top: 0px;
         padding-top: 17px;
-      }
-      a {
-        color: $white;
       }
     }
   }
@@ -1906,7 +2072,7 @@ body.static-true span.sentence:hover {
     font-weight: $bold;
     &:hover,
     &.active {
-      color: $black;
+      color: $chartreuse;
     }
     &:focus {
       outline: 0;
@@ -1917,7 +2083,7 @@ body.static-true span.sentence:hover {
   }
   span.author {
     margin-top: 5px;
-		color: $yellow;
+		color: $grayMedium;
 	}
 	ul {
 		&.closed {
@@ -2518,6 +2684,10 @@ label {
   margin-bottom: 0.1em !important;
   .dark & {
     color: $chartreuse;
+  }
+
+  @include respond-max(400px) {
+    font-size: 3em;
   }
 }
 

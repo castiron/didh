@@ -54,19 +54,25 @@
 	</head>
 	<body class="interior nav-open banner-open static-<%= @static %>">
 		<div class="annotator" style="top: -1000px;" id="backbone-annotatorView"></div>
-		<div class="light">
+		<div class="book-header">
 			<%= render "shared/page_menu" %>
 		</div>
 		<%= params[:data] %>
 		<div class="toc-container" data-tab-toggle>
 			<ul class="toc-editions">
 				<li>
-					<img src="<%= image_path("2016bookcover-low.png") %>" alt="2016 book cover" class="" data-edition-toggle="<%= @editions.last.id %>" >
-					<a href="/book">Details</a>
+					<div class="cover-wrapper">
+						<div class="cover-overlay"></div>
+						<img src="<%= image_path("2016bookcover-low.png") %>" alt="2016 book cover" class="" data-edition-toggle="<%= @editions.last.id %>" >
+					</div>
+					<div class="cover-label">2016 Edition</div>
 				</li>
 				<li>
-					<img src="<%= image_path("2012bookcover-low.png") %>" alt="2012 book cover" class="" data-edition-toggle="<%= @editions.first.id %>" >
-					<a href="/book">Details</a>
+					<div class="cover-wrapper">
+						<div class="cover-overlay"></div>
+						<img src="<%= image_path("2012bookcover-low.png") %>" alt="2012 book cover" class="" data-edition-toggle="<%= @editions.first.id %>" >
+					</div>
+					<div class="cover-label">2012 Edition</div>
 				</li>
 			</ul>
 			<nav id="backbone-tocView" class="nav-toc"></nav>

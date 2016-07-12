@@ -9,7 +9,6 @@ class Didh.Views.Frontend.TextView extends Backbone.View
   initialize: () ->
     @parts = @options.parts
     @texts = @options.texts
-    console.log(@options);
     @annotations = @options.annotations
     @router = @options.router
 
