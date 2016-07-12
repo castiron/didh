@@ -769,10 +769,15 @@
 // Content components
 // --------------------------
 .book-blurbs {
+  position: relative;
+  z-index: 12;
+
   .column-main & {
     background-color: transparent !important;
+
     .callout-wrapper {
       width: 100%;
+
       .narrow-image {
         width: 50%;
       }
@@ -925,6 +930,8 @@
 }
 
 .callout-wrapper.column-fifth.padded.invisible-mobile {
+  padding: 56px 20px 46px 40px;
+  
   @include respond-max(730px) {
     margin-bottom: -40px;
     img {
@@ -1588,7 +1595,7 @@ body.static-true span.sentence:hover {
 .feedback-options--wrapper {
   margin-bottom: 12px;
   padding-left: 25px;
-  
+
   span {
     display: inline-block;
   }

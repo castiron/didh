@@ -1,4 +1,4 @@
-<header class="book-header">
+<!-- <header class="book-header">
 	<ul class="nav-interior">
 		<li class="back-link">
 			<%= link_to 'Return to About', {controller: '/pages', action: 'about'}, class: 'icon-chevron-left' %>
@@ -18,4 +18,28 @@
 			<%= link_to '2016 Edition', {controller: '/pages', action: 'book', id: @editions[-1].id} %>
 		</li>
 	</ul>
+</header> -->
+<header class="default-header">
+  <%= link_to ' ', { controller: '/pages', action: 'index' }, class: 'logo-didh' %>
+  <ul class="nav-interior">
+    <!-- <li class="bold home-link <%= 'active' if params[:action] == 'index' && params[:controller] == 'pages' %>">
+      <%= link_to 'Debates in the Digital Humanities', {controller: '/pages', action: 'index'}%>
+    </li> -->
+    <li class="toc-tab-trigger">
+      <% if params[:controller] == 'debates' %>
+        <a href="#" data-tab-toggle-trigger>Contents</a>
+      <% else %>
+        <%= link_to 'Contents', {controller: '/debates', action: 'index', data: 'toc-open'}%>
+      <% end %>
+    </li>
+    <li class="<%= 'active' if params[:action] == 'about' %>">
+      <%= link_to 'About', :controller => '/pages', :action => 'about' %>
+    </li>
+    <li class="<%= 'active' if params[:action] == 'news' %>">
+      <%= link_to 'News', :controller => '/pages', :action => 'news' %>
+    </li>
+    <li class="<%= 'active' if params[:action] == 'cfps' %>">
+      <%= link_to 'CFPs', :controller => '/pages', :action => 'cfps' %>
+    </li>
+  </ul>
 </header>
