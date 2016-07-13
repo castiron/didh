@@ -708,6 +708,7 @@
   left: -63px;
 	z-index: -1;
   height: 259px;
+  width: 238px;
 	.nav-open & {
 		right: $navOpenWidth;
 	}
@@ -719,9 +720,18 @@
 		}
 	}
   li {
+    @extend %clearfix;
     a {
       text-decoration: none !important;
       color: $black !important;
+
+      &.right {
+        float: right;
+      }
+
+      &.left {
+        float: left;
+      }
     }
   }
 	form {
@@ -753,10 +763,10 @@
   }
   .nav-content & {
     right: 46px;
-    left: -73px;
+    left: -81px;
     &.logged-in {
-      top: 42px;
-      left: -11px;
+      right: 46px;
+      left: -42px;
       width: 236px;
     }
   }
@@ -2673,6 +2683,10 @@ label {
 	display: block;
 	line-height: 1;
 	margin-bottom: 10px;
+}
+
+.new_user {
+  color: $black;
 }
 
 // Form errors
