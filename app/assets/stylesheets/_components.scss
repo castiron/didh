@@ -1766,7 +1766,8 @@ body.static-true span.sentence:hover {
   li {
     margin-bottom: 30px;
     &:hover {
-
+      cursor: pointer;
+      
       .cover-overlay {
         opacity: 0.5;
       }
