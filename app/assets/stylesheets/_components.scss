@@ -1730,7 +1730,7 @@ body.static-true span.sentence:hover {
 // --------------------------
 
 .toc-container {
-  position: absolute;
+  position: fixed;
   z-index: 40;
   display: none;
   left: 0px;
@@ -1767,7 +1767,7 @@ body.static-true span.sentence:hover {
     margin-bottom: 30px;
     &:hover {
       cursor: pointer;
-      
+
       .cover-overlay {
         opacity: 0.5;
       }
@@ -1831,15 +1831,15 @@ body.static-true span.sentence:hover {
 }
 
 .nav-item-part {
-  &.active {
+  .nav-toc .nav-pane &.active {
   visibility: visible;
-    a {
+    a span {
       color: $chartreuse;
     }
   }
 
   &:hover {
-    a {
+    a span {
       color: $chartreuse;
     }
   }

@@ -21,9 +21,6 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 		@defaultVisualization = 'stacked'
 		@setupSubscriptions()
 
-	test: () ->
-		console.log('testing');
-
 	setModel: (model) ->
 		if @model?
 			@model.off('change')
