@@ -70,7 +70,7 @@
 	@extend %vertical-bar-fixed;
   width: 100%;
   max-height: 700px;
-  min-width: 1024px;
+  // min-width: 1024px;
 	background: $black asset-url('2016_DH_Cover_Map.jpg') no-repeat;
   background-size: cover;
   background-position: 50% 0;
@@ -81,7 +81,7 @@
   position: relative;
   width: 76%;
   max-width: 576px;
-  min-width: 300px;
+  min-width: 275px;
   margin: 0 auto;
   background-color: $black;
 
@@ -302,33 +302,6 @@
   }
 }
 
-// .book-header {
-//   background-color: $gray;
-//   .nav-interior {
-//     li {
-//       a {
-//         color: $grayDarker;
-//       }
-//       &.back-link {
-//         background-color: $grayMedium;
-
-//         .icon-chevron-left {
-//           font-family: "museo-slab", serif;
-
-//           &:before {
-//             font-family: FontAwesome;
-//           }
-//         }
-//       }
-//       &.active {
-//         a {
-//           color: $white;
-//         }
-//       }
-//     }
-//   }
-// }
-
 .default-header {
   position: fixed;
   z-index: 11;
@@ -337,7 +310,7 @@
   right: 0;
   background-color: $black;
 
-  .light & {
+  .book-header & {
     background-color: $blackLighter;
   }
 
@@ -450,9 +423,15 @@
   padding: 60px 188px 0px 64px;
   background-color: $black;
   color: $white;
+
+  > * {
+    max-width: 1148px;
+  }
+
   a {
     color: $white;
   }
+
   @include respond-max(885px) {
     padding: 60px 7.49% 0px 7.49%;
   }
@@ -463,39 +442,69 @@
   width: 100%;
   background-color: $white;
   padding: 0;
+
+  .column-fifth {
+    max-width: 300px;
+  }
+
+
+  @include respond-min(1167px) {
+    .column-main {
+      &.padded {
+        width: calc(100% - 350px);
+      }
+      > * {
+        max-width: 850px;
+      }
+    }
+
+    .column-six-fifths {
+      max-width: 350px;
+    }
+  }
+
   @include respond-max(970px) {
     .column-half {
       width: 70%;
     }
+
     .column-half.mobile-full-width {
       width: 100%;
       float: none;
+
       &.padded {
         padding: 40px 40px 0px 40px;
       }
     }
   }
+
   @include respond-max(885px) {
     .column-main {
       width: 100%;
+
       &.padded {
         padding: 60px 7.49% 0px 7.49%;
       }
     }
+
     .column-six-fifths {
       width: 100%;
+
       &.padded {
         padding: 25px 5% 0px 5%;
       }
     }
+
     .column-six-fifths.mobile-full-width {
       width: 30%;
     }
   }
+
   @include respond-max(730px) {
     .columns-wrapper {
       width: 100%;
     }
+
     .column-six-fifths.mobile-full-width {
       width: 100%;
     }
@@ -767,6 +776,11 @@
 // Content components
 // --------------------------
 .book-blurbs {
+
+  .callout-wrapper {
+    max-width: 350px;
+  }
+
   .column-main & {
     background-color: transparent !important;
 
@@ -778,18 +792,22 @@
       }
     }
   }
+
   @include respond-min(600px) {
     display: none;
+
     .column-main & {
       display: inline-block;
       padding: 25px 0 !important;
       text-align: center;
+
       .callout-wrapper {
         display: inline-block;
         width: 50%;
         margin: 0 -1.1%;
         padding: 0 6%;
         vertical-align: top;
+
         .narrow-paragraph {
           text-align: left;
         }
@@ -801,8 +819,15 @@
     display: block;
     position: relative;
     z-index: 12;
+
     .column-main & {
       display: none;
+    }
+  }
+
+  @include respond-min(1167px) {
+    &.column-six-fifths {
+      width: 350px;
     }
   }
 }
@@ -813,6 +838,7 @@
 
 .callout {
 	@extend %callout;
+
   .details-list {
     li {
       text-align: center;
@@ -886,9 +912,11 @@
     margin: 0 auto;
     padding-bottom: 9px;
   }
+
   .column-half > & {
     display: none;
   }
+
   @include respond-max(970px) {
     .column-fifth > & {
       width: 100%;
