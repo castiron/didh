@@ -364,8 +364,8 @@
 		}
 	}
 	&.opacity-input + b {
-		left: 3px;
-		bottom: -10px;
+		left: 21px;
+	    bottom: 3px;
 		background: transparent asset-url('icon-opacity-inactive.png') no-repeat left top;	
 		// .no-backgroundsize & {
 		// 	background-image: asset-url('icon-opacity-inactive-half.png');
@@ -388,8 +388,8 @@
 	}
 
 	&.stacked-input + b {
-		top: -6px;
-		left: -2px;
+		bottom: 3px;
+	    left: 17px;
 		background: transparent asset-url('icon-stacked-inactive.png') no-repeat left top;
 		// .no-backgroundsize & {
 		// 	background-image: asset-url('icon-stacked-inactive-half.png');

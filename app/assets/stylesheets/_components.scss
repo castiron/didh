@@ -114,6 +114,7 @@
 }
 
 .home-welcome {
+  text-shadow: 1px 1px black;
   p {
     font-size: 1.16em;
     text-align: center;
@@ -420,7 +421,7 @@
 
 // Content wrapper for frontend_page layout
 .interior-content-page {
-  padding: 60px 188px 0px 64px;
+  padding: 60px 188px 60px 64px;
   background-color: $black;
   color: $white;
 
@@ -804,8 +805,6 @@
   }
 
   @include respond-min(600px) {
-    display: none;
-
     .column-main & {
       display: inline-block;
       padding: 25px 0 !important;
@@ -832,6 +831,14 @@
 
     .column-main & {
       display: none;
+    }
+  }
+
+  @include respond-max(885px) {
+    display: none;
+
+    .column-main & {
+      display: inherit;
     }
   }
 
@@ -932,7 +939,7 @@
       width: 100%;
       img, .details-list {
         display: block;
-        width: 49%;
+        width: 100%;
       }
       .details-list {
         margin: 0 auto !important;
@@ -1558,19 +1565,71 @@ body.static-true span.sentence:hover {
 	@extend %floated-list;
   li {
     width: 50%;
-  	padding: 18px 0px 15px 1.3em;
     background-color: $black;
+    border: 3px solid transparent;
     &.active {
       background-color: $chartreuse;
     }
+    
+    &:hover {
+      cursor: pointer;
+      border: 3px solid $grayMedium;
+
+      .stacked, .opacity {
+        color: $grayMedium;
+
+        &.active {
+          color: $black;
+        }
+      }
+
+      &.active {
+        border: 3px solid transparent;
+        color: $black;
+
+        .opacity {
+          color: $black;
+          b {
+            background: transparent asset-url('icon-opacity-active.png') no-repeat left top;
+          }
+        }
+
+        .stacked {
+          color: $black;
+          b {
+            background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
+          }
+        }
+      }
+
+      .opacity {
+        b {
+          background: transparent asset-url('icon-opacity-hover.png') no-repeat left top;
+        }
+        .active & {
+          b {
+            background: transparent asset-url('icon-opacity-active.png') no-repeat left top;
+          }
+        }
+      }
+
+      .stacked {
+        b {
+          background: transparent asset-url('icon-stacked-hover.png') no-repeat left top;
+        }
+        .active & {
+          b {
+            background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
+          }
+        }
+      }
+    }
   }
-	// li + li {
-	// 	margin-left: 15px;
-	// }
 }
 
 .feedback-options--label {
 	@extend %input-label;
+  padding: 15px 0px 12px 1.3em;
 	font-size: 0.884em;
 	margin-bottom: 0;
 	position: relative;
@@ -1585,31 +1644,6 @@ body.static-true span.sentence:hover {
       color: $black;
       &:hover {
         color: $black;
-      }
-    }
-  }
-
-  &.opacity {
-    &:hover {
-      b {
-        background: transparent asset-url('icon-opacity-hover.png') no-repeat left top;
-      }
-    }
-    .active &:hover {
-      b {
-        background: transparent asset-url('icon-opacity-active.png') no-repeat left top;
-      }
-    }
-  }
-  &.stacked {
-    &:hover {
-      b {
-        background: transparent asset-url('icon-stacked-hover.png') no-repeat left top;
-      }
-    }
-    .active &:hover {
-      b {
-        background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
       }
     }
   }
@@ -2685,7 +2719,11 @@ label {
 	margin-bottom: 10px;
 }
 
-.new_user {
+.new_user, .new_user a {
+  color: $black;
+}
+
+.edit_user, .edit_user a {
   color: $black;
 }
 
@@ -2729,7 +2767,7 @@ label {
   }
 
   @include respond-max(400px) {
-    font-size: 3em;
+    font-size: 2.5em;
   }
 }
 
@@ -2865,7 +2903,7 @@ label {
   width: 70%;
   float: left;
   &.padded {
-    padding: 60px 188px 0px 64px;
+    padding: 60px 188px 60px 64px;
   }
 }
 
