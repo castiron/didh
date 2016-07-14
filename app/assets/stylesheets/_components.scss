@@ -119,6 +119,11 @@
     font-size: 1.16em;
     text-align: center;
     line-height: 26px;
+    font-weight: $regular;
+
+    .italicized {
+      font-style: italic;
+    }
   }
 }
 
@@ -182,6 +187,7 @@
     .cover-label {
       padding-top: 20px;
       font-size: 0.75em;
+      font-weight: $regular;
       line-height: 1.2;
     }
   }
@@ -229,15 +235,26 @@
 .home-footer {
   margin: 106px auto 0;
   text-align: center;
+
+  .photo-credit {
+    position: absolute;
+    right: 0;
+    bottom: -44px;
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 30px;
+  }
 }
 
 .nav-footer {
 	@extend %loose-floated-list;
 	margin: 80px auto 60px auto;
+
   li {
     float: none;
     display: inline-block;
   }
+
   a {
     height: 5em;
     &:hover {
@@ -247,12 +264,20 @@
       height: 4em;
     }
   }
+
   img {
     height: 100%;
   }
+
 	@include respond-max(1040px) {
 		right: 10px;
 	}
+
+  @include respond-max(400px) {
+    li + li {
+      margin-left: 0.92em;
+    }
+  }
 }
 
 .nav-primary,
