@@ -129,8 +129,8 @@ namespace :texts do
     # Accommodating different structures when implementing 2nd edition
     sorting = fileBasename.gsub(/[^0-9]/, '')
     title = htmlDoc.css("p.ct span").inner_html
-    title = htmlDoc.css("h1.ctfm").inner_html if title.blank?
     title = htmlDoc.css("h1.ct").inner_html if title.blank?
+    title = htmlDoc.css("h1.ctfm").inner_html if title.blank?
     title = ActionView::Base.full_sanitizer.sanitize(title)
 
     puts "[#{file}] [info] found title: #{title}"
