@@ -25,14 +25,15 @@ class DebatesController < ApplicationController
 			@editionId = params[:edition_id]
 		end
 
+		@editions = Edition.all
+
 		# If no edition is specified, show the most recent
 		if !@editionId
 			@editionId = @editions.last.id
 		end
 
 		@edition = Edition.find(@editionId)
-
-		@editions = Edition.all
+		
 		@texts = Text.order('sorting ASC').all
 		@parts = Part.all
 		@hide_instructions = check_hide_instructions()
