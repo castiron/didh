@@ -722,9 +722,11 @@
 	z-index: -1;
   height: 259px;
   width: 238px;
+
 	.nav-open & {
 		right: $navOpenWidth;
 	}
+
 	ul {
 		@extend %unstyled-list;
 		text-align: right;
@@ -732,6 +734,7 @@
 			margin-top: 14px;
 		}
 	}
+
   li {
     @extend %clearfix;
     a {
@@ -747,6 +750,7 @@
       }
     }
   }
+
 	form {
 		@extend %clearfix;
     a {
@@ -763,10 +767,12 @@
 			float: left;
 		}
 	}
+
   &.logged-in {
     left: -17px;
     width: 238px;
   }
+
   .default-header & {
     li {
       a {
@@ -774,13 +780,25 @@
       }
     }
   }
+
   .nav-content & {
     right: 46px;
     left: -81px;
+
     &.logged-in {
       right: 46px;
       left: -42px;
       width: 236px;
+    }
+  }
+
+  @include respond-max(810px) {
+    .nav-content & {
+      left: -81px;
+
+      &.logged-in {
+        left: -127px;
+      }
     }
   }
 }

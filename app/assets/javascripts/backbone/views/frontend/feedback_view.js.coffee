@@ -57,7 +57,6 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	updateVisualizationType: () ->
 		visualization = @getVisualizationType()
 		@visualization = visualization
-		console.log @visualization
 		@updateToogleAppearance(@visualization)
 		Backbone.Mediator.publish('visualization:update', @visualization);
 
