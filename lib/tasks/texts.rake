@@ -106,8 +106,12 @@ namespace :texts do
       return Part.where(edition_id: 2, label: "Digital Humanities and Its Critics").first
     end
 
-    if file_num < 65
+    if file_num < 63
       return Part.where(edition_id: 2, label: "Forum: Text Analysis at Scale").first
+    end
+
+    if file_num < 65
+      return Part.where(edition_id: 2, label: "Series Introduction and Editors’ Note").first
     end
 
     nil
@@ -165,18 +169,18 @@ namespace :texts do
 
     # Note: upcasing author names in order to make 2nd edition names consistent with 1st ed
     authors = authorString.gsub(/ AND /i, ",").split(",").map(&:strip).reject(&:empty?).map(&:upcase)
-    authorsArray = []
+    authorsOrdered = []
     authors.each do |author|
       if Author.where(:name => author).count > 0
-        authorsArray << Author.where(:name => author).first
+        authorsOrdered << Author.where(:name => author).first
       else
         author = Author.new(:name => author)
         author.save
-        authorsArray << author
+        authorsOrdered << author
       end
     end
 
-    puts "[#{file}] [info] found authors: #{authorsArray}"
+    puts "[#{file}] [info] found authors: #{authorsOrdered}"
 
     # Get the body text
     body = String.new
@@ -266,13 +270,20 @@ namespace :texts do
         puts "[#{file}] [info] found #{noteNodes.length} endnote nodes"
       end
 
+      authorsTexts = []
+      i = 0
+      authorsOrdered.each do |author|
+        i = i + 1
+        at = AuthorsText.new(author: author, sorting: i)
+        authorsTexts << at
+      end
+
       # Set the text object's attributes.
       text.attributes = {
           :edition => edition,
           :title => title,
           :sorting => sorting,
           :body => body,
-          :authors => authorsArray,
           :notes => notes,
           :bibliography => bibliography,
           :source_file => fileBasename
@@ -281,6 +292,18 @@ namespace :texts do
       text.edition = edition
       text.part = part
       text.save
+
+      i = 0
+      authorsOrdered.each do |author|
+        at = AuthorsText.where(author: author, text: text).first
+        if !at
+          at = AuthorsText.new(author: author, sorting: i, text: text)
+          at.save
+        end
+        puts at
+
+        i = i + 1
+      end
 
       sentences.each do |sentence|
         sentence.save()

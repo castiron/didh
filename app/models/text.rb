@@ -1,6 +1,6 @@
 class Text < ActiveRecord::Base
-
-	has_and_belongs_to_many :authors
+	has_many :authors_texts
+	has_many :authors, through: :authors_texts
 	belongs_to :part
 	belongs_to :edition
 	has_many :keywords
@@ -8,8 +8,12 @@ class Text < ActiveRecord::Base
   has_many :sentences
 	has_many :annotations
 
+	def sorted_authors
+		authors = self.authors_texts.order("sorting ASC").map { |author_text| author_text.author }
+	end
+
 	def author_names
-		self.authors.collect { |author| author.name }.join(', ')
+		sorted_authors.collect { |author| author.name }.join(', ')
 	end
 
   def comment_counts
@@ -23,7 +27,7 @@ class Text < ActiveRecord::Base
 				:title => title,
 				:part => part_id,
 				:is_static => is_static,
-				:authors => authors,
+				:authors => sorted_authors,
 				:edition_id => edition_id
 			}
 		else
@@ -36,7 +40,7 @@ class Text < ActiveRecord::Base
 				:body => body,
 				:notes => notes,
 				:bibliography => bibliography,
-				:authors => authors,
+				:authors => sorted_authors,
 				:edition => edition.label,
 				:keywords_grouped => keywords.all_grouped,
 				:sentences => annotations.all_grouped

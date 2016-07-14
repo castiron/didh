@@ -41,3 +41,4 @@ Part.where(label: 'Digital Humanities and Its Practices', sorting: 3, edition: e
 Part.where(label: 'Digital Humanities and the Disciplines', sorting: 4, edition: e2).first_or_create
 Part.where(label: 'Digital Humanities and Its Critics', sorting: 5, edition: e2).first_or_create
 Part.where(label: 'Forum: Text Analysis at Scale', sorting: 6, edition: e2).first_or_create
+Part.where(label: 'Series Introduction and Editors’ Note', sorting: 7, edition: e2).first_or_create
