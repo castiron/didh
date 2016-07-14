@@ -313,6 +313,18 @@
 
   .book-header & {
     background-color: $blackLighter;
+
+    .nav-interior li a {
+      color: $grayMedium;
+
+      &:hover {
+        color: $chartreuse;
+      }
+    }
+
+    li.open a {
+      color: $chartreuse;
+    }
   }
 
   .nav-interior {
@@ -1302,9 +1314,10 @@ body.static-true span.sentence:hover {
   .edition-info {
     @extend %unstyled-list;
     position: absolute;
-    top: 7.3%;
+    top: 68px;
     left: 25px;
     font-size: 14px;
+    font-weight: $regular;
     visibility: hidden;
     max-width: 250px;
     // @include transition(0.2s visibility linear);
@@ -1315,7 +1328,6 @@ body.static-true span.sentence:hover {
 
     .title {
       color: $white;
-      font-weight: 300;
     }
 
     .author, .edition {
@@ -1490,7 +1502,7 @@ body.static-true span.sentence:hover {
 .count-box-list {
 	@extend %tight-floated-list;
 	position: absolute;
-	bottom: 12.6%;
+  bottom: 117px;
   left: 0;
   padding-left: 11px;
   visibility: hidden;
@@ -1524,9 +1536,13 @@ body.static-true span.sentence:hover {
 
 .count-box--number {
   @extend %deca;
-  width: 49%;
   line-height: 54px;
   color: $chartreuse;
+
+  @include respond-max-height(700px) {
+    display: inline-block;
+    line-height: 40px;
+  }
 }
 
 // Feedback options
@@ -1688,6 +1704,7 @@ body.static-true span.sentence:hover {
   line-height: 14px;
   border-radius: 20px;
   background-color: $blackLighter;
+
   &:before {
     content: "";
     display: block;
@@ -1700,6 +1717,7 @@ body.static-true span.sentence:hover {
     right: 18px;
     border-radius: 20px;
   }
+
   &:hover {
     &:before {
       background-color: $grayMedium;
@@ -1709,9 +1727,11 @@ body.static-true span.sentence:hover {
 
 .onoffswitch-checkbox {
   display: none;
+
   &:checked + .onoffswitch-label:before {
     right: 0;
   }
+
   &.off + .onoffswitch-label {
     &:before {
       background-color: $grayMedium;

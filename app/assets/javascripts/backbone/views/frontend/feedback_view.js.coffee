@@ -18,7 +18,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 		@isStatic = @options.isStatic
 		@parts = @options.parts
 		@texts = @options.texts
-		@defaultVisualization = 'stacked'
+		@defaultVisualization = 'opacity'
 		@setupSubscriptions()
 
 	setModel: (model) ->
@@ -34,7 +34,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	getVisualizationType: () ->
 		if @firstCheck == true
 			@firstCheck = false
-			return 'stacked'
+			return 'opacity'
 
 		if @$el.find('#feedback-view-interesting').attr('checked') == 'checked'
 			@$el.find('#feedback-view-interesting-label').removeClass('off')
@@ -57,6 +57,7 @@ class Didh.Views.Frontend.FeedbackView extends Didh.Views.Frontend.PaneView
 	updateVisualizationType: () ->
 		visualization = @getVisualizationType()
 		@visualization = visualization
+		console.log @visualization
 		@updateToogleAppearance(@visualization)
 		Backbone.Mediator.publish('visualization:update', @visualization);
 
