@@ -300,7 +300,6 @@ namespace :texts do
           at = AuthorsText.new(author: author, sorting: i, text: text)
           at.save
         end
-        puts at
 
         i = i + 1
       end

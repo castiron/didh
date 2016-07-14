@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20160714165259) do
   end
 
   create_table "authors_texts", id: false, force: :cascade do |t|
-    t.integer "text_id",   null: false
-    t.integer "author_id", null: false
-    t.integer "sorting"
+    t.integer "text_id",               null: false
+    t.integer "author_id",             null: false
+    t.integer "sorting",   default: 0
   end
 
   create_table "chapters", force: :cascade do |t|
