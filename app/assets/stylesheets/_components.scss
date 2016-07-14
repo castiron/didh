@@ -2115,6 +2115,14 @@ body.static-true span.sentence:hover {
             color: $chartreuse;
           }
         }
+
+        &.active {
+          color: $chartreuse;
+
+          li:after {
+            color: $chartreuse;
+          }
+        }
       }
 
       li {
