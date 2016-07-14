@@ -19,7 +19,6 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     @tocInitOpen = @options.toc
     @currentPosition = 1
     @editions = @options.editions
-    @editions.setActiveEdition(2)
     @parts = @options.parts
     @texts = @options.texts
     @router = @options.router
@@ -36,6 +35,7 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
   highlightActivePart: () ->
     activePart = _.first(@parts.where({active: true}))
     activeText = _.first(@texts.where({active: true}))
+
     @$el.find('#toc-edition-'+@editions.getActiveEditionId()+' .nav-item-part').each( ->
       $(@).removeClass('active')
     )

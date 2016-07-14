@@ -4,11 +4,11 @@ Didh::Application.routes.draw do
   devise_for :admins
 
   get 'debates/' => 'debates#index'
-  get 'debates/:id' => 'debates#index'
-  get 'debates/part/:id' => 'debates#index'
-  get 'debates/text/:id' => 'debates#index'
-  get 'debates/text/:id/auth' => 'debates#index'
-  get 'debates/text/:id/comment/:sentence' => 'debates#index'
+  get 'debates/:edition_id' => 'debates#index'
+  get 'debates/part/:part_id' => 'debates#index'
+  get 'debates/text/:text_id' => 'debates#index'
+  get 'debates/text/:text_id/auth' => 'debates#index'
+  get 'debates/text/:text_id/comment/:sentence_id' => 'debates#index'
 
   get 'static/debates/text/:id' => 'debates#show'
   get 'debates/hide_instructions' => 'debates#hide_instructions'

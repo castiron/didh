@@ -10,6 +10,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
     @tocView.render()
     @annotator.render()
     @feedbackView.render()
+    @tocView.toggleEdition(null, @editionId)
 
     # window.addEventListener('orientationchange', () ->
     #   Backbone.Mediator.publish('app:orientationchange');
@@ -96,6 +97,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
     # @tocView.goToPosition(1)
     @feedbackView.goToPosition(1)
     @setActiveText(textId)
+
 
   setActiveText: (id) ->
 

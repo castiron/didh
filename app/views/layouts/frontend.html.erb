@@ -62,14 +62,14 @@
 				<li>
 					<div class="cover-wrapper">
 						<div class="cover-overlay"></div>
-						<img src="<%= image_path("2016bookcover-low.png") %>" alt="2016 book cover" class="" data-edition-toggle="<%= @editions.last.id %>" >
+						<img src="<%= image_path("2016bookcover-low.png") %>" alt="2016 book cover" class="<%= if @editionId.to_s == @editions.last.id.to_s then 'active' end %>" data-edition-toggle="<%= @editions.last.id %>" >
 					</div>
 					<div class="cover-label">2016 Edition</div>
 				</li>
 				<li>
 					<div class="cover-wrapper">
 						<div class="cover-overlay"></div>
-						<img src="<%= image_path("2012bookcover-low.png") %>" alt="2012 book cover" class="" data-edition-toggle="<%= @editions.first.id %>" >
+						<img src="<%= image_path("2012bookcover-low.png") %>" alt="2012 book cover" class="<%= if @editionId.to_s == @editions.first.id.to_s then 'active' end %>" data-edition-toggle="<%= @editions.first.id %>" >
 					</div>
 					<div class="cover-label">2012 Edition</div>
 				</li>

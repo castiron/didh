@@ -8,12 +8,31 @@ class DebatesController < ApplicationController
 		if params[:data] == 'toc-open'
 			@toc = true
 		end
-		@editions = Edition.all
-		@editionId = params[:id]
-		if !@editionId 
+
+		# Determine edition, part, and text based on the params
+		if params[:text_id]
+			@text = Text.find(params[:text_id])
+			@part = @text.part
+			@editionId = @text.edition_id
+		else
+			if params[:part_id]
+				@part = Part.find(params[:part_id])
+				@editionId = @part.edition_id
+			end
+		end
+
+		if !@editionId
+			@editionId = params[:edition_id]
+		end
+
+		# If no edition is specified, show the most recent
+		if !@editionId
 			@editionId = @editions.last.id
 		end
-		@text = Text.where(edition_id: @editionId).order('id ASC').first # There's probably a better way
+
+		@edition = Edition.find(@editionId)
+
+		@editions = Edition.all
 		@texts = Text.order('sorting ASC').all
 		@parts = Part.all
 		@hide_instructions = check_hide_instructions()
