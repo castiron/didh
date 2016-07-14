@@ -33,12 +33,20 @@
   text-transform: uppercase;
 }
 
+.italicized {
+  font-style: italic;
+}
+
 .bold {
   font-weight: $bold;
 }
 
 .regular {
   font-weight: $regular;
+}
+
+.about a:hover {
+  color: $chartreuse;
 }
 
 .mobile-only {
@@ -120,10 +128,6 @@
     text-align: center;
     line-height: 26px;
     font-weight: $regular;
-
-    .italicized {
-      font-style: italic;
-    }
   }
 }
 
@@ -841,6 +845,7 @@
 
 // Content components
 // --------------------------
+
 .book-blurbs {
 
   .callout-wrapper {
@@ -855,6 +860,10 @@
 
       .narrow-image {
         width: 50%;
+      }
+
+      .narrow-paragraph {
+        display: none;
       }
     }
   }

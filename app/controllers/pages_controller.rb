@@ -25,6 +25,7 @@ class PagesController < ApplicationController
 
 	def about
 		@editions = Edition.all
+		@aboutText = Text.where('edition_id=2' ).last.id
 		@message = Message.new
 	end
 
