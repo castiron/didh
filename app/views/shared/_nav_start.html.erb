@@ -1,6 +1,6 @@
 <nav class="nav-start">
 	<div class="column-half">
-		<%= link_to({ controller: 'debates', action: 'index', id: @editions[1].id }) do %>
+		<%= link_to({ controller: 'debates', action: 'index', edition_id: @editions[1].id }) do %>
 			<div class="cover-wrapper">
 				<div class="cover-overlay"></div>
 				<%= image_tag("2016bookcover-low.png") %>
@@ -9,7 +9,7 @@
 		<% end %>
 	</div>
 	<div class="column-half">
-		<%= link_to({ controller: 'debates', action: 'index', id: @editions[0].id }) do %>
+		<%= link_to({ controller: 'debates', action: 'index', edition_id: @editions[0].id }) do %>
 			<div class="cover-wrapper">
 				<div class="cover-overlay"></div>
 				<%= image_tag("2012bookcover-low.png") %>
