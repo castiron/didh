@@ -199,6 +199,9 @@ namespace :texts do
         node = node.next_sibling
       end
 
+      endnote_href_regex = /href="#{Regexp.escape(File.basename(file))}(#[^"]+)"/
+      body.gsub!(endnote_href_regex, 'href="\1"')
+
       # Begin natural language parsing
       StanfordCoreNLP.log_file = "#{Rails.root}/log/snlp.log"
       StanfordCoreNLP.jar_path = "#{Rails.root}/lib/vendor/snlp/"
