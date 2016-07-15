@@ -184,7 +184,7 @@ namespace :texts do
 
     # Get the body text
     body = String.new
-    startNodePath = "//div[@class='epigraph'] | //p[@class='pf' or @class='paft' or @class='ah']"
+    startNodePath = "//div[@class='epigraph'] | //p[@class='pf' or @class='paft' or @class='ah'] | //h2[@class='ahaft']"
     node = htmlDoc.at_xpath(startNodePath)
 
     if node.nil?
