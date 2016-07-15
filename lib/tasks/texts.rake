@@ -202,6 +202,9 @@ namespace :texts do
       endnote_href_regex = /href="#{Regexp.escape(File.basename(file))}(#[^"]+)"/
       body.gsub!(endnote_href_regex, 'href="\1"')
 
+      dropcap_span_regex = /#{Regexp.escape('<span class="dropcap">') + '(\S)' + Regexp.escape('</span>')}/
+      body.gsub!(dropcap_span_regex, '\1')
+
       # Begin natural language parsing
       StanfordCoreNLP.log_file = "#{Rails.root}/log/snlp.log"
       StanfordCoreNLP.jar_path = "#{Rails.root}/lib/vendor/snlp/"
