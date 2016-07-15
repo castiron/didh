@@ -1165,10 +1165,15 @@
 .chapter-body {
 	@extend %justified;
 
-  .ahaft, .bhaft, .ah {
+  #ahaft3701, #bhaft3701, #ah3701 {
+    font-family: monospace;
     font-size: 18px;
     font-weight: $thin;
     line-height: 24.3px;
+  }
+
+  #bhaft3701, #ah3701 {
+    padding-bottom: 18px;
   }
 }
 
