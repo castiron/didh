@@ -1154,9 +1154,16 @@
 			text-indent: 0;
 		}
 	}
-	p.bqs, div.list {
+	p.bqs, div.list, .blockquote p {
 		margin: 2em;
-		p {
+    text-indent: 0;
+
+    //Enable if given the option to do so
+    // & + p {
+    //   margin-top: -1em;
+    // } 
+
+		p, span {
 			text-indent: 0;
 		}
 	}
