@@ -29,27 +29,23 @@
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
 
-		</script> 
+		</script>
 
 	</head>
 	<body class="home">
+		<%= render "shared/page_menu" %>
 		<div class="home-wrapper">
-			<header class="home-header">
-				<h1 class="home-title">Debates in the Digital Humanities</h1>
-				<h2 class="home-byline">Matthew K. Gold, Editor</h2>					
-			</header>
+			<div class="home-background"></div>
 			<section class="home-content">
 				<%= yield %>
-				<ul class="nav-primary">
-					<%= render "shared/menu" %>
-				</ul>
 				<footer class="home-footer">
 					<ul class="nav-footer">
 						<li><a href="http://www.gc.cuny.edu/"><%= image_tag("logo-cuny.png") %></a></li>
 						<li><a href="http://www.upress.umn.edu/"><%= image_tag("logo-umn.png") %></a></li>
-						<li><a href="http://gcdi.commons.gc.cuny.edu/"><%= image_tag("logo-gcdi.png") %></a></li>
 						<li><a href="http://gcdsl.commons.gc.cuny.edu/"><%= image_tag("logo-gcdsl.png") %></a></li>
+						<li><a href="http://gcdi.commons.gc.cuny.edu/"><%= image_tag("logo-gcdi.png") %></a></li>
 					</ul>
+					<div class="photo-credit">Background image by<br>Benjamin M. Schmidt</div>
 				</footer>
 			</section>
 		</div>

@@ -1,71 +1,65 @@
 <li class="level-0">
-	<header class="js-content-nav--open-toggle pane--header">
-		<h2 class="pane--title">Feedback</h2>
-		<a class="content-nav--toggle js-content-nav--pos0-show js-content-nav--pos1-show js-content-nav--visible-toggle" href=""></a>
-		<a style="display: none;" class="content-nav--toggle content-nav--toggle-pos2 js-content-nav--pos2-show js-content-nav--visible-toggle" href=""></a>
+	<header class="js-content-feedback--visible-toggle pane--header">
+		<a class="icon-chevron-right content-nav--toggle js-content-nav--pos0-show js-content-nav--pos1-show js-content-feedback--visible-toggle" href="">
+		</a>
+		<a style="display: none;" class="icon-chevron-left content-nav--toggle content-nav--toggle-pos2 js-content-nav--pos2-show js-content-feedback--visible-toggle" href=""></a>
+		<span class="pane--header-label">Options</span>
 	</header>
  	<section class="pane--content">
 	<% if(text != null && isStatic != true) { %>
+		<ul class="edition-info">
+			<li class="title"><div><%= text.get('title') %></li>
+			<li class="author"><%= text.getAuthorsList() %></li>
+			<li class="edition"><%= text.get('edition') %></li>
+		</ul>
  		<ul class="count-box-list">
  			<li class="count-box">
- 				<h6 class="count-box--title">Sentences marked as interesting</h6>
-				<span class="count-box--number"><%= text.getAnnotatedSentenceCount() %></span>
+				<div class="count-box--number"><%= text.getAnnotatedSentenceCount() %></div>
+ 				<h6 class="count-box--title">sentences marked<br>as interesting</h6>
  			</li>
  			<li class="count-box">
- 				<h6 class="count-box--title">Sentences Indexed</h6>
-				<span class="count-box--number"><%= text.getIndexedSentencesCount() %></span>
+				<div class="count-box--number"><%= text.getIndexedSentencesCount() %></div>
+ 				<h6 class="count-box--title">sentences<br>indexed</h6>
  			</li>
  			<li class="count-box">
- 				<h6 class="count-box--title">Total Times Marked or Indexed</h6>
-					<span class="count-box--number"><%= text.getTotalMarkedAndIndexed() %></span>
+				<div class="count-box--number"><%= text.getTotalMarkedAndIndexed() %></div>
+ 				<h6 class="count-box--title">total times<br>marked or indexed</h6>
  			</li>
  		</ul>
- 		<a class="content--toggle js-content-nav--pos1-show js-content-nav--pos2-show js-content-nav--open-toggle" href="">
- 			<b class="content--toggle--arrow"></b>Show/hide feedback
- 		</a>
- 		<a class="content--toggle js-content-nav--pos0-show js-content-nav--open-toggle" style="display:none;" href="">
- 			<b class="content--toggle--arrow-right"></b>Hide feedback options
- 		</a>
-	<% } else { %>
-			<span class="content--toggle">
- 					This text does not support user feedback at this time.
-     		</span>
-	<% } %>
-	</section>
-</li>
-<li class="level-1">
-	<header class="js-content-nav--open-toggle pane--header">
-		<h2 class="pane--title">Options</h2>
-	</header>
-	<section class="pane--content pane--vertical-stage">
 		<div class="feedback-options">
-			<h2 class="feedback-options--title">Feedback Options</h2>
 			<ul class="feedback-options--list">
 				<li>
-					<label class="feedback-options--label">
-						<input class="feedback-options--checkbox" type="checkbox" <% if(visualization != 'none') { %> checked="checked" <% } %> id="feedback-view-interesting" />
-						<b></b>
-						View text marked as interesting
-					</label>
+					<div class="feedback-options--wrapper">
+						<span class="onoffswitch-text-label" id="feedback-view-interesting-label">View social annotations</span>
+						<div class="feedback-options--checkbox">
+						    <input type="checkbox" <% if(visualization != 'none') { %> checked="checked" <% } %> name="onoffswitch" class="onoffswitch-checkbox" id="feedback-view-interesting">
+						    <label class="onoffswitch-label" for="feedback-view-interesting"></label>
+						</div>
+					</div>
 					<ul class="feedback-options--sublist">
 						<li>
-							<label class="feedback-options--label">
-								<input class="feedback-options--radio" type="radio" <% if(visualization == 'stacked') { %> checked="checked" <% } %> name="feedback-type" id="feedback-view-interesting-stacked" />
+							<label class="feedback-options--label opacity">
+								<input class="feedback-options--radio  opacity-input" type="radio" <% if(visualization == 'opacity') { %> checked="checked" <% } %> name="feedback-type" id="feedback-view-interesting-opacity" />
 								<b></b>
-								<span class="stacked-label">Stacked</span>
+								<span class="opacity-label">Opacity</span>
 							</label>
 						</li>
 						<li>
-							<label class="feedback-options--label">
-								<input class="feedback-options--radio" type="radio" <% if(visualization == 'opacity') { %> checked="checked" <% } %> name="feedback-type" id="feedback-view-interesting-opacity" />
+							<label class="feedback-options--label stacked">
+								<input class="feedback-options--radio stacked-input" type="radio" <% if(visualization == 'stacked') { %> checked="checked" <% } %> name="feedback-type" id="feedback-view-interesting-stacked" />
 								<b></b>
-								<span class="opacity-label">Opacity</span>
+								<span class="stacked-label">Stacks</span>
 							</label>
 						</li>
 					</ul>
 				</li>
 			</ul>
 		</div>
+	<% } else { %>
+			<span class="content--toggle">
+ 					This text does not support user feedback at this time.
+     		</span>
+	<% } %>
 	</section>
 </li>
 

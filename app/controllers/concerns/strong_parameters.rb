@@ -16,6 +16,8 @@ module StrongParameters
     devise_parameter_sanitizer.for(:account_update) << :state
     devise_parameter_sanitizer.for(:account_update) << :country
     devise_parameter_sanitizer.for(:account_update) << :gender
+    devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.for(:account_update) << :alias
   end
 
   protected

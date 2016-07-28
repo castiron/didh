@@ -1,5 +1,14 @@
-<p>Welcome to the open-access edition of <em>Debates in the Digital Humanities</em>, which brings together leading figures in the field to explore its theories, methods, and practices and to clarify its multiple possibilities and tensions.</p>
+<header class="home-header">
+	<%= link_to({ controller: 'debates', action: 'index', id: @editions[-1].id }) do %>
+		<%= image_tag("title-image.png") %>
+		<span>begin reading now</span>
+	<% end %>
+</header>
 
-<p>First published by the <a href="http://www.upress.umn.edu/">University of Minnesota Press</a> in 2012 as a <a href="/book">printed book</a>, <em>Debates in the Digital Humanities</em> is <a href="/about">expanding</a> into a hybrid print/digital publication stream that will explore new debates as they emerge.</p>
+<div class="home-welcome">
+	<br>
+	<p>Welcome to the open-access edition of <span class="italicized">Debates in the Digital Humanities</span>,<br>a hybrid print/digital publication stream that explores debates in the field as they emerge.</p>
+	<p>Choose an edition below.</p>
+</div>
 
-<nav class="nav-start">Begin reading <%= link_to 'here', :controller => 'debates' %>.</nav>
+<%= render "shared/nav_start" %>

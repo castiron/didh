@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="en-US">
+  <head>
+    
+    <meta name="dtb:uid" content="9781452951492"/>
+    
+    <meta name="dtb:depth" content="1"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+  </head>
+  <docTitle>
+    
+    <text>Debates in the Digital Humanities 2016</text>
+    
+  </docTitle>
+  <navMap>
+    <navPoint id="cvi" playOrder="1">
+      <navLabel>
+        <text>Cover</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0001.xhtml#cvi"/>
+    </navPoint>
+    <navPoint id="bk" playOrder="2">
+      <navLabel>
+        <text>Title Page</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0003.xhtml#bk"/>
+    </navPoint>
+    <navPoint id="cip" playOrder="3">
+      <navLabel>
+        <text>Copyright Page</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0004.xhtml#cip"/>
+    </navPoint>
+    <navPoint id="toc" playOrder="4">
+      <navLabel>
+        <text>Contents</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0005.xhtml#toc"/>
+    </navPoint>
+    <navPoint id="intro" playOrder="5">
+      <navLabel>
+        <text>Digital Humanities: The Expanded Field</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0006.xhtml#intro"/>
+    </navPoint>
+    <navPoint id="pt01" playOrder="6">
+      <navLabel>
+        <text>Part 1. Histories and Futures of the Digital Humanities</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0007.xhtml#pt01"/>
+      <navPoint id="ch01" playOrder="7">
+        <navLabel>
+          <text>1. The Emergence of the Digital Humanities (as the Network Is Everting)</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0008.xhtml#ch01"/>
+      </navPoint>
+      <navPoint id="ch02" playOrder="8">
+        <navLabel>
+          <text>2. The “Whole Game”: Digital Humanities at Community Colleges</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0009.xhtml#ch02"/>
+      </navPoint>
+      <navPoint id="ch03" playOrder="9">
+        <navLabel>
+          <text>3. What’s Next: The Radical, Unrealized Potential of Digital Humanities</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0010.xhtml#ch03"/>
+      </navPoint>
+      <navPoint id="ch04" playOrder="10">
+        <navLabel>
+          <text>4. Making a Case for the Black Digital Humanities</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0011.xhtml#ch04"/>
+      </navPoint>
+      <navPoint id="ch05" playOrder="11">
+        <navLabel>
+          <text>5. QueerOS: A User’s Manual</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0012.xhtml#ch05"/>
+      </navPoint>
+      <navPoint id="ch06" playOrder="12">
+        <navLabel>
+          <text>6. Father Busa’s Female Punch Card Operatives</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0013.xhtml#ch06"/>
+      </navPoint>
+      <navPoint id="ch07" playOrder="13">
+        <navLabel>
+          <text>7. On the Origin of “Hack” and “Yack”</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0014.xhtml#ch07"/>
+      </navPoint>
+      <navPoint id="ch08" playOrder="14">
+        <navLabel>
+          <text>8. Reflections on a Movement: #transformDH, Growing Up</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0015.xhtml#ch08"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="pt02" playOrder="15">
+      <navLabel>
+        <text>Part 2. Digital Humanities and Its Methods</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0016.xhtml#pt02"/>
+      <navPoint id="ch09" playOrder="16">
+        <navLabel>
+          <text>9. Blunt Instrumentalism: On Tools and Methods</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0017.xhtml#ch09"/>
+      </navPoint>
+      <navPoint id="ch10" playOrder="17">
+        <navLabel>
+          <text>10. Putting the Human Back into the Digital Humanities: Feminism, Generosity, and Mess</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0018.xhtml#ch10"/>
+      </navPoint>
+      <navPoint id="ch11" playOrder="18">
+        <navLabel>
+          <text>11. Mid-Sized Digital Pedagogy</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0019.xhtml#ch11"/>
+      </navPoint>
+      <navPoint id="ch12" playOrder="19">
+        <navLabel>
+          <text>12. Re: Search and Close Reading</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0020.xhtml#ch12"/>
+      </navPoint>
+      <navPoint id="ch13" playOrder="20">
+        <navLabel>
+          <text>13. Why We Must Read the Code: The Science Wars, Episode IV</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0021.xhtml#ch13"/>
+      </navPoint>
+      <navPoint id="ch14" playOrder="21">
+        <navLabel>
+          <text>14. Where Is Methodology in Digital Humanities?</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0022.xhtml#ch14"/>
+      </navPoint>
+      <navPoint id="ch15" playOrder="22">
+        <navLabel>
+          <text>15. Resistance in the Materials</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0023.xhtml#ch15"/>
+      </navPoint>
+      <navPoint id="ch16" playOrder="23">
+        <navLabel>
+          <text>16. Interview with Ernesto Oroza</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0024.xhtml#ch16"/>
+      </navPoint>
+      <navPoint id="ch17" playOrder="24">
+        <navLabel>
+          <text>17. Digital Humanities Knowledge: Reflections on the Introductory Graduate Syllabus</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0025.xhtml#ch17"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="pt03" playOrder="25">
+      <navLabel>
+        <text>Part 3. Digital Humanities and Its Practices</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0026.xhtml#pt03"/>
+      <navPoint id="ch18" playOrder="26">
+        <navLabel>
+          <text>18. Alien Reading: Text Mining, Language Standardization, and the Humanities</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0027.xhtml#ch18"/>
+      </navPoint>
+      <navPoint id="ch19" playOrder="27">
+        <navLabel>
+          <text>19. My Old Sweethearts: On Digitization and the Future of the Print Record</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0028.xhtml#ch19"/>
+      </navPoint>
+      <navPoint id="ch20" playOrder="28">
+        <navLabel>
+          <text>20. Argument, Evidence, and the Limits of Digital Literary Studies</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0029.xhtml#ch20"/>
+      </navPoint>
+      <navPoint id="ch21" playOrder="29">
+        <navLabel>
+          <text>21. Pedagogies of Race: Digital Humanities in the Age of Ferguson</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0030.xhtml#ch21"/>
+      </navPoint>
+      <navPoint id="ch22" playOrder="30">
+        <navLabel>
+          <text>22. Here and There: Creating DH Community</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0031.xhtml#ch22"/>
+      </navPoint>
+      <navPoint id="ch23" playOrder="31">
+        <navLabel>
+          <text>23. The Sympathetic Research Imagination: Digital Humanities and the Liberal Arts</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0032.xhtml#ch23"/>
+      </navPoint>
+      <navPoint id="ch24" playOrder="32">
+        <navLabel>
+          <text>24. Lessons on Public Humanities from the Civic Sphere</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0033.xhtml#ch24"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="pt04" playOrder="33">
+      <navLabel>
+        <text>Part 4. Digital Humanities and the Disciplines</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0034.xhtml#pt04"/>
+      <navPoint id="ch25" playOrder="34">
+        <navLabel>
+          <text>25. The Differences between Digital Humanities and Digital History</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0035.xhtml#ch25"/>
+      </navPoint>
+      <navPoint id="ch26" playOrder="35">
+        <navLabel>
+          <text>26. Digital History’s Perpetual Future Tense</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0036.xhtml#ch26"/>
+      </navPoint>
+      <navPoint id="ch27" playOrder="36">
+        <navLabel>
+          <text>27. Collections and/of Data: Art History and the Art Museum in the DH Mode</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0037.xhtml#ch27"/>
+      </navPoint>
+      <navPoint id="ch28" playOrder="37">
+        <navLabel>
+          <text>28. Archaeology, the Digital Humanities, and the “Big Tent”</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0038.xhtml#ch28"/>
+      </navPoint>
+      <navPoint id="ch29" playOrder="38">
+        <navLabel>
+          <text>29. Navigating the Global Digital Humanities: Insights from Black Feminism</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0039.xhtml#ch29"/>
+      </navPoint>
+      <navPoint id="ch30" playOrder="39">
+        <navLabel>
+          <text>30. Between Knowledge and Metaknowledge: Shifting Disciplinary Borders in Digital Humanities and Library and Information Studies</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0040.xhtml#ch30"/>
+      </navPoint>
+      <navPoint id="ch31" playOrder="40">
+        <navLabel>
+          <text>31. “Black Printers” on White Cards: Information Architecture in the Data Structures of the Early American Book Trades</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0041.xhtml#ch31"/>
+      </navPoint>
+      <navPoint id="ch32" playOrder="41">
+        <navLabel>
+          <text>32. Public, First</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0042.xhtml#ch32"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="pt05" playOrder="42">
+      <navLabel>
+        <text>Part 5. Digital Humanities and Its Critics</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0043.xhtml#pt05"/>
+      <navPoint id="ch33" playOrder="43">
+        <navLabel>
+          <text>33. Are Digital Humanists Utopian?</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0044.xhtml#ch33"/>
+      </navPoint>
+      <navPoint id="ch34" playOrder="44">
+        <navLabel>
+          <text>34. Ecological Entanglements of DH</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0045.xhtml#ch34"/>
+      </navPoint>
+      <navPoint id="ch35" playOrder="45">
+        <navLabel>
+          <text>35. Toward a Cultural Critique of Digital Humanities</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0046.xhtml#ch35"/>
+      </navPoint>
+      <navPoint id="ch36" playOrder="46">
+        <navLabel>
+          <text>36. How Not to Teach Digital Humanities</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0047.xhtml#ch36"/>
+      </navPoint>
+      <navPoint id="ch37" playOrder="47">
+        <navLabel>
+          <text>37. Dropping the Digital</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0048.xhtml#ch37"/>
+      </navPoint>
+      <navPoint id="ch38" playOrder="48">
+        <navLabel>
+          <text>38. The Dark Side of the Digital Humanities</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0049.xhtml#ch38"/>
+      </navPoint>
+      <navPoint id="ch39" playOrder="49">
+        <navLabel>
+          <text>39. Difficult Thinking about the Digital Humanities</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0050.xhtml#ch39"/>
+      </navPoint>
+      <navPoint id="ch40" playOrder="50">
+        <navLabel>
+          <text>40. The Humane Digital</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0051.xhtml#ch40"/>
+      </navPoint>
+      <navPoint id="ch41" playOrder="51">
+        <navLabel>
+          <text>41. Hold on Loosely, or Gemeinschaft and Gesellschaft on the Web</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0052.xhtml#ch41"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="pt06" playOrder="52">
+      <navLabel>
+        <text>Part 6. Forum: Text Analysis at Scale</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0053.xhtml#pt06"/>
+      <navPoint id="ch42" playOrder="53">
+        <navLabel>
+          <text>42. Introduction</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0054.xhtml#ch42"/>
+      </navPoint>
+      <navPoint id="ch43" playOrder="54">
+        <navLabel>
+          <text>43. Humane Computation</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0055.xhtml#ch43"/>
+      </navPoint>
+      <navPoint id="ch44" playOrder="55">
+        <navLabel>
+          <text>44. Distant Reading and Recent Intellectual History</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0056.xhtml#ch44"/>
+      </navPoint>
+      <navPoint id="ch45" playOrder="56">
+        <navLabel>
+          <text>45. The Ground Truth of DH Text Mining</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0057.xhtml#ch45"/>
+      </navPoint>
+      <navPoint id="ch46" playOrder="57">
+        <navLabel>
+          <text>46. Why I Dig: Feminist Approaches to Text Analysis</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0058.xhtml#ch46"/>
+      </navPoint>
+      <navPoint id="ch47" playOrder="58">
+        <navLabel>
+          <text>47. More Scale, More Questions: Observations from Sociology</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0059.xhtml#ch47"/>
+      </navPoint>
+      <navPoint id="ch48" playOrder="59">
+        <navLabel>
+          <text>48. Do Digital Humanists Need to Understand Algorithms?</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0060.xhtml#ch48"/>
+      </navPoint>
+      <navPoint id="ch49" playOrder="60">
+        <navLabel>
+          <text>49. Messy Data and Faulty Tools</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0061.xhtml#ch49"/>
+      </navPoint>
+      <navPoint id="ch50" playOrder="61">
+        <navLabel>
+          <text>50. N + 1: A Plea for Cross-Domain Data in the Digital Humanities</text>
+        </navLabel>
+        <content src="ump-golddebates2016-0062.xhtml#ch50"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="ch51" playOrder="62">
+      <navLabel>
+        <text>Series Introduction and Editors’ Note</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0063.xhtml#ch51"/>
+    </navPoint>
+    <navPoint id="contrib" playOrder="63">
+      <navLabel>
+        <text>Contributors</text>
+      </navLabel>
+      <content src="ump-golddebates2016-0064.xhtml#contrib"/>
+    </navPoint>
+
+  </navMap>
+</ncx>

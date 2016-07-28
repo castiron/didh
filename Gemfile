@@ -20,6 +20,7 @@ gem 'devise'
 gem 'rails-backbone'
 gem 'stanford-core-nlp'
 gem 'rjb', '~> 1.5.3'
+gem 'recaptcha', :require => 'recaptcha/rails'
 
 # Gems required for serving the app
 gem 'unicorn'

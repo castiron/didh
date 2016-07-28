@@ -118,3 +118,20 @@ class Didh.Collections.TextsCollection extends Backbone.Collection
       out[out.length - 1].push(text)
       textCounter++
     out
+
+  byPartEditionGrouped: (editionId, partId, count) ->
+    texts = @where({'part': partId, 'edition_id': editionId })
+    out = new Array
+    out.push new Array
+    textCounter = 0
+    _.each texts, (text) ->
+      if textCounter == count
+        out.push new Array
+        textCounter = 0
+      out[out.length - 1].push(text)
+      textCounter++
+    out
+
+  partEditionChecker: (partId, editionId) ->
+    if @where({'part': partId, 'edition_id': editionId }).length
+      return true

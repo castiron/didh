@@ -39,34 +39,34 @@
 // --------------------------
 %alpha {
 	font-size: 1.5em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %beta {
 	font-size: 1.35em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %gamma {
 	font-size: 1em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %delta {
 	font-size: 0.88em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 %epsilon {
 	font-size: 0.7em;
-	font-weight: 700;
+	font-weight: $bold;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;
 }
 
 %zeta {
 	@extend %epsilon;
-	font-weight: 300;
+	font-weight: $thin;
 	letter-spacing: 0;
 }
 
@@ -77,7 +77,7 @@
 
 %theta {
 	font-size: 0.6em;
-	font-weight: 300;
+	font-weight: $thin;
 }
 
 // Extra-hierarchy
@@ -86,13 +86,8 @@
 // Employs SI prefixes
 // --------------------------
 %deca {
-	font-size: 2em;
-	font-weight: 300;
-}
-
-%deci {
-	font-size: 0.5em;
-	font-weight: 300;
+	font-size: 3.41em;
+	font-weight: $thin;
 }
 
 // Block-level
@@ -107,16 +102,6 @@
 	}
 }
 
-%subsection-heading {
-	@extend %delta;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	margin-bottom: $shim;
-}
-
-// Inline
-// --------------------------
 
 // Links
 // --------------------------
@@ -136,9 +121,11 @@
 
 %body-link {
 	color: $black;
-	text-decoration: underline !important;
+	// text-decoration: underline !important;
+	text-decoration: underline;
 	&:hover {
-		text-decoration: none !important;
+		// text-decoration: none !important;
+		text-decoration: none;
 	}
 }
 
@@ -175,9 +162,10 @@
 	text-align: center;
 	line-height: 1;
 	background-color: $white;
-	padding: 0.3em 1.2em;
-	border: none;
-	border-radius: 0.5em;
+	padding: 0.5em 0.5em;
+	border: 1px solid;
+	border-color: $white;
+	// border-radius: 0.5em;
 	&.truncated {
 		max-width: 375px;
 		text-align: left;
@@ -193,12 +181,18 @@
 	&:focus {
 		outline: 0;
 	}
+	&:hover {
+		color: $white;
+		background-color: $blueDark;
+		border-color: $blueDark;
+	}
 }
 
 %white-ex-button {
 	@extend %white-button;
 	padding-right: 0.6em;
 	padding-left: 0.4em;
+	padding-bottom: 0.45em;
 	&:before {
 		content: "";
 		display: inline-block;
@@ -212,22 +206,29 @@
 			background-image: asset-url('icon-x-half.png');
 		}
 	}
+	&:hover {
+		&:before {
+			background-image: asset-url('icon-x-white.png');
+			.no-backgroundsize & {
+				background-image: asset-url('icon-x-half-white.png');
+			}
+		}
+	}
 }
 
 %white-bordered-button {
 	@extend %white-button;
-	border: 1px solid $gray;
+	// border: 1px solid $gray;
 }
 
 %white-bordered-ex-button {
 	@extend %white-ex-button;
-	border: 1px solid $gray;
+	// border: 1px solid $gray;
 }
 
 %small-white-button {
 	@extend %white-button;
-	padding: 0.2em 0.8em 0.1em;
-	border-radius: 0.3em;
+	padding: 0.75em 0.5em;
 }
 
 // Lists
@@ -258,7 +259,7 @@
 %tight-floated-list {
 	@extend %floated-list;
 	li + li {
-		margin-left: 0.4em;
+		margin-top: 1em;
 	}
 }
 
@@ -276,7 +277,6 @@
 		.lt-ie9 & {
 			display: none;
 		}
-
 	}
 	&:checked {
 		& + b {
@@ -314,12 +314,12 @@
 	@extend %standard-input;
 	@extend %zeta;
 	@include appearance(none);
-	@include border-radius(0.5em);
+	// @include border-radius(0.5em);
 	color: lighten($black, 20%);
 	letter-spacing: 0.2em;
 	vertical-align: middle;
 	background-color: transparent;
-	padding: 0.25em 0.5em;
+	padding: 0.5em em;
 	border: 1px solid lighten($black, 20%);
 	&:focus {
 		outline: 0;
@@ -354,13 +354,60 @@
 	@extend %custom-input;
 	margin-right: 8px;
 	& + b {
-		width: 18px;
-		height: 18px;
+		width: 28px;
+		height: 32px;
 		background: transparent asset-url('radio.png') no-repeat left top;
 		background-size: 100% auto;
-		bottom: -2px;
+		bottom: -4px;
 		.no-backgroundsize & {
 			background-image: asset-url('radio-half.png');
+		}
+	}
+	&.opacity-input + b {
+		left: 21px;
+	    bottom: 3px;
+		background: transparent asset-url('icon-opacity-inactive.png') no-repeat left top;	
+		// .no-backgroundsize & {
+		// 	background-image: asset-url('icon-opacity-inactive-half.png');
+		// }
+	}
+	.active &.opacity-input + b {
+		background: transparent asset-url('icon-opacity-active.png') no-repeat left top;	
+		// .no-backgroundsize & {
+		// 	background-image: asset-url('icon-opacity-active-half.png');
+		// }
+	}
+	&.opacity-input.off {
+		& ~ .opacity-label {
+			color: $grayMedium;
+		}
+
+		& + b {
+			background: transparent asset-url('icon-opacity-off.png') no-repeat left top !important;
+		}
+	}
+
+	&.stacked-input + b {
+		bottom: 3px;
+	    left: 17px;
+		background: transparent asset-url('icon-stacked-inactive.png') no-repeat left top;
+		// .no-backgroundsize & {
+		// 	background-image: asset-url('icon-stacked-inactive-half.png');
+		// }
+	}
+	.active &.stacked-input + b {
+		background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
+		// .no-backgroundsize & {
+		// 	background-image: asset-url('icon-stacked-active-half.png');
+		// }
+	}
+	&.stacked-input.off {
+		& ~ .stacked-label {
+			color: $grayMedium;
+		}
+
+		& + b {
+			background: transparent asset-url('icon-stacked-off.png') no-repeat left top !important;
 		}
 	}
 }
@@ -419,14 +466,14 @@
 // --------------------------
 %content-wrapper {
 	@extend %smooth-resize;
-	width: 30.22em;
+	width: 32.22em;
 	padding-right: 2em;
-	margin-left: 29%;
+	margin-left: 9.7%;
 	@include respond-max(1280px) {
-		margin-left: 250px !important;
+		margin-left: 125px !important;
 	}
 	@include respond-max(810px) {
-		margin-left: 180px !important;
+		margin-left: 90px !important;
 	}
 	.nav-open & {
 		//@include respond-max(1550px) {
@@ -544,9 +591,7 @@
 // Callout box
 // --------------------------
 %callout {
-	padding: $shim;
-	background: $grayLight;
-	margin-bottom: $space;
+	padding: $shim 0px;
 }
 
 // Columns

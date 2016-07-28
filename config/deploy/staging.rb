@@ -8,5 +8,3 @@ role :app, %w{dhdebates@dhdebates.cic-stg.com}
 role :web, %w{dhdebates@dhdebates.cic-stg.com}
 role :db, %w{dhdebates@dhdebates.cic-stg.com}
 
-set :deploy_to, "~/#{fetch(:application)}"
-

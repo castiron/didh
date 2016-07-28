@@ -4,20 +4,33 @@
 // Colors
 // --------------------------------------------------------
 $white: #fff;
+$grayLighter: #fcfcfc;
 $grayLight: #f1f1f1;
 $gray: #e6e7e9;
 $grayAlt: #e1e1e1;
-$grayMedium: #9e9fa3;
+$grayMedium: #9b9b9b;
 $grayDark: #7a7b7f;
 $grayDarker: darken($grayDark, 15%);
+$blackLighter: #2d2d2d;
+$blackLight: #212121;
+$blackGreen: #0e1400;
 $black: #000;
 
 $yellowLighter: #fffdee;
 $yellowLight: #fffbd5;
 $yellow: #fef200;
+$chartreuse: #ccdc00;
 $blue: #8ed9f8;
 $blueDark: #02adef;
 $orange: #f8971b;
+
+
+// Typography
+// --------------------------------------------------------
+$thin: 100;
+$regular: 400;
+$bold: 700;
+
 
 // Measurements
 // --------------------------------------------------------
@@ -29,7 +42,7 @@ $space: 2.22em;
 $shim: 1.22em;
 
 $navClosedWidth: 34px;
-$navOpenWidth: 338px;
+$navOpenWidth: 300px;
 
 // $mainWidth: 977px;
 // $contentWidth: 758px;

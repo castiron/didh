@@ -4,7 +4,36 @@ class DebatesController < ApplicationController
 
 	def index
 		@static = false
-		@text = Text::find(1)
+		@toc = false
+		if params[:data] == 'toc-open'
+			@toc = true
+		end
+
+		# Determine edition, part, and text based on the params
+		if params[:text_id]
+			@text = Text.find(params[:text_id])
+			@part = @text.part
+			@editionId = @text.edition_id
+		else
+			if params[:part_id]
+				@part = Part.find(params[:part_id])
+				@editionId = @part.edition_id
+			end
+		end
+
+		if !@editionId
+			@editionId = params[:edition_id]
+		end
+
+		@editions = Edition.all
+
+		# If no edition is specified, show the most recent
+		if !@editionId
+			@editionId = @editions.last.id
+		end
+
+		@edition = Edition.find(@editionId)
+		
 		@texts = Text.order('sorting ASC').all
 		@parts = Part.all
 		@hide_instructions = check_hide_instructions()

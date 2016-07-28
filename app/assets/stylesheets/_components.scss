@@ -8,18 +8,65 @@
 	@extend %with-gray-dark;
 }
 
+.copy-delta {
+  @extend %delta;
+}
+
+.gray-lighter {
+  background-color: $grayLighter !important;
+}
+
+.blue-dark-type {
+  color: $blueDark;
+}
+
+.white {
+  background-color: $white;
+}
+
+.dark {
+  color: $white;
+  background-color: $black;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.italicized {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: $bold;
+}
+
+.regular {
+  font-weight: $regular;
+}
+
+.about a:hover {
+  color: $chartreuse;
+}
+
+.mobile-only {
+  display: none;
+  @include respond-max(885px) {
+    display: block;
+  }
+}
+
 // Homepage components
 // --------------------------------------------------------
 .home-wrapper {
-	margin-left: 35%;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	@include respond-max(1120px) {
-		margin-left: 30%;
-	}
+	margin-top: 170px;
+
+  @include respond-max(450px) {
+    margin-top: 31.35vw;
+  }
+  @include respond-max(1024px) {
+    margin-top: 15.75vw;
+  }
 }
 
 .home-title,
@@ -27,59 +74,154 @@
 	display: none;
 }
 
-.home-header {
-	$w: 974px;
-	$h: 1510px;
+.home-background {
 	@extend %vertical-bar-fixed;
-	width: 35%;
-	background: transparent asset-url('bg-home.jpg') no-repeat left bottom;
-	background-size: 100% auto;
-	left: 0;
-	@include respond-max(1391px) {
-		background-position: right bottom;
-		background-size: ($w / 2) ($h / 2);
-	}
-	@include respond-max(1120px) {
-		width: 30%;
-	}
-	.no-backgroundsize & {
-		background-image: asset-url('bg-home-half.jpg');
-	}
+  width: 100%;
+  max-height: 700px;
+  // min-width: 1024px;
+	background: $black asset-url('2016_DH_Cover_Map.jpg') no-repeat;
+  background-size: cover;
+  background-position: 50% 0;
+  left: 0;
+}
+
+.home-header {
+  position: relative;
+  width: 76%;
+  max-width: 576px;
+  min-width: 275px;
+  margin: 0 auto;
+  background-color: $black;
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  a {
+    display: block;
+    margin: 0 auto 15.75vw;
+    padding: 30px 40px;
+    border: 5px solid $chartreuse;
+    text-align: center;
+
+    span {
+      display: inline-block;
+      padding-top: 28px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    &:hover {
+      span {
+        color: $chartreuse;
+      }
+    }
+  }
+}
+
+.home-welcome {
+  text-shadow: 1px 1px black;
+  p {
+    font-size: 1.16em;
+    text-align: center;
+    line-height: 26px;
+    font-weight: $regular;
+  }
 }
 
 .home-content {
-	width: 40em;
-	padding-bottom: 14em;
-	margin: 0 0 $space 10%;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-
-	@include respond-max(1040px) {
-		width: 90%;
-		font-size: 0.9em;
-		padding-right: 10px;
-	}
-	@include respond-max(740px) {
-		font-size: 0.88em;
-		padding-bottom: 0;
-	}
-	@include respond-max(500px) {
-		padding-top: $space;
-		position: relative;
-	}
-	@include respond-max-height(650px) {
-		padding-top: $space;
-		position: relative;
-	}
+  position: relative;
+  max-width: 833px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 .nav-start {
+  @extend %clearfix;
 	@extend %alpha;
-	@extend %loose-top-space;
+	margin-top: 2.4em;
+
 	a {
 		@extend %home-link;
 	}
+
+  > .column-half {
+    float: right;
+    width: 50%;
+    text-align: center;
+
+    img {
+      height: 100%;
+      width: auto;
+      vertical-align: bottom;
+      border: 1px solid $chartreuse;
+    }
+
+    .cover-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .cover-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: $chartreuse;
+      opacity: 0;
+      @include transition(0.05s opacity ease-out);
+    }
+
+    a {
+      display: inline-block;
+      margin-left: -15%;
+      color: $white;
+      &:hover {
+        color: $chartreuse;
+
+        .cover-overlay {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .cover-label {
+      padding-top: 20px;
+      font-size: 0.75em;
+      font-weight: $regular;
+      line-height: 1.2;
+    }
+  }
+
+  > .column-half + .column-half {
+    a {
+      margin-left: 0;
+      margin-right: -15%;
+    }
+  }
+
+  @include respond-max(500px) {
+    > .column-half {
+      float: none;
+      width: 100%;
+
+      a {
+        margin: 0;
+      }
+    }
+
+    > .column-half + .column-half {
+      margin-top: 44px;
+      padding: 0;
+
+      a {
+        margin: 0;
+      }
+    }
+  }
 }
 
 // Homepage navigation
@@ -94,24 +236,52 @@
 }
 
 // <ul>
+.home-footer {
+  margin: 106px auto 0;
+  text-align: center;
+
+  .photo-credit {
+    position: absolute;
+    right: 0;
+    bottom: -44px;
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 30px;
+  }
+}
+
 .nav-footer {
 	@extend %loose-floated-list;
-	margin-bottom: 10px;
-	position: absolute;
-	bottom: 0;
-	right: 0;
+	margin: 80px auto 60px auto;
+
+  li {
+    float: none;
+    display: inline-block;
+  }
+
+  a {
+    height: 5em;
+    &:hover {
+      opacity: 0.6;
+    }
+    @include respond-max(860px) {
+      height: 4em;
+    }
+  }
+
+  img {
+    height: 100%;
+  }
+
 	@include respond-max(1040px) {
 		right: 10px;
 	}
-	a {
-		height: 5em;
-		@include respond-max(860px) {
-			height: 4em;
-		}
-	}
-	img {
-		height: 100%;
-	}
+
+  @include respond-max(400px) {
+    li + li {
+      margin-left: 0.92em;
+    }
+  }
 }
 
 .nav-primary,
@@ -121,6 +291,110 @@
 		position: static;
 	}
 }
+
+
+//Page components
+// --------------------------------------------------------
+.book-header, .default-header {
+  .nav-interior {
+    font-size: 0.88em;
+    font-weight: $regular;
+    > li {
+      display: inline-block;
+      padding: 8px 0px 8px 34px;
+      a {
+        text-decoration: none;
+        &:hover {
+          color: $white;
+          &:before {
+            text-decoration: none;
+          }
+        }
+      }
+      &.back-link {
+        a {
+          color: $white;
+          &:before {
+            padding-right: 8px;
+          }
+        }
+      }
+    }
+    li + li {
+      margin-left: 3px;
+    }
+
+    @include respond-max(500px) {
+      > li {
+        padding: 8px 0px 8px 10px;
+      }
+    }
+  }
+}
+
+.default-header {
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $black;
+
+  .book-header & {
+    background-color: $blackLighter;
+
+    .nav-interior li a {
+      color: $grayMedium;
+
+      &:hover {
+        color: $chartreuse;
+      }
+    }
+
+    li.open a {
+      color: $chartreuse;
+    }
+  }
+
+  .nav-interior {
+    display: inline-block;
+    font-size: 16px;
+    li {
+      position: relative;
+      z-index: 31;
+      a {
+        color: $chartreuse;
+      }
+      &.active {
+        a {
+          color: $white;
+          .light & {
+            color: $chartreuse;
+          }
+        }
+      }
+    }
+  }
+
+  .logo-didh {
+    display: inline-block;
+    vertical-align: middle;
+  	background: $black asset-url('logo-didh-small.png') no-repeat;
+    background-size: contain;
+    width: 52px;
+    height: 42px;
+
+    &:hover {
+      background: $black asset-url('logo-didh-small-active.png') no-repeat;
+    }
+    .book-header & {
+      @include respond-max(400px) {
+        display: block;
+      }
+    }
+  }
+}
+
 
 // Interior page components
 // --------------------------------------------------------
@@ -179,21 +453,104 @@
 	padding-bottom	: ($space * 4);
 	position: relative;
 	z-index: 10;
+  @include respond-max(810px) {
+    width: 71.6%;
+    margin-left: 60px !important;
+    padding-right: 2em;
+  }
 }
 
 // Content wrapper for frontend_page layout
 .interior-content-page {
-	@extend %smooth-resize;
-	width: 1070px;
-	background-color: $white;
-	padding: ($space * 2) 80px ($space * 2) 240px;
-	@include respond-max(1070px) {
-		width: 100%;
-	}
-	@include respond-max(776px) {
-		padding-right: 40px;
-		padding-left: 200px;
-	}
+  padding: 60px 188px 60px 64px;
+  background-color: $black;
+  color: $white;
+
+  > * {
+    max-width: 1148px;
+  }
+
+  a {
+    color: $white;
+  }
+
+  @include respond-max(885px) {
+    padding: 60px 7.49% 0px 7.49%;
+  }
+}
+
+.interior-content-bare {
+  @extend %smooth-resize;
+  width: 100%;
+  background-color: $white;
+  padding: 0;
+
+  .column-fifth {
+    max-width: 300px;
+  }
+
+
+  @include respond-min(1167px) {
+    .column-main {
+      &.padded {
+        width: calc(100% - 350px);
+      }
+      > * {
+        max-width: 850px;
+      }
+    }
+
+    .column-six-fifths {
+      max-width: 350px;
+    }
+  }
+
+  @include respond-max(970px) {
+    .column-half {
+      width: 70%;
+    }
+
+    .column-half.mobile-full-width {
+      width: 100%;
+      float: none;
+
+      &.padded {
+        padding: 40px 40px 0px 40px;
+      }
+    }
+  }
+
+  @include respond-max(885px) {
+    .column-main {
+      width: 100%;
+
+      &.padded {
+        padding: 60px 7.49% 0px 7.49%;
+      }
+    }
+
+    .column-six-fifths {
+      width: 100%;
+
+      &.padded {
+        padding: 25px 5% 0px 5%;
+      }
+    }
+
+    .column-six-fifths.mobile-full-width {
+      width: 30%;
+    }
+  }
+
+  @include respond-max(730px) {
+    .columns-wrapper {
+      width: 100%;
+    }
+
+    .column-six-fifths.mobile-full-width {
+      width: 100%;
+    }
+  }
 }
 
 // Page banner
@@ -254,7 +611,7 @@
 .legend--toggle {
 	@extend %theta;
 	display: inline-block;
-	font-weight: 500;
+	font-weight: $regular;
 	font-style: italic;
 	line-height: 18px;
 	padding-left: 24px;
@@ -269,96 +626,85 @@
 // --------------------------
 .nav-hud {
 	@extend %smooth-resize;
-	@extend %horizontal-bar-fixed;
-  .touch & {
-    position: absolute;
+  //one hud in the header
+  // background-color: $black;
+  .default-header & {
+    position: absolute !important;
+    z-index: 10 !important;
+    display: none;
+    .nav-open & {
+      display: none;
+    }
   }
-	background-color: $white;
-	margin-left: 160px;
-	top: 0;
-	z-index: 20;
-	@include respond-max(810px) {
-		margin-left: 128px;
-	}
-	@include respond-max-height(700px) {
-		margin-left: 128px;
-	}
+  //clone in the side-drawer
+  .nav-content & {
+    // display: none;
+    position: absolute !important;
+    z-index: 10;
+    right: 0;
+    padding: 10px 24px 9px 15px;
+    @include respond-max(875px) {
+      display: none;
+      .nav-open & {
+        display: block;
+      }
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2000px;
+    max-width: 46px;
+    height: 42px;
+    background-color: $black;
+    z-index: -1;
+    @include transition(0.4s max-width linear);
+  }
+
+  .nav-open & {
+    &:after {
+      max-width: 300px;
+    }
+  }
 }
-
-
 
 .hud--list {
 	@extend %delta;
 	@extend %floated-list;
 	@extend %smooth-resize;
 	color: lighten($black, 40%);
-	background-color: $white;
-	padding: 0.69em 1.25em;
-	border-bottom: 1px solid lighten($black, 70%);
-	margin-right: $navClosedWidth;
+	margin-right: 41px;
 	cursor: pointer;
 	&:hover {
 		color: $black;
 		border-bottom-color: $black;
 	}
-	.nav-open & {
-		margin-right: $navOpenWidth;
-	}
+
 	li {
-		width: 22%;
 		max-width: 20em;
 		line-height: 22px;
 		padding-left: $space;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+
 		&.hud--title {
 			width: 34%;
 			max-width: 20em;
 		}
+
 		&:first-child {
 			padding-left: 0;
 		}
+
 		&:last-child {
 			padding-left: 0;
 		}
 	}
-	@include respond-max(1100px) {
-		padding: 0.69em 0.625em;
-		li {
-			padding-left: $space / 2;
-			&:first-child {
-				padding-left: 0;
-			}
-			&:last-child {
-				padding-left: 0;
-			}
-		}
-	}
-	@include respond-max(810px) {
-		.nav-open & {
-			li {
-				display: none;
-				width: 25%;
-				&.hud--title,
-				&.hud--user {
-					display: block;
-				}
-				&.hud--title {
-					width: 75%;
-				}
-			}
-		}
-	}
 }
-
-// <li>
-// .hud--title {
-// 	max-width: 25.25em;
-// 	@include respond-max(1024px) {
-// 		max-width: 50% !important;
-// 	}
-// }
 
 // <span>
 .hud--author {
@@ -374,15 +720,17 @@
 // <li>
 .hud--user {
 	// width: 160px;
-	color: lighten($black, 40%);
+	color: $chartreuse;
+  font-size: 14px;
+  font-weight: $regular;
 	text-align: right;
 	// This !important overrides the default %floated list styles
 	float: right !important;
 	position: relative;
-	strong {
-		font-weight: 300;
-		color: $black;
-	}
+  &:hover {
+    text-decoration: none;
+    color: $white;
+  }
 	@include respond-max(810px) {
 		em {
 			display: none;
@@ -397,12 +745,17 @@
 	background-color: $grayDarker;
 	padding: 20px;
 	position: absolute;
-	bottom: 0;
+	bottom: 100px;
 	right: $navClosedWidth;
+  left: -63px;
 	z-index: -1;
+  height: 259px;
+  width: 238px;
+
 	.nav-open & {
 		right: $navOpenWidth;
 	}
+
 	ul {
 		@extend %unstyled-list;
 		text-align: right;
@@ -410,8 +763,28 @@
 			margin-top: 14px;
 		}
 	}
+
+  li {
+    @extend %clearfix;
+    a {
+      text-decoration: none !important;
+      color: $black !important;
+
+      &.right {
+        float: right;
+      }
+
+      &.left {
+        float: left;
+      }
+    }
+  }
+
 	form {
 		@extend %clearfix;
+    a {
+      color: $black;
+    }
 		.right,
 		.left {
 			margin-top: 14px;
@@ -423,6 +796,40 @@
 			float: left;
 		}
 	}
+
+  &.logged-in {
+    left: -17px;
+    width: 238px;
+  }
+
+  .default-header & {
+    li {
+      a {
+        font-size: 1em;
+      }
+    }
+  }
+
+  .nav-content & {
+    right: 46px;
+    left: -81px;
+
+    &.logged-in {
+      right: 46px;
+      left: -42px;
+      width: 236px;
+    }
+  }
+
+  @include respond-max(810px) {
+    .nav-content & {
+      left: -81px;
+
+      &.logged-in {
+        left: -127px;
+      }
+    }
+  }
 }
 
 .authentication--label {
@@ -438,8 +845,224 @@
 
 // Content components
 // --------------------------
+
+.book-blurbs {
+
+  .callout-wrapper {
+    max-width: 350px;
+  }
+
+  .column-main & {
+    background-color: transparent !important;
+
+    .callout-wrapper {
+      width: 100%;
+
+      .narrow-image {
+        width: 50%;
+      }
+
+      .narrow-paragraph {
+        display: none;
+      }
+    }
+  }
+
+  @include respond-min(600px) {
+    .column-main & {
+      display: inline-block;
+      padding: 25px 0 !important;
+      text-align: center;
+
+      .callout-wrapper {
+        display: inline-block;
+        width: 50%;
+        margin: 0 -1.1%;
+        padding: 0 6%;
+        vertical-align: top;
+
+        .narrow-paragraph {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  @include respond-min(885px) {
+    display: block;
+    position: relative;
+    z-index: 12;
+
+    .column-main & {
+      display: none;
+    }
+  }
+
+  @include respond-max(885px) {
+    display: none;
+
+    .column-main & {
+      display: inherit;
+    }
+  }
+
+  @include respond-min(1167px) {
+    &.column-six-fifths {
+      width: 350px;
+    }
+  }
+}
+
+.callout-wrapper + .callout-wrapper {
+  margin-top: 14px;
+}
+
 .callout {
 	@extend %callout;
+
+  .details-list {
+    li {
+      text-align: center;
+      max-width: 300px;
+      margin: 0 auto;
+      a {
+        @include transition(0.05s color ease-out);
+        display: block;
+        padding: 15px 18px;
+        color: $blueDark;
+        font-weight: $regular;
+        text-decoration: none;
+      }
+      &:hover {
+        a {
+          text-decoration: underline;
+        }
+      }
+      &.highlighted {
+        background-color: $blueDark;
+        border: 1px solid $blueDark;
+        a {
+          color: $white;
+          font-weight: $regular;
+          text-decoration: none;
+        }
+        &:hover {
+          background-color: transparent;
+          a {
+            color: $blueDark;
+          }
+        }
+      }
+    }
+    li + li {
+      margin-top: 0.5em;
+      border: 1px solid transparent;
+    }
+    .outlined {
+      margin-top: 1.5em;
+      border: 1px solid $blueDark;
+    }
+    &:hover {
+      li, li.outlined {
+        background-color: transparent;
+        border: 1px solid transparent;
+        a {
+          color: $blueDark;
+        }
+      }
+      li.highlighted {
+        background-color: $blueDark;
+        a {
+          color: $white;
+        }
+      }
+    }
+    li:hover, li.outlined:hover, li.highlighted:hover {
+      background-color: transparent;
+      border: 1px solid $blueDark;
+      cursor: pointer;
+      a {
+        color: $blueDark;
+        text-decoration: none;
+      }
+    }
+  }
+  img {
+    width: 98%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 9px;
+  }
+
+  .column-half > & {
+    display: none;
+  }
+
+  @include respond-max(970px) {
+    .column-fifth > & {
+      width: 100%;
+      img, .details-list {
+        display: block;
+        width: 100%;
+      }
+      .details-list {
+        margin: 0 auto !important;
+        padding-top: 0;
+        vertical-align: top;
+        li {
+          margin-top: 1.5em;
+        }
+      }
+    }
+  }
+  @include respond-max(885px) {
+    .column-six-fifths > & {
+      display: inline-block;
+      width: 49%;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .column-half > & {
+      display: block;
+    }
+  }
+  @include respond-max(730px) {
+    .column-fifth > & {
+      width: 100%;
+      .details-list {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.callout-wrapper.column-fifth.padded.invisible-mobile {
+  padding: 56px 20px 46px 40px;
+
+  @include respond-max(730px) {
+    margin-bottom: -40px;
+    img {
+      width: 55%;
+    }
+  }
+  @include respond-max(970px) {
+    padding-bottom: 0;
+    .callout {
+      padding-bottom: 0;
+      img {
+        padding-bottom: 0;
+      }
+      .details-list {
+        display: none;
+      }
+    }
+  }
+}
+
+.callout-wrapper.column-fifth.padded.invisible-desktop {
+  @include respond-min(970px) {
+    display: none;
+  }
 }
 
 // Block quotes
@@ -451,7 +1074,7 @@
 // Lives inside .blockquote
 .attribution {
 	display: block;
-	font-weight: 700;
+	font-weight: $bold;
 	font-style: normal;
 	text-align: right;
 	&:before {
@@ -541,6 +1164,17 @@
 
 .chapter-body {
 	@extend %justified;
+
+  #ahaft3701, #bhaft3701, #ah3701, #ah3702 {
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: $thin;
+    line-height: 24.3px;
+  }
+
+  #bhaft3701, #ah3701, #ah3702 {
+    padding-bottom: 18px;
+  }
 }
 
 .chapter-notes {
@@ -619,7 +1253,7 @@ body.static-true span.sentence:hover {
 		@extend %eta;
 		display: none;
 		width: 92px;
-		font-weight: 300;
+		font-weight: $thin;
 		color: $grayDark;
 		text-indent: 0;
 		position: absolute;
@@ -675,10 +1309,13 @@ body.static-true span.sentence:hover {
 	@extend %unstyled-list;
 	background-color: $white;
 	position: relative;
+  .default-header & {
+    background-color: transparent;
+  }
 	.level-0,
 	.level-1 {
 		@extend %vertical-bar;
-        left:  -$navOpenWidth + $navClosedWidth;
+    left:  -$navOpenWidth + $navClosedWidth;
 		width: $navOpenWidth;
 		background-color: $grayLight;
 		@include box-shadow(
@@ -699,8 +1336,20 @@ body.static-true span.sentence:hover {
 .pane-top {
 	.level-0,
 	.level-1 {
-		border-bottom: 4px solid $white;
+    background-color: $blackLighter;
+		border-bottom: none;
+    border-left: none;
+    box-shadow: none;
 	}
+  .level-0 {
+    left: -266px;
+    width: $navOpenWidth;
+  }
+}
+
+//feedback sidebar
+.nav-pane.pane-top {
+  left: 254px;
 }
 
 // <li>
@@ -711,16 +1360,51 @@ body.static-true span.sentence:hover {
 	line-height: $tightLineHeight;
 	padding: 40px 20px 30px 50px;
 	position: relative;
+
 	.pane-top & {
-		padding-top: 160px;
+		padding: 0 0 0 40px;
 	}
+
 	.part {
 		@extend %clearfix;
 		margin-bottom: 50px;
 	}
+
 	.parts {
 		position: relative;
 	}
+
+  .edition-info {
+    @extend %unstyled-list;
+    position: absolute;
+    top: 68px;
+    left: 25px;
+    font-size: 14px;
+    font-weight: $regular;
+    visibility: hidden;
+    max-width: 250px;
+    // @include transition(0.2s visibility linear);
+
+    .nav-open & {
+      visibility: visible;
+    }
+
+    .title {
+      color: $white;
+    }
+
+    .author, .edition {
+      color: $grayMedium;
+    }
+
+    .author {
+      padding-top: 11px;
+    }
+
+    .edition {
+      padding-top: 8px;
+    }
+  }
 }
 
 .pane--vertical-stage {
@@ -728,7 +1412,7 @@ body.static-true span.sentence:hover {
 }
 
 .pane-top {
-	height: 40%;
+	height: 100%;
 	right: 0;
 }
 
@@ -751,7 +1435,35 @@ body.static-true span.sentence:hover {
 
 .pane--header {
 	.pane-top & {
-		padding-top: 180px;
+    left: 4px;
+    // background-color: $blackLighter;
+
+    .pane--header-label {
+      position: absolute;
+      top: 75px;
+      left: -7px;
+      color: $grayMedium;
+      font-size: 14px;
+      transform: rotate(90deg);
+      visibility: visible;
+      @include transition(0.2s visibility linear);
+
+      .nav-open & {
+        visibility: hidden;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .pane--header-label {
+        color: $white;
+      }
+
+      .icon-chevron-right:before {
+        color: $white;
+      }
+    }
 	}
 	cursor: pointer;
 	@extend %vertical-bar;
@@ -759,6 +1471,8 @@ body.static-true span.sentence:hover {
 	left: 0;
 	white-space: nowrap;
 	z-index: 10;
+
+
 }
 
 // Width set to height of parent (pane--header)
@@ -792,14 +1506,32 @@ body.static-true span.sentence:hover {
 
 // <a>
 .content-nav--toggle {
-	@extend %circle-arrow;
 	position: absolute;
-	top: 25%;
-	left: 6px;
+  top: 4px;
+  left: 13px;
+  color: $chartreuse;
+  font-size: 32px;
+  line-height: 32px;
+
+  &:before {
+    cursor: pointer !important;
+  }
+
+  &:hover {
+    color: $white;
+  }
+
+  &.icon-chevron-right:before {
+    content: "\f104";
+  }
+
+  .nav-open &.icon-chevron-right:before {
+    content: "\f105";
+  }
 }
 
 .content-nav--toggle-pos2 {
-	@extend %circle-arrow-left;
+	// @extend %circle-arrow-left;
 }
 
 
@@ -833,40 +1565,64 @@ body.static-true span.sentence:hover {
 .count-box-list {
 	@extend %tight-floated-list;
 	position: absolute;
-	bottom: 4em;
+  bottom: 117px;
+  left: 0;
+  padding-left: 11px;
+  visibility: hidden;
+  @include transition(0.2s visibility linear);
+
+  .nav-open & {
+    visibility: visible;
+  }
 }
 
 // <li>
 .count-box {
-	height: 100px;
-	width: 84px;
-	background-color: $gray;
+	height: auto;
+	width: 100%;
 	padding: 0 10px;
 	position: relative;
+  display: block;
 }
 
 .count-box--title {
-	@extend %eta;
-	@extend %with-gray-dark;
-	width: 64px;
-	text-transform: uppercase;
-	margin: 0;
-	position: absolute;
-	bottom: 40px;
+  font-size: 13px;
+  line-height: 15.6px;
+  font-weight: $regular;
+  display: inline-block;
+  width: 49%;
+  margin: 0;
+  padding-left: 3px;
+  color: $grayMedium;
+  text-align: left;
 }
 
 .count-box--number {
-	@extend %deca;
-	@extend %with-gray-darker;
-	position: absolute;
-	bottom: 2px;
+  @extend %deca;
+  line-height: 54px;
+  color: $chartreuse;
+
+  @include respond-max-height(700px) {
+    display: inline-block;
+    line-height: 40px;
+  }
 }
 
 // Feedback options
 // --------------------------
 .feedback-options {
+  @include transition(0.2s visibility linear);
 	position: absolute;
-	bottom: 4em;
+  z-index: 10;
+  right: 0;
+  left: 0;
+	bottom: 0;
+  padding-top: 18px;
+  background-color: $black;
+  visibility: hidden;
+  .nav-open & {
+    visibility: visible;
+  }
 }
 
 .feedback-options--title {
@@ -878,6 +1634,7 @@ body.static-true span.sentence:hover {
 
 .feedback-options--list {
 	@extend %unstyled-list;
+  font-weight: $regular;
 	& > li + li {
 		margin-top: $shim;
 	}
@@ -885,51 +1642,586 @@ body.static-true span.sentence:hover {
 
 .feedback-options--sublist {
 	@extend %floated-list;
-	padding-left: $space;
-	margin-top: 8px;
-	li + li {
-		margin-left: 15px;
-	}
+  li {
+    width: 50%;
+    background-color: $black;
+    border: 3px solid transparent;
+    &.active {
+      background-color: $chartreuse;
+    }
+    
+    &:hover {
+      cursor: pointer;
+      border: 3px solid $grayMedium;
+
+      .stacked, .opacity {
+        color: $grayMedium;
+
+        &.active {
+          color: $black;
+        }
+      }
+
+      &.active {
+        border: 3px solid transparent;
+        color: $black;
+
+        .opacity {
+          color: $black;
+          b {
+            background: transparent asset-url('icon-opacity-active.png') no-repeat left top;
+          }
+        }
+
+        .stacked {
+          color: $black;
+          b {
+            background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
+          }
+        }
+      }
+
+      .opacity {
+        b {
+          background: transparent asset-url('icon-opacity-hover.png') no-repeat left top;
+        }
+        .active & {
+          b {
+            background: transparent asset-url('icon-opacity-active.png') no-repeat left top;
+          }
+        }
+      }
+
+      .stacked {
+        b {
+          background: transparent asset-url('icon-stacked-hover.png') no-repeat left top;
+        }
+        .active & {
+          b {
+            background: transparent asset-url('icon-stacked-active.png') no-repeat left top;
+          }
+        }
+      }
+    }
+  }
 }
 
 .feedback-options--label {
 	@extend %input-label;
-	@extend %zeta;
-	text-transform: uppercase;
+  padding: 15px 0px 12px 1.3em;
+	font-size: 0.884em;
 	margin-bottom: 0;
 	position: relative;
 	cursor: pointer;
-	.stacked-label {
-		background: transparent asset-url('icon-stacked.png') no-repeat left top;
-		background-size: auto 100%;
-		padding: 2px 0 2px 13px;
-		margin-left: 2px;
-		.no-backgroundsize & {
-			background-image: asset-url('icon-stacked-half.png');
-		}
-	}
-	.opacity-label {
-		background: transparent asset-url('icon-opacity.png') no-repeat left top;
-		background-size: auto 100%;
-		padding: 2px 0 2px 11px;
-		margin-left: 2px;
-		.no-backgroundsize & {
-			background-image: asset-url('icon-opacity-half.png');
-		}
-	}
-}
+  color: $white;
+  &.stacked, &.opacity {
+    color: $chartreuse;
+    &:hover {
+      color: $grayMedium;
+    }
+    .active & {
+      color: $black;
+      &:hover {
+        color: $black;
+      }
+    }
+  }
 
-.feedback-options--checkbox {
-	@extend %checkbox;
+  .opacity-label, .stacked-label {
+    background-size: auto 100%;
+    margin-left: 2px;
+  }
+  .opacity-label {
+    padding: 2px 0 2px 4px;
+  }
+  .stacked-label {
+    padding: 2px 0 2px 11px;
+  }
 }
 
 .feedback-options--radio {
 	@extend %radio;
 }
 
+.feedback-options--checkbox {
+  position: absolute;
+  right: 1.3em;
+  display: inline-block;
+  width: 34px;
+}
+.feedback-options--wrapper {
+  margin-bottom: 12px;
+  padding-left: 25px;
+
+  span {
+    display: inline-block;
+  }
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 14px;
+  padding: 0;
+  line-height: 14px;
+  border-radius: 20px;
+  background-color: $blackLighter;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 20px;
+    margin: -3px;
+    background-color: $chartreuse;
+    position: absolute;
+    top: 1px;
+    bottom: 7px;
+    right: 18px;
+    border-radius: 20px;
+  }
+
+  &:hover {
+    &:before {
+      background-color: $grayMedium;
+    }
+  }
+}
+
+.onoffswitch-checkbox {
+  display: none;
+
+  &:checked + .onoffswitch-label:before {
+    right: 0;
+  }
+
+  &.off + .onoffswitch-label {
+    &:before {
+      background-color: $grayMedium;
+    }
+  }
+}
+
+.onoffswitch-text-label {
+  color: $chartreuse;
+  &.off {
+    color: $grayMedium;
+  }
+}
+
 // Table of contents
 // --------------------------
-// <ul>
+
+.toc-container {
+  position: fixed;
+  z-index: 40;
+  display: none;
+  left: 0px;
+  top: 0px;
+  width: 720px;
+  height: 100%;
+  margin-top: 40px;
+  background-color: $black;
+  overflow: hidden;
+
+  &.open {
+    display: block;
+  }
+
+  @include respond-max(400px) {
+    margin-top: 84px;
+  }
+}
+
+.toc-editions {
+  position: absolute;
+  z-index: 60;
+  top: 40px;
+  left: 0px;
+  display: inline-block;
+  width: 232px;
+  height: 96vh;
+  vertical-align: top;
+  padding-left: 80px;
+  padding-right: 52px;
+  background-color: $black;
+
+  li {
+    margin-bottom: 30px;
+    &:hover {
+      cursor: pointer;
+
+      .cover-overlay {
+        opacity: 0.5;
+      }
+
+      .cover-label {
+        color: $chartreuse;
+      }
+    }
+  }
+
+  * {
+    display: inline-block;
+    width: 100%;
+  }
+
+  img {
+    opacity: 0.38;
+    cursor: pointer;
+    border: 1px solid $chartreuse;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .cover-wrapper {
+    position: relative;
+    display: inline-block;
+  
+    .cover-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 6px;
+      left: 0;
+      right: 0;
+      background-color: $chartreuse;
+      opacity: 0;
+      @include transition(0.05s opacity ease-out);
+    }
+
+  }
+
+  .cover-label {
+    font-size: 14px;
+    line-height: 1.2;
+    color: $white;
+  }
+
+
+  @include respond-max(570px) {
+    width: 150px;
+    padding-left: 16px;
+    padding-right: 33px;
+  }
+
+  @include respond-max(400px) {
+    width: 105px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.nav-item-part {
+  .nav-toc .nav-pane &.active {
+  visibility: visible;
+    a span {
+      color: $chartreuse;
+    }
+  }
+
+  &:hover {
+    a span {
+      color: $chartreuse;
+    }
+  }
+}
+
+.nav-toc {
+  position: relative;
+  background-color: transparent;
+
+  .nav-pane {
+    position: absolute;
+    z-index: 50;
+    top: 42px;
+    left: 0px;
+    right: inherit;
+    width: 200vw;
+    height: 96vh;
+    padding: 0px 34px 50px 178px;
+    background-color: $black;
+
+    //edition tabs
+    &.edition {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    &.pane-bottom {
+      height: auto;
+    }
+
+    .level-0, .level-1 {
+      position: relative;
+      display: inline-block;
+      width: 400px;
+      vertical-align: top;
+      box-shadow: none;
+      background-color: transparent;
+
+      h2 {
+        cursor: pointer;
+
+        &.icon-chevron-left {
+          font-family: "museo-slab", serif;
+
+          &:before {
+            position: relative;
+            bottom: -3px;
+            font-family: FontAwesome;
+            font-size: 32px;
+            line-height: 0;
+            font-weight: $regular;
+            padding-right: 10px;
+            margin-left: -21px;
+          }
+        }
+      }
+
+      .pane-bottom--title {
+        padding-bottom: 12px;
+        padding-left: 40px;
+        font-weight: $bold;
+        color: $white;
+      }
+
+      li {
+        margin-left: 0;
+        border-bottom: 1px solid $white;
+        border-bottom: 1px solid rgba(255,255,255, 0.46);
+        padding-bottom: 14px;
+
+        &.icon-chevron-right-after {
+          font-family: "museo-slab", serif;
+
+          &:after {
+            font-family: FontAwesome;
+            font-size: 32px;
+            line-height: 0;
+            font-weight: $regular;
+            padding-top: 6px;
+            float: right;
+            color: $white;
+          }
+        }
+      }
+    }
+
+    .level-0 {
+      left: 0;
+      max-height: calc(100vh - 120px);
+      overflow: hidden;
+      overflow-y: scroll;
+      margin-left: 53px;
+
+      .pane-bottom--title {
+        font-size: 16px;
+        font-weight: $bold;
+        color: $white;
+        padding-left: 0;
+        &:before {
+          color: $white;
+        }
+        &:hover {
+          color: $chartreuse;
+
+          &:before {
+            color: $chartreuse;
+          }
+        }
+      }
+
+      .pane--content {
+        padding: 0px 0px 0px 27px;
+        border-top: 3px solid $white;
+      }
+
+      li {
+        display: block;
+        margin-left: 0;
+        border-bottom: 1px solid $white;
+        border-bottom: 1px solid rgba(255,255,255, 0.46);
+        padding-bottom: 14px;
+        font-size: 14px;
+        font-weight: $bold;
+
+        a {
+          display: inline-block;
+          width: 75%;
+          text-decoration: none !important;
+
+          &:hover {
+            color: $chartreuse;
+          }
+        }
+      }
+      @include respond-max(500px) {
+        margin-left: 6px;
+        .pane--content {
+          padding: 0px 0px 0px 20px;
+        }
+      }
+    }
+
+    .level-1 {
+      top: 4px;
+      left: -2px;
+      border: none;
+      overflow: hidden;
+
+      .pane--content {
+        padding: 48px 20px 30px 0px;
+      }
+
+      .pane-bottom--title {
+        padding-left: 0;
+        padding-bottom: 26px;
+        margin-left: 20px;
+        font-size: 16px;
+        font-weight: $bold;
+        color: $chartreuse;
+
+        &:before {
+          color: $chartreuse;
+        }
+
+        &:hover {
+          color: $white;
+
+          &:before {
+            color: $white;
+          }
+        }
+      }
+
+      .pane-bottom--subtitle {
+        padding: 13px 0 25px;
+        margin-left: -40px;
+        font-size: 14px;
+        font-weight: $bold;
+        color: $white;
+
+        &:hover {
+          cursor: pointer;
+          color: $chartreuse;
+        }
+
+        @include respond-max(570px) {
+          margin-left: 0; 
+        }
+      }
+
+      .part-wrapper {
+        display: inline-block;
+        width: 100%;
+        @include transition(0.05s visibility linear);
+
+        &, * {
+          visibility: hidden;
+        }
+
+        &.active {
+          &, * {
+            visibility: visible;
+          }
+        }
+      }
+
+      .part {
+        height: calc(100vh - 120px);
+        overflow: hidden;
+        overflow-y: scroll;
+        padding: 0px 0px 0px 40px;
+        border-top: 3px solid $white;
+      }
+
+    }
+
+    @include respond-max(680px) {
+      .level-0, .level-1 {
+        width: 323px;
+      }
+    }
+
+    @include respond-max(570px) {
+      padding: 0px 34px 50px 97px;
+    }
+
+    @include respond-max(500px) {
+      padding: 0px 34px 50px 144px;
+
+      .level-0, .level-1 {
+        width: 200px;
+        .pane-bottom--title {
+          padding-left: 20px;
+        }
+        .part {
+          padding: 0px 0px 120px 20px;
+        }
+      }
+
+      .level-1 {
+        left: 10px;
+      }
+    }
+
+    @include respond-max(400px) {
+      padding: 0px 34px 50px 97px;
+    }
+
+    .nav-index {
+      border-top: 1px solid $white;
+      border-top: 1px solid rgba(255,255,255, 0.46);
+
+      a {
+        cursor: pointer;
+        color: $white;
+        
+        .title, .author {
+          font-size: 14px;
+          font-weight: $regular;
+        }
+
+        &:hover {
+          color: $chartreuse;
+
+          li:after {
+            color: $chartreuse;
+          }
+
+          .title, .author {
+            color: $chartreuse;
+          }
+        }
+
+        &.active {
+          color: $chartreuse;
+
+          li:after {
+            color: $chartreuse;
+          }
+        }
+      }
+
+      li {
+        margin-top: 0px;
+        padding-top: 17px;
+      }
+    }
+  }
+  &.open {
+    background-color: $blueDark;
+    > a {
+      color: $white !important;
+    }
+  }
+}
+
 .nav-index {
 	@extend %unstyled-list;
 	@extend %delta;
@@ -940,19 +2232,22 @@ body.static-true span.sentence:hover {
 	a {
 		line-height: $tightLineHeight;
 		color: $grayDark;
-		&:hover,
-		&.active {
-			color: $black;
-		}
-		&:focus {
-			outline: 0;
-		}
-		span {
-			display: block
-		}
-	}
-	span.author {
-		font-weight: 600;
+    font-size: 16px;
+    font-weight: $bold;
+    &:hover,
+    &.active {
+      color: $chartreuse;
+    }
+    &:focus {
+      outline: 0;
+    }
+    span {
+      display: block
+    }
+  }
+  span.author {
+    margin-top: 5px;
+		color: $grayMedium;
 	}
 	ul {
 		&.closed {
@@ -962,13 +2257,13 @@ body.static-true span.sentence:hover {
 		padding-left: 15px;
 	}
 }
-.nav-index-col {
-	&:last-child {
-		margin-left: 50px;
-	}
-	width: $navOpenWidth - 62;
-	float: left;
-}
+// .nav-index-col {
+// 	&:last-child {
+// 		margin-left: 50px;
+// 	}
+// 	width: 100%;
+// 	float: left;
+// }
 
 // Reduce TOC font size on short screens
 .nav-index,
@@ -1007,6 +2302,13 @@ parts {
 			left: $navClosedWidth - $width;
 		}
 	}
+  @include respond-max(1000px) {
+    $width: 320px;
+    width: $width;
+    &.open {
+      left: $navClosedWidth - $width;
+    }
+  }
 }
 
 .comment-drawer--scroll {
@@ -1042,6 +2344,9 @@ parts {
 	right: 40px;
 	bottom: 0;
 	left: 40px;
+  @include respond-max(1000px) {
+    padding: 26px 14px;
+  }
 }
 
 .comment-drawer--heading {
@@ -1283,6 +2588,11 @@ parts {
 
 .annotator--button {
 	@extend %button-input;
+  &:hover {
+    background-color: $blueDark;
+    border-color: $blueDark;
+    color: $white;
+  }
 }
 
 // Annotation flag
@@ -1293,15 +2603,16 @@ parts {
 	display: block;
 	width: 5px;
 	height: 10px;
-	background: $blueDark;
-	position: absolute;
-	left: -100px;
-	overflow: visible;
-	@include respond-max(1360px) {
-		left: -80px;
-	}
-	@include respond-max(810px) {
-		left: -45px;
+  background: $chartreuse;
+  position: absolute;
+  left: -100px;
+  overflow: visible;
+  @include respond-max(1360px) {
+    left: -80px;
+  }
+  @include respond-max(810px) {
+    left: -45px;
+    max-height: 200px;
 	}
 }
 
@@ -1329,13 +2640,15 @@ parts {
 	@extend %delta;
 	@extend %unstyled-list;
 	margin: 0 !important;
+  font-weight: $regular;
 	li + li {
 		margin-top: 0.5em;
 	}
 	small {
 		@extend %delta;
 		display: block;
-		color: $grayDark;
+    font-weight: $thin;
+		// color: $grayDark;
 	}
 }
 
@@ -1346,7 +2659,7 @@ parts {
 	@extend %unstyled-list;
 	margin: 0 !important;
 	& > li + li {
-		margin-top: 1.35em;
+		margin-top: 0.75em;
 	}
 	ul {
 		@extend %unstyled-list;
@@ -1356,8 +2669,12 @@ parts {
 
 // Contents list
 // --------------------------
-.contents-list {
+.indented-list {
 	@extend %unstyled-list;
+  margin: 3px 0px 0px 0px !important;
+  li {
+    padding-left: 50px;
+  }
 }
 
 // Forms
@@ -1367,8 +2684,19 @@ body.page form,
 	display: inline-block;
 	max-width: 100%;
 	background-color: $grayLight;
-	padding: 1em 1em 1em 1em;
-	margin: 1.35em 0;
+  &.new_message {
+    background-color: $blackLight;
+    .field--button {
+      color: $white;
+      border-color: $white;
+      &:hover {
+        background-color: $blueDark;
+        border-color: $blueDark;
+      }
+    }
+  }
+  padding: 1em 1em 1em 1em;
+  margin: 1.35em 0;
 }
 
 .row {
@@ -1384,16 +2712,21 @@ body.page form,
 }
 
 .row-submit {
-	&:before {
-		content: "";
-		display: block;
-		width: 18%;
-		height: 1px;
-		float: left;
-		@include respond-max(650px) {
-			display: none;
-		}
-	}
+    margin-left:17.75%;
+    @include respond-max(650px) {
+      margin-left:0;
+    }
+
+    .g-recaptcha {
+      margin-bottom: 1em;
+      transform-origin:0 0;
+      @include respond-max(650px) {
+        transform:scale(0.77);
+      }
+      @include respond-max(490px) {
+        transform:scale(0.6);
+      }
+    }
 }
 
 .field-half {
@@ -1478,6 +2811,14 @@ label {
 	margin-bottom: 10px;
 }
 
+.new_user, .new_user a {
+  color: $black;
+}
+
+.edit_user, .edit_user a {
+  color: $black;
+}
+
 // Form errors
 // --------------------------
 #error_explanation {
@@ -1509,12 +2850,101 @@ label {
 	@extend %alpha;
 }
 
+.page-heading {
+  font-size: 3.2em;
+  line-height: 1.2;
+  margin-bottom: 0.1em !important;
+  .dark & {
+    color: $chartreuse;
+  }
+
+  @include respond-max(400px) {
+    font-size: 2.5em;
+  }
+}
+
+.section-heading {
+  font-size: 1em;
+  font-weight: $bold;
+  margin-top: 32px;
+  margin-bottom: 2px !important;
+}
+
+.section-subheading {
+  font-size: 0.88em;
+  font-weight: $bold;
+  margin-bottom: 0.6em !important;
+  .details-list + & {
+    margin-top: 55px;
+  }
+}
+
 // Two column layouts
 // Best suited to frontend_page layout
 // --------------------------------------------------------
 .columns {
 	@extend %clearfix;
 }
+
+.columns-wrapper {
+  @extend %clearfix;
+  width: 70%;
+  background: white;
+  display: inline-block;
+}
+
+.column-half {
+  width: 50%;
+  float: left;
+  .columns-wrapper & {
+    width: 65%;
+  }
+  &.padded {
+    padding: 83px 80px 46px 22px;
+  }
+}
+
+.column-fifth {
+  width: 20%;
+  float: left;
+  .columns-wrapper & {
+    width: 35%;
+    @include respond-max(970px) {
+      float: none;
+      width: 100%;
+      margin: 0 auto;
+      &.padded {
+        padding: 10px 40px 46px 40px;
+      }
+    }
+  }
+  &.padded {
+    padding: 10px 20px 46px 40px;
+  }
+}
+
+.column-six-fifths {
+  width: 30%;
+  float: right;
+  img {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+  }
+  .narrow-image {
+    width: 77%;
+  }
+  .narrow-paragraph {
+    padding: 0px 0px 0px 16px;
+  }
+  &.padded-top {
+    padding: 158px 46px 46px 46px;
+  }
+  &.padded {
+    padding: 15px 32px 0px 38px;
+  }
+}
+
 
 // Two equal-width columns
 // To be used only alongside another column-equal
@@ -1561,14 +2991,18 @@ label {
 	clear: both;
 }
 
+.column-main {
+  width: 70%;
+  float: left;
+  &.padded {
+    padding: 60px 188px 60px 64px;
+  }
+}
+
 // Column typographic components
 // --------------------------
 .column--heading {
 	@extend %beta;
-}
-
-.column--subheading {
-	@extend %subsection-heading;
 }
 
 // News components
@@ -1587,15 +3021,21 @@ label {
 
 .post--dateline {
 	@extend %delta;
-	@extend %with-gray-dark;
+	// @extend %with-gray-dark;
 	display: block;
+  color: $white;
 	margin-bottom: 0.25em;
+  font-size: 1em;
+  font-weight: $bold;
 }
 
 .post--byline {
 	@extend %gamma;
-	@extend %with-gray-dark;
+	// @extend %with-gray-dark;
+  color: $white;
 	text-transform: uppercase;
+  font-size: 1em;
+  font-weight: $bold;
 }
 
 // Generic utilities

@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  recaptcha:
+    errors:
+      verification_failed: You're suspected of being a robot; please try again.

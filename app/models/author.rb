@@ -1,3 +1,4 @@
 class Author < ActiveRecord::Base
-	#attr_accessible :name, :institution
+	has_many :texts, through: :authors_texts
+  has_many :authors_texts
 end

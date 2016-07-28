@@ -1,0 +1,206 @@
+<package version="2.0" unique-identifier="uid" xmlns="http://www.idpf.org/2007/opf">
+  <opf:metadata xmlns:dc="http://purl.org/dc/elements/1.1/" 
+                xmlns:dcterms="http://purl.org/dc/terms/" 
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:title>Debates in the Digital Humanities 2016</dc:title>
+    <dc:language>en-US</dc:language>
+    <dc:publisher>University of Minnesota Press</dc:publisher>
+    <dc:creator opf:role="edt" opf:file-as="Gold, Matthew K.">Matthew K. Gold</dc:creator>
+    <dc:creator opf:role="edt" opf:file-as="Klein, Lauren F.">Lauren F. Klein</dc:creator>
+    <dc:identifier id="uid" opf:scheme="ISBN">9781452951492</dc:identifier>
+    <dc:date xsi:type="dcterms:w3cdtf">2016-04-13</dc:date>
+    <dc:subject>EDU015000 Education / Higher</dc:subject>
+    <dc:subject>PHI026000 Philosophy / Criticism</dc:subject>
+    <dc:subject>SOC052000 Social Science / Media Studies</dc:subject>
+    <dc:rights>All rights reserved</dc:rights>
+    <meta name="cover" content="My_Cover"/>
+  </opf:metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="ump-golddebates2016-0001.xhtml" id="ump-golddebates2016-0001"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0002.xhtml" id="ump-golddebates2016-0002"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0003.xhtml" id="ump-golddebates2016-0003"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0004.xhtml" id="ump-golddebates2016-0004"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0005.xhtml" id="ump-golddebates2016-0005"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0006.xhtml" id="ump-golddebates2016-0006"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0007.xhtml" id="ump-golddebates2016-0007"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0008.xhtml" id="ump-golddebates2016-0008"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0009.xhtml" id="ump-golddebates2016-0009"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0010.xhtml" id="ump-golddebates2016-0010"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0011.xhtml" id="ump-golddebates2016-0011"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0012.xhtml" id="ump-golddebates2016-0012"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0013.xhtml" id="ump-golddebates2016-0013"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0014.xhtml" id="ump-golddebates2016-0014"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0015.xhtml" id="ump-golddebates2016-0015"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0016.xhtml" id="ump-golddebates2016-0016"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0017.xhtml" id="ump-golddebates2016-0017"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0018.xhtml" id="ump-golddebates2016-0018"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0019.xhtml" id="ump-golddebates2016-0019"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0020.xhtml" id="ump-golddebates2016-0020"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0021.xhtml" id="ump-golddebates2016-0021"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0022.xhtml" id="ump-golddebates2016-0022"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0023.xhtml" id="ump-golddebates2016-0023"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0024.xhtml" id="ump-golddebates2016-0024"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0025.xhtml" id="ump-golddebates2016-0025"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0026.xhtml" id="ump-golddebates2016-0026"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0027.xhtml" id="ump-golddebates2016-0027"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0028.xhtml" id="ump-golddebates2016-0028"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0029.xhtml" id="ump-golddebates2016-0029"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0030.xhtml" id="ump-golddebates2016-0030"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0031.xhtml" id="ump-golddebates2016-0031"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0032.xhtml" id="ump-golddebates2016-0032"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0033.xhtml" id="ump-golddebates2016-0033"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0034.xhtml" id="ump-golddebates2016-0034"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0035.xhtml" id="ump-golddebates2016-0035"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0036.xhtml" id="ump-golddebates2016-0036"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0037.xhtml" id="ump-golddebates2016-0037"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0038.xhtml" id="ump-golddebates2016-0038"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0039.xhtml" id="ump-golddebates2016-0039"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0040.xhtml" id="ump-golddebates2016-0040"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0041.xhtml" id="ump-golddebates2016-0041"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0042.xhtml" id="ump-golddebates2016-0042"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0043.xhtml" id="ump-golddebates2016-0043"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0044.xhtml" id="ump-golddebates2016-0044"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0045.xhtml" id="ump-golddebates2016-0045"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0046.xhtml" id="ump-golddebates2016-0046"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0047.xhtml" id="ump-golddebates2016-0047"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0048.xhtml" id="ump-golddebates2016-0048"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0049.xhtml" id="ump-golddebates2016-0049"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0050.xhtml" id="ump-golddebates2016-0050"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0051.xhtml" id="ump-golddebates2016-0051"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0052.xhtml" id="ump-golddebates2016-0052"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0053.xhtml" id="ump-golddebates2016-0053"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0054.xhtml" id="ump-golddebates2016-0054"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0055.xhtml" id="ump-golddebates2016-0055"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0056.xhtml" id="ump-golddebates2016-0056"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0057.xhtml" id="ump-golddebates2016-0057"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0058.xhtml" id="ump-golddebates2016-0058"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0059.xhtml" id="ump-golddebates2016-0059"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0060.xhtml" id="ump-golddebates2016-0060"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0061.xhtml" id="ump-golddebates2016-0061"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0062.xhtml" id="ump-golddebates2016-0062"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0063.xhtml" id="ump-golddebates2016-0063"  media-type="application/xhtml+xml"/>
+    <item href="ump-golddebates2016-0064.xhtml" id="ump-golddebates2016-0064"  media-type="application/xhtml+xml"/>
+    <item href="images/ump-gold-2016-cover.jpg" id="My_Cover"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig06-01.jpg" id="imgump-gold-fig06-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig06-02.jpg" id="imgump-gold-fig06-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig09-01.jpg" id="imgump-gold-fig09-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig20-01.jpg" id="imgump-gold-fig20-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig20-02.jpg" id="imgump-gold-fig20-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig20-03.jpg" id="imgump-gold-fig20-03"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-01.jpg" id="imgump-gold-fig27-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-06.jpg" id="imgump-gold-fig27-06"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig31-02.jpg" id="imgump-gold-fig31-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig35-01.jpg" id="imgump-gold-fig35-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig35-02.jpg" id="imgump-gold-fig35-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig35-04.jpg" id="imgump-gold-fig35-04"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig35-05.jpg" id="imgump-gold-fig35-05"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig35-06.jpg" id="imgump-gold-fig35-06"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig35-07.jpg" id="imgump-gold-fig35-07"  media-type="image/jpeg"/>
+    <item href="images/ump-a-neg_block.jpg" id="imgump-a-neg_block"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-table20-01.jpg" id="imgump-gold-table20-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig30-01.jpg" id="imgump-gold-fig30-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig12-01.jpg" id="imgump-gold-fig12-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig16-01.jpg" id="imgump-gold-fig16-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig19-01.jpg" id="imgump-gold-fig19-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig19-02.jpg" id="imgump-gold-fig19-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig19-03.jpg" id="imgump-gold-fig19-03"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig19-04.jpg" id="imgump-gold-fig19-04"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-02.jpg" id="imgump-gold-fig27-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-03.jpg" id="imgump-gold-fig27-03"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-04.jpg" id="imgump-gold-fig27-04"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-05.jpg" id="imgump-gold-fig27-05"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-07.jpg" id="imgump-gold-fig27-07"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-08.jpg" id="imgump-gold-fig27-08"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig27-09.jpg" id="imgump-gold-fig27-09"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig29-02.jpg" id="imgump-gold-fig29-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig31-01.jpg" id="imgump-gold-fig31-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig31-03.jpg" id="imgump-gold-fig31-03"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig31-04.jpg" id="imgump-gold-fig31-04"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig31-05.jpg" id="imgump-gold-fig31-05"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig36-01.jpg" id="imgump-gold-fig36-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig36-02.jpg" id="imgump-gold-fig36-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig36-03.jpg" id="imgump-gold-fig36-03"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig38-01.jpg" id="imgump-gold-fig38-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig38-02.jpg" id="imgump-gold-fig38-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig48-01.jpg" id="imgump-gold-fig48-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig48-02.jpg" id="imgump-gold-fig48-02"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig29-01.jpg" id="imgump-gold-fig29-01"  media-type="image/jpeg"/>
+    <item href="images/ump-gold-fig35-03.jpg" id="imgump-gold-fig35-03"  media-type="image/jpeg"/>
+    <item href="ump6.css" id="ump6"  media-type="text/css"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="ump-golddebates2016-0001"/>
+    <itemref idref="ump-golddebates2016-0002"/>
+    <itemref idref="ump-golddebates2016-0003"/>
+    <itemref idref="ump-golddebates2016-0004"/>
+    <itemref idref="ump-golddebates2016-0005"/>
+    <itemref idref="ump-golddebates2016-0006"/>
+    <itemref idref="ump-golddebates2016-0007"/>
+    <itemref idref="ump-golddebates2016-0008"/>
+    <itemref idref="ump-golddebates2016-0009"/>
+    <itemref idref="ump-golddebates2016-0010"/>
+    <itemref idref="ump-golddebates2016-0011"/>
+    <itemref idref="ump-golddebates2016-0012"/>
+    <itemref idref="ump-golddebates2016-0013"/>
+    <itemref idref="ump-golddebates2016-0014"/>
+    <itemref idref="ump-golddebates2016-0015"/>
+    <itemref idref="ump-golddebates2016-0016"/>
+    <itemref idref="ump-golddebates2016-0017"/>
+    <itemref idref="ump-golddebates2016-0018"/>
+    <itemref idref="ump-golddebates2016-0019"/>
+    <itemref idref="ump-golddebates2016-0020"/>
+    <itemref idref="ump-golddebates2016-0021"/>
+    <itemref idref="ump-golddebates2016-0022"/>
+    <itemref idref="ump-golddebates2016-0023"/>
+    <itemref idref="ump-golddebates2016-0024"/>
+    <itemref idref="ump-golddebates2016-0025"/>
+    <itemref idref="ump-golddebates2016-0026"/>
+    <itemref idref="ump-golddebates2016-0027"/>
+    <itemref idref="ump-golddebates2016-0028"/>
+    <itemref idref="ump-golddebates2016-0029"/>
+    <itemref idref="ump-golddebates2016-0030"/>
+    <itemref idref="ump-golddebates2016-0031"/>
+    <itemref idref="ump-golddebates2016-0032"/>
+    <itemref idref="ump-golddebates2016-0033"/>
+    <itemref idref="ump-golddebates2016-0034"/>
+    <itemref idref="ump-golddebates2016-0035"/>
+    <itemref idref="ump-golddebates2016-0036"/>
+    <itemref idref="ump-golddebates2016-0037"/>
+    <itemref idref="ump-golddebates2016-0038"/>
+    <itemref idref="ump-golddebates2016-0039"/>
+    <itemref idref="ump-golddebates2016-0040"/>
+    <itemref idref="ump-golddebates2016-0041"/>
+    <itemref idref="ump-golddebates2016-0042"/>
+    <itemref idref="ump-golddebates2016-0043"/>
+    <itemref idref="ump-golddebates2016-0044"/>
+    <itemref idref="ump-golddebates2016-0045"/>
+    <itemref idref="ump-golddebates2016-0046"/>
+    <itemref idref="ump-golddebates2016-0047"/>
+    <itemref idref="ump-golddebates2016-0048"/>
+    <itemref idref="ump-golddebates2016-0049"/>
+    <itemref idref="ump-golddebates2016-0050"/>
+    <itemref idref="ump-golddebates2016-0051"/>
+    <itemref idref="ump-golddebates2016-0052"/>
+    <itemref idref="ump-golddebates2016-0053"/>
+    <itemref idref="ump-golddebates2016-0054"/>
+    <itemref idref="ump-golddebates2016-0055"/>
+    <itemref idref="ump-golddebates2016-0056"/>
+    <itemref idref="ump-golddebates2016-0057"/>
+    <itemref idref="ump-golddebates2016-0058"/>
+    <itemref idref="ump-golddebates2016-0059"/>
+    <itemref idref="ump-golddebates2016-0060"/>
+    <itemref idref="ump-golddebates2016-0061"/>
+    <itemref idref="ump-golddebates2016-0062"/>
+    <itemref idref="ump-golddebates2016-0063"/>
+    <itemref idref="ump-golddebates2016-0064"/>
+  </spine>
+  <guide>
+      <reference type="cover" title="Cover"  href="ump-golddebates2016-0001.xhtml#cvi"/>
+      <reference type="text" title="Title Page"  href="ump-golddebates2016-0003.xhtml#bk"/>
+      <reference type="copyright-page" title="Copyright"  href="ump-golddebates2016-0004.xhtml#cip"/>
+      <reference type="toc" title="Table of Contents"  href="ump-golddebates2016-0005.xhtml#toc"/>
+  </guide>
+</package>
+

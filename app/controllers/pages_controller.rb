@@ -14,25 +14,34 @@ class PagesController < ApplicationController
 	end
 
 	def index
+		@editions = Edition.all
 	end
 
 	def book
+		# placeholder until there is a second edition in database?
+		@editions = Edition.all
+		@edition = Edition.find(params[:id])
 	end
 
 	def about
+		@editions = Edition.all
+		@aboutText = Text.where('edition_id=2' ).last.id
 		@message = Message.new
 	end
 
 	def sendMessage
+		@editions = Edition.all
 		@message = Message.new(params[:message])
 
 		if @message.valid?
-			NotificationsMailer.new_message(@message).deliver
-			redirect_to(about_path, :notice => "Message was successfully sent.")
+			if verify_recaptcha(:model => @message)
+				NotificationsMailer.new_message(@message).deliver
+				redirect_to(about_path, :notice => "Message was successfully sent.") and return
+			end
 		else
 			flash.now.alert = "Please fill all fields."
-			render :about
 		end
+		render :about
 	end
 
 	def news

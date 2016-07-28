@@ -22,7 +22,7 @@ html {
 body {
 	@include font-museo;
 	font-size: 1.125em;
-	font-weight: 300;
+	font-weight: $thin;
 	line-height: $baseLineHeight;
 	color: $black;
 }
@@ -97,7 +97,7 @@ p {
 		@extend %beta;
 		& + p {
 			text-indent: 0;
-			margin-top: 1.35em;
+			margin-top: 1.2em;
 		}
 	}
 }
@@ -106,6 +106,9 @@ ul, ol {
 	margin: 0;
 	.interior-content-page & {
 		margin: .65em 0;
+	}
+	.interior-content-bare &  {
+		margin: 0 0 .65em 0;
 	}
 }
 

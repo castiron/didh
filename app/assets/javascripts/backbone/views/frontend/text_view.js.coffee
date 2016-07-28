@@ -60,20 +60,24 @@ class Didh.Views.Frontend.TextView extends Backbone.View
     #	$el = $(sel)
     #	$el.addClass('indexed')
     #)
-
+    maxWidth = 65
+    maxSentenceCount = 10
+    if $(window).width() <= 810 then maxWidth = 35
+    _.each(@model.get('sentences'), (sentence) =>
+      if sentence.count > maxSentenceCount then maxSentenceCount = sentence.count
+    )
     _.each(@model.get('sentences'), (sentence) =>
       sel = '#sentence-' + sentence.sentence
       $el = $(sel)
       $el.addClass('annotated')
       height = $el.height()
-
       if @visualization == 'opacity'
-        opacity = sentence.count / 20
+        opacity = sentence.count / maxSentenceCount
         minWidth = 10
         width = 10
       else
         minWidth = 1
-        width = sentence.count * 1
+        width = sentence.count * (maxWidth/maxSentenceCount)
 
       count = @model.getAnnotationCountFor( sentence.sentence)
       annotation = $('<span data-sentence="' + sentence.sentence + '" style="display: none; width: ' + minWidth + 'px; height: ' + height + 'px;" class="annotation"></span>')
