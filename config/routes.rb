@@ -23,6 +23,7 @@ Didh::Application.routes.draw do
   get 'cfps/cfp_2015_ddh' => 'pages#cfp_2015_ddh'
   get 'cfps/cfp_2017_ddh' => 'pages#cfp_2017_ddh'
   get 'cfps/cfp_2015_mhm' => 'pages#cfp_2015_mhm'
+  get 'cfps/cfp_2015_femdh' => 'pages#cfp_2015_femdh'
   get 'news/' => 'pages#news'
 
   resources :comments, :only => [:index]
