@@ -14,7 +14,11 @@ class PagesController < ApplicationController
 	end
 
 	def show_cfp
-		render :template => "pages/#{params[:cfp_page].gsub(/[^0-9A-Za-z.\-]/, '_')}"
+		begin
+			render :template => "pages/#{params[:cfp_page].gsub(/[^0-9A-Za-z.\-]/, '_')}"
+		rescue
+			raise ActionController::RoutingError.new('Not Found')
+		end
 	end
 
 	def index
