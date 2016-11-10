@@ -20,10 +20,7 @@ Didh::Application.routes.draw do
   post 'about/' => 'pages#sendMessage', :as => 'about'
   get 'about/' => 'pages#about'
   get 'cfps/' => 'pages#cfps'
-  get 'cfps/cfp_2015_ddh' => 'pages#cfp_2015_ddh'
-  get 'cfps/cfp_2017_ddh' => 'pages#cfp_2017_ddh'
-  get 'cfps/cfp_2015_mhm' => 'pages#cfp_2015_mhm'
-  get 'cfps/cfp_2015_femdh' => 'pages#cfp_2015_femdh'
+  get 'cfps/:cfp_page' => 'pages#show_cfp'
   get 'news/' => 'pages#news'
 
   resources :comments, :only => [:index]

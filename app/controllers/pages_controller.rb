@@ -13,6 +13,10 @@ class PagesController < ApplicationController
 			end
 	end
 
+	def show_cfp
+		render :template => "pages/#{params[:cfp_page].gsub(/[^0-9A-Za-z.\-]/, '_')}"
+	end
+
 	def index
 		@editions = Edition.all
 	end
