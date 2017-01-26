@@ -260,6 +260,7 @@ namespace :texts do
 
       bibliographyNodes = htmlDoc.css("p.rf")
       bibliography = bibliographyNodes.to_html
+
       puts "[#{file}] [info] found #{bibliographyNodes.length} bibliography nodes"
 
       notes = String.new
@@ -272,6 +273,9 @@ namespace :texts do
       # TODO: This is missing div.list in the notes section.
       noteNodes = htmlDoc.xpath("//p[@class='en']")
       if noteNodes != nil
+        noteNodes.xpath("a[@class='ennum']").each do |tag|
+          tag.set_attribute('href', tag['href'].match('(#.*)').try(:[],1)) if !tag['href'].nil?
+        end
         notes = notes + noteNodes.to_html
         puts "[#{file}] [info] found #{noteNodes.length} endnote nodes"
       end
