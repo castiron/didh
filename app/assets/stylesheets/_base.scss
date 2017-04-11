@@ -25,6 +25,11 @@ body {
 	font-weight: $thin;
 	line-height: $baseLineHeight;
 	color: $black;
+	overflow: auto;
+
+	&.toc-open {
+		overflow: hidden;
+	}
 }
 
 // Body classes
