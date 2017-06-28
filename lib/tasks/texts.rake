@@ -193,7 +193,7 @@ namespace :texts do
       body = body + node.to_html
       puts "[#{file}] [info] found body"
       node = htmlDoc.at_xpath(startNodePath).next_sibling
-      bodyStopNode = htmlDoc.at_xpath("//div[@class='hanging'] | //div[@class='chapter']/p[last()]")
+      bodyStopNode = htmlDoc.at_xpath("//div[@class='hanging'] | //div[@class='chapter']/p[last()]/following-sibling::*")
       while node && node != bodyStopNode
         body = body + node.to_html unless node.type == 3 # skip text nodes
         node = node.next_sibling
