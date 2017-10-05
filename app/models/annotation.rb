@@ -8,7 +8,7 @@ class Annotation < ActiveRecord::Base
 
   def as_json(options = {})
     h = super(options)
-    h[:sentence_body] = sentence_model.body
+    h[:sentence_body] = sentence_model.try(:body)
     h
   end
 

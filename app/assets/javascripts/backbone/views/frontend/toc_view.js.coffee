@@ -68,13 +68,13 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
     @highlightActivePart(@)
     @$el.parent('[data-tab-toggle]').addClass('open')
     $('[data-tab-toggle-trigger]').parent('.toc-tab-trigger').addClass('open')
-    $('body').css('overflow', 'hidden')
+    $('body').addClass('toc-open')
 
   closeToc: () ->
     @highlightActivePart(@)
     @$el.parent('[data-tab-toggle]').removeClass('open')
     $('[data-tab-toggle-trigger]').parent('.toc-tab-trigger').removeClass('open')
-    $('body').css('overflow', 'auto')
+    $('body').removeClass('toc-open')
 
   toggleTocContents: () ->
     paneWidth = @$el.find('.level-0').first().width()
@@ -123,6 +123,6 @@ class Didh.Views.Frontend.TocView extends Didh.Views.Frontend.PaneView
       setTimeout((() ->
        $('[data-tab-toggle]').addClass('open')
        $('[data-tab-toggle-trigger]').parent('.toc-tab-trigger').addClass('open')
-       $('body').css('overflow', 'hidden')
+       $('body').addClass('toc-open')
       ), 500)
 

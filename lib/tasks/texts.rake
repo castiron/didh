@@ -193,7 +193,7 @@ namespace :texts do
       body = body + node.to_html
       puts "[#{file}] [info] found body"
       node = htmlDoc.at_xpath(startNodePath).next_sibling
-      bodyStopNode = htmlDoc.at_xpath("//div[@class='hanging']")
+      bodyStopNode = htmlDoc.at_xpath("//div[@class='hanging'] | //div[@class='chapter']/p[last()]/following-sibling::*")
       while node && node != bodyStopNode
         body = body + node.to_html unless node.type == 3 # skip text nodes
         node = node.next_sibling
@@ -260,6 +260,7 @@ namespace :texts do
 
       bibliographyNodes = htmlDoc.css("p.rf")
       bibliography = bibliographyNodes.to_html
+
       puts "[#{file}] [info] found #{bibliographyNodes.length} bibliography nodes"
 
       notes = String.new
@@ -272,6 +273,9 @@ namespace :texts do
       # TODO: This is missing div.list in the notes section.
       noteNodes = htmlDoc.xpath("//p[@class='en']")
       if noteNodes != nil
+        noteNodes.xpath("a[@class='ennum']").each do |tag|
+          tag.set_attribute('href', tag['href'].match('(#.*)').try(:[],1)) if !tag['href'].nil?
+        end
         notes = notes + noteNodes.to_html
         puts "[#{file}] [info] found #{noteNodes.length} endnote nodes"
       end

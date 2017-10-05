@@ -27,15 +27,32 @@ $ ->
   $body = $('body')
   $tocTab = $('[data-tab-toggle]');
   $tocTabTrigger = $('[data-tab-toggle-trigger]').parent('li');
+  
+  openToc = () ->
+    $tocTab.addClass('open')
+    $tocTabTrigger.addClass('open')
+    $body.addClass('toc-open')
+    $body.on('click', tocClickListener)
+
+  closeToc = () ->
+    $tocTab.removeClass('open')
+    $tocTabTrigger.removeClass('open')
+    $body.removeClass('toc-open')
+    $body.off('click', tocClickListener)
+
+  tocClickListener = (event) ->
+    $target = $(event.target)
+
+    if $($target.children()[0]).hasClass('toc-editions') || $target.hasClass('.toc-container, .toc-tab-trigger') || $target.parents('.toc-container, .toc-tab-trigger').length > 0
+      return;
+    else
+      closeToc()
+
   $('[data-tab-toggle-trigger]').click((e) ->
     if $tocTab.hasClass('open')
-      $tocTab.removeClass('open')
-      $tocTabTrigger.removeClass('open')
-      $body.css('overflow', 'auto')
+      closeToc()
     else
-      $tocTab.addClass('open')
-      $tocTabTrigger.addClass('open')
-      $body.css('overflow', 'hidden')
+      openToc()
   )
 
 # for the edition tabs within the TOC

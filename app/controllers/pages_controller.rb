@@ -13,6 +13,14 @@ class PagesController < ApplicationController
 			end
 	end
 
+	def show_cfp
+		begin
+			render :template => "pages/#{params[:cfp_page].gsub(/[^0-9A-Za-z.\-]/, '_')}"
+		rescue
+			raise ActionController::RoutingError.new('Not Found')
+		end
+	end
+
 	def index
 		@editions = Edition.all
 	end
