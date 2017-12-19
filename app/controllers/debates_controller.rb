@@ -58,6 +58,9 @@ class DebatesController < ApplicationController
 	def show
 		@static = true
 		@text = Text.find(params[:id])
+		@toc = false
+		@editionId = @text.edition_id
+		@editions = Edition.all
 		@texts = Text.all
 		@parts = Part.all
 		@hide_instructions = check_hide_instructions()
