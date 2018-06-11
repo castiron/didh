@@ -1,37 +1,18 @@
-<%
-
-  def boxen?; ENV['BOXEN_HOME']; end
-
-  url  = ENV["BOXEN_POSTGRESQL_URL"]
-  port = ENV["BOXEN_POSTGRESQL_PORT"]
-
-  if boxen?
-    db = 'dhdebates_development'
-  else
-    user = ENV["RAILS_DB_USER"]
-    pass = ENV["RAILS_DB_PASS"]
-    db   = ENV["RAILS_DB_NAME"]
-  end
-
-%>
-
 common: &common
   adapter: postgresql
   host: localhost
   encoding: unicode
-  pool: 50
-  port: <%= port %>
-  user: <%= user %>
-  database: <%= db %>
-  password: <%= pass %>
+  pool: 25
+  min_messages: warning
 
 production:
   <<: *common
+  database: dhdebates_production
 
 development:
   <<: *common
+  database: dhdebates_development
 
 test:
   <<: *common
   database: dhdebates_test
-

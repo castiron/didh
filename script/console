@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# script/console: Launch a console for the application. Optionally allow an
+#                 environment to be passed in to let the script handle the
+#                 specific requirements for connecting to a console for that
+#                 environment.
+
+set -e
+cd "$(dirname "$0")/.."
+if ! brew check-strta-enabled ; then exit 1; fi
+
+# Run the local console in the development environment. Ensure the application is up
+# to date first.
+./script/update
+bin/rails console
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# script/bootstrap: Resolve all dependencies that the application requires to
+# run.
+
+set -e
+cd "$(dirname "$0")/.."
+if ! brew check-strta-enabled ; then exit 1; fi
+
+brew bootstrap-project-rails

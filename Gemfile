@@ -23,7 +23,9 @@ gem 'rjb', '~> 1.5.3'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
 # Gems required for serving the app
-gem 'unicorn'
+gem 'puma'
+
+gem 'pry-rails'
 
 group :development do
   gem 'web-console', '~> 2.0'

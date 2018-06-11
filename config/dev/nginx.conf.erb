@@ -1,0 +1,55 @@
+upstream <%= server_name %> {
+ server unix:<%= socket_dir %>/<%= name %>;
+}
+
+server {
+  access_log <%= log_dir %>/nginx.access.log combined;
+  listen 80;
+  listen 443 ssl;
+
+  server_name <%= name %>.<%= tld.strip %>;
+  root <%= root %>/public;
+
+  ssl_certificate <%= root %>/config/dev/ssl/<%= name %>.<%= tld.strip %>.crt;
+  ssl_certificate_key <%= root %>/config/dev/ssl/<%= name %>.<%= tld.strip %>.key;
+  ssl_protocols SSLv2 SSLv3 TLSv1;
+  ssl_ciphers HIGH:!aNULL:!MD5;
+  ssl_prefer_server_ciphers on;
+  ssl_session_timeout 10m;
+
+  client_max_body_size 100M;
+  client_body_timeout 600s;
+  proxy_send_timeout 600s;
+  proxy_read_timeout 600s;
+
+  error_page 500 502 503 504 /50x.html;
+
+  if ($host ~* "www") {
+    rewrite ^(.*)$ http://<%= server_name %>$1 permanent;
+    break;
+  }
+
+  location = /50x.html {
+    root html;
+  }
+
+  location / {
+    if (-f $request_filename/index.html) {
+      rewrite (.*) $1/index.html break;
+    }
+
+    if (-f $request_filename.html) {
+      rewrite (.*) $1.html break;
+    }
+
+    if (!-f $request_filename) {
+      proxy_pass http://<%= server_name %>;
+      break;
+    }
+
+    proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header      X-Forwarded-Proto $scheme;
+    proxy_set_header      Host $http_host;
+  }
+
+}
