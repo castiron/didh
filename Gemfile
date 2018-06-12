@@ -29,10 +29,10 @@ gem 'pry-rails'
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'capistrano',         '~> 3.2.0', require: false
+  gem 'capistrano-rails',   '~> 1.1.0', require: false
+  gem 'capistrano-bundler',             require: false
+  gem 'capistrano-rbenv',   '~> 2.0',   require: false
+  gem 'capistrano-db-tasks',            require: false
+  gem 'capistrano-rails-console',       require: false
 end
-
-# Deployment
-gem 'capistrano', '~> 3.2.0'
-gem 'capistrano-rails', '~> 1.1.0'
-gem 'capistrano-bundler'
-gem 'capistrano-rbenv', '~> 2.0'

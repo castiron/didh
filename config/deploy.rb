@@ -13,6 +13,10 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
+set :db_local_clean, false
+set :db_remote_clean, true
+set :disallow_pushing, true
+
 namespace :deploy do
 
   desc 'Restart application'
