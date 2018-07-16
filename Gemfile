@@ -1,11 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.8'
 
 gem 'pg'
 
-# Gems used only for assets and not required
-# in production environments by default.
+gem 'active_interaction', '~> 3.6.1'
+gem 'activerecord-wrapped_transaction', '~> 0.5.1'
+gem 'attr_lazy'
+gem 'dux'
+gem 'namae'
+gem 'scenic'
+
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
