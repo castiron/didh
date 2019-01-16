@@ -93,7 +93,7 @@ class Didh.Routers.AppRouter extends Backbone.Router
     @hudViewSidebar.showAuthentication()
 
   showText: (textId) ->
-    if @static == true then window.location.reload()
+    if @isStatic == true then window.location.reload()
     # @tocView.goToPosition(1)
     @feedbackView.goToPosition(1)
     @setActiveText(textId)
