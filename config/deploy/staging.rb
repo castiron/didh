@@ -1,4 +1,4 @@
-set :branch, "master"
+set :branch, ENV['BRANCH'] || "master"
 set :server_name, "dhdebates.cicnode.com"
 set :deploy_dir, "/home/dhdebates/deploy"
 set :stage, :production
