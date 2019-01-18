@@ -1,6 +1,6 @@
 set :branch, "master"
 set :server_name, "dhdebates-webserver.ciclabs.com"
-
+set :deploy_dir, "/home/dhdebates/dhdebates"
 set :stage, :production
 set :rails_env, :production
 
