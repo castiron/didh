@@ -1161,7 +1161,7 @@
     //Enable if given the option to do so
     // & + p {
     //   margin-top: -1em;
-    // } 
+    // }
 
 		p, span {
 			text-indent: 0;
@@ -1219,9 +1219,15 @@ span.sentence {
 	}
 }
 
-body.static-true span.sentence:hover {
-  background-color: #fff;
-  cursor: auto;
+body.static-true {
+  span.sentence:hover {
+    background-color: #fff;
+    cursor: auto;
+  }
+
+  div.figure span.sentence:hover {
+    border-bottom: none;
+  }
 }
 
 // Comment indicator
@@ -1656,7 +1662,7 @@ body.static-true span.sentence:hover {
     &.active {
       background-color: $chartreuse;
     }
-    
+
     &:hover {
       cursor: pointer;
       border: 3px solid $grayMedium;
@@ -1886,7 +1892,7 @@ body.static-true span.sentence:hover {
   .cover-wrapper {
     position: relative;
     display: inline-block;
-  
+
     .cover-overlay {
       position: absolute;
       top: 0;
@@ -2119,7 +2125,7 @@ body.static-true span.sentence:hover {
         }
 
         @include respond-max(570px) {
-          margin-left: 0; 
+          margin-left: 0;
         }
       }
 
@@ -2188,7 +2194,7 @@ body.static-true span.sentence:hover {
       a {
         cursor: pointer;
         color: $white;
-        
+
         .title, .author {
           font-size: 14px;
           font-weight: $regular;
